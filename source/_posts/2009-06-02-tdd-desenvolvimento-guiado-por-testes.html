@@ -1,0 +1,22 @@
+--- 
+layout: post
+title: TDD- desenvolvimento guiado por testes
+tags: 
+- atualidades
+- "Inform\xC3\xA1tica"
+- TDD
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Uma coisa que sempre considerei interessante é a resistência de alguns de não partir para uma forma de desenvolvimento guiado por testes. Eu, assim que tive contato com este jeito de programar, nunca mais larguei e hoje, confesso, nem consigo fazer de outra forma.Ao me guiar por testes meu códigos sempre saem com qualidade acima da média (melhor que a da maioria no mercado). Este resultado se deve, não por minha suposta genialidade mas sim, por sempre testar de forma minunciosa as coisas (testes unitários, testes de comportamento, etc), escrever testes antes, etc.
+Estamos sempre em busca de fazer mais em menos tempo... essa tem sido a missão principal de todos nós seres humanos e claro que não é diferente para desenvolvimento de sistemas. A pressão de prazos, custos, etc são aspectos importantes nos projetos e tem nos levado a buscar alternativas para atender. Por vezes, a opção acaba sendo, fazer sistemas de forma amadora, cheios de "gambiarras" e remendos, tudo para que o sistema seja entregue no dia e lucro desejado.  Isso faz sentido, e é interessante, apenas para aquelas consultorias que ganham "rios de dinheiro", pois além do desenvolvimento, elas aproveitam para vender, também o suporte. Mas para aqueles que desejam entregar coisas com qualidade, para os clientes que precisam de sistemas que realmente apresentem um ROI (retorno de investimento) sastifatório, uma solução tem sido o desenvolvimento guiado por testes, TDD.
+Realizar um desenvolvimento guiado por teste significa, sendo bastante simplista, escrever os testes de acordo com a especificação do sistemas e estes determinarem a forma que o sistema serà implementado pois o código para ser aprovado deve passar pelos teste criados. Complicou, a gente descomplica: ao invés de desenvolvermos um sistema e depois testá-lo, verificando se ele funciona, se trata todos os casos, se ele é robusto, tolerante a falhas ,etc; nós escrevemos diversos testes automatizados(unitários, comportamento, etc) e vamos desenvolvendo o sistema de forma a que todos os testes sejam aprovados. Ao inverte a forma de conceber as coisas, um senso comum entre os autores que falam sobre TI, os ganhos são significativos ao ponto de não podermos ignorá-los:
+1 - <strong>Evita-se desperdício de código</strong>: implementa-se o necessário para que teste funcione.
+2 - <strong>Cobertura total contra falhas</strong>: Ao escrever os testes antes evita-se a programação otimista, ou seja, o programador não tem tentação de escrever e testar apenas o "caminho feliz"; escreve-se os testes de acordo com a especificação.
+3 - <strong>Testes automatizados </strong> : sei que muitos poderiam dizer que teste automatizados não um ganho particular do TDD, mas são sua pedra fundamental. Ao automatizar seus testes, a cada nova compilação ou ação sobre o código, todo o sistema será testado garantindo seu funcionamento. Isso, gera uma robustez na solução pois evita que os efeitos colaterais desconhecidos, ao alterar uma aplicação, apareçam somente em produção.
+Um gerente mais apegado ao passado poderia dizer que escrever testes antes significa perder tempo, pois ele vai precisar de prever mais dias em seus cronograma para a entrega do sistema. Isso, de certa forma, está correto. Entretanto, o material entregue é de grande qualidade pois foi amplamente testado, retestado, e por aí segue... não teremos retrabalho, horas extras para corrigir bugs desconhecidos, cobertura total para alterações...
+Sei que isso não é a "bala de prata": o fato de usar desenvolvimento guiado por teste, não garante que seu aplicativo será o melhor, ainda existe o talento da equipe, a tecnologia, uma boa especificação, etc. Embora, o uso de TDD em minha opnião, já seja 60% do caminho para tal objetivo.
+Na próxima vez que for começar a desenvolver, pense nisso... Permita-se experimentar e espero, que assim como eu, vocês fiquem viciados nessa prática.

@@ -1,0 +1,31 @@
+--- 
+layout: post
+title: "Documentar \xC3\xA9 preciso e faz bem"
+tags: 
+- agil
+- bdd
+- codigo
+- "documenta\xC3\xA7\xC3\xA3o"
+- "Inform\xC3\xA1tica"
+- TDD
+- teste
+- uml
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Esses dias li um e-mail numa lista de discussão que participo onde a pessoa perguntava como ela deveria fazer para documentar um projeto que ele desenvolveu sozinho. Ainda segundo ele, a ideia é de permitir que num futuro próximo um novo desenvolvedor possa trabalhar no sistema sem traumas e com uma curva de aprendizado rápida.
+
+<a href="http://borboletasaoluar.blogspot.com/2008/05/idade-mdia-os-monges-e-o-progresso_31.html"><img class="alignright" style="margin-top: 12px; margin-bottom: 12px; margin-left: 11px; margin-right: 11px;" title="Imagem de monges escribas da epoca medieval" src="http://i10.photobucket.com/albums/a134/andyluna/Medieval/livros03.jpg" alt="" width="255" height="335" /></a>
+
+Antes de tentar responder a pergunta, acredito seja necessário entender a diferença entre análise e documentação.  Muitas pessoas que trabalham com  criação de softwares, acabam confundindo documentar com analisar.  Essa dúvida é normal pois muitas "ferramentas" e "métodos" também se apresentam como opção de documentação, ou o contrário : coisas que deveriam ser usadas para documentar são usadas para fazer análise ( e até acabam com uma má fama sem terem culpa disso - puro mal uso). Um exemplo disso, no meu ponto de vista, é o uml : Muitos usam a UML com o propósito de analisar e modelar. Ela até foi criada com esse intuito pois, quando foi concebida  era bastante custoso codificar e alterar o código feito (lembre-se dos cartões perfurados, cobols da vida, etc) mas hoje isso já não é válido (com linguagens modernas, codificar é rápido e alterá-lo mais ainda). Voltando, UML, <strong>no meu ponto de vista</strong>, é muito mais documentativa do que modelagem.  Seus diagramas tem um ótimo apelo de representar graficamente um sistema e como diz um ditado: "Uma imagem vale por mil palavras".
+
+<a href="http://www.luli.com.br/2009/03/31/a-retomada-do-humano/"><img class="alignleft" src="http://www.etsy.com/storque/media/articles/2009/03/3699-toiletpaperHEad.jpg" alt="" width="203" height="193" /></a>Um outro mito a ser desfeito, insisto, no meu ponto de vista, é de que documentar não agrega valor. Por mais que ninguém diga isso, por mais que ninguém escreva isso, por mais que ninguém assuma isso, muitos de nós considera o ato de documentar como uma atividade secundária, e com isso, delegamos para que outros façam ou, em piores casos, nem o fazemos. A questão que ninguém escreve um sistema para si e, na maioria dos casos, não fazemos isso sozinhos.  Outro ponto é que, possivelmente, não ficaremos para o resto de nossa vidas com aquele projeto, passaremos para outros desafios e aquele sistema deverá ser cuidado por outro pessoa que não necessariamente participou da equipe que o desenvolveu. Tal fato, implica em ter que forma esse pessoa de forma que ela possa dar continuidade ao aplicativo sem comprometer a qualidade dele (estou assumindo que seja aqueles projetos onde temos testes automatizados, linguagens bem expressivas, etc). Logo, tendo todo esse contexto em mente, fica fácil mostrar que documentar, no mínimo, é evitar dores de cabeça futuras.
+<h2><a href="http://sejadivina.files.wordpress.com"><img class="alignnone" src="http://sejadivina.files.wordpress.com/2008/06/duvida.jpg" alt="" width="98" height="53" /></a>Mas, enfim, como documentar?</h2>
+A pergunta poderia ser redigida da seguinte forma para ter mais sentido para nós : Como podemos documentar sem que isso seja uma atividade secundária e agregue mais valor ao sistema? .  A maioria das linguagens modernas oferecem recursos, bastante interessantes, que podem responder essas perguntas. Em Java, nós temos o recurso básico do JavaDoc (comentários em formato especiais que são colocados no código fonte. Depois, através de ferramenta exportamos para um html), em .NET (csharp) temos algo parecido, e por ai segue. Embora isso já seja algo que ajude, considero insuficiente como documentação pois, quem irá ler não terá uma visão do funcionamento ou do comportamento do sistema.
+
+Nesse contexto de comportamento e funcionamento que entram a ajuda primordial dos teste automatizados. Um efeito secundário dos testes automatizados (tanto os teste unitários quando os testes de comportamento) é de, se bem escritos e de grande abrangência,  eles acabam sendo uma boa fonte de consulta para o entendimento da aplicação.  Existe, inclusive, frameworks de teste de comportamento (Behavior Tests) que permitem que se escrevam de forma literal facilitando ainda mais o seu uso como documentação, como por exemplo o Cucumber (Ruby), <a href="http://www.pyccuracy.org/">Pyccuracy</a> ( espero ter escrito certo - Python), etc.
+
+<img class="alignright" style="margin: 12px;" src="http://apologo.blogs.sapo.pt/arquivo/201%20-%20o%20diario%20original%20de%20Nina%20blog.jpg" alt="" width="183" height="161" />Por fim, eu pessoalmente, acredito que um bom diário de bordo também ajuda bastante. Um diário de bordo, consiste, em algo parecido com um blog ( pode até ser um blog), em que vou escrevendo o dia a dia do desenvolvimento tentando retratar as decisões não técnicas e situações vencidas pela equipe de forma que a pessoa que irá trabalhar com o sistema no futuro tenha também uma visão do por que de certas escolhas, do sentimento da equipe naquele momento, etc.

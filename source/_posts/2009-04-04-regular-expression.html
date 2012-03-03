@@ -1,0 +1,45 @@
+--- 
+layout: post
+title: "Usando Express\xC3\xB5es Regulares"
+tags: 
+- codigo
+- "Inform\xC3\xA1tica"
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Copiando os demais blogs e inaugurando minha coluna de pergunta e respostas, gostaria de começar por um email enviado para a lista do riojug. No email, a pessoa dizia que precisa retirar todos os traços, ''- ", de seu texto que não tivessem "sentido" : traços sozinhos, traços que não fossem de ligação, etc. Ele inclusive mandou um exemplo esclarecedor
+
+
+<blockquote>- guarde-o - senão guardarei-o eu --- Joãozinho-";</blockquote>
+
+No texto acima os traços a serem substituídos seriam : o primeiro, o traço antes do <em>senão</em>, os 3 traços seguidos e o traço do fim.
+Para resolver isso poderiamos partir para várias soluções; uma mais elegantes que as outras, e vice-versa:
+
+	<li>Varrer caracter a caracter e verificar: ler como um array de char e ficar verificando se o anterior é espaço, traço, etc.... Em pseudo codigo seria</li>
+
+
+<code>
+char letras[] = <string em questão>
+letras.each{|i,l|
+if i = 0 then
+    if l='-' then replace
+else
+    if l='-'- and (letras[i-1]=' '  or letras[i-1]='-' or letras[i-1]=':')............ // e continua
+}
+</code>
+so de ler e tentar fazer já dá medo.... e olhem que eu já vi coisas assim implementadas !!!
+
+	<li>Usar expressões regulares.</li>
+
+
+Expressões regulares são uma forma de representar conjuntos de caracteres que estão sobre um certa regra. São como dicas que damos a quem procura, para que ele ache o que queremos. como analogia poderiamos imaginar que alguém nos pede para chamarmos uma outra pessoa. Para isso elas nos dá indicativos de como encontrá-la : alta, magra ou gorda, perto de um homem ou mulher, proxima a porta, etc... Transpondo isso para textos, expressoes regulares seriam como esta dicas.
+Expressões Regulares foram criadas pelo ano de 1943 por dois neurologistas. Anos mais tarde, um matemático, modelou algebricamente isso, dando o "ponta pé inicial". Em 1968, graças ao unix, encontrou sua veia computacional, por meio do editor. Era chamado pelo comando ed. Este ed tinha o comando de contexto g, que aceitava  expressões regulares e um comando p, e sua sintaxe ficava g/RE/p ("Global Regular Expression Print"), que deu origem ao aplicativo grep, que por sua vez originou o egrep.[fonte: guia de expressões regulares - aurélio marinho Vargas, Editora novatec]
+Bem vamos ao código
+<code>
+String.replaceAll("[^[:alnum:]][-][^[:alnum:]|[-]$|[-][[:punct:]]|^[-]")
+</code>
+Lindo não ?!?!? Uma linha .....
+Quem se interessar pelo assunto pode ler o livro on line do Aurelio Marinho, Novatec, que é uma fonte riquissima para isso. (<a href="http://guia-er.sourceforge.net/index.html">clique aqui</a>)

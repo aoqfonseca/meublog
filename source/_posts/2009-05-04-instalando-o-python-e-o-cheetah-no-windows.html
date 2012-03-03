@@ -1,0 +1,23 @@
+--- 
+layout: post
+title: Instalando o Python e o Cheetah no Windows
+tags: 
+- "Inform\xC3\xA1tica"
+- python
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Esse é daqueles post para me ajudarem a lembrar como fazer um procedimento. Para instalar o python e o Cheetah para trabalhar com templates, é preciso fazer os seguintes passos:
+1 - Fazer o download dos arquivos para instalação. No caso do python existe um instalador pronto. No caso do Cheetah existe apenas um arquivo tar.gz
+2 - Buscar e baixar o 7zip. É um programinha gratuito para trabalhar com o gz e tar
+3 - Instalar o Python
+4 - Extrair os arquivos do Cheetah para uma pasta
+5 - Colocar na variavel Path o diretorio do python (diretorio onde está o python.exe)
+6 - na pasta onde extraiu o Cheetah, onde estiver o arquivo setup.py, executar a linha de comando : python setup.py install ou setup.py install
+7 - O procedimento acima vai criar uma pasta Scripts dentro do diretorio do python. dentro desta pasta tem dois arquivos cheetah e cheetah-compile
+8 - Copiar os arquivos acima para a pasta c:\Windows ... Note que o copy deve ser : copy cheetah c:\Windows\cheetah.py . Tem que colocar a extensão py devido ao fato do windows não entender a primeira linha do arquivo. (so funciona no linux)
+
+Os passos acima devem garantir que funcione.

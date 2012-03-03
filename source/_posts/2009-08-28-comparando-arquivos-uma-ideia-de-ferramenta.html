@@ -1,0 +1,28 @@
+--- 
+layout: post
+title: Comparando arquivos - uma ideia de ferramenta
+tags: 
+- arquivos
+- atualidades
+- comparar
+- eucliadiana
+- "Inform\xC3\xA1tica"
+- inteligencia coletiva
+- txt
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+A pouco empo atrás um colega me perguntou como ele poderia fazer para verificar se um dado arquivo texto era igual a outro.  A primeira resposta que me veio a cabeça foi de fazer um programa que comparasse linha a linha. A segunda solução ( esta não foi uma ideia minha) era de utilizar a assinatura <a href="http://idgnow.uol.com.br/carreira/2009/08/28/empresa-abre-40-vagas-de-estagio-em-sao-paulo-e-no-rio/">MD5</a> de cada arquivo e comparar.  As duas soluções o atenderiam perfeitamente, onde a primeira iria precisar de um certo desenvolvimento e a segunda, ele poderia usar o md5sum e/ou outros softwares já existentes.
+
+A questão que me surgiu, e uma ideia para uma ferramenta, era o que aconteceria se os dois arquivos tivessem os mesmos dados (textos por exemplo) porém um tivesse uma linha em branco a mais ou se num deles faltasse uma linha ? Possivelmente  a verificação com os métodos acima falharia (apesar de achar que o md5 ignora espaços em branco, imagina se colocasse um comentário a mais). Não seria interessante uma ferramenta que dissesse o quanto dois arquivos são semelhantes? Algo do tipo : "<em>O arquivos A e B possuem 80% de similaridade"</em>
+
+Mas como seria possível fazer isso?
+
+Bem, para aqueles que lêem este blog a um certo tempo (caso não seja seu caso dá uma olhada nos post antigos), sabe que tenho lido e estudo muito a questão de algoritmos de inteligência artificial para processamento de conhecimento coletivo. Num dos livros do assunto, "Programando Inteligência Coletiva" do Toby Segaran, logo nos primeiros capítulos ele ensina algumas técnica para que construa algoritmos de agrupamento de blogs, por exemplo. Tais algoritmos verificam o grau de similaridade das fontes e os agrega por proximidade.
+
+Diante disso, se funciona para Blogs, logo isso funciona também para arquivos, ainda mais arquivos textos ou rtf (doc, odt, etc). Por isso penso, usando as dicas do livro, fazer uma ferramenta que lerá os arquivos e diagnosticará o grau de semelhança.
+
+Prometo que assim que tiver algo coloco no github para a galera mexer, contribuir e usar. Aguardem.

@@ -1,0 +1,69 @@
+--- 
+layout: post
+title: "Introdu\xC3\xA7\xC3\xA3o a Linguagem Scala - Parte 1"
+tags: 
+- atualidades
+- Scala
+- tutoriais
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">e acordo com o livro Programming in Scala, escrito pelos criadores da linguagem - , o nome Scala vem da combinação das palavras em inglês Scalable Lang (Linguagem escalável), e foi chamada assim pois foi desenhada para crescer com a demanda de seus usuários (nós programadores). É possível usá-la em um grande espectro de atividades: desde de pequenos scripts a aplicações web ou GUI com alto tráfico e acesso (ou carga de processamento). Ela é simples para começar, principalmente para o pessoal que já usa o Java pois roda dentro da JVM e tem integração bem próxima das APis e bibliotecas Java.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Uma primeira coisa que podemos dizer que a linguagem é uma mistura com sabor funcional e orientado a objeto e isso será notado a medida que for avançando em seu aprendizado. O interessante é que ao fundir essas duas característica, tendo como objetivo pegar o melhor de cada, Scala acabou se tornando uma boa escolha frente as todas as da moda hoje e atingindo a meta geral de ser altamente capaz de escalar: a parte funcional torna fácil a missão de construir coisas rapidamente com código de alta legibilidade; a parte OO permite a manipulação fácil de dados e sua adaptabilidade.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">A Catedral e a Bazar</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Eric Raymond fez a metáfora da Catedral e Bazar para construção de sistemas. A catedral, segundo ele, é um tipo de construção próxima "a perfeição" que leva muito tempo para ser construída. Uma vez que tenha sido construída, pouco coisa resta para fazer ou modificar (pelo menos eu não vejo grandes obras, além das de restauro, dentro de igrejas antigas e catedrais). Já os bazares, pelo contrário, são feitos muito rápido, simples e adaptáveis mudando todos os dias para atender e superar as expectativas dos clientes. Scala é algo mais próximo do Bazar.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Primeiro programa</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">object HelloWorld{</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>def main (args : Array[String]) : Unit ={</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>println ("Hello World, ou em português, Olá Mundo")</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>}</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">}</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Nesse programa já podemos ver algumas das características interessantes da linguagem. Embora ela se proponha ser da família das dinâmicas, ela é estaticamente tipada: os tipos das variáveis devem ser definidos em tempo de compilação (não existe o famoso duck type como o Python). Com isso mesmo que não defina o tipo, o compilador vai definir um por inferência.  Outra característica interessante é forma que declaramos a classe e seus métodos.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Em Scala, tudo é dado, inclusive as funções ( para quem já trabalhou com Haskell ou Lisp isso é mais simples de entender). Assim as funções tem os seus "valores" (o código) passado como numa variável : algo = valor . Isso é algo que o pessoal está muito acostumado com nossas linguagens imperativas vai demorar um pouco para se convencer disso.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Outra coisa é que o tipo é definido depois e não antes como fazíamos. Confesso que é algo que a gente se acostuma com o tempo para ler um código e entendê-lo logo de cara.</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">No exemplo acima não deu para ver mais uma característica interessante que é a questão de tornar concisa a escrita de sistemas. Veja os dois trechos de código abaixo</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Classe em Java</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">class Pessoa {</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>private String nome;</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>private String sobrenome;</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span></div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>public Pessoa (String nome,String sobrenome){</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>this.nome = nome;</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>this.sobrenome = sobrenome;</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;"><span style="white-space: pre;"> </span>}</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">}</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Mesma classe escrita em Scala</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">class Pessoa (nome : String, sobrenome: String)</div>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">Bem por hoje paramos por aqui, no próximo artigo da séria continuamos daqui  para falarmos mais</div>
+<div>De acordo com o livro Programming in Scala, escrito pelos criadores da linguagem - , o nome Scala vem da combinação das palavras em inglês Scalable Lang (Linguagem escalável), e foi chamada assim pois foi desenhada para crescer com a demanda de seus usuários (nós programadores). É possível usá-la em um grande espectro de atividades: desde de pequenos scripts a aplicações web ou GUI com alto tráfico e acesso (ou carga de processamento). Ela é simples para começar, principalmente para o pessoal que já usa o Java pois roda dentro da JVM e tem integração bem próxima das APis e bibliotecas Java.</div>
+<div>Uma primeira coisa que podemos dizer que a linguagem é uma mistura com sabor funcional e orientado a objeto e isso será notado a medida que for avançando em seu aprendizado. O interessante é que ao fundir essas duas característica, tendo como objetivo pegar o melhor de cada, Scala acabou se tornando uma boa escolha frente as todas as da moda hoje e atingindo a meta geral de ser altamente capaz de escalar: a parte funcional torna fácil a missão de construir coisas rapidamente com código de alta legibilidade; a parte OO permite a manipulação fácil de dados e sua adaptabilidade.</div>
+<div>A Catedral e a Bazar</div>
+<div>Eric Raymond fez a metáfora da Catedral e Bazar para construção de sistemas. A catedral, segundo ele, é um tipo de construção próxima "a perfeição" que leva muito tempo para ser construída. Uma vez que tenha sido construída, pouco coisa resta para fazer ou modificar (pelo menos eu não vejo grandes obras, além das de restauro, dentro de igrejas antigas e catedrais). Já os bazares, pelo contrário, são feitos muito rápido, simples e adaptáveis mudando todos os dias para atender e superar as expectativas dos clientes. Scala é algo mais próximo do Bazar.</div>
+<div>Primeiro programa</div>
+<div>object HelloWorld{</div>
+<div><span style="white-space: pre;"> </span>def main (args : Array[String]) : Unit ={</div>
+<div><span style="white-space: pre;"> </span>println ("Hello World, ou em português, Olá Mundo")</div>
+<div><span style="white-space: pre;"> </span>}</div>
+<div>}</div>
+<div>Nesse programa já podemos ver algumas das características interessantes da linguagem. Embora ela se proponha ser da família das dinâmicas, ela é estaticamente tipada: os tipos das variáveis devem ser definidos em tempo de compilação (não existe o famoso duck type como o Python). Com isso mesmo que não defina o tipo, o compilador vai definir um por inferência.  Outra característica interessante é forma que declaramos a classe e seus métodos.</div>
+<div>Em Scala, tudo é dado, inclusive as funções ( para quem já trabalhou com Haskell ou Lisp isso é mais simples de entender). Assim as funções tem os seus "valores" (o código) passado como numa variável : algo = valor . Isso é algo que o pessoal está muito acostumado com nossas linguagens imperativas vai demorar um pouco para se convencer disso.</div>
+<div>Outra coisa é que o tipo é definido depois e não antes como fazíamos. Confesso que é algo que a gente se acostuma com o tempo para ler um código e entendê-lo logo de cara.</div>
+<div>No exemplo acima não deu para ver mais uma característica interessante que é a questão de tornar concisa a escrita de sistemas. Veja os dois trechos de código abaixo</div>
+[cc lang="Java"]
+class Pessoa {
+	private String nome;
+	private String sobrenome;
+	
+	public Pessoa (String nome,String sobrenome){
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+	}
+}
+[/cc]
+<div>Mesma classe escrita em Scala</div>
+[cc lang="Java"] class Pessoa (nome : String, sobrenome: String)[/cc]
+
+<div>Bem por hoje paramos por aqui, no próximo artigo da séria continuamos daqui  para falarmos mais</div>

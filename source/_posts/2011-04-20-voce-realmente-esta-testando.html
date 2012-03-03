@@ -1,0 +1,38 @@
+--- 
+layout: post
+title: "Voc\xC3\xAA realmente est\xC3\xA1 testando?"
+tags: 
+- bdd
+- codigo
+- refactoring
+- TDD
+- teste
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Na maioria dos livros que li nos últimos tempos do mais diversos assuntos ligados a engenharia de software, testes automatizados, e mais especificamente, TDD (test driven development) e BDD (behavior driven development) são dominantes. É certo que, atualmente, se desejamos ter qualidade e velocidade de entrega nos nosso produtos precisamos de testes automatizados. E vou além: digo que abordagens como TDD e BDD auxiliam o desenvolvedor a escrever código melhor e mais focado no valor para o cliente.
+
+A questão é que se estabeleceu axiomas - verdades absolutas - onde para ser bom o projeto precisa ter 100% de cobertura de código e  ter testes unitários e testes de integração e testes de aceitação (tela e feature), etc.  Isso nem sempre é verdade e pode ser um verdadeiro "tiro no pé". Antes de mais nada é preciso entender a real função do teste.  E qual será a melhor forma de utilizá-lo.  Não estou discutindo aqui abordagens e sim se estamos usando de forma inteligente e consciente os testes.
+
+Em uma conversa recente com <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, vimos, que, por exemplo, em alguns casos testes de aceitação que usavam Cucumber ou Pyccuracy, estavamos testando mais o navegador que a funcionalidade em si. Quando falamos de cobertura temos outro ponto interessante: 100% não é garantia de nada. Já ouvi falar  de sistemas com 100% de cobertura que quando foram fazer refactoring - confiando na cobertura de testes,  "quebrou" tudo ao colocar em produção pois vários detalhes escaparam.  Isso porque, provavelmente existiam diversos testes que faziam "nada" e que ali estavam apenas para garantir a cobertura mínima.
+
+Novamente citando <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, ele me disse que para os que estão começando, é importante seguir uma fórmula:  testes unitários, testes de integração, testes de aceitação, etc. Isso porque ainda estão formando sua base de experiência e tem pouco discernimento para saber quais seriam os pontos críticos a serem testados para termos a garantia de qualidade.  Mas a medida que for ganhando bagagem e aguçando seu senso crítico, é importante se questionar o que testar, como testar, etc.
+
+Uma coisa que sempre falo é que testar da trabalho. Por mais que possa trazer benefícios, ainda é mais trabalho. Se falamos de testes automatizados - programáticos - é mais linha de código. Por exemplo, tiveram coisas que levei mais tempo escrevendo os testes do que implementando.  Teste onera sim.
+
+Antes de mais nada quero esclarecer que não sou contra testes. Muito pelo contrário, acredito que não existe a possibilidade de fazer algo bem sem usar TDD ou BDD. A questão que levanto é o quanto estamos realmente testando nossos sistemas e o quanto estamos apenas "inventando" para cumprir com regras pré-definidas que ninguém de fato entendeu para que servem.
+
+Um exemplo disso que estou falando é quando temos diversos níveis de teste em nossa aplicação ... E testamos a mesma coisa em todos eles. Sabe aquele teste que você fica criando o Model, colocando os dados  no banco, acessando o banco, etc? Isso mesmo. É um bom smell disso que estou falando.
+
+Uma coisa que faço é primeiro me concentrar no objetivo que quero atingir com aquele teste. Tudo mais é superfluo e logo pode ser ignorado(entenda mock e outras tecnicas).  Logo, se quero testar as chamadas do controller de minha aplicação, eu não preciso, nem quero me preocupar com que está acontecendo dentro do Model associado.   Outro ponto é se já testei algo em algum ponto, evito ficar testando novamente... Se por acaso isso for necessário é sinal que preciso fazer um refactoring no meu código.
+
+Em futuro artigos pretendo trazer o assunto e ir mais fundo inclusive trazendo exemplos, trechos de código, etc.  Até a próxima.
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

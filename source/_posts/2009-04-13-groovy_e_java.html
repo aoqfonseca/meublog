@@ -1,0 +1,16 @@
+--- 
+layout: post
+title: "Groovy \xC3\xA9 \xE2\x80\x9CJAVA\xE2\x80\x9D"
+tags: 
+- Groovy
+- Java
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Dando uma olhada no forum do <a href="http://grailsbrasil.com/index.php">Grails</a>, acabei tendo um ideia sobre oque escrever para vocês.  Uma coisa muito corriqueira, para o pessoal que está começando agora e se depara com Groovy, é que a encaram como uma nova linguagem desacoplada de Java.  Sei que isso pode ser algo bom, mas ao mesmo tempo, na minha opnião, faz com que o Groovy perca parte do seu encanto.
+A coisa que sempre me atraiu muito no Groovy foi seu parentesco direto com o Java ( ele é feito todo em java e nunca teve a pretensão de substituí-lo e sim de acrescentar coisas). Com isso, me sentia mais confortavel para migrar e nisso acabei tomando gosto e me apaixonando. Hoje, sempre que posso, tento usar o Grooy ou seus filhotes (Grails, gsp, etc.).  Voltando ao assunto, devido a este parentesco direto, voce pode escrever uma classe Groovy utilizando usando a sintaxe e padrões JAva, embora isso, de certa forma, não faça sentido. Outra coisa, assim como outras linguagens suportadas pelo <a href="http://en.wikipedia.org/wiki/Bean_Scripting_Framework">BSF</a> (JRuby, Jython, etc), voce pode usar classes Java dentro do seu codigo. Por isso, todo o legado já existente não é perdido.
+Logo, por exemplo, na pergunta que li, caso deseje que seu groovy leia ou crie uma planilha Excel, voce pode usar, tranquilamente, a api POI do apache, embora exista uma implementação de biblioteca que permite a chamada de ActiveX dentro do codigo groovy. A vantagem que vejo da APi POI, é que ela é multiplataforma, e seu codigo servirá para um sistema linux, macos, VMS, ou qualquer outro que permita um JVM.  E esta simbiose não para por aí... Voce pode escrever uma camada de apresentação usando GSP (Groovy Server Page - muito legal) para uma aplicação cujo o backend dela está toda em Java, sem necessidade de modificações profundas (para não dizer nenhuma).
+Por isso o titulo do post, embora provocador, ele de certa forma é real... Groovy é JAVA.

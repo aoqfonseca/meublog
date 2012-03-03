@@ -1,0 +1,61 @@
+--- 
+layout: post
+title: "usando o webdriver para fazer testes de aceita\xC3\xA7\xC3\xA3o"
+tags: 
+- agil
+- atualidades
+- Java
+- selenium
+- TDD
+- teste
+- webdriver
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+A pouco tempo consegui um brecha com ajuda da minha colega Arlene para implantarmos no projeto que estou trabalhando teste automatizados.  Com a carta de alforria em mãos partimos para pesquisar no mercado qual seria a melhor que se encaixaria em nosso contexto de aplicação.  Para que entenda,  trabalhamos com desenvolvimento de portal usando a ferramenta <a href="http://www.lumis.com.br">Lumis </a>(eu trabalho na Lumis!!!).  Portais são aplicações bastante difíceis de serem testadas de forma automática; devido a questão do conteúdo dinâmico e pouco previsível não existe muita margem para que busque por padrões.
+
+Com estas limitações em mãos, acabamos nos deparando com a api <a href="webdriver.googlecode.com/">WebDriver</a> . A um tempo atrás eu já tinha mexido um pouco com o <a href="seleniumhq.org/">selenium </a>e adorei. Com isso, tentei achar algo que se assemelhasse a ele mas que me facilitasse a vida em relação a portais ( não tem muito como usar ids dos elementos no html, url não fixas, etc) . O webdriver, ao contrário do selenium, não é um javascript que executa dentro de uma página simulando a navegação... o webdriver é realmente um "envelope" em cima do seu navegador.  No caso do Firefox ele é uma extensão, no caso do Internet Explorer (blargh) ele usa as chamadas de control que ele proporciona, e por ai vai. Com isso, os teste ficam mais próximos da realidade de uso do usuário, e a api para escrever  os cenários mais simples.  Veja o trecho:
+[cc-lang ="java"]
+WebDriver driver = new FirefoxDriver();
+driver.get("http://localhost:8080/");
+HomePage homePage = new HomePage(webDriver);
+String valor = homePage.searchFirstItemforMoreRead();
+[/cc-lang]
+[cc-lang ="java"]
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage  extends Page {
+private static final String PAGE_TITLE = "teste";
+
+public HomePage(WebDriver driver){
+super(driver,PAGE_TITLE);
+}
+
+public AdminPage navegateToAdministration(){
+webDriver.navigate().to(this.composeUrl("admin"));
+return new AdminPage(webDriver);
+}
+
+public String searchOneTextOfDestaque3(){
+return this.webDriver.findElement(By.xpath("//div[@class='destaques3']/h5/a")).getText();
+}
+
+public String searchFirstItemforMoreRead(){
+return this.webDriver.findElement(By.xpath("//div[@class='aba_conteudo ativo']/ol[@class='mais_lidas']/li[@class='item1']/a/span")).getText();
+}
+
+public List searchDestaque3Texts(){
+return this.webDriver.findElements(By.xpath("//div[@class='destaques3']/h5/a"));
+}
+
+}
+[/cc-lang]
+
+Pelo exemplo acima fica fácil de ver o quão fácil é criar um teste em webdriver.  Recomendo experimentar

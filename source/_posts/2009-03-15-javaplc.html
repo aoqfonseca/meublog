@@ -1,0 +1,19 @@
+--- 
+layout: post
+title: Fazendo Java conversar com o PLC
+tags: 
+- .NET
+- "automa\xC3\xA7\xC3\xA3o"
+- "Inform\xC3\xA1tica"
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Alguns conhecidos que lêem este blog me pediram para escrever mais post sobre a questão de como um programa Java poderia conversar com um PLC. Posso adiantar que a tarefa não é da mais simples e, como dizem em diversos foruns do assunto, coisa para que tem "coração forte".  Primeiro, muitos dos que vão se aventurar a fazer algo do genero vão perceber que a quantidade de informações nesse sentido são pouquíssimas e as tem, em sua grande maioria, são pagas.  Passei bons meses vasculhando a internet (Deus abençoe o Google :D ) e o resultado por vezes foi desencorajador.
+A maioria dos fabricantes de PLC tem adotado o <a href="http://en.wikipedia.org/wiki/OLE_for_process_control">OPC</a> (OLE for process control) disponibilizando aplicativos para so Windows que expões as tabelas de dados dos plcs através de servidores OPC.  Com evolução crescente dos equipamentos, alguns já nem precisam mais do aplicativo e permitem o acesso eles mesmos através de cartas especiais, mas isso é assunto de posso escrever em outro post.  O Opc foi algo especificado na tecnologia da Microsoft. Como é algo M$ é facil concluir que toda a gama de produtos da M$ tem este suporte, assim como o seu .NET (suporte nativo através do ActiveX e DCOM) .  JUntando outros motivos e o citada anteriormente, tem-se hoje um predileção a escolher a plataforma Windows para o desenvolvimento de drivers, e aplicativos SCADA o que explica a raridade de opções em outras tecnologias e SO. E não é diferente com java.
+Alguém poderia dizer ao ler os paragrafos acima que seria simples: "Basta escrevermos uma bilbioteca OPC em Java que está tudo pronto". Sim, concordo em parte e digo que quem se candidatar  faça-o e depois permita que utilizemos sua API pois esta não é uma tarefa nada facil.   Um outro caminho seria partir para implementar algum protocolo particular do plc em Java. Bem isso pode ser um caminho, pois alguns deles estão escritos em C seria algo como um engenharia reversa. A questão que temos que pagar por suas especificações ou bibliotecas e fazÊ-lo seria um violação das leis.
+Nos sobram poucas possibilidades (bem poucas).
+A maioria das opções válidas são pagas e as open source existentes cobrem apenas uma pequenas parte e tem aplicações muito específicas.  Uma outra opção seria escrever algo em JAva que acessaria a um driver de um fabricante e por meio deste faria o acesso (é deste jeito que meus programas em .NET fazem).  MAS COMO ACESSAR O DRIVER ESCRITO PARA Windows?  Bem, a maioria deles expõe seus serviços por meio de DCOMs, bastaria que seu java falasse este "protocolo". Para tanto, antes que o leitor comece a escrever suas classes através do JNI sugiro uma olhada na api <a href="http://www.j-interop.org/sampleusage.html">j-Interop</a>. Vale a pena e funciona.
+A minha intenção é juntar um pessoal para escrevermos uma biblioteca de acesso em java sobre a licença LGPL. Assim que conseguir aviso a galera.

@@ -1,0 +1,71 @@
+--- 
+layout: post
+title: Escolhendo minha ferramenta de TDD para Javascript
+tags: 
+- agil
+- bdd
+- codigo
+- frontend
+- jasmine
+- TDD
+- teste
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+
+Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
+
+Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
+
+[cc lang="ruby"]
+describe "Model Aluno" do
+  before :each do
+    @aluno = Aluno.new
+  end
+
+  subject { @aluno.nome }
+
+  it "Deve ser um model válido" do
+    @aluno.should be_valid
+  end
+end
+[/cc]
+
+&nbsp;
+Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
+
+Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
+
+Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
+
+Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
+[cc lang="javascript"]
+spyOn(minhaClasse, "meuMetodo")
+...
+it("ve se foi chamado", function(){
+  minhaClasse.meuMetodo("qualquer string");
+  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
+});
+[/cc]
+
+&nbsp;
+
+Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
+[cc lang="javascript"]
+//codigo de animaçao com tempo aqui
+..
+wait(500);
+run(function(){
+expect(elemento.style('display')).toEquals('none')
+});
+[/cc]
+
+&nbsp;
+
+Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
+
+Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.

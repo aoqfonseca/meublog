@@ -1,0 +1,59 @@
+--- 
+layout: post
+title: Setup Ambiente Ruby - instalando homebrew e git
+tags: 
+- agil
+- brew
+- git
+- "instala\xC3\xA7\xC3\xA3o"
+- ruby
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: "sudo apt-get install". O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
+
+[cc lang="bash"]
+ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
+[/cc]
+
+Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
+Existem caminhos alternativos para instalá-lo. Mas não recomendo.
+Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
+[cc lang="bash"]
+andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy $ brew
+Usage: brew [-v|--version] [--prefix [formula]] [--cache [formula]]
+[--cellar [formula]] [--config] [--env] [--repository]
+[-h|--help] COMMAND [formula] ...
+
+Principal Commands:
+install formula ... [--ignore-dependencies] [--HEAD]
+list [--unbrewed|--versions] [formula] ...
+search [/regex/] [substring]
+uninstall formula ...
+update
+
+Other Commands:
+info formula [--github]
+options formula
+deps formula
+[/cc]
+
+Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
+Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
+[cc lang="bash"]
+brew install git
+[/cc]
+Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona "alias" no meu arquivo de bash_profile, desse jeito:
+
+[cc lang="bash"]
+echo alias gpush="git push origin master" &gt; ~/.bash_profile
+echo alias gpull="git pull origin master" &gt; ~/.bash_profile
+echo alias gst="git status" &gt; ~/.bash_profile
+echo alias gcm="git commit -am " &gt; ~/.bash_profile
+echo alias gcko="git checkout " &gt; ~/.bash_profile
+[/cc]
+
+Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:

@@ -1,0 +1,31 @@
+--- 
+layout: post
+title: "C\xC3\xB3digo legado"
+tags: 
+- agil
+- atualidades
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Nesse últimos tempos tenho me dedicado bastante a estudar engenharia de software.  Tomei essa decisão pois percebi que embora linguagem ajude, não dominar alguns princípios da software é uma grande causa de sistemas mal escritos e cheios de problemas que temos por ai.  Posso mostrar códigos de Java que são verdadeiras obras de arte e código em Ruby (o pessoal sempre se orgulha de dizer que é algo bonito) um vergonha e impossíveis de mexer.
+
+Como já falei em artigos anteriores - pesquise no histórico - existem várias coisas que independente no que irá escrever sua aplicação  devemos não apenas saber e sim dominar para sermos verdadeiros "mestres" .  Cito algumas: TDD, Refactoring, Orientação a Objeto, Arquitetura de sistemas, etc.
+
+Ainda dentro da engenharia de software tem uma outra coisa que tem me chamado muito atenção: como lidar com um código já escrito.  Em todos os livros que li até o momento, a maioria fala de experiências de criarmos sistemas do zero... Com isso vão mostrando as decisões e como as práticas como TDD, design evolutivo, etc ajudam. Poucos citaram casos onde já tinha algo pronto e foi preciso implementar novas features.
+
+Foi então que me deparei com o livro: Working Effectively with Legacy Code do Michael Feather. Este livro foi escrito com as benções dos papas do mundo de TI como Uncle Bob, Joshua Kerievsky,  Martins Fowler, Kent Beck, entre outros. O livro trata exatamente do que seu título diz: Lidar de forma eficaz com código legado. Código legado, como é definido, é algo que já existia antes e não tem nenhum teste que nos possibilite uma alteração segura.
+
+Hoje é pouco provável que em nossas carreiras nunca nos depararemos com algum código legado.  Embora ainda tenha muito projeto novo surgindo sempre iremos precisar de algum outro sistema, trecho de código, etc.  Eu mesmo, posso citar diversos casos. Inclusive em projetos que estou trabalhando. Começar certo é muito mais fácil do que fazer o certo quando já existe algo "mal feito".   Num projeto novo temos nada e com isso total liberdade de escolha: escolher arquitetura, linguagem, etc. Além disso, podemos sempre desenvolver seguindo premissa boas de testes automatizados,  passos bem pequenos e incrementais e por ai segue.
+
+Quando temos algo já pronto e que devemos simplesmente adicionar funcionalidades ou acertá-lo, o buraco é bem mais lá em baixo.  Nenhum cliente vai querer pagar para você "reescrever" nada, ele quer somente que seja adicionada um nova funcionalidadizinha. Temos que fazer o melhor possível com que nos foi dado mesmo que, na maioria dos casos,  você não conheça as entranhas da parada., tenha ouvido aquelas histórias tristes de porque "é assim e não assado"- se é que quem  fez esteja por perto e isso sem contar, no pior dos casos, quando nem temos acesso ao fonte de um programa.
+
+Me lembro bem da vez que tivemos que montar um sistema para falar com um CRM.  Até que me provem o contrário, desconheço algum CRM escrito que seja bem feito. Todos tem um emaranhado de banco de dados, rotinas, tabelas com nomes que não dizem nada. Bem tivemos que construir toda uma "casquinha" por cima daquilo que fizesse sentido e pudéssemos confiar (testes e cia). No final tudo ficou bem legal pois para integrações futuras, extender a nossa casquinha bastava para resolver o problema. Outra situação tive foi ter um sistema que entregava as paradas de uma forma bem tosca. A solução foi fazer um esquema de pattern de adpater e encapsular a busca dos dados nesse sistema escroto.
+
+Quem nunca entrou num projeto já começado e não ficou resmungando do que existia?  Esse livro mostra uma série de técnicas que ajudam nesse processo de lidar com coisas alheias que considerar ruim .  Eles primeiro divide os problemas em grupos e vai mostrando o passo a passo de soluções.
+
+Recomendo muito.
+
+&nbsp;

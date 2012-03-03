@@ -1,0 +1,59 @@
+--- 
+layout: post
+title: Gerando de forma automatica suas classes
+tags: 
+- "Inform\xC3\xA1tica"
+- Java
+- python
+- tutoriais
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Mais um daqueles artigos para me ajudar a não esquecer como fazer depois. Preciso gerar diversas classes para minha aplicação Csharp. A questão é que a estrutura delas são quase constante e o trabalho intelectual de fato é de apenas criar alguns métodos e definir os relacionamentos. Os relacionamentos já foram definidos quando estudamos e fizemos a analise, restando o código chato de fazer a classe de persistência, classe de controle, classe de modelo, etc. De forma mais detalhada o trabalho consiste, a partir da definição da entidade (propriedades, tabela a relacionar, etc), devo gerar duas classes no mínimo : a classe que serviria como VO (Value Object) e outra como DAO (Data Access Object - classe que será responsável por acessar os dados na base de dados).
+Para fazer optei por usar algo como um template: escrevo um template da classe com palavras chaves que serão substituídas pelos dados que desejo. Algo semelhante a:
+<code>
+Ola Mundo para $nome $sobrenome
+</code>
+Depois este arquivo seria processado por um programa que iria realizar o cruzamento dele com os dados a serem populados.:
+<code>
+///Pseudo codigo
+mapDados = ['nome':'Andre','sobrenome':'Fonseca']
+t = Template (file="nome_Arquivo")
+t.bind(mapDados);
+t.render()
+print t
+</code>
+Bem tendo isso em mente, olhei para as linguagens que conheço (preferencialmente as scripts - dinamicas, suggar sintax, etc) para ver qual delas me forneceriam algo semelhante ao pseudo código escrito acima. Em ruby não consegui achar porém não busquei com afinco. Encontrei duas excelentes opções: uma em Python e outra em Groovy (amo o groovy).
+Do Groovy foi o mais fácil de achar pois o "engine" simples de texto é algo "nato"  (não é necessário a instalação de nenhuma api externa). Que já programou em Java e usou a bilbioteca Velocity vai ver que é algo extremamente simples e parecido.
+Do Python contei com a ajuda do Alexandre Bairos. Ele me indicou o jinja e o Cheetah. Achei o Jinja muito complicado e "over" para que desejava fazer.  Optei pelo Cheetah.
+Em Groovy o código ficaria mais ou menos assim:
+---- Template
+<code>
+Ola Mundo "$nome $sobrenome"
+</code>
+--Groovy Class
+<code>
+def binding = ["nome":"Andre", "sobrenome":"Fonseca"]
+def fileTemplate = new File('test.template')
+engine = new GStringTemplateEngine()
+template = engine.createTemplate(fileTemplate).make(binding)
+...
+println template.toString()
+</code>
+Em Python:
+--Template (olamundo.tmpl)
+<code>
+ola mundo $name $surname
+</code>
+Aqui que as coisas se diferem: em python graças ao Cheetah voce pode compilar este template e criar uma classe Python. Na linha de comando digite: cheetah -compile olamundo.tmpl
+Isso gerará um arquivo com o mesmo nome e extensão .py (um python file). E depois é só usar:
+<code>
+from olamundo import olamundo
+teste = olamundo();
+teste.name = "andre"
+teste.surname = "fonseca"
+print teste
+</code>

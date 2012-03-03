@@ -1,0 +1,69 @@
+--- 
+layout: post
+title: "Finalmente minha primeira p\xC3\xA1gina com Django"
+tags: 
+- django
+- "Inform\xC3\xA1tica"
+- python
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Meus amigos após horas de tentativa e erro para colocar a primeira aplicação em Django executando, segue abaixo uma rota que irá guia-los melhor. Ao contrário do que eu disse no post anterior, os passos a seguir indicam uma instalação usando o lighttp (ele é mais rápido e leve que o apache).
+Bom, em todos os tutoriais que li, eles recomendam uma séria de passo a passo,  que a maioria não funciona. Sempre fica faltando o "pulo do gato". Até parece M$  : )))) .
+Vamos ao que interessa:
+ 1 - Baixe e instale os pacotes do lighttp, django, e python-flup para o fastcgi
+ 2 - Após crie seu primeiro projeto Django:
+<code> django-admin startproject meu_primeiro_site</code>
+ 3 - dentro do seu novo projeto crie uma aplicação que conterá os dados (controladores, modelos, visões, etc)
+<code> django-admin startapp ola</code>
+ 4 - Dentro do diretório de configurações do lighttp, crie um arquivo para o seu site funcionar com customizações.
+<code>sudo vi /etc/lighttp/conf-availble/10-meu_primeiro_site.conf</code>
+ 5 - o conteúdo do arquivo deve ser algo semelhante a :
+<blockquote>
+server.modules += ("mod_fastcgi")
+server.modules += ("mod_rewrite")
+
+fastcgi.server = (
+	"/default.fcgi" => (
+		"main" => (
+			"socket" => "/tmp/lighttp-default.sock",
+			"check-local" =>  "disable",
+			"bin-path"  => "/var/django/projects/primeiro_site/deploy/default.fcgi"
+		)
+	)
+)
+
+alias.url = (
+    "/media" => "/var/django/projects/primeiro_site/media",
+    "/admin_media" => "/usr/share/python-support/python-django/django/contrib/admin/media/"
+)
+
+url.rewrite-once = (
+    "^(/media/.*)$" => "$1",
+    "^(/admin_media/.*)$" => "$1",
+    "^(/.*)$" => "/default.fcgi$1"
+)
+</blockquote>
+ 6 - No diretório que você indicou para o bin-path, no meu caso <em>"/var/django/projects/primeiro_site/deploy/default.fcgi"</em>, crie um arquivo chamado default.fcgi com o seguinte conteúdo:
+<blockquote>
+#!/usr/bin/python
+import sys, os
+
+sys.path.insert(0, '/var/django/projects/primeiro_site/')
+sys.path.insert(0, '/var/django/projects/primeiro_site/hello_world/')
+
+os.chdir("/var/django/projects/primeiro_site/")
+os.environ['DJANGO_SETTINGS_MODULE'] = "settings"
+
+from django.core.servers.fastcgi import runfastcgi
+runfastcgi(["method=threaded", "daemonize=false"])
+</blockquote>
+7 - Transforme este arquivo recem criado em executavel (mude a permissão dele)
+<code>chmod a+x default.fcgi</code>
+ 8 - Relance o servidor lighttp : <code>sudo /etc/init.d/lighttp restart</code>
+ 9 - Para ver se tudo está ok, vá no diretorio do arquivo default.fcgi e use o python para executá-lo:
+<code>python ./default.fcgi</code>
+Veja os erros e vá corrigindo, pois pode ter problemas de copiar e colar.

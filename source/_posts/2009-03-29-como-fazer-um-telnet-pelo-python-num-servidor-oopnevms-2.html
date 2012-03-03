@@ -1,0 +1,32 @@
+--- 
+layout: post
+title: Como fazer um telnet pelo python num servidor OpenVMS
+tags: 
+- "Inform\xC3\xA1tica"
+- python
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Este post é para lembrar como posso fazer um telnet do meu código em Python para um servidor VMS. Isso será muito util para um robot que estou fazendo para disparar rotina de backup de forma automatizada. Assim que terminar coloco aqui todo o código ou disponibilizo no github.
+<code>
+#python test script:
+import sys, telnetlib
+host = 'hostname'
+user = 'username\r'
+password = 'mypasswd\r'
+tn = telnetlib.Telnet(host)
+tn.read_until('Username: ')
+tn.write(user)
+tn.read_until('Password: ')
+tn.write(password)
+tn.read_until('[c')             #last char of session header message
+tn.write('\255\253\003')        #this is the 'fix' command added
+tn.read_until('$ ')             #scan for prompt
+tn.write('dir\r')               #issue directory command
+d = tn.read_until('$ ')         #save results in d
+tn.close()
+print d
+</code>

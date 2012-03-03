@@ -1,0 +1,33 @@
+--- 
+layout: post
+title: Robot do twitter atrapalhando meu acesso a ele
+tags: 
+- atualidades
+- cron
+- crontab
+- "Inform\xC3\xA1tica"
+- robot
+- ruby
+- twitter
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Esse é daquela séria de post que escrevo para lembrar como fazer depois.  A pouco tempo atrás, para exercitar um pouco, resolvi fazer um programa que lê meu twitter e diante a um tipo de post faz uma ação.  Após o código pronto e testado,  coloquei tal código agendado no cron do Ubuntu do meu servidor. A questão é que devido aos problemas de ataques de hackers  (ataque de deny service onde você inunda um servidor de requisições e faz ele travar - eu acho) , o Twitter ficou criterioso quanto a acessos regulares (eu também acho, não tenho certeza).  A verdade é que não consigo acessar (para ser mais exato, não consigo enviar um twitter) do meu computador.
+
+Primeira ação foi testar via Iphone : tudo funcionou perfeito. Logo é algo com minha máquina mesmo. Tentei do notebook e foi legal. Logo definitivamente era meu servidor que tinha o cron com o robot.
+
+A segunda ação foi desabilitar o robot. Para isso teria que tirar a tarefa da tabela de execução cron. Aí que veio dúvida : onde diabos tinha colocado a chamada. Geralmente o cron, tem arquivos (chamados de crontable) nos diretórios:  /usr/bin/crontab /etc/crontab /usr/share/man/man5/crontab.5.gz /usr/share/man/man1/crontab.1.gz
+
+Para saber onde está você pode dar o seguinte comando:
+<code lang="bash">
+whereis crontab
+</code>
+Este comando irá mostrar as localizações dentro do seu sistema do arquivo crontab.
+Feito isso partir para ver o conteúdo do arquivo. E não achei nenhuma referência da chamada ao meu robot. Logo, após algumas buscas no google, lembrei que tinha feito a configuração de forma diferente: eu usei um comando crontab.
+<code lang="bash">
+crontab -e
+</code>
+Com este comando você tem acesso a tabela que está associada ao seu usuário (me corrijam se falei besteira) e lá estava a entrada com a execução do código. Tirei (deletei mesmo) a linha com a configuração e agora é aguardar para ver se era isso mesmo a causa de eu não conseguir acessar o twitter.

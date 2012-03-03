@@ -1,0 +1,45 @@
+--- 
+layout: post
+title: "Colocando auditoria de mudan\xC3\xA7a na sua app Rails"
+tags: 
+- acitverecord
+- auditoria
+- "metaprogram\xC3\xA7\xC3\xA3o"
+- rails
+- ruby
+- tracking change
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+  enclosure: |
+    http://media.railscasts.com/ipod_videos/109_tracking_attribute_changes.m4v
+    8248932
+    video/mp4
+
+  _wp_old_slug: ""
+---
+Bom no meu projeto atual estou usando Ruby on Rails. Estou adorando. A coisa é realmente fantástica e me sinto obrigado a dizer que é a melhor opção para desenvolver produtos web.  Mas não é por isso que resolvi escrever este post. Quero compartilhar um aprendizado adquirido.
+
+Dentro da nossa aplicação precisamos mapear (auditoria) as alterações que são feitas em um determinado objeto.  Seria registrar no banco de dados quais campos alterados e, além disso, registra também qual era o valor antes e depois da alteração. Vamos a um exemplo.  Imaginemos que tenho um usuario; esse usuário tem nome, telefone e endereço. Ao alterar o nome dele, quero que fique resgistrado que seu nome foi alterado de um valor "A" para um valor "B".
+
+Ficando claro a necessidades vamos para a solução.  Passei então para procurar algum plugin que me ajudasse nessa missão. Encontrei vários.  "Acts_as_audited",  foi um dos mais interessante que encontrei e recomendo se seu modelo for simples sem relacionamentos muito para muitos.  Mas apesar do plugin resolver o problema, fiquei intrigado de como seria possível fazer isso. Imaginei soluções das mais mirabolantes. Desde de criação de metodos proxies, a magias negras de alta classe (desculpem a brincadeira rubistas) .
+
+Oque achei, como tudo no Ruby, foi a coisa mais simples e fácil já vista. Desde a versão 2.0 do rails, as classes active records ganharam alguns métodos que ajudam bastante nessa missão. São eles: changed?, changes, &lt;atributo&gt;_changed?, &lt;atributo&gt;_was, etc.
+
+changed?  : ele indica se houve ou não alteração nos atributos do objeto. (false se não e true se sim)
+
+changes : devolver um dicionario com as alterações que ocorreram. A chave dele é a propriedade e o valor é uma tupla com o valor antigo e o novo valor
+
+&lt;atributo&gt;_changed? : é um metodo que diz se o atributo mudou. Algo como : usuario.nome_changed?
+
+&lt;atributo&gt;_was : mostra o valor antigo do atributo
+
+&lt;atributo&gt;_will_change! : meio que força a flag indicando que houve uma alteração.
+
+Com esses métodos na mão é possível, sem ajuda do plugin fazer você mesmo sua funcionalidade de auditoria do sistema de forma bastante maneira.  Basta além deles usar os triggers before e after (create, update, etc) do model para chamar os métodos que farão a mágica acontecer.
+
+Espero que ajude. Para saber mais, veja o screencast:<a href="http://media.railscasts.com/ipod_videos/109_tracking_attribute_changes.m4v"> tracking_attribute_changes.m4v</a>
+
+Abraços e até a próxima

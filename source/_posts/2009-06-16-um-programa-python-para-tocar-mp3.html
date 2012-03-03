@@ -1,0 +1,36 @@
+--- 
+layout: post
+title: Um programa Python para tocar mp3
+tags: 
+- "Inform\xC3\xA1tica"
+- python
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Pessoal para atender algumas pessoas que acompanham o blog e que me pediram para colocar algumas coisas de Python, vou dar inicio (apesar de ontem já ter postado algo semelhante) a um série de publicações de código em Python para fazer alguma coisa simples ou legalzinha. Assim que estiver aprendendo pode pegar estes trechos de código e usar para entender como funciona alguma coisa e etc.
+Espero que gostem.
+Abaixo segue um trecho de codigo em Python que vai tocar um mp3 de seu computador. Um dos prerequisitos é que o Tkinter e o tkSnack estejam instalados. Caso não estejam - na hora de executar aparecerá um erro, vai no google que acharam como instalar e de onde baixar (fica como exercício e depois posto aqui como fazer e os endereços).
+Vamos ao código
+<code>
+# -*- coding: utf-8 -*-
+from Tkinter import *
+import tkSnack
+#
+root = Tk()
+tkSnack.initializeSnack(root)
+caminho  = '''D:\DATA\Andre\musica.mp3'''
+def toca():
+     global caminho
+     musica=tkSnack.Sound(load=caminho)
+     musica.play()
+#
+label1 = Label(root,text='Tocando uma musica')
+label1.pack(side=TOP)
+botao = Button(root,text='Tocar',command=toca)
+botao.pack(side=BOTTOM)
+root.mainloop()
+</code>
+Divertam-se e postem comentários com variantes e melhorias..... Vamos codificar e pythoniar muito !!!

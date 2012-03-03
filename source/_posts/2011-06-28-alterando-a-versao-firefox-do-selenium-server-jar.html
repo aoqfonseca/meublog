@@ -1,0 +1,44 @@
+--- 
+layout: post
+title: "Alterando a vers\xC3\xA3o firefox do selenium-server.jar"
+tags: 
+- alterar
+- atualidades
+- firefox
+- selenium
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Para nunca mais esquecer. Segue abaixo um passo a passo de como "modificar" dentro do jar do selenium a versão que ele suporta do firefox. 
+Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
+Navegue para achar o jar : selenium-server
+Renomeie esse jar para um arquivo zip: 
+[cc lang="bash"]
+mv selenium-server.jar selenium-server.zip
+[/cc]
+Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
+[cc lang="bash"]
+mkdir selenium-server
+cp selenium-server.zip selenium-server/
+cd selenium-server
+unzip selenium-server.zip
+rm selenium-server.zip
+[/cc]
+Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
+[cc lang="bash"]
+find . -name "*.rdf"
+[/cc]
+Altere a linha abaixo para a versão que queres suportar: 
+[cc lang="java"]
+<em:maxVersion>5.*</em:maxVersion>
+[/cc]
+Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
+[cc lang="bash"]
+zip -r selenium-server *
+mv selenium-server.zip selenium-server.jar
+jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
+[/cc]
+Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox

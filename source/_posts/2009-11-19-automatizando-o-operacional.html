@@ -1,0 +1,22 @@
+--- 
+layout: post
+title: Automatizando o operacional
+tags: 
+- ant
+- "automa\xC3\xA7\xC3\xA3o"
+- automatizar
+- Java
+- maven
+- operacional
+- ruby
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Uma das coisa que me incomondam bastante é toda vez que vou iniciar um projeto, e tenho que montar um ambiente de desenvolvimento, perco horas e mais horas para completar a tarefa. Tudo porque, na maioria das empresas para as quais trabalhei, trabalho e trabalharei,  nunca tem um processo automatizado e padronizado de montagem de ambiente.  Sei que isso pode soar um tanto burocrático e o pessoal que odeia qualquer coisa que possa virar papel vai dizer que isso é uma heresia, mas acredito que é um mal necessário.
+Para a grande parte das pessoas que começam numa nova empresa, projeto, etc, a rotina sempre a mesma :  horas baixando instaladores,  horas instalando tudo (pior se for em windows, pois as vezes tem que dar reboot na máquina), mais um monte de outras horas para configurar, criar usuários, baixar código, entender como funciona o build, e por aí se vão dias de trabalho gerando zero de valor agregado para o cliente.  O mais esquisito, que mesmo sendo isso um mega prejuízo para o projeto - uma pessoa consumindo horas do projeto sem fazer "nada" , não existe nenhum movimento para mudar essa realidade.
+Não estou falando de processos ultra-automatizados que lê mentes e pelo jeito que você diz bom dia monta a sua máquina,  estou falando de coisas simples, como padronizar, repositórios internos de instalações e bibliotecas, uso de produtos que automatizem build e tarefas repetitivas, etc.  Estou falando também de, no caso de empresa maiores,  uma imagem de ambiente (backup) padronizada para que quando um novo desenvolvedor chegue, basta comprar um novo computador, baixar a imagem e configurar.
+Não faltam ferramentas, produtos e soluções no mercado que podem ajudar a qualquer um a resolver isso. Em aplicações java, temos o maven (maven.apache.org) que pode cobrir muito bem quase toda o problema:  ele pode montar o projeto, instalá-lo, baixar as bibliotecas, configurar ambiente, compilar e fazer build, etc; além dele existe a opção de escrever em ant (ant.apache.org)  diversos scripts para automatizar build de aplicação, montagem de ambiente, etc. Em Ruby,  aqui não muito minha praia, acredito que existe o gems e o rake que facilitam bem esse trabalho.  Para os passo não cobertos por essas ferramentas, existem outras.  Em última instancia, pode ser colocado como uma história do sprint ( ou uma tarefa de backlog) e assim criar um programa que faça isso (bash, bat, cmd ,etc).
+A questão mais importante é que exista algo padronizado e de preferencia automatizado, fazendo que se perca o mínimo de tempo possível com tarefas que não agregam valor ao cliente que está pagando.  A ideia é exatamente de não perder tempo com coisas que não geram retorno: atividades repetitivas, processos  que podem ser automatizados e outras coisas, maximizando o foco na funcionalidade.

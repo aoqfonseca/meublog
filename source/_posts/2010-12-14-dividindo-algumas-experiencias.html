@@ -1,0 +1,44 @@
+--- 
+layout: post
+title: "Dividindo algumas experi\xC3\xAAncias"
+tags: 
+- atualidades
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Nestes últimos dias em meu trabalho estamos desenvolvendo uma aplicação para receber vídeos e fotos. Essa aplicação, na nossa intenção, tem como objetivo servir de plataforma para qualquer produto que queira receber mídia. Por isso, várias escolhas de implementação, infra, etc foram feitas nesse sentido e algumas gostaria de compartilhar com vocês e também alguns desafios que encontramos.
+
+Antes de mais nada deixa eu explicar o porque fazer um produto para upload de foto e vídeo.  Quanto ao vídeo, todo eles devem ser processados para que fiquem disponíveis. Esse processamento é algo lento e custoso. Assim, não queríamos que ao fazer um envio de vídeos nosso usuário ficasse um tempão esperando o processamento da mídia para ter o seu cadastramento feito. Logo, decidimos que esse processo deve ser feito de forma assíncrona, ou seja, ao receber o arquivo colocamos ele numa fila para ser processado e o feedback para o usuário é quase que imediato.
+
+<strong>Esse parte do processamento assíncrono foi desenvolvido por outras pessoas que já estavam na equipe antes de mim. São elas <a href="http://codificando.com/">Emerson Macedo</a>, Rodrigo Lopes e <a href="http://eltonokada.wordpress.com/">Elton Okada</a>. </strong>
+
+Quanto as fotos embora elas não sejam processadas após seu upload, queremos poder manipulá-las. Assim, por exemplo, dado uma foto, quero poder, pela url, informar alguns parametros que façam com que receba o arquivo na dimensão desejada, rotacionada, cropada e etc.
+
+Outros aspecto é que queremos que nosso sistema seja holístico, ou seja, seja simples de usar e fácil de integrar em qualquer tecnologia/linguagem. A escolha óbvia para isso foi implementar nosso produto com uma interface REST.
+
+Dado o conhecimento do time em Ruby, Sinatra e Ruby on Rails, decidimos que nossa aplicação deve ser escrita em Ruby. Por ser simples do ponto de vista web, optamos por fazê-la em Sinatra.  O Rails seria um tiro de canhão e nos oferece mais recursos do que precisamos. A escolha pelo Sinatra também se deu pois a versão anterior também foi feita nele e funcionava muito bem.
+
+Escolhido o Sinatra, passamos a escolher qual gem nos ajudaria na missão de tratar o upload dos arquivos. Antes já existia algo desenvolvido que fazia somente o tratamento de vídeos, também em Sinatra e eles usavam o <strong>CarrieWave</strong>.
+
+O CarrieWave é muito bom e bem simples de implementar, o problema dele, para nós, era a questão dos arquivos temporários que ficavam. Isso acabava enchendo o disco e nos dava uma boa dor de cabeça. Para resolver isso, o pessoal fez um monkey patch que após salvar o arquivo no store definitivo apagava o arquivo temporário.
+
+<a href="http://blog.mar.ti.ns">Alexandre Nunes</a>, pesquisando, encontrou uma nova gem que tem sido recomendada. É o dragonfly.  Ela tem um conceito interessante de aplicação que deixa seu uso mais simples. Além disso, aparentemente, resolvia do problema dos arquivos temporários.
+<h2>Os problemas</h2>
+Bom vamos para a parte chata e triste da história.
+
+A primeira decepção foi que ao contrário do que pensávamos o problema de arquivos temporários continuava.  Não era um problema exclusivo da gem CarrieWave. A origem do mal está em outra parte.
+
+Bom, tendo esse mega desafio em mãos, partimos para resolvê-lo.  Conversei com várias pessoas que dominam o Ruby mais do que eu.  Ainda não tenho um causa clara para isso mas várias hipóteses.
+
+Sabemos que, nosso sistema usa a classe tempfile do ruby mesmo. (tempfile.rb, veja documentação). Com isso, a gestão do ciclo de vida dela é feita pelo Garbage Colector do Ruby.  Isso significa que, quem apaga o arquivo tmp é o Ruby (o interpretador ativo) e não o sistema operacional.
+
+Assim, lembrando de minha época como programador java, e conversando com o <strong><a href="http://coisascomuns.com.br/">Rafael Martins</a></strong> (mais conhecido com o Cabra da Globo.com) vimos que possívelmente algo ainda fazia referencia aos arquivos e com isso o GC não conseguia apagar os arquivos.
+
+Lendo a documentação do Ruby, vi que existe diferenças entre a forma de fechar o arquivo. Uma delas, close!, o interpretador além de fechar o stream ele executa um unlink: ele zera todas as referencias àquele arquivo e com isso o GC pode apagá-lo depois.
+
+Outra coisa que o Rafael Martins me explicou é que, no caso do REE (ruby enterprise edition) ele guarde a referencia dos objetos numa tabela. Provavelmente é isso que pode estar dando o problema dos arquivos temporário não serem apagados.
+
+Bem é isso que temos até o momento. Prometo que assim que avançarmos mais um pouco coloco mais novidades

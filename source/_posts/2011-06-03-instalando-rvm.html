@@ -1,0 +1,36 @@
+--- 
+layout: post
+title: Instalando RVM
+tags: 
+- "instala\xC3\xA7\xC3\xA3o"
+- ree
+- ruby
+- rvm
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
+Para instalar é bem fácil e basta seguir as instruções do site do produto (<a href="https://rvm.beginrescueend.com/">clique aqui</a> para ver)
+No seu terminal digite o comando para baixar e instalar: 
+[cc lang="bash"]
+bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+[/cc]
+Fique atento que o comando acima precisa do git instalado.  Depois disso, no meu caso, preciso de várias versões do ruby na minha máquina. Uma delas é o Ruby Enterprise. Para instalá-los, faça: 
+[cc lang="bash"]
+andre.fonseca@mac179016 ~ $ rvm install ree
+Installing Ruby Enterprise Edition from source to: /Users/andre.fonseca/.rvm/rubies/ree-1.8.7-2011.03
+ree-1.8.7-2011.03 - #fetching (ruby-enterprise-1.8.7-2011.03)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7713k  100 7713k    0     0   545k      0  0:00:14  0:00:14 --:--:-- 1499k
+[/cc]
+Esse comando de cima irá instalar o REE. O resto das distribuições deve procurar pelo nome (1.9 --> ruby-1.9.2, por exemplo). 
+Por fim, você pode criar um gemset (pasta de gems) para cada projeto. Para isso use os comandos (no meu exemplo abaixo estou criando um gemset chamado participacoes, para um projeto meu) 
+[cc lang="bash"]
+rvm gemset create participacoes
+rvm gemset use participacoes
+[/cc]
+Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. Prontinho e tudo funcionando. 

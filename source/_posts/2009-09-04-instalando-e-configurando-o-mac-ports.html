@@ -1,0 +1,38 @@
+--- 
+layout: post
+title: Instalando e Configurando o MAC PORTS
+tags: 
+- "Inform\xC3\xA1tica"
+- "instala\xC3\xA7\xC3\xA3o"
+- leopard
+- mac
+- os x
+- ports
+- tutoriais
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Bom, para o pessoal que tem  Mac e já trabalhou com uma distribuição linux, principalmente com o Ubuntu, deve estar acostumado com a forma simples que é instalar coisas nesses sistemas. Praticamente é abrir um terminal e digitar o comando :
+
+<code> sudo apt-get install nome_do_pacote_a_instalar_aqui </code>
+Embora considere o Mac OS um sistema operacional excelente, acredito que o fato de não existe algo nativo como o apt-get é uma das fraquezas dele.  Mas, não é por isso que vamos desanimar. Existe um produto similar chamado MAC PORTs, que faz exatamente igual ao apt-get e sua instalação é simples.
+Vamos ao passo a passo:
+<ol>
+	<li>Acesse o site do mac ports (www.<strong>macports</strong>.org) e baixe o pacote de instalação (.dmg)</li>
+	<li>Ao fazer isso o sistema irá começar a instalar. Vá lendo as instruções e fazendo Next, Next até terminar</li>
+	<li>Pronto ele está instalado</li>
+	<li>Para testar abra um terminal e digite o comando : sudo port -d selfupdate</li>
+</ol>
+Possivelmente não irá funcionar, pois, você precisa tornar o caminho onde está a instalação visível para o terminal que você usa. Para fazer isso é bem simples:
+<ol>
+	<li>Acesse o terminal</li>
+	<li>Edite os arquivos .bashrc e .bash_profile e acrescente a linha :source ~/.profile</li>
+	<li>Edite o arquivo .profile e coloque as seguintes linhas nele : export PATH=/opt/local/bin:/opt/local/sbin:$PATH</li>
+</ol>
+Como os passos acima repita o teste e provavelmente irá funcionar.
+
+Agradecimentos ao <a href="http://henriquebastos.net/">Henrique Bastos</a> que ajudou muito com a configuração
+<ol></ol>

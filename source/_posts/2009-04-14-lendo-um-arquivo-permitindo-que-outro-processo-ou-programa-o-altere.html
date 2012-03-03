@@ -1,0 +1,35 @@
+--- 
+layout: post
+title: Lendo um arquivo permitindo que outro processo ou programa o altere
+tags: 
+- .NET
+- Sem categoria
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Estava escrevendo um sistema no meu trabalho em C# (csharp) onde se conecta ao log de uma aplicação e escreve as linhas deste num panel (winform). A primeira dificuldade foi como poderia permanecer lendo o arquivo de forma continua. Resolvi com o trecho de codigo abaixo:
+<code>
+....
+try
+{
+      StreamReader reader = new StreamReader (File.OpenRead("<caminho completo do arquivo>"))
+      while (true)
+      {
+           msg = reader.ReadLine();
+           ...
+     }
+}
+catch(Exception e)
+{
+     System.Console.WriteLine(e.Message);
+}
+</code>
+Bem isso funcionou bem, a questão que ao fazer isso, por padrão o sistema trava o arquivo não permitindo que outro processo possa escrever no documento. Como queria apenas ler e permitir que a aplicação continuasse a escrever seu log, a solução foi, explicitar o a abertura do arquivo, pelo metodo Open, algumas diretivas. Fica mais ou menos assim:
+<code>
+StreamReader reader = new StreamReader(File.Open("path",FileMode.Open,FileAccess.Read, FileShare.ReadWrite));
+...
+</code>
+Isso funcionou legal e me serviu bem pois agora tenho uma ferramenta simples para ficar vendo o log da minha aplicação.

@@ -1,0 +1,45 @@
+--- 
+layout: post
+title: "\"martelo \xC3\xA9 para pregar e n\xC3\xA3o apertar parafusos\""
+tags: 
+- atualidades
+- eventos
+- ferramentas
+- Groovy
+- Java
+- jvm
+- linguagem
+- novidades
+- python
+- ruby
+- Scala
+- Sem categoria
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+<div>
+
+Uma das coisa que escutei e sempre repeti por realmente acreditar que faça sentido é que, existe a ferramenta certa para cada tipo de trabalho.  Não adianta acreditar que aquela "paradinha" maneira que você conhece de "traz para frente"  vai ser a melhor solução para todos os seu problemas, pois simplesmente como uma verdade absolut, ela não será e quem a criou sabe disso. Note que eu disse - "não será a melhor opção"- e não = "não resolverá ou não fará".
+
+Acredito que todas a novas linguagens são capazes  de resolver a grande maioria de nossos problemas computacionais atuais.  Em raríssimos casos poderemos apenas usar uma determinada linguagem...muito mais por requisitos de processamento, velocidade e etc do que capacidade daquela linguagem. Falo isso, pois cansei de ouvir gente dizer que a linguagem B não é capaz de fazer o que a linguagem C faz. Ela faz sim, só que de uma forma mais complexa ou mais verbosa, por exemplo.
+
+Sei que tocar nesse assunto é meio "chover no molhado" por ser este um tema muito falado e batido, porém, gostaria de dar uma visão real disso.  Imagine você numa situação em que precisar fazer um sistema. Este sistema possui várias facetas: uma parte para cliente, outra que ficará com um processamento em batch (background), etc. Já tive requisitos como estes em diversas oportunidades e em cada uma delas foi uma solução adotada.  Posso dizer que o pior dos casos foi quando tentamos usar a mesma "estrutura" para tudo.
+
+Imagine que agora você comece a aplicação para os requisitos acima e faça tudo dentro de um servidor de aplicação. Aquela típica solução Java, onde um dentro do JBoss ou outro esteja tudo... Ali estão a lógica do sistema web, os processamentos em batch agendados via Quartz, etc.  Imagine também que isso tudo estará dentro de um servidor Linux (qualquer distribuição que seja)  - coisa bem factivel.  Dái começo a colocar algumas perguntas:  se todo sistemas linux tem um Cron (serviço de agendamento) por que usar algo feito em java para fazer a mesma coisa? Se argumentarem que é para garantir a independencia de plataforma, pergunto qual são as reais possibilidades de mudar a plataforma (SO, etc) ?  Com certeza que bastante remotas.
+
+Esse tipo de coisa pode ser ainda mais extrapolado. Imagina agora que dentro do seu sistema é preciso processar diversos conteúdos de arquivos e importar seus dados para a base de dados do sistema. Muito fariam uma classe para que você fizessem um upload e processar. Mas não seria mais interessante deixar que alguém carregue via ftp e um processo agendado trate-o depois. Esse processo poderia ser algo escrito em bash mesmo pois será ultra rápido em comparação a uma aplicativo java. Mais uma vez aqueles xiitas diriam que seria para manter a questão da independencia de plataforma, mas quantas vezes sua web app mudou de servidor (SO, hardware, etc) nos últimos anos?
+
+Se ousarmos um pouco mais, dada as recente evoluções da JVM (Java Virtual Machine)  as possibilidades vão além de usar o sistema operacional. Hoje é possível escolher em qual linguagem irá escrever cada parte de seu sistemas e estas coexistirem sem nenhum problema.  Antes que pensem que isso é um discurso de incentivo ao uso de Java, linguagem da qual gosto, estou usando esse ela como exemplo por ser um bom exemplo de como isso funciona e tem sido alvo de investimento.
+
+Famosos produtos tem usado uma "tecnologia" para fazer a parte de integração com usuário e outra para fazer toda a parte de Kernel do sistema. Acredito que o Twitter seja um exemplo disso, pois sua parte de interna foi toda reescrita em Scala (nova linguagem objeto- funcional da JVM) .
+
+Voltando a parte prática da coisa, um exemplo de  que é bom conhecer diversas ferramentas e saber empregá-las, é um caso num empresa que era preciso fazer medições de audiência em páginas. A solução inicial era de conteúdo dinamico em todas as páginas que quando acessadas iriam no servidor e gravavam um dado no banco de dados. Essa solução embora resolvesse o problema, ela acabava por onerar por demais o processamento pois tal parte não poderia ser posta em cache e a cada acesso, haveria uma requisição no servidor e um acesso ao banco de dados. O pessoal então passou para algo mais hibrido e pouco ortodoxo para época:  fez uma modificação para que o servidor colocasse no arquivo de log os dados de quem estava acessando e construiram um programa em shell para analisar esses logs. Com isso, embora não tivessemos um "tempo real" dos acessos, para os nosso requisitos de estatísticas serviu perfeitamente e reduziu a carga e o processamento, deixando para uma outra tecnologia que lida melhor com busca via regex fazer o trabalho dela.
+
+Essa solução não sei se funciona ainda, acredito que com saida da terceirizada que fez da empresa tenha sido tirado,  mas foi uma marca para me mostrar que existem outras possibilidades além daquela que eu sabia na época. É isso que conta. E num mundo cada vez mais competitivo é importante ter mais de uma "carta na manga".
+
+Bem até a próxima pessoal.
+
+</div>

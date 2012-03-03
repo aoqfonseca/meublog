@@ -1,0 +1,85 @@
+--- 
+layout: post
+title: Fazendo upload de arquivo com WebDriver
+tags: 
+- atualidades
+- codigo
+- Java
+- selenium
+- webdriver
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+A um tempo atrás alguém postou um comentário aqui no blog perguntando como ele poderia testar a questão do upload de arquivo usando o Selenium.
+
+Bem, pedindo ajuda para o grande sábio Google, encontrei a página (<a href="http://www.google.com/codesearch/p?hl=en#2tHw6m3DZzo/trunk/common/test/java/org/openqa/selenium/UploadTest.java&q=Upload%20package:http://selenium\.googlecode\.com&sa=N&cd=5&ct=rc">clique aqui</a>) com um trecho de código que reproduzo parte abaixo mostrando como fazer.
+
+Pelo jeito ele somente irá funcionar para o IE pois os demais browser não aceitam que você digite no campo de file. (Me corrijam se eu estiver errado).
+
+Espero que ajude:
+[cc lang="Java"]
+package org.openqa.selenium;
+
+import static org.openqa.selenium.Ignore.Driver.CHROME;
+import static org.openqa.selenium.Ignore.Driver.IPHONE;
+import static org.openqa.selenium.Ignore.Driver.SELENESE;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
+/**
+ * Demonstrates how to use WebDriver with a file input element.
+ *
+ * @author jmleyba@gmail.com (Jason Leyba)
+ */
+@Ignore(value = IPHONE, reason = "File uploads not allowed on the iPhone")
+public class UploadTest extends AbstractDriverTestCase {
+
+  private static final String LOREM_IPSUM_TEXT = "lorem ipsum dolor sit amet";
+  private static final String FILE_HTML = "<div>" + LOREM_IPSUM_TEXT + "</div>";
+
+  private File testFile;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    testFile = createTmpFile(FILE_HTML);
+  }
+
+  @JavascriptEnabled
+  @Ignore(value = {CHROME, SELENESE},
+          reason = "Chrome: File input elements are not supported yet")
+  public void testFileUploading() throws Exception {
+    driver.get(uploadPage);
+    driver.findElement(By.id("upload")).sendKeys(testFile.getAbsolutePath());
+    driver.findElement(By.id("go")).submit();
+
+    driver.switchTo().frame("upload_target");
+
+    WebElement body = driver.findElement(By.xpath("//body"));
+    assertEquals("Page source is: " + driver.getPageSource(),
+        LOREM_IPSUM_TEXT, body.getText());
+  }
+
+  private File createTmpFile(String content) throws IOException {
+    File f = File.createTempFile("webdriver", "tmp");
+    f.deleteOnExit();
+
+    OutputStream out = new FileOutputStream(f);
+    PrintWriter pw = new PrintWriter(out);
+    pw.write(content);
+    pw.flush();
+    pw.close();
+    out.close();
+
+    return f;
+  }
+}
+
+[/cc] 

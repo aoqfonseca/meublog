@@ -1,0 +1,80 @@
+--- 
+layout: post
+title: Problema para escrever um arquivo com UTF-8 em Groovy
+tags: 
+- file
+- Groovy
+- "Inform\xC3\xA1tica"
+- Scala
+- script
+- Sem categoria
+- utf-8
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+No meu trabalho precisei realizar uma tarefa que consistia em pegar um arquivo xml e gerar um outro arquivo, também em xml,  a partir dos dados do primeiro.  A princípio pediram que fizesse "na mão" mas como sou pago para pensar e não para executar as coisas feito uma máquina, parti para criar algo que fizesse isso de forma automática.
+
+Para fazer o trabalho criei um script em Groovy por ter uma certa intimidade com a linguagem e pela facilidade que ela oferece para manipular dados em formato xml (veja o trecho abaixo).
+[cc lang="Groovy"]
+def mudaArquivoCidade(arquivo)
+{
+    def select = new XmlParser().parse("${folderLeitura}\\${arquivo}");
+    File  file_xml_out  = new File ("${folderCidadesDestino}\\${arquivo}");
+    
+	    file_xml_out  .append('<?xml version="1.0" encoding="UTF-8"?>');
+	    file_xml_out  .append("\n");
+	    file_xml_out  .append(''' <select id="cidade" name="cidade" onblur="campoObrig(this)">''');
+	    file_xml_out  .append("\n");
+	    select.option.each(){
+		   valor    = it.text();
+		   texto  = valor;
+		   id = it.@value;
+		   if(valor == "Selecione a Cidade")
+		   {
+			valor = "";
+		   }
+		   else 
+		   {
+			 geraArquivoUpdateParaCidade(file_sql_out,valor,id)
+		   }
+		   file_xml_out  .append("""<option value="${valor}">${texto}</option> """);
+		   file_xml_out  .append("\n");
+	      
+...
+[/cc]
+
+O script após pronto funcionou perfeitamente, porém com um problema residente no fato do arquivo de saída ter sido salvo com codificação padrão do sistema operacional (o lixo do Microsoft grava tudo em ANSI ).  No primeiro teste que fiz com os dados acusou o erro com caracteres acentuados.
+
+O desafio foi achar uma forma, simples, de alterar o encoding do arquivo de saída para o valor que eu quero. Após muitas pesquisas no google, leituras de doc, etc... A solução extremamente elegante que achei foi (veja trecho abaixo).
+[cc lang="Groovy"]
+def mudaArquivoCidade(arquivo)
+{
+    def select = new XmlParser().parse("${folderLeitura}\\${arquivo}");
+    File  file_xml_out  = new File ("${folderCidadesDestino}\\${arquivo}");
+    file_xml_out.<strong>withWriter('UTF-8')</strong> { saida ->
+	    saida.append('<?xml version="1.0" encoding="UTF-8"?>');
+	    saida.append("\n");
+	    saida.append(''' <select id="cidade" name="cidade" onblur="campoObrig(this)">''');
+	    saida.append("\n");
+	    select.option.each(){
+		   valor    = it.text();
+		   texto  = valor;
+		   id = it.@value;
+		   if(valor == "Selecione a Cidade")
+		   {
+			valor = "";
+		   }
+		   else 
+		   {
+			 geraArquivoUpdateParaCidade(file_sql_out,valor,id)
+		   }
+		   saida.append("""<option value="${valor}">${texto}</option> """);
+		   saida.append("\n");
+	      }
+...
+[/cc]
+
+Aqui você informe que ao invés do objeto file usar um writer com valor de caracter padrão, ele deve usar um que use o UTF-8. Para quem está familiarizado com padrões de projeto é um Decorator.

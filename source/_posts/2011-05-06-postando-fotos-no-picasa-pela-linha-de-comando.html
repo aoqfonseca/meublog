@@ -1,0 +1,56 @@
+--- 
+layout: post
+title: Postando fotos no picasa pela linha de comando
+tags: 
+- atualidades
+- bash
+- command
+- google
+- line
+- picasa
+- script
+- shell
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Creio que depois de ler o meu último post, todo mundo já está com suas fotos arrumadinhas. Sendo assim é hora de compartilhá-las com seus amigos. Eu uso o Picasa para isso pois gosto dele e sempre me atendeu bem. Muitos amigos dizem que o Flickr é melhor mas prefiro meu bom e satisfatório picasa. Muitos fariam é baixar o picasa desktop (nem sei se tem para o Ubuntu) e a partir dele iriam organizar suas fotos e montar seus albuns e por fim, publicá-los na grande rede.
+
+Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente "ajuda" ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
+
+Para instalá-lo, no Ubuntu, é bem simples:
+[cc lang="bash"]
+sudo apt-get install googlecl
+[/cc]
+
+Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
+[cc lang="bash"]
+pip install googlecl
+[/cc]
+
+Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
+Uma vez instalado é só alegria e usar:
+[cc lang="bash"]
+andre@vermelhinho:~$ google help
+Welcome to the Google CL tool!
+Commands are broken into several parts:
+service, task, options, and arguments.
+For example, in the command
+"&gt; picasa post --title "My Cat Photos" photos/cats/*"
+the service is "picasa", the task is "post", the single
+option is a title of "My Cat Photos", and the argument is the
+path to the photos.
+
+The available services are
+'picasa', 'blogger', 'youtube', 'docs', 'contacts', 'calendar', 'finance'
+Enter "&gt; help " for more information on a service.
+Or, just "quit" to quit.
+andre@vermelhinho:~$
+[/cc]
+
+E para enviar suas foto fica mais ou menos assim:
+[cc lang="bash"]
+google picasa create "Cat Photos" ~/photos/cats/*.jpg
+[/cc] 

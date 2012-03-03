@@ -1,0 +1,34 @@
+--- 
+layout: post
+title: "\"Para bom desenvolvedor editor de texto basta\""
+tags: 
+- agil
+- atualidades
+- "compila\xC3\xA7\xC3\xA3o"
+- editor
+- Java
+- python
+- ruby
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Outro dia no meu trabalho estava desenvolvendo em par com o Bernardo Heynemann e comentei com ele que por vezes sentia falta de uma IDE de desenvolvimento pois "ajudava" muito o autocomplete que tinha com Eclipse quando desenvolvia com Java. Na mesma hora ele me "corrigiu"dizendo que um editor de texto é ferramenta mais que suficiente para se desenvolver, desde que, a tecnologia (entenda a linguagem / plataforma) seja boa.  Confesso que fiquei com aquela conversa na cabeça tentando digerir o que ele tinha me dito.
+
+Como assim boa? Java não é uma linguagem boa? Bem nem vou me aventurar por este caminho pois sei que acabará tendo milhões de xiitas de diferente lados querendo me "queima vivo".  A questão é que quando a coisa é concisa e bem projetada, o uso de uma IDE, que tenha recurso muito bons de completar automaticamente, sugestão, organização de importação, etc, se torna desnecessário, pois as coisas são intuitivas e naturais.  Um bom exemplo sempre ajuda.  Se temos dentro de um biblioteca (api, app, ou qualquer outro nome que queira) métodos e arquiteturas simples que representam bem o domínio do problema que elas pretende resolver, você verá que vai descobrir seu funcionamento de forma natural e errará muito pouco.  Imagine que você tem um boa api de envio de SMS. Ela com certeza terá uma função, interface, método, que enviará o SMS com um nome sugestivo ou parecido a enviaSMS.
+
+Pode parecer idiota mas não são raros os casos que fogem a este bom senso. São muitos que de forma consciente ou inconsciente criar verdadeiros monstros com coisas do tipo:  session_factory.instance(); factory.correct_impl, factory_receive_valor({chave:valor}); executor = Executor.new; executor.processa(factory,out);
+
+De propósito misturei algumas sintaxes para que não caracterizasse nenhuma tecnologia especifica. O que mostrar que algo monstruoso como acima, serviria para imprimir uma mensagem de "Hello World" na console.  Novamente insisto que o exemplo pode parecer óbvio que é exagerado, mas existem coisas ai fora nesse nível.
+
+Voltando a questão da IDE e a conversa com o Bernardo, finalmente caiu a "ficha": quando se tem algo bem feito, um editor de texto basta. Para botar um tempero na coisa, quero sugerir um teste para meus leitores Javeiros: tentem durante um dia inteiro de trabalho somente usar um editor de texto de sua preferência. Pode ter cor para realçar sintaxe mas nada de sugestão e completar automaticamente.  Sei que alguns conhecido vão rir disso pois já fazem assim com qualquer linguagem que trabalhem, mas desde que Java cresceu muito, muitos esqueceram que existe um javac para compilar as classes e nem sabem mais usá-lo embora sejam considerados senior em suas atividades.
+
+Ai vai mais um aviso: antes que peguem suas tochas e foices para me perseguir e matar, não estou dizendo que vocês são ruim ou fracos, estou dizendo que a tecnologia pode não ter ido para uma direção legal.  Isso também se aplica a outras linguagens. Veja C# ou qualquer outras coisa .NET; C++, etc. Tenta se entender com classpath, compilar as classes em uma pasta, organizar o diretorio de saída, construir um arquivo para fazer um deploy da aplicação (se for web ou enterprise ai a coisa fica ainda pior), na "mão" e ainda ser produtivo. Eu dou a colher de chá no desafio acima para usar o ANT e até o maven.
+
+A um certo tempo atrás, numa empresa onde trabalhei, ganhei o apelido de "leitor de javadoc". Isso porque sempre que podia olhava o javadoc para ver as explicações das classes, quais métodos, quais recomendações. Para mim, este tipo de inciativa que contribui para uma boa solução. Em python, sempre temos a oportunidade para irmos para interativo e digitar o dict para inspecionarmos algo. Em Ruby  você tem uma documentação tão boa quanto javadoc, etc.
+
+E novamente volto ao ponto inicial da conversa:  sem falsa demagogia ou interesses maldosos, para um bom desenvolvedor usando uma boa tecnologia, um simples editor de texto basta.
+
+Até a próxima pessoal. E aguardo os comentários de vocês com críticas, respostas e opiniões sobre o assunto.

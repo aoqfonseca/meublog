@@ -1,0 +1,41 @@
+--- 
+layout: post
+title: Colocando uma tarefa no cron
+tags: 
+- "automa\xC3\xA7\xC3\xA3o"
+- bash
+- cron
+- job
+- linux
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Esse é daqueles posts que escrevo para não esquecer algumas coisas.  Nessa semana precisei colocar um job no cron do meu sistema para que ele apagasse todos os arquivos que foram criados a mais de X minutos. Esse job deveria rodar de 10 em 10 minutos.  A linha ficou assim:
+
+[cc lnag="bash"]
+*/1 * * * * for name in `find /opt/participacoes/uploads/videos  -name '*' -type f  -cmin +3 -print`; do echo $name; rm -f $name ; done &gt; /dev/null 2&gt;&amp;1
+[/cc]
+
+Essa linha pega todos os arquivos dentro de uma pasta e joga seus nomes numa lista. Essa lista é lida no loop e o comando de remove é feito.  Uma coisa interessante nessa lista é que só pega arquivos regulares, tudo isso graças a opção -type f. Você pode ver mais  opções digitando
+
+[cc lang="bash"]
+man find
+[/cc]
+
+Outro detalhe legal dessa linha é como você define o intervalo de tempo para execução de algo no cron. No cron, funciona da seguinte forma:  A B C D E  onde cada um é: 
+<ul>	
+<li> A - o minuto no qual quer que seu job execute. Ex: 0 ou 30 </li>
+<li>B - hora</li>
+<li>C - dia</li>
+<li>D - mes</li>
+<li>E - ano </li>
+</ul>
+
+Se caso queira fazer algo como intervalo de tempo (quero que algo rode a cada 10 minutos) você pode usar */10(intervalo de tempo).
+
+Existe ainda a opção de usar alias especiais do tipo @daily. Para mais informação, peça ajuda ao google ou ao man na sua linha de comando.  
+
+Uma última coisa é que estou jogando a saída da execução para o dev/null (para o limbo - lugar nenhum).  Assim eu não fico com alertas e saidas indesejadas. 

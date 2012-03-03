@@ -1,0 +1,39 @@
+--- 
+layout: post
+title: "Uma experi\xC3\xAAncia a compartilhar"
+tags: 
+- .NET
+- codigo
+- csharp
+- desenvolvimento
+- hibernate
+- "Inform\xC3\xA1tica"
+- linq
+- reflection
+- TDD
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Por um motivo que prometo explicar depois, tive que criar uma api para fazer o mapeamento de objeto-relacional para um sistema em Csharp que estamos desenvolvendo.  Como não gosto de reinventar a roda, parti para ver como os frameworks mais usados fazem isso e procurei fazer uma implementação light do que eu vi. Para título de curiosidade me baseiei em Hibernate,  Linq, etc.
+
+O primeiro passo foi determinarmos com o faríamos a questão do mapeamento : para tanto resolvi partir do que hoje é feito pelo hibernate. Dentro do hibernate, simplificando muito o seu funcionamento, você tem um configuração que diz qual campo faz referencia a qual atributo (ou propriedade), qual tabela, as relações, etc.  O hibernate então ao receber o objeto para persistir, por exemplo, pega este dados, monta a query (insert,delete, update, select) e faz a operação. Como disse antes a idéia foi fazer algo light, sendo assim, optamos apenas por mapear os campos, tabela e objetos e não sua relações (com isso eliminamos muita complexidade). Sendo assim, nosso objetos deveriam apenas "saber" qual tabela e colunas a serem mapeadas.
+
+O segundo desafio foi definirmos como iríamos fazer esse mapeamento :  usaríamos um xml, um arquivo de propriedades, base de registro, e por ai seguimos. Após muita discussão vimos que o usuário de nossa api de persistencia seria um outro programador, por isso, teríamos que fazer algo que facilitasse a vida deste cara. Foi aí que decidimos usar Atributos (o mesmo que anotações em Java). Para minha surpresa, criar atributos customizados em Csharp é algo realmente simples (veja o post que escrevi sobre com dicas de como fazer - <a href="http://metronus.com/blog/2009/09/01/usando-atributos-customizavel-em-c/">clique aqui</a>)
+
+Sei que minhas próximas palavras vão soar estranhas para quem não curte codificar como eu, mas :  Não é que a coisa ficou bonita ! A implementação ficou fácil e tudo concentrado na classe sem necessidade de xmls, arquivos externos, problemas de atualização de base de registro, etc.
+
+O meio do caminho - a transformação dos dados dos objetos para relacional e vice versa - foi toda feita com a api de Reflection do .NET. Ela é bastante poderosa, porém com inúmeras diferenças para quem já está acostumado com o Java.  Mas insisto, ela é bem poderosa e interessante.
+
+Ao usar Reflection e rodar nossos testes (isso mesmo estamos desenvolvendo com o TDD - desenvolvimento orientados por teste, escrevemos os testes antes e depois vamos implementando), vimos que ocorria um erro de conversão:  O sistema dizia que não era capaz de converter um valor System.Decimal para System.Int32.
+
+Cabe uma explicação ai: em .NET, ao acessar uma base de dados, para percorres o resultado de uma query você tem um objeto DataReader. Esse objeto é como um mapa dos valores da linha.  Para ele, os valores numéricos ficam mapeados como Decimal e por isso o erro.
+
+A solução achei graças ao Google : basta usar a seguinte linha de código e todos os meus problema sumiram:
+<code lang="csharp"> 
+info.SetValue(obj,System.Convert.ChangeType(objReader[column.name],info.PropertyType),null);
+</code>
+O segredo da linha acima é de usar System.Convert.ChangeType . Ele se encarregará de fazer a conversão correta. Como argumento este metodo tem : valor a ser convertido, tipo para qual será convertido o valor.
+Bem essa foi a minha aventura das últimas semanas. Achei legal compartilhar pelas dificuldades e de como fizemos para chegar a solução final. 

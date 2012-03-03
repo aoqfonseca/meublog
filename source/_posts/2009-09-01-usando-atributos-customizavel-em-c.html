@@ -1,0 +1,70 @@
+--- 
+layout: post
+title: "Usando atributos customiz\xC3\xA1vel em C#"
+tags: 
+- .NET
+- attributes
+- c#
+- custom
+- "Inform\xC3\xA1tica"
+- "programa\xC3\xA7\xC3\xA3o"
+- reflection
+- tutoriais
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Muitos programadores sabem o quanto criar configurações ou arquivos de configurações para flexibilizar as aplicações ou uso de apis é um trabalho árduo. Na maioria dos casos opta-se por arquivos de XML  cuja a sintaxe nem sempre é fácil de entender e muito desacoplada da classe que irá usá-la dificultando muito a compreensão do funcionamento do sistema.
+
+Muitas pessoas (desenvolvedores) sempre procuram criar sistemas ou api que sejam capazes de atender a uma grande quantidade de cenários sem que hajam modificações diretas em seus fontes.  Para tanto, parametrizam em forma de configuração externas valores que o sistema deve usar que serão particulares para cada caso, exemplo:  nome do banco de dados, diretório onde ficam os arquivos de template, quantidade de dias que devem manter um dado no memória, mapeamento objeto relacional de um objeto, etc.
+
+Na maioria dos casos essa parametrização ou configuração é possibilitada pela criação de arquivos XML, onde quem irá usar o sistema ou a biblioteca deverá preencher com os valores desejados. Isso faz com que o sistema torne-se flexivel e evita customizações em código para casos particulares.  Detendo-se mais no caso de bibliotecas, por exemplo, api de persitencia (mapeamento objeto relacional), esta forma de fazer é bastante útil, embora adicione uma grande carga ao desenvolver pois além de escrever suas classes e etc, também tem que escrever e gerenciar os arquivos de configuração daquela Dll ( ou jar se for caso de java, por exemplo).
+<p style="text-align: center;"><img class="aligncenter" src="http://www.spycomponents.com/images/xml_at_work.gif" alt="" width="529" height="231" /></p>
+
+Um outro aspecto que considero no uso de XML para configurações é que ele fica desacoplado demasiadamento do código. Para o caso de um sistema, issso é bom, pois o usuário não interessa, somente importa definir os parametros e é tudo. Para o caso de uma biblioteca a coisa muda um tanto de figura, pois se quer deixar sua aplicação com um entendimento claro e no caso aqui, a classe e sua parametrização ficam em arquivos separados.
+
+Foi pensando nisso que as linguagens atuais começaram a tentar em suas novas versões criarem recurso de forma a facilitar este tipo de trabalho.  Neste contexto que temos as anotações, para o JAVA, e os atributos, para o .NET.
+<blockquote>Anotações e atributos fazem o elo entra a implementação e a parametrização. Tornando o código claro, legível e compreensível.</blockquote>
+As anotações ou atributos são metadados que adicionamos as nossa classe que nos permitem de através delas passarmos informações de parametrização e configuração.
+
+<code lang="csharp">
+class Client
+{
+private string nome;
+[MyCustomTag(sbrubles=true)]
+public void SayHello()
+{
+System.out.println("Hello" + nome);
+}
+}
+</code>
+
+No exemplo acima, minha classe tem um método que coloco um atributo que tem uma propriedade Sbrubles que pode receber um valor booleano. Depois, por Reflection, posso pegar os dados deste atributo e usar para fazer alguma coisa. Esse tipo de abordagem neste tipo de caso, é bem melhor por fica claro os parametros e sua associação. Além disso o trabalho reduz pois agora basta a própria classe para a implementação e para a configuração.
+
+Em Csharp, para criar seu atributo, bastar criar uma classe que extenda a classe System.Attribute. Além disso, por meio de atributos na classe, é preciso definir se este atributo será ligado a metodo, classe, propriedade, etc, se pode se repetir, etc.  Exemplo:
+<code lang="csharp">
+[AttributeUsage(AttributeTargets.Class |
+    AttributeTargets.Constructor |
+    AttributeTargets.Field |
+    AttributeTargets.Method |
+    AttributeTargets.Property,
+    AllowMultiple = true)]
+class MyCustomAtribute : System.Attribute
+{
+       private bool sbrubles;
+       public bool Sbrubles
+       {
+            get { return sbrubles;}
+            set { sbrubles = value;}
+       }
+}
+</code>
+E para ter acesso ao dados, você pode ter o seguinte codigo:
+<code lang="csharp">
+...
+object[] attributes;
+attributes = 
+   inf.GetCustomAttributes(typeof(BugFixAttribute),false);
+</code>

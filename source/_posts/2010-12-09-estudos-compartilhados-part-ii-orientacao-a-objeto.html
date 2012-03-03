@@ -1,0 +1,50 @@
+--- 
+layout: post
+title: "Estudos Compartilhados - Part II - Orienta\xC3\xA7\xC3\xA3o a Objeto"
+tags: 
+- classe
+- clean code
+- engenharia de softwares
+- Java
+- limpo
+- metodos
+- srp
+- uncle bob
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Dando continuidade a série de artigos sobre meus estudos ( O estudo compartilhado),  gostaria de dividir algumas conclusões que tenho chego e lido sobre diversos assuntos.  Um desses assuntos é a Orientação a Objeto e seu uso efetivo e com qualidade.
+
+Dentro dos meus estudos, um livro que me foi recomendado e tem me ajudado muito nessa questão de código mais limpo, melhor uso de Orientação a Objeto, etc é o "Clean Code" do UncleBob (Robert Martin). Caso queira comprar tem no site (busque no google) do autor e na Amazon.  Fora o livro procurei por diversos artigos na internet( a maioria encontrei em blogs) para ter mais de um ponto de vista sobre o assunto.
+
+Uma coisa que ficou evidente para mim é que a forma dominante atual para o desenvolvimento é o paradigma OO (orientado a objeto). Nesse paradigma a lógica do negócio é implementado pela criação de objetos, suas relações e interações.  Quem não lembra dos famosos exemplos do Veículos e Carro, Avião e Asa, e um monte de outros exemplos.
+
+Acredito que mais de 90% dos produtos, pincipalmente na WEB, que estão sendo entregues foram feitos usando OO. Sendo assim é de se esperar que hoje já dominamos essa "ciência" e que somos extremamentes bons e eficientes em seu uso.
+
+Pasmem vocês, o que encontrei, foi exatamente o contrário.  Tem muito código por aí que ao invés de ficar mais legível, com arquiteturas fáceis de manutenciar, etc são de fato verdadeiros mostrinhos, empilhamentos de milhares de camadas sem necessidade, um monte de método com mil linhas e por aí as aberrações seguem.
+
+Na lista dessas coisas feias que fazemos dentro de OO, uma delas que me chamou muito atenção, pois foi citado em diversos artigos e por gente bastante competente, foi  usarmos padrões de soluções, padrões de código, onde, nem sempre, eles são necessários... Usamos por usar, por que todo mundo usa ou por que todo mundo faz assim. Isso me lembra muito a história do porco na floresta.
+<p style="text-align: left;"><a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png"><img class="size-full wp-image-511 aligncenter" style="margin-top: 11px; margin-bottom: 11px;" title="Screen shot 2010-12-09 at 12.26.15 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png" alt="" width="493" height="332" /></a> A classe acima é bom exemplo. Eu tirei, essa idéia, de um artigo que o Paulo Caelum postou o link em twitter recentemente.  A gente deve usar get e set somente se ouver alguma lógica que deva ser feita antes de definir um valor. Faz sentido get e set quando temos algo como definir o saldo (recebe um valor e desconta ou adiciona).Fora isso, fica melhor e mais limpo, deixar os atributos públicos. Fica mais significativo.</p>
+<p style="text-align: left;">Com toda a certezas os dinossauros sagrados do Java vão querer me queimar pois estou comentando uma heresia tamanha. Mas faça o exercício de reescrever o código acima sem o get e set e veja se não fica melhor e muito menos verboso.</p>
+Voltando para o livro do Clean Code que  citei lá no início do texto,  um outro aspecto que aprendi que é bastante "ferido" é o princípio de Responsabilidade Única.  Uma entidade, ou classe, dev ter uma única personagem ou função na lógica do negócio. Imagine que temos a lógica de um banco por exemplo tivéssemos a super, mega, fodolesca, classe conta que faria tudo... Além de ficar pouco claro as coisas você teriam com toda a certeza um arquivo de bilhões de linhas impossível de dar manutenção.
+
+Essa regrinha de ouro também se aplica aos métodos.  Quanta vezes, em nome da encapsulação,  vimos colegas e nós mesmos escrevendo método enormes que fazem milhões de coisas?
+
+No livro Clean Code e também no livro de Refactoring do Martin Fowler, tem excelente exemplos disso que citei acima, fazendo até um antes e depois.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png"><img class="alignright size-full wp-image-512" title="Screen shot 2010-12-09 at 12.39.10 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png" alt="" width="426" height="249" /></a>No exemplo ao lado, vemos que num mesmo método, temos a responsabilidade de obtermos todas as matérias, e de cada matéria as provas, de cada prova as notas, somar, calcular a média, e depois verificar se o aluno está aprovado.
+
+É muita coisa para um só pobre método. Além disso - olha que não fiz tudo - fica extremamente confuso para entender a lógica. Imagine coisas parecidas quanto temos lógicas de negócio ainda mais complicadas.
+
+Uma boa ferramenta para ajudar nesse processo são os testes.  Se você for fazendo passos pequenos,  e se deixar levar pelos testes ( crie os testes a medida das necessidades) você verá que o design tenderá a ficar melhor e as classes e/ou metódos seguirão naturalmente  a idéia de uma responsabilidade única.
+
+Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

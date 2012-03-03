@@ -1,0 +1,37 @@
+--- 
+layout: post
+title: TDD no FrontEnd
+tags: 
+- agil
+- clean code
+- jasmine
+- javascript
+- solid
+- TDD
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código "server side, no meu código "client side". Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
+
+Os ditos desenvolvedores FrontEnd hão de concordar comigo que muitas vezes o código Javascript fica uma verdadeira bagunça. São poucos que procuram organizar as coisas, criar componentes e funções para os comportamentos repetidos e etc. Fica a dica de ver a palestra do <a title="Leonardo Balter" href="http://leobalter.net" target="_blank">LeoBalter</a> - WTF Javascript.
+
+Na grande maioria dos projetos que acompanhei (trabalhei ou vi) as coisa cresciam de maneira muito orgânica e com isso, nunca via uma preocupação com nomes de métodos, separação, DRY e outros princípios de "Clean Code".
+
+TDD, na minha visão, é muito mais para ajudar nesse sentido do que simplesmente criar teste automatizados. Quando escrevemos os teste antes, estamos ali "verbalizando" a forma que gostaria que nossas apis seja consumidas ... estamos na posição de quem irá usar um dia aquilo. Só nisso a diferença é mostruosa: já começamos a ver coisas repetidas; nomes de métodos; coisas que deveriam estar em classes e etc.
+
+Um exemplo seria quantas vezes não buscamos um mesmo elemento no mesmo script? Sabia que isso é perda de processamento? Muitas vezes bastava que fizesse isso e guardasse a referência numa variável. Isso, ao escrever os testes antes, fica bem evidente. Tente você mesmo e me diga.
+[cc lang="javascript"]
+$("algo").hide();
+...
+$("algo).click(function(){ ...
+//Poderiamos ter algo mais assim e os testes irão mostrar isso - famosos smells
+var algo = $("algo")
+algo.hide()
+algo.click(...
+[/cc]
+
+Outra coisa que vem com o uso de TDD na escrita de javascript é que você começa a ter uma rede de proteção que quando for necessário alterar algo fará com fique mais tranquilo quanto a introduzir um bug ou quebrar um comportamento já existente.
+Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual estou usando.

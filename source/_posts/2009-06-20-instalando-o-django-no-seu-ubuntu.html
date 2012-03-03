@@ -1,0 +1,29 @@
+--- 
+layout: post
+title: Instalando o Django no seu Ubuntu
+tags: 
+- django
+- "Inform\xC3\xA1tica"
+- python
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Muitas das pessoas que hoje estão aprendendo uma nova linguagem, após passar pelo "feijão com arroz", quer ver oque pode fazer dentro da nova tecnologia que possa ser aplicável profissionalmente. Uma das coisas que o mercado mais tem demando é desenvolvimento de aplicações web: portais, páginas de informação, páginas de serviços, etc.  Assim, acredito, que todas as linguagens tem a seu framework "mágico" que promete ser a mais nova revolução do mercado.
+Dentro do Ruby, temos o Rails. Diga de passagem que é um dos poucos casos onde o framework é mais famoso que a linguagem na qual foi feito. O Rails traz uma nova filosofia na forma de desenvolver sistemas web, pois foge do padrão de "toneladas" de xmls de configuração, quilos de código para não fazer nada relacionado com o negócio em si (mais sobre isso veja - busque no google - artigos sobre DDD).
+Dentro do Groovy, existe o <a href="http://grails.org/">Grails</a><strong>.[Editado] O Grails é um framework inspirado pelo Rails do Ruby, na linguagem Groovy[/Editado: graças a um comentário]</strong>. Ele se utiliza de Springs, Hibernate e tantos outros mais frameworks java para poder fazer oque o Ruby on Rails faz. Não se esqueçam que, como já falei aqui antes em outros post, o Groovy é JAVA, por isso não estranhem o fato dele usar api Java.
+Como não poderia ficar de fora da festa, o Python tem também um universo enorme de bibliotecas para fazer a mesma coisas : Construir aplicações web com alta produtividade. Dentro deste cosmo existe um que vem se destacando dos demais devido a sua facilidade, robustez, e amplo uso comercial que tem tido. Ele é o <a href="http://www.djangoproject.com/">Django</a>.
+Com pouco código e passos você consegue construir uma aplicação web de cadastro e listagem. Mas para poder aproveitá-lo é preciso antes de mais nada instalá-lo em sua máquina.  Aqui vamos usar o Apache com um mod-python para servidor de páginas. Alguns usos mais profissionais usam um servidor otimizado para a parte estática e o apache para a parte dinâmica (meio doido isso, quando desenvolvia em Java usava o apache para estático e Tomcat, por exemplo, para a parte dinâmica).
+Uma outra ressalva para o processo que será apresentado abaixo é que uso um computador com Ubuntu. Possivelmente, para o pessoal que usar Mac ou qualquer outra distribuição Linux, não mude muito (até mesmo nada), mas vale ficar experto.
+O primeiro é obter os pacote de instalação do apache, mod-python e biblioteca de conexão do python com mysql.
+<code>sudo apt-get install apache2 libapache2-mod-python
+sudo apt-get install mysql-server python-mysqldb</code>
+Note que a segunda linha instala o mysql também.
+Após instalar o apache e o mod para python e além disso o mysql, para o ubuntu, eu digito a seguinte linha de comando para instalar o django:
+<code>sudo apt-get install python-django</code>
+Isso irá instalar o django e tudo que for necessário para que ele execute. Para testar a sua instalação você pode no seu terminal digitar:
+<code>django-admin --version</code>
+Este comando mostrará a versão do django instalado no seu sistema.
+Aguarde os próximos post com explicações de como configurá-lo, montar sua primeira aplicação e etc. Mandem seu feedback.

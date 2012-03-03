@@ -1,0 +1,31 @@
+--- 
+layout: post
+title: "Introdu\xC3\xA7\xC3\xA3o de teste JavaScript com Jasmine"
+tags: 
+- bdd
+- frontinrio
+- jasmine
+- javascript
+- palestra
+- ruby
+- TDD
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
+Recomendo muito a galera ir. Vai ser um dia muito legal com gente altamente compartilhando suas experiências, trazendo novidades e como são seus dias a dias de projetos e empresa. 
+Eu serei um dos que irá apresentar nesse evento. O assunto será Jasmine. <a href="http://pivotal.github.com/jasmine/">Jasmine</a> é uma biblioteca de teste para JavaScript. Ele é mais focado no princípio de BDD (Behavior Driven Dev.) do que em TDD. Sendo assim apresenta uma sintaxe, que eu pessoalmente gosto muito, para escrever teste que fica bastante elegante poderoso. Além disso oferece suporte a testes assíncronos e spies (bibliotecas para "espionar" chamadas de métodos e fazer mock) de forma muito simples. 
+Para quem desenvolve com Ruby, verá a forma de escrever suas especificação é muito semelhante ao <a href="http://rspec.info/">RSpec</a>. Veja o exemplo abaixo: 
+[cc lang="javascript"]
+describe("Aqui vai uma descricao", function(){
+  it ("linha de teste", function(){
+    expect(true).toBeTrue();
+  }
+}
+[/cc]
+Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplificando seria que ela não precisa de uma página) para executar. E é totalmente auto-contida: só precisa dela mesma para funcionar e nenhuma outra biblioteca.
+Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
+Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
