@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Uso do modificador static dentro do Java - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Uma coisa que poucas pessoas sabem é que, em Java, podemos usar o modificador estático (static) para classes e que tal fato pode ser bastante util na &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2009/04/18/uso-do-modificador-static-dentro-do-java">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Uso Do Modificador Static Dentro Do Java</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-18T00:00:00-03:00" pubdate data-updated="true">Apr 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Uma coisa que poucas pessoas sabem é que, em Java, podemos usar o modificador estático (static) para classes e que tal fato pode ser bastante util na hora de escrever algumas coisas. Antes de mais, me desculpem os mais avançados em programação, é preciso gastar algumas linhas para explicar o que significa estatico.
+Dentro de orientação objeto dependendo da forma que voce declare algo dentro de uma classe, esta &#8220;coisa&#8221; terá o seu ciclo de vida ligado a classe, ou ao metodo, ou a um bloco, ou ao objeto. Em alguns livros você achará tal explicação como algo instancia do objeto, instancia do metodo, e por ai vai&#8230;. Que tal um exemplo para entendermo melhor
+Instancia do Objeto
+- é algo que vai existir enquanto existir o objeto. Não necessariamente nasce com o objeto mas &#8220;morre&#8221; com ele e seu valor está atrelado ao objeto.
+<code>
+public class Aluno {
+   private String nome;
+    Aluno (String val){
+      this.nome = val;
+   }
+}
+</code>
+No Exemplo acima a variavel nome pertence ao objeto. Sendo assim se fizemos:
+<code>
+...
+Aluno[] sala12 = new Aluno []{
+new Aluno("aluno1"),
+new Aluno("aluno2"),
+new Aluno("aluno3"),
+};
+foreach(Aluno aluno in sala12){
+ System.out.println(aluno.getNome());
+}
+</code>
+Embora façam parte da mesma classe cada um tem seu &#8220;nome&#8221;, logo a variavel nome pertence ao objeto.
+Fazendo uma pequena modificação no codigo da classe Aluno e colocando a variavel nome com o modificador static e executarmos novamente o codigo acima, a saida será o mesmo nome do ultimo setado. Isso porque a variavel deixou ser do contexto do objeto e passou para o dominio da classe; por mais instancias do objeto aluno criadas no processo da JVM, o valor do nome será unico para todas elas
+<code>
+public class Aluno {
+   private static String nome;
+    Aluno (String val){
+      this.nome = val;
+   }
+}
+</code>
+Seguindo esse mesmo raciocinio podemos explicar o escopo de metodo e bloco&#8230;. Mas deixo isso para o pessoal estudar senão vai ficar muito extenso o post.
+	<li><strong> Logo ser estatico ou a função do modificador estatico (static) é de informar ao compilador e executor que aquela variavel, emtodo, ou quaisquer outras coisas são da classe</strong></li>
+
+Uma segundo coisa a explicar antes de falarmos de classes estáticas, tipos de classes. Dentro de java voce pode ter os seguintes tipos: top-level e inner classes.
+	<li>Top level classes</li>
+São as classes comuns: cada classe tem seu arquivo proprio e está inserida dentro de um pacote. SEria como escrever o arquivo Aluno.java e dentro dele especificar a classe Aluno. Esta classe aluno será uma top level.  <strong>Este tipo de classe não pode ser estatica</strong>
+<li>Inner classes</li>
+São classes que pertencem a outras classes. São como propriedade de uma classe e declaradas dentro da especificação de uma classe. Elas podem ser anonimas ou locais. Vejam os dois exemplos abaixo:
+<code>
+okButton.addActionListener( new ActionListener(){
+   public void actionPerformed(ActionEvent e){
+      dispose();
+   }
+});
+______________________________________________________
+class ListListener implements ItemListener {
+      List list;
+      public ListListener(List l) {
+         list = l;
+      }
+      public void itemStateChanged(ItemEvent e) {
+         String s = l.getItemSelected();
+         doSomething(s);
+      }
+   }
+   List list1 = new List();
+   list list2 = new List();
+   list1.addItemListener(new ListListener(list1));
+   list2.addItemListener(new ListListener(list2));
+}
+</code>
+As classes locais podem ser estaticas. Isso, de acordo como definimos em cima, significa dizer que voce tem uma classe que está definida dentro da outra classe e pertence a ela e não ao objeto que será instanciado dela.
+Exemplo(tirado do artigo da <a href="http://www.javaworld.com/javaworld/javaqa/1999-08/01-qa-static2.html?page=1">Java world</a>:
+<code>
+public class Filter {
+   Vector criteria = new Vector();
+   public addCriterion(Criterion c) {
+      criteria.addElement(c);
+   }
+   public boolean isTrue(Record rec) {
+      for(Enumeration e=criteria.elements();
+      e.hasMoreElements();) {
+         if(! ((Criterion)e.nextElement()).isTrue(rec))
+             return false;
+      }
+      return true;
+   }
+   public static class Criterion {
+      String colName, colValue;
+      public Criterion(Stirng name, String val) {
+         colName = name; colValue = val;
+      }
+      public boolean isTrue(Record rec) {
+         String data = rec.getData(colName);
+         if(data.equals(colValue)) return true;
+         return false;
+      }
+   }
+}
+</code>
+E para usar:
+<code>
+Filter f = new Filter();
+f.addCriterion(new Filter.Criterion("SYMBOL", "SUNW"));
+f.addCriterion(new Filter.Criterion("SIDE", "BUY"));
+.....
+if(f.isTrue(someRec)) //do some thing .....
+</code>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-18T00:00:00-03:00" pubdate data-updated="true">Apr 18<span>th</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/17/usando_using_c/" title="Previous Post: Usando using no seu codigo C#">&laquo; Usando using no seu codigo C#</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/05/03/gerando-de-forma-automatica-suas-classes/" title="Next Post: Gerando de forma automatica suas classes">Gerando de forma automatica suas classes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

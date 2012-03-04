@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Usando o SOLR na sua app Rails - parte  1 - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Usando O SOLR Na Sua App Rails - Parte 1</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
+
+Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
+
+A primeira conclusão que chegamos foi que precisamos tirar esse busca do banco de dados. Banco de dados são excelentes desde que mantenha sua busca navegando pelos indices das tabelas. Tente um fulltext search e verá o quanto será penoso, até mesmo em bases pequenas.  Para resolver isso pensamos em alguma solução de indexação e a melhor que vimos no momento foi o <a href="http://lucene.apache.org/solr/#intro">SOLR</a>.:
+<blockquote>Solr is the popular, blazing fast open source enterprise search platform from the Apache Lucene project. Its major features include powerful full-text search, hit highlighting, faceted search, dynamic clustering, database integration, and rich document (e.g., Word, PDF) handling. Solr is highly scalable, providing distributed search and index replication, and it powers the search and navigation features of many of the world&#8217;s largest internet sites.
+
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as <a href="http://tomcat.apache.org/">Tomcat</a>. Solr uses the <a href="http://lucene.apache.org/java/">Lucene Java</a> search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&#8217;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</blockquote>
+Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  java para indexação e busca) que permite que a gente fale com ela via HTTP (busque e indexe).  Roda em cima de um container servlet. Aqui no nosso caso usamos o jetty ao invés do Tomcat.
+
+O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
+
+Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
+<pre>  class Post
+    #...
+  end
+
+  Sunspot.setup(Post) do
+    text :title, :description, :stored =&gt; true
+    string :author_name
+    integer :blog_id
+    integer :category_ids
+    float :average_rating, :using =&gt; :ratings_average
+    time :published_at
+    string :sort_title do
+      title.downcase.sub(/^(an?|the)\W+/, ''/) if title = self.title
+    end
+  end</pre>
+No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
+<pre>Sunspot.search(Post) do
+    keyword "teste"
+    with :author_name, "andre fonseca"
+    with :average_rating, 10.3
+  end</pre>
+Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
+<pre>class MinhaClass &lt;&lt; ActiveRecord</pre>
+<pre>
+<pre>    searchable do</pre>
+<pre>      text :nome, do |minha_classe|</pre>
+<pre>        minha_classe.outro.nome</pre>
+<pre>      end</pre>
+<pre>    end</pre>
+</pre>
+<pre>end</pre>
+A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
+<pre>Sunspot.search(Post) do</pre>
+<pre>    config.gem "sunspot"</pre>
+<pre>    config.gem "sunspot_rails"</pre>
+<pre>end</pre>
+Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
+Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
+<pre>config.include SunspotMatchers</pre>
+<pre>&nbsp;</pre>
+<pre>config.before do</pre>
+<pre>  Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)</pre>
+<pre>end</pre>
+<pre>&nbsp;</pre>
+<pre>config.after(:each, :type => type) do</pre>
+<pre>  ::Sunspot.session = ::Sunspot.session.original_session</pre>
+<pre>end</pre>
+Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
+Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/" title="Previous Post: Usando Sinatra para evitar overdesign">&laquo; Usando Sinatra para evitar overdesign</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/" title="Next Post: Usando SOLR parte 2 - Testes e Cucumber">Usando SOLR parte 2 - Testes e Cucumber &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

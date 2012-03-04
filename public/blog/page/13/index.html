@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Pessoal para atender algumas pessoas que acompanham o blog e que me pediram para colocar algumas coisas de Python, vou dar inicio (apesar de ontem já &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/page/13">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/16/um-programa-python-para-tocar-mp3/">Um Programa Python Para Tocar Mp3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-16T00:00:00-03:00" pubdate data-updated="true">Jun 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Pessoal para atender algumas pessoas que acompanham o blog e que me pediram para colocar algumas coisas de Python, vou dar inicio (apesar de ontem já ter postado algo semelhante) a um série de publicações de código em Python para fazer alguma coisa simples ou legalzinha. Assim que estiver aprendendo pode pegar estes trechos de código e usar para entender como funciona alguma coisa e etc.
+Espero que gostem.
+Abaixo segue um trecho de codigo em Python que vai tocar um mp3 de seu computador. Um dos prerequisitos é que o Tkinter e o tkSnack estejam instalados. Caso não estejam - na hora de executar aparecerá um erro, vai no google que acharam como instalar e de onde baixar (fica como exercício e depois posto aqui como fazer e os endereços).
+Vamos ao código
+<code>
+# -*- coding: utf-8 -*-
+from Tkinter import *
+import tkSnack
+#
+root = Tk()
+tkSnack.initializeSnack(root)
+caminho  = '''D:\DATA\Andre\musica.mp3'''
+def toca():
+     global caminho
+     musica=tkSnack.Sound(load=caminho)
+     musica.play()
+#
+label1 = Label(root,text='Tocando uma musica')
+label1.pack(side=TOP)
+botao = Button(root,text='Tocar',command=toca)
+botao.pack(side=BOTTOM)
+root.mainloop()
+</code>
+Divertam-se e postem comentários com variantes e melhorias&#8230;.. Vamos codificar e pythoniar muito !!!
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/16/novidades-nem-sempre-sao-as-melhores-coisas/">Novidades Nem Sempre SÃ£o as Melhores Coisas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-16T00:00:00-03:00" pubdate data-updated="true">Jun 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Como, acredito, a maioria das pessoas que trabalham em informática, principalmente aqueles focados em desenvolvimentos de sistemas, a característica mais vital nesta profissão é <strong>estudar sempre</strong>. Não podemos nos &#8220;dar ao luxo&#8221; de pararmos de aprender&#8230; parar de aprender é quase como assinar sua sentença de morte, numa forma figurada, para o mercado.
+Isso para mim não me incomoda tanto pois gosto de pesquisar, de experimentar novas tecnologias, está vendo as coisas mais vanguardistas e por aí sigo, embora, faltem horas no meus dias para fazer tudo isso e ainda conviver com a familia, amigos, academia, trabalho&#8230; (ufa).  A minha dificuldade, na maioria dos casos, é de encontrar um utilidade instantanea para determinadas coisas, tecnologias, frameworks ou linguagem.
+Para me manter atualizado procuro sempre disponibilizar algum tempo do meu dia para ler blogs, olhar sites sobre tecnologia, acompanhar listas de discussão. Quase sempre existe algo novo sendo falado ou alguma nova versão de uma biblioteca, servidor, ou etc. Atualmente, então, parece que as coisas aceleraram, parte devido a força crescente do mundo livre (open source)  mas isso é conversa para outros posts.  Uma das área de onde tenha vista maiores novidades, são das linguagens&#8230;. Parece que todo mundo, devido as diversas facilidades para fazer uma, resolveu criar uma nova linguagem. Claro que em muitos casos são apenas velhas conhecidas que vem sendo redescobertas mas ainda tem outras que acabaram de sair do forno.
+Falo isso, pois, outro dia, em meus feeds, acabei lendo um artigo em que o autor falava da nova linguagem <a href="http://www.scala-lang.org/">Scala</a>. Graças a JSR 223 de scripting, a JVM se tornou uma máquina virtual poliglota : ela é capaz de interpretar e executar qualquer linguagem que siga a especificação e/ou implemente o BeanScript Framework. Uma das filhas desta novidade, segundo o autor do post era a novissima Scala. Ainda segundo ele, esta parece a melhor coisa de todos os tempos&#8230; era tudo que eles esperava&#8230; E olha, segundo ele mesmo escreveu, o autor tem experiencias com python (JPYthon).  Descreve que Scala é uma linguagem que tem o melhor dos mundos de tipagem dinamica e estatica: no código não há necessidade de explicitar um tipo para a variavel pois ela é definida em tempo de compilação ou de execução.  A questão, ai posso estar falando besteira pois ainda não estudei a linguagem a fundo, é que por exemplo, o Groovy faz exatamente a mesma coisa, mostrando que este recurso não é tão novidade assim.
+Outra que vi foi a <a href="http://clojure.org/">Clojure</a> Linguagem baseada em sintaxe Lisp. Ainda não saquei a dela. Pode ser uma limitação minha&#8230; mas ainda não pesquei onde ela é tão revolucionário e adorável de aprender (conforme dito a mim por um conhecido). A sintaxe dela me soou estranho:
+<code>
+(+1 2)
+//para somar dois numeros. A sintaxe é parenteses operacao parametros fecha parenteses
+</code>
+Pode ser que esteja apenas vendo uma paradigma&#8230; Com certeza deve existir algo que ela se encaixe perfeitamente.
+A questão que quero deixar que no caminho do saber sempre haverão coisa boas e ruins, nos cabendo entedê-las e separá-las. Com o tempo e experiencia este processo vai ficando mais facil e rapido mas sempre estará la. Outra coisa que gostaria de dizer é que nem sempre o fato de algo ser novidade implica que ele é bom ou algo que deva ser estudado logo de cara. Conversar faz bem e ajuda evitar estes trabalhos. Ainda não tenho uma opnião definitiva sobre as citadas acima mas pretendo conversar com algumas pessoas com mais bagagem para ver a opnião deles&#8230; quem sabe não estou enganado (muito provavel)
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/16/criando-um-relogio-em-python/">Criando Um RelÃ³gio Em Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-16T00:00:00-03:00" pubdate data-updated="true">Jun 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para o pessoal que está começando a aprender a programar em python segue abaixo um código de como escrever um relógio. Ele é simples&#8230; Ele abre um frame na tela e fica mostrando as horas. A idéia é incrementar o bichinho até ficar interessante, como colocar um alarme que toca uma música, etc.
+<code>
+#!/usr/bin/env python
+from Tkinter import *
+import time
+root = Tk()
+time1 = ''
+aviso = Label(root, font=('verdana', 100, 'bold'), bg='gray',text='Meu relogio')
+clock = Label(root, font=('verdana', 100, 'bold'), bg='gray',fg=('white'))
+aviso.pack(fill=BOTH)
+clock.pack(fill=BOTH, expand=1)
+def tick():
+    global time1
+    # get the current local time from the PC
+    time2 = time.strftime('%H:%M:%S')
+    # if time string has changed, update it
+    if time2 != time1:
+        time1 = time2
+        clock.config(text=time2)
+    clock.after(200, tick)
+tick()
+root.mainloop( )
+</code>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/11/qual-e-o-melhor-tamanho-de-uma-equipe/">Qual Ã© O Melhor Tamanho De Uma Equipe?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-11T00:00:00-03:00" pubdate data-updated="true">Jun 11<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Outro dia estava eu, <a href="http://gc.blog.br/">Guilherme Chapiewski</a> e o <a href="http://akitaonrails.com">Fábio Akita</a> conversando sobre o desejo de um dia, quem sabe quando, montar uma empresa pequena e ter uma equipe pequena e ficar desenvolvendo sistemas de qualidade, trabalhando em pesquisa, gerando conhecimento, etc.  Bem, apresentado o sonho, um dos aspectos da conversa que foi mais interessante foi a questão do número ideal de pessoas para esta &#8220;dreamteam&#8221;. Foi quando Akita comentou sobre uma pessoa (não me lembro o nome) que montou algo semelhante e justificou que o tamanho da sua equipe tinha uma explicação científica na teoria de Dunber (<a href="http://watarts.uwaterloo.ca/~acheyne/dunbar.html">clique aqui</a> para ler o artigo). Segundo este artigo, existe uma relação matemática entre o número de pessoas que convivemos com o aproveitamento neocortical humano&#8230; em termos leigos significa dizer que a capacidade de se relacionar diminui com a quantidade de pessoa do grupo. Veja equação abaixo matemática abaixo:
+<code>
+log(N) = 0.093 + 3.389 log(CR)
+</code>
+Sei que pode parecer coisa de louco e de cientista de foguete, por isso,  prefiro ficar a simplificação desta teoria (digamos que seria a prática da coisa) que é a teoria do &#8221; 5, 15 e  150&#8221;. Nessa teoria, 5 é o número de pessoas máxima que reter em nossa memória curta (tente dizer rapidamente alguns nomes de pessoas - não pode parar - e verá que será mais ou menos esse numero), 15 é o número máximo de pessoas que conseguimos manter uma relação de confiança e verdade e 150 é a quantidade de pessoas que conseguimos ter como conhecidos (sabemos algo sobre elas).
+<blockquote>
+   1. Five is linked to the natural limits on the short term memory. This was first put forward by Miller’s 1956 paper and relates to time more than items (it is a common urban myth to see it as items). This means that it will vary a bit by language, different languages can compress more or less data into a defined time limit. If you have ever spoken through simultaneous translation then you will know that it takes 30% longer to say something in Spanish that it does in English. Given that the Welsh generally speak english 30% faster than the norm, this can present problems! Translation aside, the number is useful and it relates to common sense experience (always helpful). Think about how many directions you can remember, or how we organise telephone numbers.. &#8230;
+
+   2. Fifteen comes from anthropology and relates to natural levels of deep trust. I define deep trust here as the ability to tolerate a degree of betrayal. The number varies a bit based on the average size of the extended family in a society and is probably an habituated pattern of behaviour learnt during key periods of plasticity for the human brain. Now readers might be able to help be here. &#8230;
+
+   3. One hundred and fifty is Dunbar’s law and in effect is the number if identities that you can maintain in your head with some degree of acquaints that an individual can maintain. It does not necessarily imply that you trust them, but it does mean that you can know something about them and their basic capabilities. In other words you can manage your expectations of their performance and abilities in different contexts and environments. For the moment lets consider this in terms of individuals (the switch to identity is for tomorrow’s blog). Consider your work groups and the size of your organisation. How many people do you know by name? How many people would you invite to a party? &#8230;
+[Fonte - http://www.cognitive-edge.com/blogs/dave/2006/12/logn_0093_3389_logcr_1_r20764.php]
+</blockquote>
+Tudo isso para pode falar que equipes grande demais são ruim para um projeto ou para a qualidade do serviço que elas estejam fazendo. Equipe muito grande acabam não permitindo uma interação maior entre seus integrantes gerando subdivisões que virão a lutar pelo poder e destaque e com isso irão destruir todo o trabalho e ao invés da colaboração você terá um imensa guerra de interesses e mutua acusação.
+Uma equipe pequena, por mais contraditório que isso possa soar aos ouvidos dos gerentes, é mais produtiva que um &#8220;mar de pessoas&#8221;.  Uma estratégia inteligente para projetos de grande escopo é dividi-lo e entregar estas pequenas partes a pequenas equipes.  Fazendo isso, e claro escolhendo bem as equipes e seus integrantes, veremos um salto de qualidade imenso.
+Por isso, quando for abrir meu escritório nas montanhas de Petrópolis, num imenso sitio com piscina, salão de jogos, quartos para descanso, ambiente altamente pensado para o conforto e qualidade de vida, natureza abundante, foi contratar somente 5 pessoas.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/10/usando-svn-como-repositorio-de-codigo/">Usando SVN Como RepositÃ³rio De CÃ³digo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-10T00:00:00-03:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Estou começando um projeto e gostaria muito de utilizar o <a href="http://git-scm.com/">GIT</a> como repositório de código por motivos de velocidade, facilidade e etc. A questão que, infelizmente, não consegui encontrar nenhuma versão DAEMON para windows. Bom, aqui cabe uma explicação: sei que alguns vão comentar que eu sou lixo por estar usando windows e não linux&#8230; blablabla&#8230;. Por minha escolha estaria usando linux no servidor mas a questão é que a aplicação será feita em .NET e gostaria de colocar <em>continuos integration</em>, build automático, entre tantas coisas mais neste e sei que linux é trabalhoso fazer para uma aplicação windows (poderia usar o wine, mas aqui preciso distribui-la para windows depois&#8230; )
+Devido a esta dificuldade de encontrar uma versão do GIT para windows, me voltei para meu bom e velho amigo <a href="http://subversion.tigris.org/">SVN</a>. Instalei o VisualServer (muito bom para o pessoal que gosta de telas gráficas para administrar as coisas).  Feito isso foi só criar os usuários (optei por não usar a autorização do windows pois como uso Novell, desconheço como integrar o server ao ldap dele&#8230; ) e criar um repo: Primeira dica, nunca crie nada no diretorio raiz, não é uma boa prática. Sugiro sempre criar um repositorio e partir dele sair criando o que deseja.
+Para criar um repo, a partir da ferramenta é fácil - busquem pelo tutorial na internet. Pela linha de comando foi apenas
+<code>
+svnadmin create [repo]
+</code>
+O repo do comando acima é o path do repositorio (ele será criado dentro do seu servidor)
+Depois disso eu uso outro comando para verificar se o status dele está ok e pronto para uso
+<code>
+svnadmin verify [nome do repositorio que deseja ver]
+</code>
+Agora no resto ir numa máquina cliente e importar para nosso controlador de versão os arquivos que desejamos versionar:
+Na máquina cliente, digite o comando abaixo para se conectar ao servidor e importar os arquivos:
+<code>
+svn import [caminho do diretorio onde estão os arquivos a importar] [url do servidor com o repositorio]
+Ex: svn import MyProject  http://123.123.123.4:8443/svn/MyRepo/trunk
+</code>
+Isso importara os arquivos. Depois (eu desconheço outro jeito) e faço o checkout do projeto e partir dai tenho um projeto local ligado ao repositorio SVN
+<code>
+svn co [url repo]
+svn co https://blabla:8443/svn/MyRepo/Trunk
+</code>
+Isso fara funcionar.
+
+Existem opções de ferramentas para fazer isso de forma mais visual. A que mais recomendo é a TortoiseSVN. Ele se integra ao menu contexto do gerenciador de arquivo e fica bastante simples trabalhar. Outra opções são os plugins paras os builder .
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/10/porque-ainda-usamos-linux/">Porque Ainda NÃ£o Usamos Linux ?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-10T00:00:00-03:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Como alguns podem imaginar sou um entusiasta de software livre no sentido mais ampla que possa imaginar. Tanto que em meu computador pessoal não possuo o windows instalado e nenhum de suas ferramentas (ubuntu com open office) e estou muito bem obrigado. Claro que tenho certos problemas pois os demais lá de casa ainda sentem falta de coisas que eles supões somente existir no Windows.
+Hoje praticamente para tudo existente em Windows existe um similar em Linux ou multiplataforma.  Se precisa de um suite de ferramentas office você pode optar pelo opne office (inclusive existe versão dele para o windows).  Somente algumas poucas coisas extremamente específicas que não tem algo similiar ou capaz de fazer as mesmas coisas (jogos, ferramentas exclusivas, etc).  Mesmo para estes casos, o pessoal já tem conseguido propor boas soluções como o Wine (um tipo de biblioteca de windows reescrita para linux) que vem tendo um desempenho satisfatório para diversas coisas.
+Adicione a esta equação, o fato das distribuições de linux (o melhor exemplo realmente é Ubuntu)  cada vez trazerem facilidades de instalação (instalar o ubuntu é ridiculamente simples&#8230; trabalho zero&#8230; somente problemas para alguns drives ou placas) e ambientes gráficos por vezes superiores, em experiência de usabilidade,  do que o windows.
+<strong>Daí, ficamos com a pergunta : &#8220;Por que então o pessoal insiste em utilizar o windows ? Porque as empresas ainda gastam fortunas em licenças se podem instalar um linux facilmente, gratuito e ainda mais seguro ?  </strong>
+Acredito que uma grande razão para isso seja a desinformação que existe em torno do linux e da crença que linux é coisa de  &#8220;nerd&#8221; ou de super especialista em informática; linux é modo texto; difícil de configurar; não tem instaladores; etc.  Para estas pessoas aconselho a estudar um pouco mais e de experimentar distros como Kurumim (brasileira)&#8230; Dúvido que essas pessoas não fiquem no minimo surpresas com o resultado, facilidade e rapidez do sistema.
+Quanto as empresa penso que seja um problema de cultura e comodismo.  Até entendo a opção por Windows por parte de empresas que não são de tecnologia, etc&#8230; mas empresas de engenharia, informática, automação e afins tem obrigação de migrar (minha opnião)
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/09/python-por-onde-comecar/">Python : Por Onde ComeÃ§ar ?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-09T00:00:00-03:00" pubdate data-updated="true">Jun 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Algumas pessoas enviaram emails e postaram comentários pedindo links para tutoriais, livros, sites, etc para aprendizado de python.  Um bom começo é acessar ao site do pessoal da <a href="http://www.python.org.br/wiki/DocumentacaoPython">python brasil</a>. Lá encontrarão um excelente wiki com diversos tutoriais e dicas de onde começar.
+Nesse site verão que a primeira dica para o aprendizado é acessar o tutorial escrito pelo criador da linguagem (<a href="http://www.python.org/doc/2.6/tutorial/index.html">clique aqui</a>)
+Depois aconselho uma busca por livros. No site citado acima, também existe uma lista de livros recomendados.  Na apresentação do Giuseppe, pythOnrio, tem também alguns editoriais que são gratuitos.
+Estou montando um tutorial e em breve publico aqui.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/09/por-onde-comecar-em-ti/">Por Onde ComeÃ§ar Em TI</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-09T00:00:00-03:00" pubdate data-updated="true">Jun 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Várias pessoas que estão começando sempre me perguntam  qual seria a melhor linguagem ou tecnologia que eles deveriam aprender e focar para obter sucesso profissional. Confesso que na maioria das vezes respondo que não sei ou que não saberia precisar naquele momento qual seria a melhor resposta. Com a dúvida na cabeça resolvi ir atrás de informações, pessoas, etc e tirei algumas conclusões a respeito que gostaria de compartilhar com você.
+<ul>
+<strong>-> Qual é a melhor tecnologia ou linguagem ? </strong>
+</ul>
+Bem, em minha opnião e de algumas pessoas que considero referências no mercado de TIA(Tecnologia da informação e automação), como <a href="http://gc.blog.br">Guilherme Chapieswki</a>,<a href="http://www.akitaonrails.com/">Fabio Akita</a>, <a href="http://blog.eof.com.br">Evandro Flores</a>, etc,  não existe uma melhor tecnologia, oque de fato se tem, é uma coisa mais coerente com seu problema. <em>Calma que eu explico</em>.
+Cada tecnologia tem seu nicho de atuação ou área que se destaca por exemplo: Java se destacou em programação cliente servidor devido a &#8220;certas facilidades&#8221; que ela apresentava frente as outras existente na época.  Claro que os conjuntos podem se sobrepor (interseções) ao longo do domínio de TI; podemos ter mais de uma tecnologia adequada para um tipo de solução que queremos. Dái existem outros fatores a considerar, que já a frente irei falar, mas voltemos a questão dos nichos.
+Se cada tecnologia (ou linguagem) tem uma área podemos concluir que cada uma é a melhor para um dado tipo de problema. Se desejo criar uma aplicação desktop, existem linguagens que tornam isso mais simples do que Java; se desejo escrever um aplicativo Web acredito que existam outras opções mais vantajosas que .NET; etc.
+Por isso não existem uma melhor tecnologia e sim a mais adequada. Por isso, vamos seguir um sábio conselho que escutei a pouco tempo: Quanta mais ferramentas temos em nossa caixa de conhecimento maiores são as chances de encontrarmos uma que seja perfeitamente adequada a solucionar o problema que temos em mãos.
+<ul>
+<strong>-> Em qual delas devemos focar ? </strong>
+</ul>
+Essa pergunta é bem complicada de responder pois foge do senso comum de tecnologia. Para respondê-la de uma forma satisfatória, será melhor considerarmos um espaço mais abrangente do que simplesmente tecnologia.
+No meu entender, devemos focar em todas ! Loucura&#8230; não&#8230;. pura constatação. Focar em apenas uma é a verdadeira loucura. Hoje, o mercado busca mais os perfis generalistas que os especialistas.  Por isso, começo aprendendo diversas tecnologias ao mesmo tempo&#8230; será até divertido, confie em mim.
+Bom se ainda acredita que deva focar numa, mesmo que vá aprender outra no futuro, então pense nisso: Qual escolher ? Depende de seus objetivos profissionais. Se num primeiro momento deseja apenas conseguir um emprego, qualquer que ele seja&#8230; aprenda php e vá fazer sites&#8230; É uma linguagem interessante e faz bem o trabalho simples de sites, etc. (existe coisas grandes feitas em php, não a menospreze)&#8230;. Se o seu objetivo é ganhar dinheiro ou obter uma carreira&#8230; o mercado acena hoje para Java e .NET focando em arquiteturas de serviços (SOA).
+Existe uma vertente dentro do mercado hoje que são as tecnologias mais flexiveis, com sintaxe legivel, etc&#8230; Nesse campo tempos algumas que se destacam: Ruby, Python, Groovy, Scala, Clojures&#8230;. É um bom lugar para começar, muito embora seu uso ainda esteja na fase embrionária.
+<ul>
+<strong>-> Concluindo </strong>
+</ul>
+O assunto é polêmico e extenso não cabendo uma conclusão simples do tipo : &#8220;Faça isso&#8221; &#8230; O mercado é algo dinamico. Por isso acredito que nessa mercado uma característica que nos mantém <em>&#8220;vivos&#8221;</em> é a paixão, pois através dele nos sentimos motivados a sempre estudar e buscar por mais conhecimento.
+Um conselho que repasso é a história do carpinteiro: Existem ferramentas certas para cada problema ou ação desejada. Por isso, quanto mais, melhor. Ampliar nosso leque nos faz ter uma visão cosmopolita e sermos melhores solucionadores. Mesmo que não possamos escolher a tecnologia, acabamos sendo influenciado por algo que vimos, ou experimentamos em outra linguagem.
+Mãos a obra e estudem&#8230;. Aprendam tudo que puderem&#8230; podem focar numa, tornar um especialista mais sempre que possivel aumente as opções.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/05/dicas-para-probemas-modernos-com-nossos-gadgets/">Dicas Para Probemas Modernos Com Nossos Gadgets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-05T00:00:00-03:00" pubdate data-updated="true">Jun 5<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Acredito que muitos de vocês já devem ter lido a matéria do link abaixo, mas por ser muito boa vale a pena repetir. A reportagem  foi publicada pelo pessoal do G1 do caderno de tecnologia e apresenta diversas dicas para problemas modernos com as tecnologias. Tais dicas vão desde de como aumentar a vida util da carga do seu celular, aumentar o alcance do wifi, etc e chega a como podemos recuperar um hd danificado.
+A leitura será boa e com certeza poderá ajudar muitos geeks que se encontrem em dificuldade com seu gadgets
+Leis a reportagem na integra, <a href="http://g1.globo.com/Noticias/Tecnologia/0,,MUL1020332-6174,00.html">clique aqui</a>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/06/04/servicos-de-hospedagem/">ServiÃ§os De Hospedagem</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-04T00:00:00-03:00" pubdate data-updated="true">Jun 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para o pessoal que está procurando um serviço de hospedagem, seja para seu blog, seja para qualquer outro serviço, recomendo a leitura de um post que li através do blog do meu primo <a href="http://flyleo.com.br">Leonardo</a>.
+O post tras uma lista com vários serviços de hospedagem e sua avaliação feita através de pesquisa no twittter e etc. Veja o post. Genial.
+
+<a href="http://www.tudoparawordpress.com.br/tecnologia/hospedagem-para-sites-as-indicadas-e-reprovados-pela-galera-no-twitter/">Clique aqui</a>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/14/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/12/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Usando parametros da linha de comando no Rake e no Capistrano - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Usando Parametros Da Linha De Comando No Rake E No Capistrano</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-06T00:00:00-03:00" pubdate data-updated="true">Sep 6<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
+todos os projetos que já trabalhei até hoje exigem um bom número de task em RAKE e CAPISTRANO. Desde que meus modelos são tão grandes quanto necessário, estas task e receitas são em geral pequenas e procuram fazer pouco lógica delegando para o modelo apropriado&#8230;
+O que desejo é falar sobre é que sempre estamos precisando passar parametros para estas tasks, e na maioria das vezes é bastante  escassa as documentações para fazer isso. 
+Imagine que  você quer fazer algo como: 
+[cc lang=&#8221;bash&#8221;]
+rake options:show opt1=value1
+[/cc]
+E dentro da task deseja pegar esse valor e fazer algo. Para resolver fica mais ou menos assim: 
+[cc lang=&#8221;ruby&#8221;]
+namespace :options do
+
+  desc &#8220;Show how to read in command line options&#8221;
+  task :show do
+    p &#8220;option1 is #{ENV[&#8216;opt1&#8217;]}&#8221;
+  end
+
+end
+[/cc]
+
+Usando parametros da linha de comando do Capistrano: 
+Aqui as coisas são um pouco diferente. É necessário que use a opção -s na linha de comando para ativar a função de parser do chave/valor. Veja o exemplo abaixo: 
+[cc lang=&#8221;bash&#8221;]
+cap -a show_options -s opt1=value1
+[/cc]
+Assim você um dicionário dentro do capistrano (receita) que a chave é opt1 e o valor dele é value1. voce pode acessar diretamente a chave por causa do method-missing que implementa isso para você. Fica assim o código. 
+[cc lang=&#8221;ruby&#8221;]
+task :show_options do
+  p &#8220;option1 is #{opt1}&#8221;
+end
+[/cc]
+
+Para maiores detalhes veja o artigo original e leia a documentação do Capistrano. Fiquem a vontade para comentar e assim que puder respondo. 
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-06T00:00:00-03:00" pubdate data-updated="true">Sep 6<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/06/30/palestra-no-fisl/" title="Previous Post: Palestra no fisl">&laquo; Palestra no fisl</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/27/tdd-no-frontend/" title="Next Post: TDD no FrontEnd">TDD no FrontEnd &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

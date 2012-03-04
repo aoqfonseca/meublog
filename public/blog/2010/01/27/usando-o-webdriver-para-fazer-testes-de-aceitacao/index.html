@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>usando o webdriver para fazer testes de aceitaÃ§Ã£o - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="A pouco tempo consegui um brecha com ajuda da minha colega Arlene para implantarmos no projeto que estou trabalhando teste automatizados.  Com a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Usando O Webdriver Para Fazer Testes De AceitaÃ§Ã£o</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:00:00-02:00" pubdate data-updated="true">Jan 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">A pouco tempo consegui um brecha com ajuda da minha colega Arlene para implantarmos no projeto que estou trabalhando teste automatizados.  Com a carta de alforria em mãos partimos para pesquisar no mercado qual seria a melhor que se encaixaria em nosso contexto de aplicação.  Para que entenda,  trabalhamos com desenvolvimento de portal usando a ferramenta <a href="http://www.lumis.com.br">Lumis </a>(eu trabalho na Lumis!!!).  Portais são aplicações bastante difíceis de serem testadas de forma automática; devido a questão do conteúdo dinâmico e pouco previsível não existe muita margem para que busque por padrões.
+
+Com estas limitações em mãos, acabamos nos deparando com a api <a href="webdriver.googlecode.com/">WebDriver</a> . A um tempo atrás eu já tinha mexido um pouco com o <a href="seleniumhq.org/">selenium </a>e adorei. Com isso, tentei achar algo que se assemelhasse a ele mas que me facilitasse a vida em relação a portais ( não tem muito como usar ids dos elementos no html, url não fixas, etc) . O webdriver, ao contrário do selenium, não é um javascript que executa dentro de uma página simulando a navegação&#8230; o webdriver é realmente um &#8220;envelope&#8221; em cima do seu navegador.  No caso do Firefox ele é uma extensão, no caso do Internet Explorer (blargh) ele usa as chamadas de control que ele proporciona, e por ai vai. Com isso, os teste ficam mais próximos da realidade de uso do usuário, e a api para escrever  os cenários mais simples.  Veja o trecho:
+[cc-lang =&#8221;java&#8221;]
+WebDriver driver = new FirefoxDriver();
+driver.get(&#8220;http://localhost:8080/&#8221;);
+HomePage homePage = new HomePage(webDriver);
+String valor = homePage.searchFirstItemforMoreRead();
+[/cc-lang]
+[cc-lang =&#8221;java&#8221;]
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage  extends Page {
+private static final String PAGE_TITLE = &#8220;teste&#8221;;
+
+public HomePage(WebDriver driver){
+super(driver,PAGE_TITLE);
+}
+
+public AdminPage navegateToAdministration(){
+webDriver.navigate().to(this.composeUrl(&#8220;admin&#8221;));
+return new AdminPage(webDriver);
+}
+
+public String searchOneTextOfDestaque3(){
+return this.webDriver.findElement(By.xpath(&#8220;//div[@class=&#8217;destaques3&#8217;]/h5/a&#8221;)).getText();
+}
+
+public String searchFirstItemforMoreRead(){
+return this.webDriver.findElement(By.xpath(&#8220;//div[@class=&#8217;aba_conteudo ativo&#8217;]/ol[@class=&#8217;mais_lidas&#8217;]/li[@class=&#8217;item1&#8217;]/a/span&#8221;)).getText();
+}
+
+public List searchDestaque3Texts(){
+return this.webDriver.findElements(By.xpath(&#8220;//div[@class=&#8217;destaques3&#8217;]/h5/a&#8221;));
+}
+
+}
+[/cc-lang]
+
+Pelo exemplo acima fica fácil de ver o quão fácil é criar um teste em webdriver.  Recomendo experimentar
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:00:00-02:00" pubdate data-updated="true">Jan 27<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/01/27/mais-um-pouco-sobre-testes-automatizados/" title="Previous Post: Mais um pouco sobre testes automatizados">&laquo; Mais um pouco sobre testes automatizados</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/02/08/lumis-contrata-analista-desenvolvedor-junior/" title="Next Post: Lumis contrata Analista Desenvolvedor Junior">Lumis contrata Analista Desenvolvedor Junior &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

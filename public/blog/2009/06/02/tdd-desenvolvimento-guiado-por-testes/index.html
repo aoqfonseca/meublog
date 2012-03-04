@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>TDD- desenvolvimento guiado por testes - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Uma coisa que sempre considerei interessante é a resistência de alguns de não partir para uma forma de desenvolvimento guiado por testes. Eu, assim &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2009/06/02/tdd-desenvolvimento-guiado-por-testes">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">TDD- Desenvolvimento Guiado Por Testes</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-02T00:00:00-03:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Uma coisa que sempre considerei interessante é a resistência de alguns de não partir para uma forma de desenvolvimento guiado por testes. Eu, assim que tive contato com este jeito de programar, nunca mais larguei e hoje, confesso, nem consigo fazer de outra forma.Ao me guiar por testes meu códigos sempre saem com qualidade acima da média (melhor que a da maioria no mercado). Este resultado se deve, não por minha suposta genialidade mas sim, por sempre testar de forma minunciosa as coisas (testes unitários, testes de comportamento, etc), escrever testes antes, etc.
+Estamos sempre em busca de fazer mais em menos tempo&#8230; essa tem sido a missão principal de todos nós seres humanos e claro que não é diferente para desenvolvimento de sistemas. A pressão de prazos, custos, etc são aspectos importantes nos projetos e tem nos levado a buscar alternativas para atender. Por vezes, a opção acaba sendo, fazer sistemas de forma amadora, cheios de &#8220;gambiarras&#8221; e remendos, tudo para que o sistema seja entregue no dia e lucro desejado.  Isso faz sentido, e é interessante, apenas para aquelas consultorias que ganham &#8220;rios de dinheiro&#8221;, pois além do desenvolvimento, elas aproveitam para vender, também o suporte. Mas para aqueles que desejam entregar coisas com qualidade, para os clientes que precisam de sistemas que realmente apresentem um ROI (retorno de investimento) sastifatório, uma solução tem sido o desenvolvimento guiado por testes, TDD.
+Realizar um desenvolvimento guiado por teste significa, sendo bastante simplista, escrever os testes de acordo com a especificação do sistemas e estes determinarem a forma que o sistema serà implementado pois o código para ser aprovado deve passar pelos teste criados. Complicou, a gente descomplica: ao invés de desenvolvermos um sistema e depois testá-lo, verificando se ele funciona, se trata todos os casos, se ele é robusto, tolerante a falhas ,etc; nós escrevemos diversos testes automatizados(unitários, comportamento, etc) e vamos desenvolvendo o sistema de forma a que todos os testes sejam aprovados. Ao inverte a forma de conceber as coisas, um senso comum entre os autores que falam sobre TI, os ganhos são significativos ao ponto de não podermos ignorá-los:
+1 - <strong>Evita-se desperdício de código</strong>: implementa-se o necessário para que teste funcione.
+2 - <strong>Cobertura total contra falhas</strong>: Ao escrever os testes antes evita-se a programação otimista, ou seja, o programador não tem tentação de escrever e testar apenas o &#8220;caminho feliz&#8221;; escreve-se os testes de acordo com a especificação.
+3 - <strong>Testes automatizados </strong> : sei que muitos poderiam dizer que teste automatizados não um ganho particular do TDD, mas são sua pedra fundamental. Ao automatizar seus testes, a cada nova compilação ou ação sobre o código, todo o sistema será testado garantindo seu funcionamento. Isso, gera uma robustez na solução pois evita que os efeitos colaterais desconhecidos, ao alterar uma aplicação, apareçam somente em produção.
+Um gerente mais apegado ao passado poderia dizer que escrever testes antes significa perder tempo, pois ele vai precisar de prever mais dias em seus cronograma para a entrega do sistema. Isso, de certa forma, está correto. Entretanto, o material entregue é de grande qualidade pois foi amplamente testado, retestado, e por aí segue&#8230; não teremos retrabalho, horas extras para corrigir bugs desconhecidos, cobertura total para alterações&#8230;
+Sei que isso não é a &#8220;bala de prata&#8221;: o fato de usar desenvolvimento guiado por teste, não garante que seu aplicativo será o melhor, ainda existe o talento da equipe, a tecnologia, uma boa especificação, etc. Embora, o uso de TDD em minha opnião, já seja 60% do caminho para tal objetivo.
+Na próxima vez que for começar a desenvolver, pense nisso&#8230; Permita-se experimentar e espero, que assim como eu, vocês fiquem viciados nessa prática.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-02T00:00:00-03:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2009/06/02/tdd-desenvolvimento-guiado-por-testes/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2009/06/02/tdd-desenvolvimento-guiado-por-testes/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/05/28/guia-de-comandos-basicos-do-git/" title="Previous Post: Guia de comandos bÃ¡sicos do GIT">&laquo; Guia de comandos bÃ¡sicos do GIT</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/06/02/usando-banco-de-dados/" title="Next Post: Usando Banco de dados">Usando Banco de dados &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

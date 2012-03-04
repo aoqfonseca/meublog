@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Um outro dia estava eu e um amigo discutindo sobre linguagem e acabamos por falar sobre a questão do C# possuir o &#8220;using&#8221;. Ele é uma das &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/page/15">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/17/usando_using_c/">Usando Using No Seu Codigo C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-17T00:00:00-03:00" pubdate data-updated="true">Apr 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Um outro dia estava eu e um amigo discutindo sobre linguagem e acabamos por falar sobre a questão do C# possuir o &#8220;using&#8221;.  Ele é uma das coisas interessantes que o C# tem em relação a outras da mesma familia (como Java).
+Para começar é preciso entender que o using tem 2 possiveis usos:
+	<li>criar um apeliado (alias) para um namespace, e assim facilitar o uso das classe dentro dele</li>
+        <li>importar as classes de um determinado namespace; algo parecido com o import do java</li>
+Um outro uso possível e bem util do keyword é o seguinte: Imaginemos a situação que você tem um Reader de arquivo e vai efetuar a leitura do conteudo:
+<code>
+StreamReader reade = new StreamReader("teste.txt");
+//vou ler o arquivo agora...
+string msg = "";
+while(!reader.EndOfStream)
+{
+      msg << reader.ReadLine();
+      cliente.Incremment();
+}
+reader.Close();
+</code>
+Bom nesse caso, tudo funciona ok&#8230; entretanto imagine o caso da classe cliente, por exemplo, ser nula, ou seu metodo de incremment dispare uma exceção. O sistema irá sair do bloco de codigo e não vai fechar o reader. Isso pode gerar diversos problemas futuros como lock do arquivo e etc. Para resolver isso, muitos diriam - &#8220;coloca o bloco de codigo dentro de uma estrutura try catch finally&#8221;. Excelente, vamos lá:
+<code>
+try
+{
+   StreamReader reade = new StreamReader("teste.txt");
+   //vou ler o arquivo agora...
+   string msg = "";
+   while(!reader.EndOfStream)
+   {
+      msg << reader.ReadLine();
+      cliente.Incremment();
+   }
+    reader.Close();
+}
+catch(...)
+{
+}
+finally
+{
+   reader.Close(); // e quaisquer outros tratamentos
+}
+</code>
+O código acima garante a robustez, mas, pelo menos para mim, o código fica muito &#8220;poluído&#8221;. Vamos agora ver um outro uso do using:
+<code>
+using (StreamReader reade = new StreamReader("teste.txt"))
+{
+   //vou ler o arquivo agora...
+   string msg = "";
+   while(!reader.EndOfStream)
+   {
+         msg << reader.ReadLine();
+         cliente.Incremment();
+   }
+}
+</code>
+Fazendo isso, o interpretador, ao final garantirá o close do Reader. Isso também é valido para Connections (conexão com o banco de dados por exemplo). Isso deixa o codigo bem elegante. Outra coisa que esta clasula garante que o tempo de vida da classe é somente da execução do bloco, ou seja, ele realizará o dispose do objeto assim que terminar ou sair do bloco. Isso ajuda bastante a evitar os memory leaks e deixar seu codigo super elegante e perfomante.
+Aos poucos vou colocar mais tutoriais como este e sobre outras linguagens. Caso tenham duvida podem mandar email ou deixar comentário que tento responder por email ou por meio de um post.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/">Lendo Um Arquivo Permitindo Que Outro Processo Ou Programa O Altere</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-14T00:00:00-03:00" pubdate data-updated="true">Apr 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Estava escrevendo um sistema no meu trabalho em C# (csharp) onde se conecta ao log de uma aplicação e escreve as linhas deste num panel (winform). A primeira dificuldade foi como poderia permanecer lendo o arquivo de forma continua. Resolvi com o trecho de codigo abaixo:
+<code>
+....
+try
+{
+      StreamReader reader = new StreamReader (File.OpenRead("<caminho completo do arquivo>"))
+      while (true)
+      {
+           msg = reader.ReadLine();
+           ...
+     }
+}
+catch(Exception e)
+{
+     System.Console.WriteLine(e.Message);
+}
+</code>
+Bem isso funcionou bem, a questão que ao fazer isso, por padrão o sistema trava o arquivo não permitindo que outro processo possa escrever no documento. Como queria apenas ler e permitir que a aplicação continuasse a escrever seu log, a solução foi, explicitar o a abertura do arquivo, pelo metodo Open, algumas diretivas. Fica mais ou menos assim:
+<code>
+StreamReader reader = new StreamReader(File.Open("path",FileMode.Open,FileAccess.Read, FileShare.ReadWrite));
+...
+</code>
+Isso funcionou legal e me serviu bem pois agora tenho uma ferramenta simples para ficar vendo o log da minha aplicação.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/13/groovy_e_java/">Groovy Ã© âJAVAâ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-13T00:00:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Dando uma olhada no forum do <a href="http://grailsbrasil.com/index.php">Grails</a>, acabei tendo um ideia sobre oque escrever para vocês.  Uma coisa muito corriqueira, para o pessoal que está começando agora e se depara com Groovy, é que a encaram como uma nova linguagem desacoplada de Java.  Sei que isso pode ser algo bom, mas ao mesmo tempo, na minha opnião, faz com que o Groovy perca parte do seu encanto.
+A coisa que sempre me atraiu muito no Groovy foi seu parentesco direto com o Java ( ele é feito todo em java e nunca teve a pretensão de substituí-lo e sim de acrescentar coisas). Com isso, me sentia mais confortavel para migrar e nisso acabei tomando gosto e me apaixonando. Hoje, sempre que posso, tento usar o Grooy ou seus filhotes (Grails, gsp, etc.).  Voltando ao assunto, devido a este parentesco direto, voce pode escrever uma classe Groovy utilizando usando a sintaxe e padrões JAva, embora isso, de certa forma, não faça sentido. Outra coisa, assim como outras linguagens suportadas pelo <a href="http://en.wikipedia.org/wiki/Bean_Scripting_Framework">BSF</a> (JRuby, Jython, etc), voce pode usar classes Java dentro do seu codigo. Por isso, todo o legado já existente não é perdido.
+Logo, por exemplo, na pergunta que li, caso deseje que seu groovy leia ou crie uma planilha Excel, voce pode usar, tranquilamente, a api POI do apache, embora exista uma implementação de biblioteca que permite a chamada de ActiveX dentro do codigo groovy. A vantagem que vejo da APi POI, é que ela é multiplataforma, e seu codigo servirá para um sistema linux, macos, VMS, ou qualquer outro que permita um JVM.  E esta simbiose não para por aí&#8230; Voce pode escrever uma camada de apresentação usando GSP (Groovy Server Page - muito legal) para uma aplicação cujo o backend dela está toda em Java, sem necessidade de modificações profundas (para não dizer nenhuma).
+Por isso o titulo do post, embora provocador, ele de certa forma é real&#8230; Groovy é JAVA.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/04/regular-expression/">Usando ExpressÃµes Regulares</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-04T00:00:00-03:00" pubdate data-updated="true">Apr 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Copiando os demais blogs e inaugurando minha coluna de pergunta e respostas, gostaria de começar por um email enviado para a lista do riojug. No email, a pessoa dizia que precisa retirar todos os traços, &#8221;- &#8220;, de seu texto que não tivessem &#8220;sentido&#8221; : traços sozinhos, traços que não fossem de ligação, etc. Ele inclusive mandou um exemplo esclarecedor
+
+
+<blockquote>- guarde-o - senão guardarei-o eu &#8212; Joãozinho-&#8220;;</blockquote>
+
+No texto acima os traços a serem substituídos seriam : o primeiro, o traço antes do <em>senão</em>, os 3 traços seguidos e o traço do fim.
+Para resolver isso poderiamos partir para várias soluções; uma mais elegantes que as outras, e vice-versa:
+
+	<li>Varrer caracter a caracter e verificar: ler como um array de char e ficar verificando se o anterior é espaço, traço, etc&#8230;. Em pseudo codigo seria</li>
+
+
+<code>
+char letras[] = <string em questão>
+letras.each{|i,l|
+if i = 0 then
+    if l='-' then replace
+else
+    if l='-'- and (letras[i-1]=' '  or letras[i-1]='-' or letras[i-1]=':')............ // e continua
+}
+</code>
+so de ler e tentar fazer já dá medo&#8230;. e olhem que eu já vi coisas assim implementadas !!!
+
+	<li>Usar expressões regulares.</li>
+
+
+Expressões regulares são uma forma de representar conjuntos de caracteres que estão sobre um certa regra. São como dicas que damos a quem procura, para que ele ache o que queremos. como analogia poderiamos imaginar que alguém nos pede para chamarmos uma outra pessoa. Para isso elas nos dá indicativos de como encontrá-la : alta, magra ou gorda, perto de um homem ou mulher, proxima a porta, etc&#8230; Transpondo isso para textos, expressoes regulares seriam como esta dicas.
+Expressões Regulares foram criadas pelo ano de 1943 por dois neurologistas. Anos mais tarde, um matemático, modelou algebricamente isso, dando o &#8220;ponta pé inicial&#8221;. Em 1968, graças ao unix, encontrou sua veia computacional, por meio do editor. Era chamado pelo comando ed. Este ed tinha o comando de contexto g, que aceitava  expressões regulares e um comando p, e sua sintaxe ficava g/RE/p (&#8220;Global Regular Expression Print&#8221;), que deu origem ao aplicativo grep, que por sua vez originou o egrep.[fonte: guia de expressões regulares - aurélio marinho Vargas, Editora novatec]
+Bem vamos ao código
+<code>
+String.replaceAll("[^[:alnum:]][-][^[:alnum:]|[-]$|[-][[:punct:]]|^[-]")
+</code>
+Lindo não ?!?!? Uma linha &#8230;..
+Quem se interessar pelo assunto pode ler o livro on line do Aurelio Marinho, Novatec, que é uma fonte riquissima para isso. (<a href="http://guia-er.sourceforge.net/index.html">clique aqui</a>)
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/29/groovy-como-opcao/">Groovy Como OpÃ§Ã£o</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T00:00:00-03:00" pubdate data-updated="true">Mar 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Durante o encontro de TI, houve uma apresentação do <a href="http://gc.blog.br">Guilherme Chapiewiski</a>, onde ele falou um pouco do que ele acredita que venha ser as tecnologias que estão na &#8220;moda&#8221; ou que virão a ser moda. Em sua apresentação ele apresentou o Ruby, Python (<a href="http://www.djangoproject.com/">Django</a>), falou do Java e por fim do ASP.NET. De cada uma citada, ele apresentou seu entendimento de prós e contras.  Concordo com ele em parte mas não é o objetivo aqui deste post.
+Acabou que devido o interesse por parte dos participantes no tema não tive a oportunidade de conversar com ele depois, pois acredito que na palestra dele &#8220;faltou&#8221; falar também no Groovy. O Groovy é uma linguagem criada, totalmente, em Java, com o objetivo de ser algo parecido com Ruby, python, etc.  Hoje, com as melhorias continuas que vem recebendo, tornou-se um excelente opção frente as demais.  Possui característica semelhantes ao Ruby, Python, etc, como por exemplo a questão da flexibilidade para sintaxe e escrita de código, tipagens dinamicas, closures, etc. (veja exemplo abaixo)
+<code>
+nome = ["a","b","C"]
+nome.each{
+     println it
+}
+</code>
+Outro exemplo
+<code>
+//Exemplo retirado do site do Groovy.
+import groovy.xml.MarkupBuilder
+import org.custommonkey.xmlunit.*
+</code>
+
+<code>
+def writer = new StringWriter()
+def xml = new MarkupBuilder(writer)
+xml.records() {
+  car(name:'HSV Maloo', make:'Holden', year:2006) {
+    country('Australia')
+    record(type:'speed', 'Production Pickup Truck with speed of 271kph')
+  }
+  car(name:'P50', make:'Peel', year:1962) {
+    country('Isle of Man')
+    record(type:'size', 'Smallest Street-Legal Car at 99cm wide and 59 kg in weight')
+  }
+  car(name:'Royale', make:'Bugatti', year:1931) {
+    country('France')
+    record(type:'price', 'Most Valuable Car at $15 million')
+  }
+}
+</code>
+
+A sua comunidade é bastante ativa e vem trabalhando firme no proposito de torná-la interessante e poderosa, o que a torna uma séria candidata a ser a segunda linguagem &#8220;oficial&#8221; da plataforma JAVA ( para mim no curto tempo JAVA deixará ser uma linguagem a se codificar para uma plataforma para desenvolver sobre - assunto para outro post). Isso porque, além de todo o trabalho, Groovy oferece aos desenvolvedores Java uma transição suave, pois permite que escreve em sintaxe JAVa dentro de seus programas,  trabalha com classe Java, etc.
+Além de tudo isso já citado, ainda temos a questão da grande quantidade de extensões, plugins, frameworks feitos em e para groovy que so enriquecem, como por exemplo, existe uma implementação Rails em groovy que é excelente.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/29/como-fazer-um-telnet-pelo-python-num-servidor-oopnevms-2/">Como Fazer Um Telnet Pelo Python Num Servidor OpenVMS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T00:00:00-03:00" pubdate data-updated="true">Mar 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Este post é para lembrar como posso fazer um telnet do meu código em Python para um servidor VMS. Isso será muito util para um robot que estou fazendo para disparar rotina de backup de forma automatizada. Assim que terminar coloco aqui todo o código ou disponibilizo no github.
+<code>
+#python test script:
+import sys, telnetlib
+host = 'hostname'
+user = 'username\r'
+password = 'mypasswd\r'
+tn = telnetlib.Telnet(host)
+tn.read_until('Username: ')
+tn.write(user)
+tn.read_until('Password: ')
+tn.write(password)
+tn.read_until('[c')             #last char of session header message
+tn.write('\255\253\003')        #this is the 'fix' command added
+tn.read_until('$ ')             #scan for prompt
+tn.write('dir\r')               #issue directory command
+d = tn.read_until('$ ')         #save results in d
+tn.close()
+print d
+</code>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/24/endereco-ip/">Sites Para Descobrir a LocalizaÃ§Ã£o De Ip</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-24T00:00:00-03:00" pubdate data-updated="true">Mar 24<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Li num blog uma coisa interessante que muito interessa ao pessoal que tem blog pois sempre chega aqueles comentários mal criados.
+Vejam o link abaixo
+<a href="http://www.geekeblog.com/localizando-endereo-pelo-ip/">http://www.geekeblog.com/localizando-endereo-pelo-ip/</a>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/17/vmsrdb/">Erro Ao Conectar RDB via Odbc (VMS )</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-17T00:00:00-03:00" pubdate data-updated="true">Mar 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Esse post é para eu lembrar como se faz para resolver um problema. Quando tenta-se conectar a um RDB que está num alpha via ODBC (tem que ter o driver para isso) e aparece o erro [ORACLE][ODBC][RDB]RDB-F-BAD_DB_HANDLE &#8230;.
+As configurações do obdc, em meu caso pelo menos, são: Service : Generic e String : attache &#8216;filename file$db&#8217;;
+Googleando a internet achei que a solução seria (funcionou no meu caso)
+1 - Log no seu aplha
+2 - Vá para o diretório sys$manager
+3 - Veja o log do banco ( faça um dir por dir *SQLSRV_DIS*.LOG
+4- Entre no arquivo&#8230; nas últimas linhas deve aparecer algo parecido com :
+<code>
+---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.340 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.360 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.670 2008— %SQLSRV-I-EVENT_LOG, event logged at line 4455 in file COM_DIALOG.C;1 %SQLSRV-E-READERR, Error on read %SYSTEM-F-LINKDISCON, network partner disconnected logical link ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.680 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.700 2008— %SQLSRV-I-EVENT_LOG, event logged at line 286 in file DISP.C;1 %SQLSRV-W-EXCEPTION_RAISE, Exception raised: DBS_SYSERVICEFAILED %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 2 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.710 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.940 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000029 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.960 2008—
+</code>
+
+A origem deste problema vem da questão da versão do SQL que está sendo executado (Versão 7) sendo assim é necessário mudar a versão do serviço generic para a 7.1 , para isso tem que ser feito os passos
+
+1- Va para o sys$system
+2- execute run sqlsrv_manager71
+3 - Vai aparecer o prompt SQLSRV
+4 - Digite o comando : show service generic full;
+
+
+<code>
+Service GENERIC
+State:                    RUNNING
+Owner:                    SQLSRV$DEFLT
+Owner Password:                Protocol:                 SQL/Services     Default Connect Username:      Default Connect Password:     SQL version:              STANDARD     Autostart:                on     Process init:                  Attach:                        Schema:                        Reuse:                    SESSION     Database Authorization:   CONNECT USERNAME     dbsrc file:                    SQL init file:                 Appl Transaction Usage:   SERIAL     Idle User Timeout:             Idle Exec Timeout:        1800 seconds     Min Executors:            2     Max Executors:            10     Running Executors:        2     Clients Per Executor:     1     Active Clients:           1 Access to service GENERIC     Granted to users:         PUBLIC  PRIVILEGED_USER 'SQLSRV$DEFLT' SQLSRV>
+</code>
+ 5 - Execute a sequencia
+<code>
+SQLSRV> shutdown service generic;
+SQLSRV> alter service generic sql version 7.1;
+SQLSRV> show service generic full;
+SQLSRV> start service generic;
+SQLSRV> exit
+</code>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/15/javaplc/">Fazendo Java Conversar Com O PLC</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-15T00:00:00-03:00" pubdate data-updated="true">Mar 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Alguns conhecidos que lêem este blog me pediram para escrever mais post sobre a questão de como um programa Java poderia conversar com um PLC. Posso adiantar que a tarefa não é da mais simples e, como dizem em diversos foruns do assunto, coisa para que tem &#8220;coração forte&#8221;.  Primeiro, muitos dos que vão se aventurar a fazer algo do genero vão perceber que a quantidade de informações nesse sentido são pouquíssimas e as tem, em sua grande maioria, são pagas.  Passei bons meses vasculhando a internet (Deus abençoe o Google :D ) e o resultado por vezes foi desencorajador.
+A maioria dos fabricantes de PLC tem adotado o <a href="http://en.wikipedia.org/wiki/OLE_for_process_control">OPC</a> (OLE for process control) disponibilizando aplicativos para so Windows que expões as tabelas de dados dos plcs através de servidores OPC.  Com evolução crescente dos equipamentos, alguns já nem precisam mais do aplicativo e permitem o acesso eles mesmos através de cartas especiais, mas isso é assunto de posso escrever em outro post.  O Opc foi algo especificado na tecnologia da Microsoft. Como é algo M$ é facil concluir que toda a gama de produtos da M$ tem este suporte, assim como o seu .NET (suporte nativo através do ActiveX e DCOM) .  JUntando outros motivos e o citada anteriormente, tem-se hoje um predileção a escolher a plataforma Windows para o desenvolvimento de drivers, e aplicativos SCADA o que explica a raridade de opções em outras tecnologias e SO. E não é diferente com java.
+Alguém poderia dizer ao ler os paragrafos acima que seria simples: &#8220;Basta escrevermos uma bilbioteca OPC em Java que está tudo pronto&#8221;. Sim, concordo em parte e digo que quem se candidatar  faça-o e depois permita que utilizemos sua API pois esta não é uma tarefa nada facil.   Um outro caminho seria partir para implementar algum protocolo particular do plc em Java. Bem isso pode ser um caminho, pois alguns deles estão escritos em C seria algo como um engenharia reversa. A questão que temos que pagar por suas especificações ou bibliotecas e fazÊ-lo seria um violação das leis.
+Nos sobram poucas possibilidades (bem poucas).
+A maioria das opções válidas são pagas e as open source existentes cobrem apenas uma pequenas parte e tem aplicações muito específicas.  Uma outra opção seria escrever algo em JAva que acessaria a um driver de um fabricante e por meio deste faria o acesso (é deste jeito que meus programas em .NET fazem).  MAS COMO ACESSAR O DRIVER ESCRITO PARA Windows?  Bem, a maioria deles expõe seus serviços por meio de DCOMs, bastaria que seu java falasse este &#8220;protocolo&#8221;. Para tanto, antes que o leitor comece a escrever suas classes através do JNI sugiro uma olhada na api <a href="http://www.j-interop.org/sampleusage.html">j-Interop</a>. Vale a pena e funciona.
+A minha intenção é juntar um pessoal para escrevermos uma biblioteca de acesso em java sobre a licença LGPL. Assim que conseguir aviso a galera.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/04/integration-continuous/">Utilizando Cruise Control Para AplicaÃ§Ãµes .NET</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-04T00:00:00-03:00" pubdate data-updated="true">Mar 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Por mais que tenha um grande experiência com desenvolvimento de sistemas em Java, alguns das aplicações, principalmente para supervisórios, tenho que fazê-los em .NET, por diversos motivos (facilidade no uso de COM e DCOM, OPC, etc).  Ao utilizar o .NET, fora o domínio que não é tão grande quanto domino o Java, sempre senti falta de diversos recursos, como por exemplo: bilbioteca de teste unitário, behavior test, bibliotecas que encapsulem processos trabalhosos, servidores de integração continua, etc. Parti do pressuposto que algo similar deveria existir para .NET e me pus a procurá-los.
+Nessas buscas pela internet (Deus abençoe o Google) acabei achandos, os similares a diversas coisas que temos para Java : hibernate -> nhibernate, ant &#8212; >nant, junit &#8212;> nunit&#8230; e por ai vai&#8230; Ainda me restava achar algo para realizar o build de forma integrada, ou seja, integration continuous. Acabei encontrando o Cruise Control (que já utilizei para Java) e vi que eles portaram quase todas as funcionalidades existente na versão Java para a versão .NET.
+O <a href="http://confluence.public.thoughtworks.org/display/CCNET/What+is+CruiseControl.NET">Cruise Control</a> é uma ferramenta feita, creio eu, pelo pessoal da ThoughtWorks, cuja a função é realizar builds da aplicação de forma integrada, por exemplo: ao commitar uma modificação no seu SOurce Safe ou CVs ou SVN, esta ferramenta é capaz de executar os teste unitários para verificar a integridade, executar teste de cenários (behavior tests), criar um build (caso todos os testes deêm ok) e avisar a todos do status do projeto.  Isso, para um projeto grande, com uma equipe relativamente numerosa, representa um &#8220;mão na roda&#8221; e facilita muito a vida e aumenta a qualidade e permite manter no controle de versão um build estável.
+Pretendo utilizá-lo num projeto que devo começar (o mesmo que vou usar o SCRUM - vai ser um verdadeiro laboratório) e assim que for evoluindo em seu uso vou postando pequenos tutoriais e relatos de experiências.
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/16/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/14/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Estudos Compartilhados IV - Arquitetura Emergente - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Estudos Compartilhados IV - Arquitetura Emergente</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
+
+Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
+<h2>Definir fazendo</h2>
+A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
+
+Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
+
+Nisso se encaixa o conceito de arquitetura emergente.
+<h2>Arquitetura emergente</h2>
+Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
+
+Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
+
+As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
+<h2>Refactoring</h2>
+Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
+
+Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
+
+Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
+
+Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
+
+Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
+
+&nbsp;
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/12/20/tim-mega-fail/" title="Previous Post: TIM mega fail">&laquo; TIM mega fail</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/02/11/codigo-legado/" title="Next Post: CÃ³digo legado">CÃ³digo legado &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ser agil Ã© negar analise e design ? - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Recentemente li um artigo do Martin Fowler (já tinha lido, mas praticamente o reli com outros olhos)  onde ele discute a questão do design e da &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2009/08/27/zzzzz">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ser Agil Ã© Negar Analise E Design ?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-27T00:00:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><img class="alignleft" src="http://archive.oredev.org/images/18.495f40b910e9aa1aaf080005138/martin_fowler.jpg" alt="" width="100" height="115" /><span style="color: #000000;">Recentemente li um artigo do </span><a href="http://martinfowler.com/"><span style="color: #000000;">Martin Fowler</span></a><span style="color: #000000;"> (já tinha lido, mas praticamente o reli com outros olhos)  onde ele discute a questão do design e da análise dentro do mundo ágil, mais precisamente o XP (</span><em><span style="color: #000000;">Extreme Programming</span></em><span style="color: #000000;">).  No artigo, cujo título é </span><a href="http://martinfowler.com/articles/designDead.html"><span style="color: #000000;">&#8220;Is Design Dead?&#8221;</span></a><span style="color: #000000;">, Fowler discorre sobre vários tópicos e tenta ver se é realmente um fato que com a adoção de  metodologias ágeis, o uso de padrões, análise prévias e design se tornaram práticas mortas</span>
+
+<span style="color: #000000;">Dentro do times ágeis, existem diversas premissas que devem ser adotadas para que se possa colher todas as vantagens que ele oferece.  Algumas das mais famosas são: </span>
+<ul>
+	<li><span style="color: #000000;">Faça o justo necessário:  não faça aquém nem além do que deve ser feito na iteração</span></li>
+	<li><span style="color: #000000;">Refatoração : sempre que puder melhore o código</span></li>
+	<li><span style="color: #000000;">Foco nas tarefas que agregam valor na visão do cliente</span></li>
+	<li><span style="color: #000000;">Fazer o simples e depois evoluir o código de acordo com a necessidade.</span></li>
+</ul>
+<span style="color: #888888;"><span style="color: #000000;"> </span><strong><span style="color: #000000;">Fazer o justo necessário</span></strong><span style="color: #000000;"> é de focar em gerar valor para o cliente. Aqui a principal mensagem está em evitar tarefas que no final não geram retorno. Exemplo: o tme que gasta horas para criar um modelo de dados;  times que gastam considerável soma de tempo para escrever  bibliotecas para fazer algo que não esteja ligada a funcionalidade que o cliente deseja  naquela iteração (api de log, api de para ler o xml de configuração, api para tratar string, etc). Nesta ideia também se encaixa a questão de evitar tarefas que não agregam valor para o produto.</span></span>
+
+<span style="color: #888888;"><img class="aligncenter" src="http://www.sdr.com.br/professores/sdr/SDRTaiichi001h.jpg" alt="" width="300" height="294" /><span style="color: #000000;">A </span><strong><span style="color: #000000;">Refatoração</span></strong><span style="color: #000000;"> constante do código significa mais que simplesmente rescrever trechos de código e sim, uma busca constante por simplicidade, qualidade e por programas legíveis. Uma coisa que os mais novos sempre erram é de ter uma visão simplória do que venha ser Refatorar : não é simplesmente acerto de escopo de variável,  comentar, etc.  Refatorar, em XP principalmente é &#8220;alma do negócio&#8221;. </span></span>
+
+<span style="color: #888888;"><span style="color: #000000;">Quando se diz - &#8221; </span><strong><span style="color: #000000;">Fazer o simples e evoluir</span></strong><span style="color: #000000;">&#8221;, você está comunicando ao seu time que é desejável que façam coisas simples. A medida da necessidade do projeto, os modelos, arquiteturas, etc., vão evoluindo e ganhando os recursos necessários para resolver os problemas.  Dentro da refatoração existirá, também, o espaço necessário para a melhora.</span></span>
+<p style="text-align: center;"><span style="color: #888888;">
+<img class="aligncenter" src="http://www.osvigaristas.com.br/imagens/trambiques/simplicidade-2046.jpg" alt="" width="210" height="220" /></span>
+<h2><span style="color: #000000;">Fazer ou não fazer análise em projetos ágeis ?</span></h2>
+<span style="color: #000000;">Diante do que disse antes, principalmente de evitar atividades que não agreguem valor, os mais puristas, diriam que fazer analise ( estudo, diagramas, etc para entender a arquitetura e quais seriam os requisitos técnicos)  é algo que não deve ser feito. Iriam além estes mesmo: afirmaria que tal prática é ultrapassada e que de nada server.</span>
+
+<span style="color: #000000;">Bom, eu discordo. E se me perguntassem isso, responderia:  - &#8220;Depende ! &#8221;</span>
+
+<span style="color: #000000;">Se estamos falando de um sistema simples, cujos os requisitos são extremamente claros,  fazer analise pode ser um passo a mais que poderia ser retirado. Ou então, considerado como um história de documentação que deve ser tratado no backlog ( mas com baixa prioridade de acordo com a visão do cliente). Porém se estamos falando de sistemas cujo o processo a ser gerido é complicado  e/ou com regras de negócios complexas, uma fase, por menos que seja, de análise ajudaria até melhor entender os requisitos. O problema está que muitas equipes de desenvolvimento tornam o resultado de uma analise uma verdade absoluta e imutável.  Bem, isso não pode ser verdade pois o cliente vária vezes nem ter certeza do que quer e ao longo das entregas que começa a desenhar melhor sua necessidade e desejo. </span>
+<blockquote><span style="color: #000000;">Analisar previamente ajuda a diminuir riscos e a nortear, de certo modo, a visão do time na hora de implementar.</span></blockquote>
+<span style="color: #000000;">Entretanto, ao realizar uma analise, podemos pensar como um rascunho do Niemeyer de um prédio novo. Serve apenas para ter um impressão inicial não muito clara do que iremos realizar. </span>
+<h2>Quem usa XP não adota padrões?  Não define arquitetura?</h2>
+Esta aí outra coisa que não gosto e nem concordo em ouvir.  Bem, os padrões não são ruins, são as pessoas que abusam do direito de usá-los.  Já vi gente fazendo um site para 10 pessoas (coisa interna de uma empresa) cujo o escopo é limitado e quase nunca evolui, colocando milhões de camadas, milhares de DAOs, VOs, etc.
+
+Muitos poderiam dizer, principalmente os defensores mais ferrenhos, que devem sempre fazer as coisas simples.  Minha resposta : no final, caso faça algo descendente, é bem possível que &#8220;esbarre&#8221; num padrão.
+
+Outra coisa que não concordo é a questão de não se discutir arquitetura&#8230; Para um projeto pequeno, você pode se dar ao luxo de não pensar nisso, pelo menos, num primeiro momento, mas para projetos grandes, tem que pensar nos componentes pois isso influirá diretamente na forma que time irá implementar as coisas. Novamente reforço que, quando sugiro usar padrões, não é pegar o livro e fazer tudo que está dizendo ali. Nada nos impede de adaptar a sugestão para nossa realidade.
+
+Rebeldia  e revolução a parte, sempre vou dizer que o melhor caminha continua sendo o do meio. Ficar com o melhor de todos os mundos é o paraíso a ser desejado.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-27T00:00:00-03:00" pubdate data-updated="true">Aug 27<span>th</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2009/08/27/zzzzz/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2009/08/27/zzzzz/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/08/26/java-e-mal-ou-sao-os-javeiros-que-sao-maus/" title="Previous Post: Java Ã© Mal ? Ou sÃ£o os javeiros que sÃ£o maus ?">&laquo; Java Ã© Mal ? Ou sÃ£o os javeiros que sÃ£o maus ?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/08/28/comparando-arquivos-uma-ideia-de-ferramenta/" title="Next Post: Comparando arquivos - uma ideia de ferramenta">Comparando arquivos - uma ideia de ferramenta &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

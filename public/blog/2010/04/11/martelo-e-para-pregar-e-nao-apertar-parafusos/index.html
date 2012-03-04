@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>"martelo Ã© para pregar e nÃ£o apertar parafusos" - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Uma das coisa que escutei e sempre repeti por realmente acreditar que faça sentido é que, existe a ferramenta certa para cada tipo de trabalho.  Não &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2010/04/11/martelo-e-para-pregar-e-nao-apertar-parafusos">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">"Martelo Ã© Para Pregar E NÃ£o Apertar Parafusos"</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-11T00:00:00-03:00" pubdate data-updated="true">Apr 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div>
+
+Uma das coisa que escutei e sempre repeti por realmente acreditar que faça sentido é que, existe a ferramenta certa para cada tipo de trabalho.  Não adianta acreditar que aquela &#8220;paradinha&#8221; maneira que você conhece de &#8220;traz para frente&#8221;  vai ser a melhor solução para todos os seu problemas, pois simplesmente como uma verdade absolut, ela não será e quem a criou sabe disso. Note que eu disse - &#8220;não será a melhor opção&#8221;- e não = &#8220;não resolverá ou não fará&#8221;.
+
+Acredito que todas a novas linguagens são capazes  de resolver a grande maioria de nossos problemas computacionais atuais.  Em raríssimos casos poderemos apenas usar uma determinada linguagem&#8230;muito mais por requisitos de processamento, velocidade e etc do que capacidade daquela linguagem. Falo isso, pois cansei de ouvir gente dizer que a linguagem B não é capaz de fazer o que a linguagem C faz. Ela faz sim, só que de uma forma mais complexa ou mais verbosa, por exemplo.
+
+Sei que tocar nesse assunto é meio &#8220;chover no molhado&#8221; por ser este um tema muito falado e batido, porém, gostaria de dar uma visão real disso.  Imagine você numa situação em que precisar fazer um sistema. Este sistema possui várias facetas: uma parte para cliente, outra que ficará com um processamento em batch (background), etc. Já tive requisitos como estes em diversas oportunidades e em cada uma delas foi uma solução adotada.  Posso dizer que o pior dos casos foi quando tentamos usar a mesma &#8220;estrutura&#8221; para tudo.
+
+Imagine que agora você comece a aplicação para os requisitos acima e faça tudo dentro de um servidor de aplicação. Aquela típica solução Java, onde um dentro do JBoss ou outro esteja tudo&#8230; Ali estão a lógica do sistema web, os processamentos em batch agendados via Quartz, etc.  Imagine também que isso tudo estará dentro de um servidor Linux (qualquer distribuição que seja)  - coisa bem factivel.  Dái começo a colocar algumas perguntas:  se todo sistemas linux tem um Cron (serviço de agendamento) por que usar algo feito em java para fazer a mesma coisa? Se argumentarem que é para garantir a independencia de plataforma, pergunto qual são as reais possibilidades de mudar a plataforma (SO, etc) ?  Com certeza que bastante remotas.
+
+Esse tipo de coisa pode ser ainda mais extrapolado. Imagina agora que dentro do seu sistema é preciso processar diversos conteúdos de arquivos e importar seus dados para a base de dados do sistema. Muito fariam uma classe para que você fizessem um upload e processar. Mas não seria mais interessante deixar que alguém carregue via ftp e um processo agendado trate-o depois. Esse processo poderia ser algo escrito em bash mesmo pois será ultra rápido em comparação a uma aplicativo java. Mais uma vez aqueles xiitas diriam que seria para manter a questão da independencia de plataforma, mas quantas vezes sua web app mudou de servidor (SO, hardware, etc) nos últimos anos?
+
+Se ousarmos um pouco mais, dada as recente evoluções da JVM (Java Virtual Machine)  as possibilidades vão além de usar o sistema operacional. Hoje é possível escolher em qual linguagem irá escrever cada parte de seu sistemas e estas coexistirem sem nenhum problema.  Antes que pensem que isso é um discurso de incentivo ao uso de Java, linguagem da qual gosto, estou usando esse ela como exemplo por ser um bom exemplo de como isso funciona e tem sido alvo de investimento.
+
+Famosos produtos tem usado uma &#8220;tecnologia&#8221; para fazer a parte de integração com usuário e outra para fazer toda a parte de Kernel do sistema. Acredito que o Twitter seja um exemplo disso, pois sua parte de interna foi toda reescrita em Scala (nova linguagem objeto- funcional da JVM) .
+
+Voltando a parte prática da coisa, um exemplo de  que é bom conhecer diversas ferramentas e saber empregá-las, é um caso num empresa que era preciso fazer medições de audiência em páginas. A solução inicial era de conteúdo dinamico em todas as páginas que quando acessadas iriam no servidor e gravavam um dado no banco de dados. Essa solução embora resolvesse o problema, ela acabava por onerar por demais o processamento pois tal parte não poderia ser posta em cache e a cada acesso, haveria uma requisição no servidor e um acesso ao banco de dados. O pessoal então passou para algo mais hibrido e pouco ortodoxo para época:  fez uma modificação para que o servidor colocasse no arquivo de log os dados de quem estava acessando e construiram um programa em shell para analisar esses logs. Com isso, embora não tivessemos um &#8220;tempo real&#8221; dos acessos, para os nosso requisitos de estatísticas serviu perfeitamente e reduziu a carga e o processamento, deixando para uma outra tecnologia que lida melhor com busca via regex fazer o trabalho dela.
+
+Essa solução não sei se funciona ainda, acredito que com saida da terceirizada que fez da empresa tenha sido tirado,  mas foi uma marca para me mostrar que existem outras possibilidades além daquela que eu sabia na época. É isso que conta. E num mundo cada vez mais competitivo é importante ter mais de uma &#8220;carta na manga&#8221;.
+
+Bem até a próxima pessoal.
+
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-11T00:00:00-03:00" pubdate data-updated="true">Apr 11<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2010/04/11/martelo-e-para-pregar-e-nao-apertar-parafusos/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2010/04/11/martelo-e-para-pregar-e-nao-apertar-parafusos/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/03/23/nova-revolucao-industrial/" title="Previous Post: Nova revoluÃ§Ã£o industrial">&laquo; Nova revoluÃ§Ã£o industrial</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/04/13/para-bom-desenvolvedor-editor-de-texto-basta/" title="Next Post: "Para bom desenvolvedor editor de texto basta"">"Para bom desenvolvedor editor de texto basta" &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

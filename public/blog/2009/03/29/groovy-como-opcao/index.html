@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Groovy como opÃ§Ã£o - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Durante o encontro de TI, houve uma apresentação do Guilherme Chapiewiski, onde ele falou um pouco do que ele acredita que venha ser as tecnologias &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2009/03/29/groovy-como-opcao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Groovy Como OpÃ§Ã£o</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T00:00:00-03:00" pubdate data-updated="true">Mar 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Durante o encontro de TI, houve uma apresentação do <a href="http://gc.blog.br">Guilherme Chapiewiski</a>, onde ele falou um pouco do que ele acredita que venha ser as tecnologias que estão na &#8220;moda&#8221; ou que virão a ser moda. Em sua apresentação ele apresentou o Ruby, Python (<a href="http://www.djangoproject.com/">Django</a>), falou do Java e por fim do ASP.NET. De cada uma citada, ele apresentou seu entendimento de prós e contras.  Concordo com ele em parte mas não é o objetivo aqui deste post.
+Acabou que devido o interesse por parte dos participantes no tema não tive a oportunidade de conversar com ele depois, pois acredito que na palestra dele &#8220;faltou&#8221; falar também no Groovy. O Groovy é uma linguagem criada, totalmente, em Java, com o objetivo de ser algo parecido com Ruby, python, etc.  Hoje, com as melhorias continuas que vem recebendo, tornou-se um excelente opção frente as demais.  Possui característica semelhantes ao Ruby, Python, etc, como por exemplo a questão da flexibilidade para sintaxe e escrita de código, tipagens dinamicas, closures, etc. (veja exemplo abaixo)
+<code>
+nome = ["a","b","C"]
+nome.each{
+     println it
+}
+</code>
+Outro exemplo
+<code>
+//Exemplo retirado do site do Groovy.
+import groovy.xml.MarkupBuilder
+import org.custommonkey.xmlunit.*
+</code>
+
+<code>
+def writer = new StringWriter()
+def xml = new MarkupBuilder(writer)
+xml.records() {
+  car(name:'HSV Maloo', make:'Holden', year:2006) {
+    country('Australia')
+    record(type:'speed', 'Production Pickup Truck with speed of 271kph')
+  }
+  car(name:'P50', make:'Peel', year:1962) {
+    country('Isle of Man')
+    record(type:'size', 'Smallest Street-Legal Car at 99cm wide and 59 kg in weight')
+  }
+  car(name:'Royale', make:'Bugatti', year:1931) {
+    country('France')
+    record(type:'price', 'Most Valuable Car at $15 million')
+  }
+}
+</code>
+
+A sua comunidade é bastante ativa e vem trabalhando firme no proposito de torná-la interessante e poderosa, o que a torna uma séria candidata a ser a segunda linguagem &#8220;oficial&#8221; da plataforma JAVA ( para mim no curto tempo JAVA deixará ser uma linguagem a se codificar para uma plataforma para desenvolver sobre - assunto para outro post). Isso porque, além de todo o trabalho, Groovy oferece aos desenvolvedores Java uma transição suave, pois permite que escreve em sintaxe JAVa dentro de seus programas,  trabalha com classe Java, etc.
+Além de tudo isso já citado, ainda temos a questão da grande quantidade de extensões, plugins, frameworks feitos em e para groovy que so enriquecem, como por exemplo, existe uma implementação Rails em groovy que é excelente.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T00:00:00-03:00" pubdate data-updated="true">Mar 29<span>th</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2009/03/29/groovy-como-opcao/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2009/03/29/groovy-como-opcao/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/03/29/como-fazer-um-telnet-pelo-python-num-servidor-oopnevms-2/" title="Previous Post: Como fazer um telnet pelo python num servidor OpenVMS">&laquo; Como fazer um telnet pelo python num servidor OpenVMS</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/04/04/regular-expression/" title="Next Post: Usando ExpressÃµes Regulares">Usando ExpressÃµes Regulares &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

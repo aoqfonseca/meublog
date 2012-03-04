@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
+
+Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
+
+Avisos paroquiais feitos vamos ao que interessa.
+
+Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
+
+O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
+
+Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
+
+&nbsp;
+
+Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
+
+&nbsp;
+[cc lang=&#8221;html&#8221;]
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
+[/cc]
+
+&nbsp;
+Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
+
+Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
+
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+//Aqui dentro as expectativas
+});
+[/cc]
+
+&nbps;
+
+Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
+
+Assim se continuar nossos testes ficarão assim: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+  it(&#8220;deve ser true&#8221;, function(){
+    expect(true).toBeTruthy();
+  });
+});
+[/cc]
+
+&nbsp;
+
+Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
+
+Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/">Escolhendo Minha Ferramenta De TDD Para Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-30T00:00:00-03:00" pubdate data-updated="true">Sep 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+
+Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
+
+Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
+
+[cc lang=&#8221;ruby&#8221;]
+describe &#8220;Model Aluno&#8221; do
+  before :each do
+    @aluno = Aluno.new
+  end
+
+  subject { @aluno.nome }
+
+  it &#8220;Deve ser um model válido&#8221; do
+    @aluno.should be_valid
+  end
+end
+[/cc]
+
+&nbsp;
+Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
+
+Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
+
+Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
+
+Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
+[cc lang=&#8221;javascript&#8221;]
+spyOn(minhaClasse, &#8220;meuMetodo&#8221;)
+&#8230;
+it(&#8220;ve se foi chamado&#8221;, function(){
+  minhaClasse.meuMetodo(&#8220;qualquer string&#8221;);
+  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
+});
+[/cc]
+
+&nbsp;
+
+Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
+[cc lang=&#8221;javascript&#8221;]
+//codigo de animaçao com tempo aqui
+..
+wait(500);
+run(function(){
+expect(elemento.style(&#8216;display&#8217;)).toEquals(&#8216;none&#8217;)
+});
+[/cc]
+
+&nbsp;
+
+Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
+
+Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/">Respondendo Uma Pergunta Sobre TDD</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-28T00:00:00-03:00" pubdate data-updated="true">Sep 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">No post que anterior, no qual falei sobre <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a>, recebi um comentário perguntando dentro de algumas situações se O TDD se encaixava ou não.  Como a dúvida é recorrente e o tema é bastante controverso, resolvi, ao invés de responder o comentário dele, escrever um post.
+
+A primeira coisa, em minha opinião, que tem que ficar clara, que <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um metodologia de desenvolvimento e não de projeto. Usamos <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> para gerar código melhor e com isso aumentar a qualidade do que estamos fazendo.  Testar antes não é garantia de zero bugs, mas ajuda a construir uma solução melhor pensada, simples, concisa,  e, sim, com testes automatizados que irão evitar muitos bugs.
+
+<a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é uma forma de trabalho que se encaixa em qualquer modelo de equipe/projeto.  Se o seu time está em algo mais ágil ou waterfall, não faz a mínima diferença. Sem o seu time, irá entregar complexidade, pontos por caso de uso ou pontos de função isso também não faz diferença.  Pois, como já disse, <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um filosofia de desenvolvimento e não de gestão.
+
+Ela trabalha em cima de ciclos pequenos onde a gente escreve o teste com a necessidade; após escrevemos o código para atender a necessidade e fazer o teste passar e por fim revistamos a solução para melhorá-la buscando princípios de <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" target="_blank">Clean Code</a> ( SOLID).  Se no final desse ciclo temos uma história entrega (por exemplo uso de quadros - Kanban, etc) ou se temos um ponto de função, observe que não faz diferença.  O que pode acontecer, no caso de pf é que deverá prever isso ( eu acho - nunca trabalhei com pontos de função).
+
+Uma boa dica é que procure um DOJO (acesse o site do <a href="http://dojorio.wordpress.com/" target="_blank">DojoRio</a>) e veja na prática isso acontecer e como ela não tem relação com a gestão.
+
+Se quer entender mais sobre TDD leia o <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="_blank">livro</a> do Kent Beck. Existe uma infinidade de outros livros sobre tão bons, mas acredito que seja legal começar pelo início. Depois a medida que for se sentindo mais confortável &#8230;
+
+Assim, sem mais rodeios vamos a resposta a pergunta que me fizeram:
+
+1. Posso usar TDD com um projeto que me exija entregar 4 a 40Pf ou qualquer outra coisas?
+
+SIM ! Se acha que estou exagerando, procure o Alex Gomes da <a href="http://www.seatecnologia.com.br/" target="_blank">SEA Tecnologias</a>. Seu maior cliente é o governo federal.  Existem outros exemplos como por exemplo
+
+2. Código legado ?
+
+Sim dá para usar TDD. Para te ajudar recomendo a leitura do livro <a title="Livro na Amazon" href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052" target="_blank">Working Effectively with Legacy Code</a> do Michael Feathers. Ele é uma excelente forma de ver como você pode testar o seu código legado.
+
+Por fim espero ter te ajudado. E caso tenham dúvidas podem comentar que irei responder.
+
+&nbsp;
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/27/tdd-no-frontend/">TDD No FrontEnd</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-27T00:00:00-03:00" pubdate data-updated="true">Sep 27<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código &#8220;server side, no meu código &#8220;client side&#8221;. Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
+
+Os ditos desenvolvedores FrontEnd hão de concordar comigo que muitas vezes o código Javascript fica uma verdadeira bagunça. São poucos que procuram organizar as coisas, criar componentes e funções para os comportamentos repetidos e etc. Fica a dica de ver a palestra do <a title="Leonardo Balter" href="http://leobalter.net" target="_blank">LeoBalter</a> - WTF Javascript.
+
+Na grande maioria dos projetos que acompanhei (trabalhei ou vi) as coisa cresciam de maneira muito orgânica e com isso, nunca via uma preocupação com nomes de métodos, separação, DRY e outros princípios de &#8220;Clean Code&#8221;.
+
+TDD, na minha visão, é muito mais para ajudar nesse sentido do que simplesmente criar teste automatizados. Quando escrevemos os teste antes, estamos ali &#8220;verbalizando&#8221; a forma que gostaria que nossas apis seja consumidas &#8230; estamos na posição de quem irá usar um dia aquilo. Só nisso a diferença é mostruosa: já começamos a ver coisas repetidas; nomes de métodos; coisas que deveriam estar em classes e etc.
+
+Um exemplo seria quantas vezes não buscamos um mesmo elemento no mesmo script? Sabia que isso é perda de processamento? Muitas vezes bastava que fizesse isso e guardasse a referência numa variável. Isso, ao escrever os testes antes, fica bem evidente. Tente você mesmo e me diga.
+[cc lang=&#8221;javascript&#8221;]
+$(&#8220;algo&#8221;).hide();
+&#8230;
+$(&#8220;algo).click(function(){ &#8230;
+//Poderiamos ter algo mais assim e os testes irão mostrar isso - famosos smells
+var algo = $(&#8220;algo&#8221;)
+algo.hide()
+algo.click(&#8230;
+[/cc]
+
+Outra coisa que vem com o uso de TDD na escrita de javascript é que você começa a ter uma rede de proteção que quando for necessário alterar algo fará com fique mais tranquilo quanto a introduzir um bug ou quebrar um comportamento já existente.
+Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual estou usando.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/">Usando Parametros Da Linha De Comando No Rake E No Capistrano</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-06T00:00:00-03:00" pubdate data-updated="true">Sep 6<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
+todos os projetos que já trabalhei até hoje exigem um bom número de task em RAKE e CAPISTRANO. Desde que meus modelos são tão grandes quanto necessário, estas task e receitas são em geral pequenas e procuram fazer pouco lógica delegando para o modelo apropriado&#8230;
+O que desejo é falar sobre é que sempre estamos precisando passar parametros para estas tasks, e na maioria das vezes é bastante  escassa as documentações para fazer isso. 
+Imagine que  você quer fazer algo como: 
+[cc lang=&#8221;bash&#8221;]
+rake options:show opt1=value1
+[/cc]
+E dentro da task deseja pegar esse valor e fazer algo. Para resolver fica mais ou menos assim: 
+[cc lang=&#8221;ruby&#8221;]
+namespace :options do
+
+  desc &#8220;Show how to read in command line options&#8221;
+  task :show do
+    p &#8220;option1 is #{ENV[&#8216;opt1&#8217;]}&#8221;
+  end
+
+end
+[/cc]
+
+Usando parametros da linha de comando do Capistrano: 
+Aqui as coisas são um pouco diferente. É necessário que use a opção -s na linha de comando para ativar a função de parser do chave/valor. Veja o exemplo abaixo: 
+[cc lang=&#8221;bash&#8221;]
+cap -a show_options -s opt1=value1
+[/cc]
+Assim você um dicionário dentro do capistrano (receita) que a chave é opt1 e o valor dele é value1. voce pode acessar diretamente a chave por causa do method-missing que implementa isso para você. Fica assim o código. 
+[cc lang=&#8221;ruby&#8221;]
+task :show_options do
+  p &#8220;option1 is #{opt1}&#8221;
+end
+[/cc]
+
+Para maiores detalhes veja o artigo original e leia a documentação do Capistrano. Fiquem a vontade para comentar e assim que puder respondo. 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/30/palestra-no-fisl/">Palestra No Fisl</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-30T00:00:00-03:00" pubdate data-updated="true">Jun 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Segue abaixo o slides da palestra que acabei de dar no FISL. Obrigado a todos que assistiram e deram seu feedback.
+<div style="width:425px" id="__ss_8470619"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/aoqfonseca/codigo-legado-fisl-8470619" title="Codigo legado fisl" target="_blank">Codigo legado fisl</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/8470619" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/aoqfonseca" target="_blank">aoqfonseca</a> </div> </div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
+Navegue para achar o jar : selenium-server
+Renomeie esse jar para um arquivo zip: 
+[cc lang=&#8221;bash&#8221;]
+mv selenium-server.jar selenium-server.zip
+[/cc]
+Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
+[cc lang=&#8221;bash&#8221;]
+mkdir selenium-server
+cp selenium-server.zip selenium-server/
+cd selenium-server
+unzip selenium-server.zip
+rm selenium-server.zip
+[/cc]
+Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
+[cc lang=&#8221;bash&#8221;]
+find . -name &#8220;*.rdf&#8221;
+[/cc]
+Altere a linha abaixo para a versão que queres suportar: 
+[cc lang=&#8221;java&#8221;]
+<em:maxVersion>5.*</em:maxVersion>
+[/cc]
+Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
+[cc lang=&#8221;bash&#8221;]
+zip -r selenium-server *
+mv selenium-server.zip selenium-server.jar
+jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
+[/cc]
+Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/07/usando-jasmine/">Usando Jasmine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-07T00:00:00-03:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Num post passado dei uma breve introdução do <a title="Site do Jasmine" href="http://pivotal.github.com/jasmine/">Jasmine</a>.  Jasmine é uma biblioteca de BDD para JavaScript. Nesse artigo quero mostrar um passo a passo simples para você escrever seus primeiros testes.  Se estiver fazendo uma app em Ruby, mais precisamente em Rails, tudo isso fica muito fácil pois basta instalar a gem do Jasmine e seguir os passos que o próprio site indica. Abaixo mostrarei como fazer quando você está apenas desenvolvendo um javascript - fora do contexto de uma app.
+
+Primeiro instale o NodeJS e o npm em sua máquina. Caso não saiba como, no meu blog mesmo tem um artigo explicando como fazer isso (veja no histórico).  Tendo esses dois instalados, vá a sua linha de comando e execute o seguinte comando:
+[cc lang=&#8221;bash&#8221;]
+npm -g install jasmine-tool
+[/cc]
+
+Esse comando acima instalará em seu computador um conjunto de ferramentas que irá possibilitar, você executar seus testes e outras coisas interessantes. Veja o site do produto <a href="https://github.com/jamescarr/jasmine-tool">clicando aqui</a>. 
+Instalada a ferramenta, entre na sua pasta de projeto e digite o comando: 
+[cc lang=&#8221;bash&#8221;]
+andre.fonseca@mac179016 ~/projects/test $ jasmine init
+Jasmine has been installed with example specs.
+
+To run the server:
+
+jasmine run
+
+To run the server and monitor for changes:
+
+jasmine mon
+
+To run the automated CI task with WebDriver:
+
+jasmine ci
+[/cc]
+Isso irá montar uma estrutura de projeto pronta para ser usada para os seus testes. Verá que já terá alguns exemplos para teste. Para ver se está tudo ok, rode o comando de teste: 
+[cc lang=&#8221;bash&#8221;]
+jasmine ci
+[/cc]
+Se você estiver fazendo isso no Mac OS 10.6.6 ou superior deve ocorrer. Assim que tiver a solução eu aviso aqui.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/03/instalando-rvm/">Instalando RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-03T00:00:00-03:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
+Para instalar é bem fácil e basta seguir as instruções do site do produto (<a href="https://rvm.beginrescueend.com/">clique aqui</a> para ver)
+No seu terminal digite o comando para baixar e instalar: 
+[cc lang=&#8221;bash&#8221;]
+bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+[/cc]
+Fique atento que o comando acima precisa do git instalado.  Depois disso, no meu caso, preciso de várias versões do ruby na minha máquina. Uma delas é o Ruby Enterprise. Para instalá-los, faça: 
+[cc lang="bash"]
+andre.fonseca@mac179016 ~ $ rvm install ree
+Installing Ruby Enterprise Edition from source to: /Users/andre.fonseca/.rvm/rubies/ree-1.8.7-2011.03
+ree-1.8.7-2011.03 - #fetching (ruby-enterprise-1.8.7-2011.03)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7713k  100 7713k    0     0   545k      0  0:00:14  0:00:14 --:--:-- 1499k
+[/cc]
+Esse comando de cima irá instalar o REE. O resto das distribuições deve procurar pelo nome (1.9 --> ruby-1.9.2, por exemplo). 
+Por fim, você pode criar um gemset (pasta de gems) para cada projeto. Para isso use os comandos (no meu exemplo abaixo estou criando um gemset chamado participacoes, para um projeto meu) 
+[cc lang=&#8221;bash&#8221;]
+rvm gemset create participacoes
+rvm gemset use participacoes
+[/cc]
+Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. Prontinho e tudo funcionando. 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/">IntroduÃ§Ã£o De Teste JavaScript Com Jasmine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-02T00:00:00-03:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
+Recomendo muito a galera ir. Vai ser um dia muito legal com gente altamente compartilhando suas experiências, trazendo novidades e como são seus dias a dias de projetos e empresa. 
+Eu serei um dos que irá apresentar nesse evento. O assunto será Jasmine. <a href="http://pivotal.github.com/jasmine/">Jasmine</a> é uma biblioteca de teste para JavaScript. Ele é mais focado no princípio de BDD (Behavior Driven Dev.) do que em TDD. Sendo assim apresenta uma sintaxe, que eu pessoalmente gosto muito, para escrever teste que fica bastante elegante poderoso. Além disso oferece suporte a testes assíncronos e spies (bibliotecas para &#8220;espionar&#8221; chamadas de métodos e fazer mock) de forma muito simples. 
+Para quem desenvolve com Ruby, verá a forma de escrever suas especificação é muito semelhante ao <a href="http://rspec.info/">RSpec</a>. Veja o exemplo abaixo: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;Aqui vai uma descricao&#8221;, function(){
+  it (&#8220;linha de teste&#8221;, function(){
+    expect(true).toBeTrue();
+  }
+}
+[/cc]
+Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplificando seria que ela não precisa de uma página) para executar. E é totalmente auto-contida: só precisa dela mesma para funcionar e nenhuma outra biblioteca.
+Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
+Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

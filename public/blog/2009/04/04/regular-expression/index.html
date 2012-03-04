@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Usando ExpressÃµes Regulares - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Copiando os demais blogs e inaugurando minha coluna de pergunta e respostas, gostaria de começar por um email enviado para a lista do riojug. No &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2009/04/04/regular-expression">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Usando ExpressÃµes Regulares</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-04T00:00:00-03:00" pubdate data-updated="true">Apr 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Copiando os demais blogs e inaugurando minha coluna de pergunta e respostas, gostaria de começar por um email enviado para a lista do riojug. No email, a pessoa dizia que precisa retirar todos os traços, &#8221;- &#8220;, de seu texto que não tivessem &#8220;sentido&#8221; : traços sozinhos, traços que não fossem de ligação, etc. Ele inclusive mandou um exemplo esclarecedor
+
+
+<blockquote>- guarde-o - senão guardarei-o eu &#8212; Joãozinho-&#8220;;</blockquote>
+
+No texto acima os traços a serem substituídos seriam : o primeiro, o traço antes do <em>senão</em>, os 3 traços seguidos e o traço do fim.
+Para resolver isso poderiamos partir para várias soluções; uma mais elegantes que as outras, e vice-versa:
+
+	<li>Varrer caracter a caracter e verificar: ler como um array de char e ficar verificando se o anterior é espaço, traço, etc&#8230;. Em pseudo codigo seria</li>
+
+
+<code>
+char letras[] = <string em questão>
+letras.each{|i,l|
+if i = 0 then
+    if l='-' then replace
+else
+    if l='-'- and (letras[i-1]=' '  or letras[i-1]='-' or letras[i-1]=':')............ // e continua
+}
+</code>
+so de ler e tentar fazer já dá medo&#8230;. e olhem que eu já vi coisas assim implementadas !!!
+
+	<li>Usar expressões regulares.</li>
+
+
+Expressões regulares são uma forma de representar conjuntos de caracteres que estão sobre um certa regra. São como dicas que damos a quem procura, para que ele ache o que queremos. como analogia poderiamos imaginar que alguém nos pede para chamarmos uma outra pessoa. Para isso elas nos dá indicativos de como encontrá-la : alta, magra ou gorda, perto de um homem ou mulher, proxima a porta, etc&#8230; Transpondo isso para textos, expressoes regulares seriam como esta dicas.
+Expressões Regulares foram criadas pelo ano de 1943 por dois neurologistas. Anos mais tarde, um matemático, modelou algebricamente isso, dando o &#8220;ponta pé inicial&#8221;. Em 1968, graças ao unix, encontrou sua veia computacional, por meio do editor. Era chamado pelo comando ed. Este ed tinha o comando de contexto g, que aceitava  expressões regulares e um comando p, e sua sintaxe ficava g/RE/p (&#8220;Global Regular Expression Print&#8221;), que deu origem ao aplicativo grep, que por sua vez originou o egrep.[fonte: guia de expressões regulares - aurélio marinho Vargas, Editora novatec]
+Bem vamos ao código
+<code>
+String.replaceAll("[^[:alnum:]][-][^[:alnum:]|[-]$|[-][[:punct:]]|^[-]")
+</code>
+Lindo não ?!?!? Uma linha &#8230;..
+Quem se interessar pelo assunto pode ler o livro on line do Aurelio Marinho, Novatec, que é uma fonte riquissima para isso. (<a href="http://guia-er.sourceforge.net/index.html">clique aqui</a>)
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-04T00:00:00-03:00" pubdate data-updated="true">Apr 4<span>th</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2009/04/04/regular-expression/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2009/04/04/regular-expression/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/03/29/groovy-como-opcao/" title="Previous Post: Groovy como opÃ§Ã£o">&laquo; Groovy como opÃ§Ã£o</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/04/13/groovy_e_java/" title="Next Post: Groovy Ã© âJAVAâ">Groovy Ã© âJAVAâ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>VocÃª realmente estÃ¡ testando? - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Na maioria dos livros que li nos últimos tempos do mais diversos assuntos ligados a engenharia de software, testes automatizados, e mais &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2011/04/20/voce-realmente-esta-testando">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">VocÃª Realmente EstÃ¡ Testando?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-20T00:00:00-03:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Na maioria dos livros que li nos últimos tempos do mais diversos assuntos ligados a engenharia de software, testes automatizados, e mais especificamente, TDD (test driven development) e BDD (behavior driven development) são dominantes. É certo que, atualmente, se desejamos ter qualidade e velocidade de entrega nos nosso produtos precisamos de testes automatizados. E vou além: digo que abordagens como TDD e BDD auxiliam o desenvolvedor a escrever código melhor e mais focado no valor para o cliente.
+
+A questão é que se estabeleceu axiomas - verdades absolutas - onde para ser bom o projeto precisa ter 100% de cobertura de código e  ter testes unitários e testes de integração e testes de aceitação (tela e feature), etc.  Isso nem sempre é verdade e pode ser um verdadeiro &#8220;tiro no pé&#8221;. Antes de mais nada é preciso entender a real função do teste.  E qual será a melhor forma de utilizá-lo.  Não estou discutindo aqui abordagens e sim se estamos usando de forma inteligente e consciente os testes.
+
+Em uma conversa recente com <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, vimos, que, por exemplo, em alguns casos testes de aceitação que usavam Cucumber ou Pyccuracy, estavamos testando mais o navegador que a funcionalidade em si. Quando falamos de cobertura temos outro ponto interessante: 100% não é garantia de nada. Já ouvi falar  de sistemas com 100% de cobertura que quando foram fazer refactoring - confiando na cobertura de testes,  &#8221;quebrou&#8221; tudo ao colocar em produção pois vários detalhes escaparam.  Isso porque, provavelmente existiam diversos testes que faziam &#8220;nada&#8221; e que ali estavam apenas para garantir a cobertura mínima.
+
+Novamente citando <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, ele me disse que para os que estão começando, é importante seguir uma fórmula:  testes unitários, testes de integração, testes de aceitação, etc. Isso porque ainda estão formando sua base de experiência e tem pouco discernimento para saber quais seriam os pontos críticos a serem testados para termos a garantia de qualidade.  Mas a medida que for ganhando bagagem e aguçando seu senso crítico, é importante se questionar o que testar, como testar, etc.
+
+Uma coisa que sempre falo é que testar da trabalho. Por mais que possa trazer benefícios, ainda é mais trabalho. Se falamos de testes automatizados - programáticos - é mais linha de código. Por exemplo, tiveram coisas que levei mais tempo escrevendo os testes do que implementando.  Teste onera sim.
+
+Antes de mais nada quero esclarecer que não sou contra testes. Muito pelo contrário, acredito que não existe a possibilidade de fazer algo bem sem usar TDD ou BDD. A questão que levanto é o quanto estamos realmente testando nossos sistemas e o quanto estamos apenas &#8220;inventando&#8221; para cumprir com regras pré-definidas que ninguém de fato entendeu para que servem.
+
+Um exemplo disso que estou falando é quando temos diversos níveis de teste em nossa aplicação &#8230; E testamos a mesma coisa em todos eles. Sabe aquele teste que você fica criando o Model, colocando os dados  no banco, acessando o banco, etc? Isso mesmo. É um bom smell disso que estou falando.
+
+Uma coisa que faço é primeiro me concentrar no objetivo que quero atingir com aquele teste. Tudo mais é superfluo e logo pode ser ignorado(entenda mock e outras tecnicas).  Logo, se quero testar as chamadas do controller de minha aplicação, eu não preciso, nem quero me preocupar com que está acontecendo dentro do Model associado.   Outro ponto é se já testei algo em algum ponto, evito ficar testando novamente&#8230; Se por acaso isso for necessário é sinal que preciso fazer um refactoring no meu código.
+
+Em futuro artigos pretendo trazer o assunto e ir mais fundo inclusive trazendo exemplos, trechos de código, etc.  Até a próxima.
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-20T00:00:00-03:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2011/04/20/voce-realmente-esta-testando/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2011/04/20/voce-realmente-esta-testando/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/evento-flisol-e-devinrio-2011/" title="Previous Post: Evento Flisol e Devinrio 2011">&laquo; Evento Flisol e Devinrio 2011</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/" title="Next Post: Postando fotos no picasa pela linha de comando">Postando fotos no picasa pela linha de comando &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Usando Sinatra para evitar overdesign - Meu Blog, by Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.andrefonseca.net/blog/2011/03/20/usando-sinatra-para-evitar-overdesign">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  
+    <h2>Pensamentos, opiniões e alguns estudos</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Usando Sinatra Para Evitar Overdesign</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-20T00:00:00-03:00" pubdate data-updated="true">Mar 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
+
+Ruby on Rails, ou RoR ou somente Rails é uma framework de desenvolvimento de aplicações web, cuja a filosofia gira em torno de evitar ao máximo desperdícios com configurações, repetições, etc. Para ser bem objetivo, em Rails tudo é baseado em convenção e tudo é voltado para se escrever o mínimo de código para se implementar um comportamento. Caso queira saber mais peça ajuda ao grande oráculo (google)&#8230; para ajudar um pouco você pode começar pelos Railscast que são gratuítos e ajudam muito a entender.
+
+Mas sendo tão orientado a produtividade como o Rail é, ele também pode se tornar um overdesign - um escolha que tem mais recursos e estruturas do que precisa - e uma má escolha para quem deseja fazer um sitema web muito simples e com poucos recursos.
+
+&nbsp;
+
+Imagine que você deseja fazer um sistema web que simplesmente irá receber uma requisição do usuário, tratá-la (sem necessariamente criar algo num banco de dados, por exemplo) e renderizar uma resposta. Um bom exemplo disso foram alguns projetos que foram feitos durante o evento FISL 2010, pela galera #horaextra.  No meio do evento, decidimos fazer um site onde teríamos ao invés de um horóscopo, teríamos um desoróscopo, com mensagens nada animadoras. Assim surgiu o <a href="http://www.desoroscopo.com.br">desoroscopo</a>.
+
+A princípio todo ele foi feito usando Rails. Mas logo nos primeiros releases, fomos vendo que não precisávamos de muitos recursos, principalmente de um banco de dados. Sendo assim, ter ali um activerecord, activecontroller, routes e etc era algo que não precisávamos. Era um overdesign para a solução que desejamos.  Foi então, que o Marcos Tapajós, tomou a iniciativa de reescrever todo o sistema usando outro framework ruby  baseado em RACK que é mega simples : SINATRA.  Vale ressaltar que essa reescrita foi feita em menos de uma hora(a se levar em conta o fato do Tapajós dominar bem ruby e o próprio Sinatra) .
+
+A questão que o site está até hoje no ar e tem números bem expressivos de visitas e em nenhum momento não sentimos falta de algum recurso que rails tem e o Sinatra não.
+
+<img class="alignleft" title="Sinatra logo" src="http://www.sinatrarb.com/images/logo.gif" alt="" width="109" height="76" />
+
+Sinatra é um framework web feito em Ruby baseado em Rack. Em sua própria documentação, seus criadores, vão além e o chamam de DSL ressaltando sua simplicidade. Todo o seu poder está no fato de precisar de quase nada para estar funcionando. Chega ao limite de precisar apenas a gem instalada e um script com as definições de rotas e seus tratamento in line. Veja exemplo abaixo retirado do site da documentação.
+<pre># myapp.rb
+require 'sinatra'
+
+get '/' do
+  'Hello world!'
+end</pre>
+Note que com apenas 3 linhas de código o sistema ao acessar a url padrão (localhost:4567) já está respondendo. Isso é realmente impressionante.  Entretanto, tudo tem um preço. Caso precise fazer algo que vá além do muito simples, estará por sua própria conta e risco. Claro que pode lançar mão de uma gem para ajudá-lo (isso é algo muito comum no ecossistema Ruby) mas nem tudo será resolvido.
+
+Carrego comigo uma regra que sempre me ajuda muito.  Se meu sistema precisa de mais do que uma entidade, entidades que se relacionam, vai além do que uma 4 ou 5 rotas&#8230; já começo a tender para usar o Rails do que qualquer d&#8217;outra coisa. Mas se meus sistema não fala com banco de dados, tem poucas rotas, sempre que posso farei com usando Sinatra.
+
+Tenho mais dois exemplos sobre isso:  Sou um dos organizadores do <a href="http://www.devinrio.com.br">DevinRio</a>, e na edição de 2010, tínhamos os desafio de fazermos um site. Na hora optamos por fazê-lo toda usando Sinatra. Isso porque sinatra é simples e aproveitamos a facilidade de deploy e gestão do produto <a href="http://heroku.com">heroku</a>.  O sistema aguentou requisição para caramba e foi um sucesso, tanto que vamos usar a mesma infra/tecnologia para a edição deste ano.
+
+O segundo exemplo vem do meu trabalho:  precisávamos criar um sistema que iria receber uploads de mídias (fotos, vídeo, etc), gravá-las no disco e processá-las de forma assíncrona.  Muitos poderiam pensar que esses requisitos nos levariam facilmente a querer fazer isso com rails ou até com outra tecnologia/framework(scala, java, etc).  Entretanto, resolvemos fazê-lo em Sinatra. Foi a melhor decisão.  A aplicação ficou simples, limpa e coesa.  E com ajuda de algumas outras gems, o Sinatra está dando conta do recado com maestria.
+
+Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica a dica: fique atento. Leia bastante, converse com outros colegas, amigos e profissionais. Esteja aberto as novidades. Elas podem acabar salvando o seu dia. Evite resolver tudo sempre da mesma forma. Diversifique. Mesmo que seja apenas para testar.  Pluralidade é a palavra da vez.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-20T00:00:00-03:00" pubdate data-updated="true">Mar 20<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.andrefonseca.net/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/" data-via="aoqfonseca" data-counturl="http://www.andrefonseca.net/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/15/processo-por-processo-nao-resolve-aceite-e-mude/" title="Previous Post: Processo por processo nÃ£o resolve. Aceite e mude.">&laquo; Processo por processo nÃ£o resolve. Aceite e mude.</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/" title="Next Post: Usando o SOLR na sua app Rails - parte  1">Usando o SOLR na sua app Rails - parte  1 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/aoqfonseca">@aoqfonseca</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'aoqfonseca',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("aoqfonseca", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/aoqfonseca" class="twitter-follow-button" data-show-count="false">Follow @aoqfonseca</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
