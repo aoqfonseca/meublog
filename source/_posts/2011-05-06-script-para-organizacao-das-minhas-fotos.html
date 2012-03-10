@@ -21,19 +21,19 @@ Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra d
 
 Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
 
-[cc lang="bash"]
+{% codeblock lang:bash %}
 sudo apt-get install libimage-exiftool-perl
-[/cc]
+{% endcodeblock %}
 
 Uma vez que eles esteja instalado, crie um arquivo para o seu script:
 
-[cc lang="bash"]
+{% codeblock lang:bash %}
 touch organiza_fotos.sh
 vim organiza_fotos.sh
-[/cc]
+{% endcodeblock %}
 
 Agora com o editor aberto é só copiar e colar o código abaixo:
-[cc lang="bash"]
+{% codeblock lang:bash %}
 #!/bin/sh
 
 from=/media/Externo/minhas_imagens
@@ -48,7 +48,7 @@ mkdir -p $target
 cp "$FILENAME" $target
 echo "Moved $FILENAME to $target"
 done
-[/cc]
+{% endcodeblock %}
 
 &nbsp;
 

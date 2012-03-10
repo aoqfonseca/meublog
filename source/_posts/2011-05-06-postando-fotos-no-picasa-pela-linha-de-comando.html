@@ -21,18 +21,18 @@ Creio que depois de ler o meu último post, todo mundo já está com suas fotos 
 Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente "ajuda" ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
 
 Para instalá-lo, no Ubuntu, é bem simples:
-[cc lang="bash"]
+{% codeblock lang:bash %}
 sudo apt-get install googlecl
-[/cc]
+{% endcodeblock %}
 
 Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
-[cc lang="bash"]
+{% codeblock lang:bash %}
 pip install googlecl
-[/cc]
+{% endcodeblock %}
 
 Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
 Uma vez instalado é só alegria e usar:
-[cc lang="bash"]
+{% codeblock lang:bash %}
 andre@vermelhinho:~$ google help
 Welcome to the Google CL tool!
 Commands are broken into several parts:
@@ -48,9 +48,9 @@ The available services are
 Enter "&gt; help " for more information on a service.
 Or, just "quit" to quit.
 andre@vermelhinho:~$
-[/cc]
+{% endcodeblock %}
 
 E para enviar suas foto fica mais ou menos assim:
-[cc lang="bash"]
+{% codeblock lang:bash %}
 google picasa create "Cat Photos" ~/photos/cats/*.jpg
-[/cc] 
+{% endcodeblock %} 

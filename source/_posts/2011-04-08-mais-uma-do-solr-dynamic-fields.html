@@ -10,9 +10,6 @@ tags:
 - sunspot
 status: publish
 type: post
-published: true
-meta: 
-  _edit_last: "1"
 ---
 Como alguns que acompanham o blog já devem ter percebido, eu estou usando o SOLR em um projeto. O SOLR é um servidor Web de busca, feito em cima do Lucene (grupo Apache). Ele é realmente poderoso e simples de usar. Recomendo muito para quem precisa fazer buscar textuais pesados e que tem uma quantidade razoável de documentos/dados para indexar.  Como minha aplicação é Rails, estou usando uma GEM, chamada Sunspot, que serve de DSL (facilitador) nessa "conexão" entre minha app e o SOLR.
 
@@ -27,45 +24,29 @@ Parte para tentar descobrir se existia algo dentro do universo do SOLR e/ou do S
 O Sunspot tem um recurso que é o "dynamic field" que é o seguinte: todo o indice de sua classe é feito no build da classe, ou seja, no seu load.  Como precisava definir coisas que só existiriam no contexto da instância, eu precisa de algum recurso que me permitisse delegar a criação de alguns campos nesse momento de indexação (instancia). Esse recurso de "dynamic" é exatamente isso: ele  configura um bloco que será criado quando ele for indexar. Com isso eu pude buscar no SOLR por campos que só existem para algumas inscrições.
 
 Em termos de código é mais ou menos o seguinte. Imagine que sua Inscricao tenha uma relação has_many com Resposta.
-
+{% codeblock lang:ruby %}
 class Inscricao &lt;&lt; ActiveRecord
-
-has_many :repostas
-
+    has_many :repostas
 end
-
+{% endcodeblock %}
 A classe Resposta faz referencia a um campo de seu formulário. Logo a busca terá como nome do campo do indice o campo + id e seu valor será a resposta. Assim o mapeamento fica:
-
-...
-
+{% codeblock lang:ruby %}
 searchable do
-
-dynamic :respostas do
-
-respostas.inject({}) do |mapa, resposta|
-
-mapa.merge({ resposta.campo.id.to_sym =&gt; resposta.valor})
-
+    dynamic :respostas do
+        respostas.inject({}) do |mapa, resposta|
+            mapa.merge({ resposta.campo.id.to_sym =&gt; resposta.valor})
+        end
+    end
 end
-
-end
-
-end
-
-&nbsp;
-
+{% endcodeblock %}
 Com isso acima, fica pronto a configuração. Para busca fica assim:
 
+{% codeblock lang:ruby %}
 search do
-
 dynamic :respostas do
-
 with(:1, "teste")
-
 end
-
-...
+{% endcodeblock %}
 
 Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
-
 Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
