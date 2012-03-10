@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo &hellip;">
+  <meta name="description" content="Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,76 +70,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/05/23/instalando-o-nodejs-e-npm/">Instalando O NodeJS E Npm</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-23T00:00:00-03:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo aprendizado e depois por causa da natureza da aplicação ficar bem com uma arquitetura de push.
-
-Primeiro passo é instalar tudo que você precisa para desenvolver com NodeJS&#8230; NodeJS e NPM. O npm é um gerenciador de pacotes &#8220;semelhante&#8221; ao rubygem/pypi. A dica inicial é esquecer tutoriais que ensinam a instalar via script (curl &#8230;. ), apt gets, ports ou brew&#8230; A melhor forma é clonar o repositório de cada um (NodeJS e NPM) e executar os comandos sugiros no README:
-
-[cc lang=&#8221;bash&#8221;]
-git clone https://github.com/joyent/node.git
-cd node
-./configure
-make
-make install
-[/cc]
-
-Com  isso ele irá verificar as depencias necessária para ele funcionar e listá-las. Caso algo ele indique que deve instalar algo, busque o pacote no google e veja como instalar. Para ubuntu é fácil um apt-get resolve, para outros um yum install, etc.
-
-Repita a mesma coisa para o NPM
-
-[cc lang=&#8221;bash&#8221;]
-git clone https://github.com/isaacs/npm.git
-cd npm
-sudo make install
-[/cc]
-
-Para instalar seus pacotes para desenvolver com NodeJS basta agora ir na linha de comando e digitar <em>npm install &lt;nome do pacote&gt;</em> . Isso irá instalar o pacote. OBS: O npm por padrão instala os pacotes dentro do diretório corrente algo como node_modules. Assim caso queira que os pacotes seja instalados globalmente, ou seja, para toda a máquina, use o -g ou &#8211;global junto com o comando install.
-
-Dentro do <a href="http://blog.nodejs.org/2011/05/01/npm-1-0-released/">blog do node</a>, tem uma excelente explicação de como fazer, sendo que você deve reter o seguinte para o início.  Ao instalar algo no  global, você estará instalando na pasta : &#8220;/usr/local/lib/node_modules&#8221;.  Depois disso, caso queira que essa biblioteca esteja acessível dentro do seu projeto, você deve criar um link para esse global. Para isso:
-
-[cc lang=&#8221;bash&#8221;]
-cd seu_projeto
-npm link <nome do pacote>
-[/cc]
-
-Isso irá criar um link dentro da pasta local node_modules para a pasta global do pacote. E voilá !
-Muito obrigado ao Emerson Macedo (codificando.com ou codificando.org) pela ajuda.
-
-Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP vou postando as escolhas e as descobertas.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a></h1>
     
     
@@ -165,46 +95,65 @@ Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP 
 
   <div class="entry-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-[cc lang=&#8221;bash&#8221;]
-ruby -e &#8220;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&#8221;
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
 Existem caminhos alternativos para instalá-lo. Mas não recomendo.
 Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-[cc lang=&#8221;bash&#8221;]
-andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy $ brew
-Usage: brew [-v|&#8211;version] [&#8211;prefix [formula]] [&#8211;cache [formula]]
-[&#8211;cellar [formula]] [&#8211;config] [&#8211;env] [&#8211;repository]
-[-h|&#8211;help] COMMAND [formula] &#8230;
-
-Principal Commands:
-install formula &#8230; [&#8211;ignore-dependencies] [&#8211;HEAD]
-list [&#8211;unbrewed|&#8211;versions] [formula] &#8230;
-search [/regex/] [substring]
-uninstall formula &#8230;
-update
-
-Other Commands:
-info formula [&#8211;github]
-options formula
-deps formula
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
+</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
+</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>
+</span><span class='line'>Principal Commands:
+</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
+</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
+</span><span class='line'>uninstall formula ...
+</span><span class='line'>update
+</span><span class='line'>
+</span><span class='line'>Other Commands:
+</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
+</span><span class='line'>options formula
+</span><span class='line'>deps formula
+</span></code></pre></td></tr></table></div></figure>
 
 Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
 Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-[cc lang=&#8221;bash&#8221;]
-brew install git
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
+</span></code></pre></td></tr></table></div></figure>
 Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-[cc lang=&#8221;bash&#8221;]
-echo alias gpush=&#8221;git push origin master&#8221; &gt; ~/.bash_profile
-echo alias gpull=&#8221;git pull origin master&#8221; &gt; ~/.bash_profile
-echo alias gst=&#8221;git status&#8221; &gt; ~/.bash_profile
-echo alias gcm=&#8221;git commit -am &#8221; &gt; ~/.bash_profile
-echo alias gcko=&#8221;git checkout &#8221; &gt; ~/.bash_profile
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
 
 Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 </div>
@@ -254,34 +203,48 @@ Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra d
 
 Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
 
-[cc lang=&#8221;bash&#8221;]
-sudo apt-get install libimage-exiftool-perl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install libimage-exiftool-perl
+</span></code></pre></td></tr></table></div></figure>
 
 Uma vez que eles esteja instalado, crie um arquivo para o seu script:
 
-[cc lang=&#8221;bash&#8221;]
-touch organiza_fotos.sh
-vim organiza_fotos.sh
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch organiza_fotos.sh
+</span><span class='line'>vim organiza_fotos.sh
+</span></code></pre></td></tr></table></div></figure>
 
 Agora com o editor aberto é só copiar e colar o código abaixo:
-[cc lang=&#8221;bash&#8221;]
-#!/bin/sh
-
-from=/media/Externo/minhas_imagens
-to=/media/Externo/fotos_organizadas
-find $from -iname &#8216;*jpg&#8217; | while read FILENAME
-do
-year=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f1 -d&#8217;:&#8217;`
-month=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f2 -d&#8217;:&#8217;`
-day=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f3 -d&#8217;:&#8217;`
-target=$to/$year/$month/$day
-mkdir -p $target
-cp &#8220;$FILENAME&#8221; $target
-echo &#8220;Moved $FILENAME to $target&#8221;
-done
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">from</span><span class="o">=</span>/media/Externo/minhas_imagens
+</span><span class='line'><span class="nv">to</span><span class="o">=</span>/media/Externo/fotos_organizadas
+</span><span class='line'>find <span class="nv">$from</span> -iname <span class="s1">&#39;*jpg&#39;</span> | <span class="k">while </span><span class="nb">read </span>FILENAME
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f1 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">month</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f2 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">day</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f3 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">target</span><span class="o">=</span><span class="nv">$to</span>/<span class="nv">$year</span>/<span class="nv">$month</span>/<span class="nv">$day</span>
+</span><span class='line'>mkdir -p <span class="nv">$target</span>
+</span><span class='line'>cp <span class="s2">&quot;$FILENAME&quot;</span> <span class="nv">$target</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Moved $FILENAME to $target&quot;</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
 
 &nbsp;
 
@@ -328,39 +291,53 @@ Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para
 Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente &#8220;ajuda&#8221; ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
 
 Para instalá-lo, no Ubuntu, é bem simples:
-[cc lang=&#8221;bash&#8221;]
-sudo apt-get install googlecl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install googlecl
+</span></code></pre></td></tr></table></div></figure>
 
 Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
-[cc lang=&#8221;bash&#8221;]
-pip install googlecl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install googlecl
+</span></code></pre></td></tr></table></div></figure>
 
 Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
 Uma vez instalado é só alegria e usar:
-[cc lang=&#8221;bash&#8221;]
-andre@vermelhinho:~$ google help
-Welcome to the Google CL tool!
-Commands are broken into several parts:
-service, task, options, and arguments.
-For example, in the command
-&#8220;&gt; picasa post &#8211;title &#8220;My Cat Photos&#8221; photos/cats/*&#8221;
-the service is &#8220;picasa&#8221;, the task is &#8220;post&#8221;, the single
-option is a title of &#8220;My Cat Photos&#8221;, and the argument is the
-path to the photos.
-
-The available services are
-&#8216;picasa&#8217;, &#8216;blogger&#8217;, &#8216;youtube&#8217;, &#8216;docs&#8217;, &#8216;contacts&#8217;, &#8216;calendar&#8217;, &#8216;finance&#8217;
-Enter &#8220;&gt; help &#8221; for more information on a service.
-Or, just &#8220;quit&#8221; to quit.
-andre@vermelhinho:~$
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre@vermelhinho:~<span class="nv">$ </span>google <span class="nb">help</span>
+</span><span class='line'>Welcome to the Google CL tool!
+</span><span class='line'>Commands are broken into several parts:
+</span><span class='line'>service, task, options, and arguments.
+</span><span class='line'>For example, in the <span class="nb">command</span>
+</span><span class='line'><span class="s2">&quot;&amp;gt; picasa post --title &quot;</span>My Cat Photos<span class="s2">&quot; photos/cats/*&quot;</span>
+</span><span class='line'>the service is <span class="s2">&quot;picasa&quot;</span>, the task is <span class="s2">&quot;post&quot;</span>, the single
+</span><span class='line'>option is a title of <span class="s2">&quot;My Cat Photos&quot;</span>, and the argument is the
+</span><span class='line'>path to the photos.
+</span><span class='line'>
+</span><span class='line'>The available services are
+</span><span class='line'><span class="s1">&#39;picasa&#39;</span>, <span class="s1">&#39;blogger&#39;</span>, <span class="s1">&#39;youtube&#39;</span>, <span class="s1">&#39;docs&#39;</span>, <span class="s1">&#39;contacts&#39;</span>, <span class="s1">&#39;calendar&#39;</span>, <span class="s1">&#39;finance&#39;</span>
+</span><span class='line'>Enter <span class="s2">&quot;&amp;gt; help &quot;</span> <span class="k">for </span>more information on a service.
+</span><span class='line'>Or, just <span class="s2">&quot;quit&quot;</span> to quit.
+</span><span class='line'>andre@vermelhinho:~<span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
 
 E para enviar suas foto fica mais ou menos assim:
-[cc lang=&#8221;bash&#8221;]
-google picasa create &#8220;Cat Photos&#8221; ~/photos/cats/*.jpg
-[/cc] 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>google picasa create <span class="s2">&quot;Cat Photos&quot;</span> ~/photos/cats/*.jpg
+</span></code></pre></td></tr></table></div></figure> 
 </div>
   
   
@@ -409,47 +386,42 @@ Parte para tentar descobrir se existia algo dentro do universo do SOLR e/ou do S
 O Sunspot tem um recurso que é o &#8220;dynamic field&#8221; que é o seguinte: todo o indice de sua classe é feito no build da classe, ou seja, no seu load.  Como precisava definir coisas que só existiriam no contexto da instância, eu precisa de algum recurso que me permitisse delegar a criação de alguns campos nesse momento de indexação (instancia). Esse recurso de &#8220;dynamic&#8221; é exatamente isso: ele  configura um bloco que será criado quando ele for indexar. Com isso eu pude buscar no SOLR por campos que só existem para algumas inscrições.
 
 Em termos de código é mais ou menos o seguinte. Imagine que sua Inscricao tenha uma relação has_many com Resposta.
-
-class Inscricao &lt;&lt; ActiveRecord
-
-has_many :repostas
-
-end
-
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Inscricao</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">has_many</span> <span class="ss">:repostas</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 A classe Resposta faz referencia a um campo de seu formulário. Logo a busca terá como nome do campo do indice o campo + id e seu valor será a resposta. Assim o mapeamento fica:
-
-&#8230;
-
-searchable do
-
-dynamic :respostas do
-
-respostas.inject({}) do |mapa, resposta|
-
-mapa.merge({ resposta.campo.id.to_sym =&gt; resposta.valor})
-
-end
-
-end
-
-end
-
-&nbsp;
-
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">respostas</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="k">do</span> <span class="o">|</span><span class="n">mapa</span><span class="p">,</span> <span class="n">resposta</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">mapa</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span> <span class="n">resposta</span><span class="o">.</span><span class="n">campo</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_sym</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">resposta</span><span class="o">.</span><span class="n">valor</span><span class="p">})</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 Com isso acima, fica pronto a configuração. Para busca fica assim:
 
-search do
-
-dynamic :respostas do
-
-with(:1, &#8220;teste&#8221;)
-
-end
-
-&#8230;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">search</span> <span class="k">do</span>
+</span><span class='line'><span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'><span class="n">with</span><span class="p">(:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;teste&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
-
 Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
 </div>
   
@@ -486,15 +458,17 @@ Espero sinceramente que isso ajuda alguém como outros blogs que consultei me aj
   </header>
 
 
-  <div class="entry-content"><!-- p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica} p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px} -->Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
+  <div class="entry-content">Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
 
 Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
 
 Bem vamos lá. Imaginemos que você quer que a classe Minha seja indexa e posteriormente busca pelo SOLR, basta colocar no top o require:
 
-require &#8216;sunspot&#8217;
-
-require &#8216;sunspot_rails&#8217;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_rails&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Feito isso e mais os passos já descritos, creio que agora já temos algo funcional.
 
@@ -502,81 +476,87 @@ Bem vamos para a parte de testar a coisa. Claro que todos nós somos adeptos do 
 
 Para isso, como disse na parte 1, é preciso que você use alguns matchers que irão facilitar em muito a sua vida. Eles estão dentro da gem sunspot_matchers. Dentro do seu spec_helper (isso já vale para todo projeto ruby que esteja usando o Rspec), coloque as linhas:
 
-&nbsp;
-
-require &#8216;sunspot_matchers&#8217;
-
-&#8230;
-
-config.include SunspotMatcher
-
-&#8230;
-
-config.before do
-
-Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
-
-end
-
-&nbsp;
-
-config.after do
-
-Sunspot.session = Sunspot.session.original_session
-
-end
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_matchers&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatcher</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Estamos fazendo aqui (acredito que já tenho dito isso) é colocando uma interceptador das chamadas da DSL a sessão com o SOLR para ver se tudo está ocorrendo do jeito que queremos. Seria algo como o nosso mocka, para quem conhcece.
 
 Segue abaixo um exemplo de um código de teste. Veja como fica bem simples testar se a busca, no caso, está incluindo os itens que preciso para fazer a filtragem:
 
-&#8230;
-
-it &#8220;Deve filtrar pela data de finalizacao maior que&#8221; do
-
-data = DateTime.now.strftime(&#8220;%d/%m/%Y&#8221;)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :start_date =&gt; data})
-
-data = Date.strptime(data, &#8216;%d/%m/%Y&#8217;)
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).greater_than(data)})
-
-end
-
-&nbsp;
-
-it &#8220;Deve filtrar pela data finalizacao menor que&#8221; do
-
-data = DateTime.now.strftime(&#8220;%d/%m/%Y&#8221;)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :end_date =&gt; data})
-
-data = Date.strptime(data, &#8216;%d/%m/%Y&#8217;)
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).less_than(data)})
-
-end
-
-&nbsp;
-
-it &#8220;Deve filtrar pela data de nascimento maior que&#8221; do
-
-data = Date.today.years_ago(20)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :idade_final =&gt; &#8220;20&#8221;})
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:data_nascimento).greater_than(data)})
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de finalizacao maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:start_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data finalizacao menor que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:end_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de nascimento maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="o">.</span><span class="n">years_ago</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:idade_final</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;20&quot;</span><span class="p">})</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:data_nascimento</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 A coisa fica bem próxima as expectations que estamos acostumados a usar.  Com isso temos nossos testes de especificação prontos e podemos então passar para os teste de aceitação.
 
@@ -586,67 +566,57 @@ Imagino que você que esteja lendo e desenvolvendo junto comigo deva usar o Cucu
 
 Para ter um SOLR funcionando para você executar os seus testes de Cucumber, vá no arquivo, features/support/env.rb e coloque as seguintes linhas:
 
-&#8230;.
-
-&nbsp;
-
-::Sunspot::Rails::Server.new.start
-
-&nbsp;
-
-Before do
-
-Inscricao.reindex
-
-end
-
-&nbsp;
-
-After do
-
-Inscricao.remove_all_from_index!
-
-end
-
-&nbsp;
-
-at_exit do
-
-puts &#8220;Saindo do solr&#8221;
-
-::Sunspot::Rails::Server.new.stop
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">start</span>
+</span><span class='line'><span class="no">Before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">After</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">remove_all_from_index!</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">at_exit</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Saindo do solr&quot;</span>
+</span><span class='line'>    <span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">stop</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Essas linhas irão iniciar um SOLR; a cada teste pedir para reindexar os dados neles e por fim, quando tudo terminar, ele irá parar o solr que você iniciou.  Uma breve ressalva:  tive um mega problema&#8230; quando fiz isso, meus teste de jeito algum passavam. Isso porque, por motivos que ainda não sei, quando criamos na mão nossos arquivos, precisamos pedir que sejam indexados, ou seja,  ele não indexa automaticamente. Pelo oque li a gem faz isso pelos controllers. Assim que tiver certeza sobre isso escrevo algo. A questão é que tive que escrever um maldito passo para indexar e chamá-lo toda vez que algo era criado. Algo como abaixo:
 
-&nbsp;
-
-Dado /ˆque preciso reindexar minhas coisas$/ do
-
-Minhas.reindex
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dado</span><span class="sr"> /ˆque preciso reindexar minhas coisas$/</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Minhas</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 &#8230; Em um features da vida
 
-Dado que crio uma coisa minha
-
-E que preciso reindexar minhas coisa
-
-Eu vejo essa coisa na busca
-
-&#8230;
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="no">Dado</span> <span class="n">que</span> <span class="n">crio</span> <span class="n">uma</span> <span class="n">coisa</span> <span class="n">minha</span>
+</span><span class='line'>    <span class="n">E</span> <span class="n">que</span> <span class="n">preciso</span> <span class="n">reindexar</span> <span class="n">minhas</span> <span class="n">coisa</span>
+</span><span class='line'>    <span class="no">Eu</span> <span class="n">vejo</span> <span class="n">essa</span> <span class="n">coisa</span> <span class="n">na</span> <span class="n">busca</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
 
-&nbsp;
+
 </div>
   
   
@@ -695,53 +665,102 @@ Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  
 O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
 
 Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
-<pre>  class Post
-    #...
-  end
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="k">class</span> <span class="nc">Post</span>
+</span><span class='line'>        <span class="c1">#...</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">text</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:stored</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:author_name</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:blog_id</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:category_ids</span>
+</span><span class='line'>    <span class="n">float</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="ss">:using</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="ss">:ratings_average</span>
+</span><span class='line'>    <span class="n">time</span> <span class="ss">:published_at</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:sort_title</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">title</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^(an?|the)\W+/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">/</span><span class="p">)</span> <span class="k">if</span> <span class="n">title</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure> 
 
-  Sunspot.setup(Post) do
-    text :title, :description, :stored =&gt; true
-    string :author_name
-    integer :blog_id
-    integer :category_ids
-    float :average_rating, :using =&gt; :ratings_average
-    time :published_at
-    string :sort_title do
-      title.downcase.sub(/^(an?|the)\W+/, ''/) if title = self.title
-    end
-  end</pre>
 No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
-<pre>Sunspot.search(Post) do
-    keyword "teste"
-    with :author_name, "andre fonseca"
-    with :average_rating, 10.3
-  end</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">keyword</span> <span class="s2">&quot;teste&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:author_name</span><span class="p">,</span> <span class="s2">&quot;andre fonseca&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="mi">10</span><span class="o">.</span><span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>  
+
 Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
-<pre>class MinhaClass &lt;&lt; ActiveRecord</pre>
-<pre>
-<pre>    searchable do</pre>
-<pre>      text :nome, do |minha_classe|</pre>
-<pre>        minha_classe.outro.nome</pre>
-<pre>      end</pre>
-<pre>    end</pre>
-</pre>
-<pre>end</pre>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MinhaClass</span> <span class="o">&gt;&gt;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">text</span> <span class="ss">:nome</span><span class="p">,</span> <span class="k">do</span> <span class="o">|</span><span class="n">minha_classe</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">minha_classe</span><span class="o">.</span><span class="n">outro</span><span class="o">.</span><span class="n">nome</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
-<pre>Sunspot.search(Post) do</pre>
-<pre>    config.gem "sunspot"</pre>
-<pre>    config.gem "sunspot_rails"</pre>
-<pre>end</pre>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot_rails&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
 Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
-<pre>config.include SunspotMatchers</pre>
-<pre>&nbsp;</pre>
-<pre>config.before do</pre>
-<pre>  Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)</pre>
-<pre>end</pre>
-<pre>&nbsp;</pre>
-<pre>config.after(:each, :type => type) do</pre>
-<pre>  ::Sunspot.session = ::Sunspot.session.original_session</pre>
-<pre>end</pre>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatchers</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="ss">:each</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="n">type</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span></code></pre></td></tr></table></div></figure>
+
 Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
 Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
 </div>
@@ -926,6 +945,70 @@ Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design p
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/12/17/estudos-compartilhados-parte-iii/">Estudos Compartilhados - Parte III</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-17T00:00:00-02:00" pubdate data-updated="true">Dec 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">No artigo passado da série &#8220;Estudo compartilhados&#8221;, abordei mais a questão da Orientação a Objeto e como ainda não nos entendemos bem com ela.  No finalzinho do artigo, rapidamente, falei sobre os testes automatizados no famoso TDD.
+
+TDD virou um buzzword. Traduzindo: Uma palavrinha da moda.  Hoje as empresa já colocam nos seus anuncios de vagas que o candidato que conhece TDD é um diferencial, outras até exigem. A questão é: Você sabe realmente o que é TDD?
+
+<strong>TDD é a sigla em inglês para TEST DRIVEN DESIGN ou design dirigido por testes. </strong>
+
+Mais uma vez para me ajudar com essa questão, pedi a ajuda para meu amigo <a href="blog.mar.ti.ns">Alexandre Martins</a>, e ele me recomendou ( meio óbvio), o livro do Kent Beck , criador do TDD,  <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&amp;qid=1292588088&amp;sr=8-1">TEST-DRIVEN DEVELOPMENT</a> . Além desse, Nunes também me recomendou alguns artigos e outros livros como o <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1292588280&amp;sr=8-1">Growing Object-Oriented Software, Guide by Test</a>, que mostram o caminho das pedras e como o teste pode ser o melhor amigo do desenvolvedor.
+
+Numa conversa com outra pessoa, Rafael Martins (Cabra) da Globo.com,  concluímos que muita gente acaba por ter uma visão torta do que vem ser testar antes. Testar antes parte da premissa, na minha concepção, de que é preciso um problema para procurarmos a solução. Seria mais ou menos assim:  Você tem que comer quando sentir fome, pois do contrário, você está sendo guloso e indo além de suas capacidades.
+
+Quando você cria os seus teste antes, baseado em suas necessidades, está de certa forma, criando um problema a ser resolvido. Se for disciplinado e apenas resolver aquele problema e repetir esse ciclo até que todos os requisitos sejam atendidos, a solução literalmente emerge. Isso mesmo: EMERGE.
+
+Muitas das pessoas que me ouviram falar disso, respondem dizendo que é mentira ou exagero da minha parte que a solução EMERGE. Convido, os descrentes, a assistir e participar de uma sessão de dojo.
+
+No livro <a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445/ref=sr_1_3?s=books&amp;ie=UTF8&amp;qid=1292594363&amp;sr=1-3">Agile Software Development</a>, também do UncleBob,  existe um capítulo em que ele descreve o desenvolvimento de um sistema para pontuação de boliche em que faz um par (pair programming) com outra pessoa e segue  conceitos como TDD e baby steps. É simplesmente revelador. Sei que exagerado mas é isso mesmo: REVELADOR ; pois ele simplesmente vai fazendo o sistema &#8220;sem pensar&#8221;. Dando pequenos passos, e sempre mantendo um dialogo e trocas constante com seu amigo, o design vai surgindo diante deles e se mostrando diferente do que se imaginava de inicio.
+<h2>TDD evita desperdício</h2>
+Um outro livro que recomendo muito é o Pragmatic Programmer. Nesse livro ele procura mostrar que o pragmatismo é uma boa filosofia para nós que fazemos software. Dentro disso, uma das coisas é a questão de evitar o desperdício.
+
+Evitar desperdício é algo muito amplo e engloba diversas atitudes que devemos ter como: automatizar tarefas repetitivas,  tornar simples fazer o certo,  não fazer mais do que é preciso, etc.
+
+Muitos se perguntam o que fazer para ser um programador ou ter um time altamente eficiente. Eu acredito que a solução vem de evitar desperdício e fazer o &#8220;justo necessário&#8221;. Isso também é conhecido como evitar o OverDesign. Sabe aquela aplicação simples para enviar arquivo para um servidor que o pessoal quer fazer com um monte de camada, abstrações, etc, justificando que isso facilitará uma possível modificação futura&#8230;Isso é um excelente exemplo de gasto desnecessário.
+
+Quando fazemos TDD e nos disciplinamos a fazer o teste passar (isso mesmo) a gente fica focado; ao ficar focado evitamos desvios e perdas de tempos fazendo coisas para necessidades que não existem ainda.
+<blockquote><strong>ATENÇÃO: ISSO NÃO SIGNIFICA QUE VOCÊ DEVE FAZER ARQUITETURA PORCA. SEU CÓDIGO DEVE SER LIMPO.</strong></blockquote>
+Testar depois é apenas automatizar. TDD é mais uma ferramenta de design.
+
+Até a próxima pessoal.
+
+&nbsp;
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -955,11 +1038,11 @@ Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design p
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

@@ -92,46 +92,65 @@
 
 <div class="entry-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-[cc lang=&#8221;bash&#8221;]
-ruby -e &#8220;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&#8221;
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
 Existem caminhos alternativos para instalá-lo. Mas não recomendo.
 Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-[cc lang=&#8221;bash&#8221;]
-andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy $ brew
-Usage: brew [-v|&#8211;version] [&#8211;prefix [formula]] [&#8211;cache [formula]]
-[&#8211;cellar [formula]] [&#8211;config] [&#8211;env] [&#8211;repository]
-[-h|&#8211;help] COMMAND [formula] &#8230;
-
-Principal Commands:
-install formula &#8230; [&#8211;ignore-dependencies] [&#8211;HEAD]
-list [&#8211;unbrewed|&#8211;versions] [formula] &#8230;
-search [/regex/] [substring]
-uninstall formula &#8230;
-update
-
-Other Commands:
-info formula [&#8211;github]
-options formula
-deps formula
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
+</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
+</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>
+</span><span class='line'>Principal Commands:
+</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
+</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
+</span><span class='line'>uninstall formula ...
+</span><span class='line'>update
+</span><span class='line'>
+</span><span class='line'>Other Commands:
+</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
+</span><span class='line'>options formula
+</span><span class='line'>deps formula
+</span></code></pre></td></tr></table></div></figure>
 
 Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
 Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-[cc lang=&#8221;bash&#8221;]
-brew install git
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
+</span></code></pre></td></tr></table></div></figure>
 Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-[cc lang=&#8221;bash&#8221;]
-echo alias gpush=&#8221;git push origin master&#8221; &gt; ~/.bash_profile
-echo alias gpull=&#8221;git pull origin master&#8221; &gt; ~/.bash_profile
-echo alias gst=&#8221;git status&#8221; &gt; ~/.bash_profile
-echo alias gcm=&#8221;git commit -am &#8221; &gt; ~/.bash_profile
-echo alias gcko=&#8221;git checkout &#8221; &gt; ~/.bash_profile
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
 
 Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 </div>
@@ -205,11 +224,11 @@ Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM 
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

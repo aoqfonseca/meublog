@@ -102,34 +102,48 @@ Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra d
 
 Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
 
-[cc lang=&#8221;bash&#8221;]
-sudo apt-get install libimage-exiftool-perl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install libimage-exiftool-perl
+</span></code></pre></td></tr></table></div></figure>
 
 Uma vez que eles esteja instalado, crie um arquivo para o seu script:
 
-[cc lang=&#8221;bash&#8221;]
-touch organiza_fotos.sh
-vim organiza_fotos.sh
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch organiza_fotos.sh
+</span><span class='line'>vim organiza_fotos.sh
+</span></code></pre></td></tr></table></div></figure>
 
 Agora com o editor aberto é só copiar e colar o código abaixo:
-[cc lang=&#8221;bash&#8221;]
-#!/bin/sh
-
-from=/media/Externo/minhas_imagens
-to=/media/Externo/fotos_organizadas
-find $from -iname &#8216;*jpg&#8217; | while read FILENAME
-do
-year=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f1 -d&#8217;:&#8217;`
-month=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f2 -d&#8217;:&#8217;`
-day=`exiftool &#8220;$FILENAME&#8221;  | awk &#8216;/Date\/Time Original/ {print $4}&#8217;|cut -f3 -d&#8217;:&#8217;`
-target=$to/$year/$month/$day
-mkdir -p $target
-cp &#8220;$FILENAME&#8221; $target
-echo &#8220;Moved $FILENAME to $target&#8221;
-done
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">from</span><span class="o">=</span>/media/Externo/minhas_imagens
+</span><span class='line'><span class="nv">to</span><span class="o">=</span>/media/Externo/fotos_organizadas
+</span><span class='line'>find <span class="nv">$from</span> -iname <span class="s1">&#39;*jpg&#39;</span> | <span class="k">while </span><span class="nb">read </span>FILENAME
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f1 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">month</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f2 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">day</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f3 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">target</span><span class="o">=</span><span class="nv">$to</span>/<span class="nv">$year</span>/<span class="nv">$month</span>/<span class="nv">$day</span>
+</span><span class='line'>mkdir -p <span class="nv">$target</span>
+</span><span class='line'>cp <span class="s2">&quot;$FILENAME&quot;</span> <span class="nv">$target</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Moved $FILENAME to $target&quot;</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
 
 &nbsp;
 
@@ -207,11 +221,11 @@ Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

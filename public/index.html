@@ -226,60 +226,6 @@ Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e escla
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie Na Sua IntuiÃ§Ã£o E NÃ£o Seja Teimoso.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-08T00:00:00-02:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Hoje o post é mais filosófico do que técnico. Quero mostrar para a seguinte mensagem: &#8220;Confie nos seus instintos.. eles podem te poupar um bom tempo&#8221;.
-
-Estou trabalhando num projeto onde estou usando o Django/Python. Excelente produto. Isso mesmo produto. Acredito sinceramente que o Django é um excelente produto que a gente customiza para as nossa necessidades. Diferente dele, o Rails por exemplo é mais um conjunto de ferramentas que a gente usa para fazer nosso produto.
-
-Bom dito isso, e voltando ao tema, estou fazendo um projeto com o Django. Não sou um profundo conhecedor dele. Estou bem longe disso, a cada dia que passa vejo que tem mais coisas. A quantidade de &#8220;moles&#8221; que e as dúvidas simples me provam isso.  Uma das coisas que acredita seja &#8220;killer&#8221; nele é o fato de dar um admin muito bom e relativamente simples de customizar. RELATIVAMENTE simples.
-
-Em um post anterior mostrei, de forma bem superficial, como você pode alterar a forma que ele montar seus forms ou listagem. A princípio basta que sobrescreva seus templates padrão seguindo um padrão e tudo funcionará como mágica. Porém, se quiser customizar o fluxo dele&#8230; Ah ! aí começa toda a dificuldade.
-
-O Django tem um fluxo bem definido para suas ações de CRUD e isso para muitos dos caso é o suficiente. Mas se tiver um bom designer em seu time e ele te peça algo relativamente simples: Quero que esse form abre dentro e um popin (lightbox) e que ao salvar atualize a listagem e caso tenha erro mostre erro e mensagem na cortina (alert), além disso eu quero poder abrir esse form em outra listagem e o comportamento será outro.  Ufa !!! Aí a brincadeira começa a ficar séria
-
-Bom, não adianta temos recurso infinitos a nosso dispor se a gente não sabe usar.  Partindo desse pressuposto, pedi ajuda para meus amigos que são especialista no Django. E eles me disseram para insistir em usar o ModelAdmin do Django. Segui esse caminho, mesmo minha intuição dizendo para esquecer isso e fazer tudo do zero (usar uma view).
-
-Foram 6 dias brigando com as coisa e no final não consegui avançar mais que alguns milimetros em direção a entrega. Resolvi confiar na minha opinião e fiz tudo com view. Foram 4 dias para fechar tudo. Ainda faltam alguns detalhes que fogem o escopo original.
-
-Por isso, como disse, confie na sua intuição (entenda aqui na sua experiência, no seu &#8220;sentimento&#8221; em relação ao problema).  Sempre peça ajuda a alguém, pesquise&#8230; Não seja teimoso só por ser&#8230; Seja crítico e saiba escolher os seus caminhos.
-
-&nbsp;
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django</a></h1>
     
     
@@ -803,6 +749,117 @@ Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo 
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
+
+Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
+
+Avisos paroquiais feitos vamos ao que interessa.
+
+Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
+
+O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
+
+Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
+
+&nbsp;
+
+Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
+
+&nbsp;
+[cc lang=&#8221;html&#8221;]
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
+[/cc]
+
+&nbsp;
+Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
+
+Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
+
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+//Aqui dentro as expectativas
+});
+[/cc]
+
+&nbps;
+
+Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
+
+Assim se continuar nossos testes ficarão assim: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+  it(&#8220;deve ser true&#8221;, function(){
+    expect(true).toBeTruthy();
+  });
+});
+[/cc]
+
+&nbsp;
+
+Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
+
+Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -830,11 +887,11 @@ Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo 
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

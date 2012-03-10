@@ -4,7 +4,7 @@
   <title><![CDATA[Meu Blog, by Andre Fonseca]]></title>
   <link href="http://www.andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://www.andrefonseca.net/"/>
-  <updated>2012-03-10T16:00:36-03:00</updated>
+  <updated>2012-03-10T17:10:06-03:00</updated>
   <id>http://www.andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -85,33 +85,6 @@ Outro ponto importante de nosso problema é que o time também se acomodou no mo
 
 Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.]]></title>
-    <link href="http://www.andrefonseca.net/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/"/>
-    <updated>2011-12-08T00:00:00-02:00</updated>
-    <id>http://www.andrefonseca.net/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso</id>
-    <content type="html"><![CDATA[Hoje o post é mais filosófico do que técnico. Quero mostrar para a seguinte mensagem: &#8220;Confie nos seus instintos.. eles podem te poupar um bom tempo&#8221;.
-
-Estou trabalhando num projeto onde estou usando o Django/Python. Excelente produto. Isso mesmo produto. Acredito sinceramente que o Django é um excelente produto que a gente customiza para as nossa necessidades. Diferente dele, o Rails por exemplo é mais um conjunto de ferramentas que a gente usa para fazer nosso produto.
-
-Bom dito isso, e voltando ao tema, estou fazendo um projeto com o Django. Não sou um profundo conhecedor dele. Estou bem longe disso, a cada dia que passa vejo que tem mais coisas. A quantidade de &#8220;moles&#8221; que e as dúvidas simples me provam isso.  Uma das coisas que acredita seja &#8220;killer&#8221; nele é o fato de dar um admin muito bom e relativamente simples de customizar. RELATIVAMENTE simples.
-
-Em um post anterior mostrei, de forma bem superficial, como você pode alterar a forma que ele montar seus forms ou listagem. A princípio basta que sobrescreva seus templates padrão seguindo um padrão e tudo funcionará como mágica. Porém, se quiser customizar o fluxo dele&#8230; Ah ! aí começa toda a dificuldade.
-
-O Django tem um fluxo bem definido para suas ações de CRUD e isso para muitos dos caso é o suficiente. Mas se tiver um bom designer em seu time e ele te peça algo relativamente simples: Quero que esse form abre dentro e um popin (lightbox) e que ao salvar atualize a listagem e caso tenha erro mostre erro e mensagem na cortina (alert), além disso eu quero poder abrir esse form em outra listagem e o comportamento será outro.  Ufa !!! Aí a brincadeira começa a ficar séria
-
-Bom, não adianta temos recurso infinitos a nosso dispor se a gente não sabe usar.  Partindo desse pressuposto, pedi ajuda para meus amigos que são especialista no Django. E eles me disseram para insistir em usar o ModelAdmin do Django. Segui esse caminho, mesmo minha intuição dizendo para esquecer isso e fazer tudo do zero (usar uma view).
-
-Foram 6 dias brigando com as coisa e no final não consegui avançar mais que alguns milimetros em direção a entrega. Resolvi confiar na minha opinião e fiz tudo com view. Foram 4 dias para fechar tudo. Ainda faltam alguns detalhes que fogem o escopo original.
-
-Por isso, como disse, confie na sua intuição (entenda aqui na sua experiência, no seu &#8220;sentimento&#8221; em relação ao problema).  Sempre peça ajuda a alguém, pesquise&#8230; Não seja teimoso só por ser&#8230; Seja crítico e saiba escolher os seus caminhos.
-
-&nbsp;
-
-&nbsp;
 ]]></content>
   </entry>
   
@@ -864,6 +837,49 @@ describe(&#8220;Aqui vai uma descricao&#8221;, function(){
 Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplificando seria que ela não precisa de uma página) para executar. E é totalmente auto-contida: só precisa dela mesma para funcionar e nenhuma outra biblioteca.
 Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
 Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Instalando o NodeJS e npm]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/05/23/instalando-o-nodejs-e-npm/"/>
+    <updated>2011-05-23T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/05/23/instalando-o-nodejs-e-npm</id>
+    <content type="html"><![CDATA[A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo aprendizado e depois por causa da natureza da aplicação ficar bem com uma arquitetura de push.
+
+Primeiro passo é instalar tudo que você precisa para desenvolver com NodeJS&#8230; NodeJS e NPM. O npm é um gerenciador de pacotes &#8220;semelhante&#8221; ao rubygem/pypi. A dica inicial é esquecer tutoriais que ensinam a instalar via script (curl &#8230;. ), apt gets, ports ou brew&#8230; A melhor forma é clonar o repositório de cada um (NodeJS e NPM) e executar os comandos sugiros no README:
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/joyent/node.git
+cd node
+./configure
+make
+make install
+[/cc]
+
+Com  isso ele irá verificar as depencias necessária para ele funcionar e listá-las. Caso algo ele indique que deve instalar algo, busque o pacote no google e veja como instalar. Para ubuntu é fácil um apt-get resolve, para outros um yum install, etc.
+
+Repita a mesma coisa para o NPM
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/isaacs/npm.git
+cd npm
+sudo make install
+[/cc]
+
+Para instalar seus pacotes para desenvolver com NodeJS basta agora ir na linha de comando e digitar <em>npm install &lt;nome do pacote&gt;</em> . Isso irá instalar o pacote. OBS: O npm por padrão instala os pacotes dentro do diretório corrente algo como node_modules. Assim caso queira que os pacotes seja instalados globalmente, ou seja, para toda a máquina, use o -g ou &#8211;global junto com o comando install.
+
+Dentro do <a href="http://blog.nodejs.org/2011/05/01/npm-1-0-released/">blog do node</a>, tem uma excelente explicação de como fazer, sendo que você deve reter o seguinte para o início.  Ao instalar algo no  global, você estará instalando na pasta : &#8220;/usr/local/lib/node_modules&#8221;.  Depois disso, caso queira que essa biblioteca esteja acessível dentro do seu projeto, você deve criar um link para esse global. Para isso:
+
+[cc lang=&#8221;bash&#8221;]
+cd seu_projeto
+npm link <nome do pacote>
+[/cc]
+
+Isso irá criar um link dentro da pasta local node_modules para a pasta global do pacote. E voilá !
+Muito obrigado ao Emerson Macedo (codificando.com ou codificando.org) pela ajuda.
+
+Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP vou postando as escolhas e as descobertas.
 ]]></content>
   </entry>
   

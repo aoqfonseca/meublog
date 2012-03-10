@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro &hellip;">
+  <meta name="description" content="Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,117 +64,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
-
-Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
-
-Avisos paroquiais feitos vamos ao que interessa.
-
-Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
-
-O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
-
-Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
-
-<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
-
-&nbsp;
-
-Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
-
-&nbsp;
-[cc lang=&#8221;html&#8221;]
-<html>
-<head>
-  <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/Player.js"></script>
-  <script type="text/javascript" src="src/Song.js"></script>
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/SpecHelper.js"></script>
-  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
-
-</head>
-<body>
-
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
-
-</body>
-</html>
-[/cc]
-
-&nbsp;
-Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
-
-Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
-
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-//Aqui dentro as expectativas
-});
-[/cc]
-
-&nbps;
-
-Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
-
-Assim se continuar nossos testes ficarão assim: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-  it(&#8220;deve ser true&#8221;, function(){
-    expect(true).toBeTruthy();
-  });
-});
-[/cc]
-
-&nbsp;
-
-Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
-
-Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -721,6 +610,76 @@ Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para 
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/23/instalando-o-nodejs-e-npm/">Instalando O NodeJS E Npm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-23T00:00:00-03:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo aprendizado e depois por causa da natureza da aplicação ficar bem com uma arquitetura de push.
+
+Primeiro passo é instalar tudo que você precisa para desenvolver com NodeJS&#8230; NodeJS e NPM. O npm é um gerenciador de pacotes &#8220;semelhante&#8221; ao rubygem/pypi. A dica inicial é esquecer tutoriais que ensinam a instalar via script (curl &#8230;. ), apt gets, ports ou brew&#8230; A melhor forma é clonar o repositório de cada um (NodeJS e NPM) e executar os comandos sugiros no README:
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/joyent/node.git
+cd node
+./configure
+make
+make install
+[/cc]
+
+Com  isso ele irá verificar as depencias necessária para ele funcionar e listá-las. Caso algo ele indique que deve instalar algo, busque o pacote no google e veja como instalar. Para ubuntu é fácil um apt-get resolve, para outros um yum install, etc.
+
+Repita a mesma coisa para o NPM
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/isaacs/npm.git
+cd npm
+sudo make install
+[/cc]
+
+Para instalar seus pacotes para desenvolver com NodeJS basta agora ir na linha de comando e digitar <em>npm install &lt;nome do pacote&gt;</em> . Isso irá instalar o pacote. OBS: O npm por padrão instala os pacotes dentro do diretório corrente algo como node_modules. Assim caso queira que os pacotes seja instalados globalmente, ou seja, para toda a máquina, use o -g ou &#8211;global junto com o comando install.
+
+Dentro do <a href="http://blog.nodejs.org/2011/05/01/npm-1-0-released/">blog do node</a>, tem uma excelente explicação de como fazer, sendo que você deve reter o seguinte para o início.  Ao instalar algo no  global, você estará instalando na pasta : &#8220;/usr/local/lib/node_modules&#8221;.  Depois disso, caso queira que essa biblioteca esteja acessível dentro do seu projeto, você deve criar um link para esse global. Para isso:
+
+[cc lang=&#8221;bash&#8221;]
+cd seu_projeto
+npm link <nome do pacote>
+[/cc]
+
+Isso irá criar um link dentro da pasta local node_modules para a pasta global do pacote. E voilá !
+Muito obrigado ao Emerson Macedo (codificando.com ou codificando.org) pela ajuda.
+
+Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP vou postando as escolhas e as descobertas.
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -750,11 +709,11 @@ Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para 
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

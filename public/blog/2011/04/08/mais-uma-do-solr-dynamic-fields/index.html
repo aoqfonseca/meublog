@@ -103,47 +103,42 @@ Parte para tentar descobrir se existia algo dentro do universo do SOLR e/ou do S
 O Sunspot tem um recurso que é o &#8220;dynamic field&#8221; que é o seguinte: todo o indice de sua classe é feito no build da classe, ou seja, no seu load.  Como precisava definir coisas que só existiriam no contexto da instância, eu precisa de algum recurso que me permitisse delegar a criação de alguns campos nesse momento de indexação (instancia). Esse recurso de &#8220;dynamic&#8221; é exatamente isso: ele  configura um bloco que será criado quando ele for indexar. Com isso eu pude buscar no SOLR por campos que só existem para algumas inscrições.
 
 Em termos de código é mais ou menos o seguinte. Imagine que sua Inscricao tenha uma relação has_many com Resposta.
-
-class Inscricao &lt;&lt; ActiveRecord
-
-has_many :repostas
-
-end
-
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Inscricao</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">has_many</span> <span class="ss">:repostas</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 A classe Resposta faz referencia a um campo de seu formulário. Logo a busca terá como nome do campo do indice o campo + id e seu valor será a resposta. Assim o mapeamento fica:
-
-&#8230;
-
-searchable do
-
-dynamic :respostas do
-
-respostas.inject({}) do |mapa, resposta|
-
-mapa.merge({ resposta.campo.id.to_sym =&gt; resposta.valor})
-
-end
-
-end
-
-end
-
-&nbsp;
-
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">respostas</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="k">do</span> <span class="o">|</span><span class="n">mapa</span><span class="p">,</span> <span class="n">resposta</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">mapa</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span> <span class="n">resposta</span><span class="o">.</span><span class="n">campo</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_sym</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">resposta</span><span class="o">.</span><span class="n">valor</span><span class="p">})</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 Com isso acima, fica pronto a configuração. Para busca fica assim:
 
-search do
-
-dynamic :respostas do
-
-with(:1, &#8220;teste&#8221;)
-
-end
-
-&#8230;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">search</span> <span class="k">do</span>
+</span><span class='line'><span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'><span class="n">with</span><span class="p">(:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;teste&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
-
 Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
 </div>
 
@@ -216,11 +211,11 @@ Espero sinceramente que isso ajuda alguém como outros blogs que consultei me aj
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

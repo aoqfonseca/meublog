@@ -90,15 +90,17 @@
   </header>
 
 
-<div class="entry-content"><!-- p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica} p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px} -->Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
+<div class="entry-content">Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
 
 Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
 
 Bem vamos lá. Imaginemos que você quer que a classe Minha seja indexa e posteriormente busca pelo SOLR, basta colocar no top o require:
 
-require &#8216;sunspot&#8217;
-
-require &#8216;sunspot_rails&#8217;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_rails&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Feito isso e mais os passos já descritos, creio que agora já temos algo funcional.
 
@@ -106,81 +108,87 @@ Bem vamos para a parte de testar a coisa. Claro que todos nós somos adeptos do 
 
 Para isso, como disse na parte 1, é preciso que você use alguns matchers que irão facilitar em muito a sua vida. Eles estão dentro da gem sunspot_matchers. Dentro do seu spec_helper (isso já vale para todo projeto ruby que esteja usando o Rspec), coloque as linhas:
 
-&nbsp;
-
-require &#8216;sunspot_matchers&#8217;
-
-&#8230;
-
-config.include SunspotMatcher
-
-&#8230;
-
-config.before do
-
-Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
-
-end
-
-&nbsp;
-
-config.after do
-
-Sunspot.session = Sunspot.session.original_session
-
-end
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_matchers&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatcher</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Estamos fazendo aqui (acredito que já tenho dito isso) é colocando uma interceptador das chamadas da DSL a sessão com o SOLR para ver se tudo está ocorrendo do jeito que queremos. Seria algo como o nosso mocka, para quem conhcece.
 
 Segue abaixo um exemplo de um código de teste. Veja como fica bem simples testar se a busca, no caso, está incluindo os itens que preciso para fazer a filtragem:
 
-&#8230;
-
-it &#8220;Deve filtrar pela data de finalizacao maior que&#8221; do
-
-data = DateTime.now.strftime(&#8220;%d/%m/%Y&#8221;)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :start_date =&gt; data})
-
-data = Date.strptime(data, &#8216;%d/%m/%Y&#8217;)
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).greater_than(data)})
-
-end
-
-&nbsp;
-
-it &#8220;Deve filtrar pela data finalizacao menor que&#8221; do
-
-data = DateTime.now.strftime(&#8220;%d/%m/%Y&#8221;)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :end_date =&gt; data})
-
-data = Date.strptime(data, &#8216;%d/%m/%Y&#8217;)
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).less_than(data)})
-
-end
-
-&nbsp;
-
-it &#8220;Deve filtrar pela data de nascimento maior que&#8221; do
-
-data = Date.today.years_ago(20)
-
-encontrados = Inscricao.busca({:campanha_id =&gt; &#8220;1&#8221;, :idade_final =&gt; &#8220;20&#8221;})
-
-Sunspot.session.should be_a_search_for(Inscricao)
-
-Sunspot.session.should have_search_params(:with, Proc.new { with(:data_nascimento).greater_than(data)})
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de finalizacao maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:start_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data finalizacao menor que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:end_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de nascimento maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="o">.</span><span class="n">years_ago</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:idade_final</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;20&quot;</span><span class="p">})</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:data_nascimento</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 A coisa fica bem próxima as expectations que estamos acostumados a usar.  Com isso temos nossos testes de especificação prontos e podemos então passar para os teste de aceitação.
 
@@ -190,67 +198,57 @@ Imagino que você que esteja lendo e desenvolvendo junto comigo deva usar o Cucu
 
 Para ter um SOLR funcionando para você executar os seus testes de Cucumber, vá no arquivo, features/support/env.rb e coloque as seguintes linhas:
 
-&#8230;.
-
-&nbsp;
-
-::Sunspot::Rails::Server.new.start
-
-&nbsp;
-
-Before do
-
-Inscricao.reindex
-
-end
-
-&nbsp;
-
-After do
-
-Inscricao.remove_all_from_index!
-
-end
-
-&nbsp;
-
-at_exit do
-
-puts &#8220;Saindo do solr&#8221;
-
-::Sunspot::Rails::Server.new.stop
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">start</span>
+</span><span class='line'><span class="no">Before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">After</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">remove_all_from_index!</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">at_exit</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Saindo do solr&quot;</span>
+</span><span class='line'>    <span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">stop</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Essas linhas irão iniciar um SOLR; a cada teste pedir para reindexar os dados neles e por fim, quando tudo terminar, ele irá parar o solr que você iniciou.  Uma breve ressalva:  tive um mega problema&#8230; quando fiz isso, meus teste de jeito algum passavam. Isso porque, por motivos que ainda não sei, quando criamos na mão nossos arquivos, precisamos pedir que sejam indexados, ou seja,  ele não indexa automaticamente. Pelo oque li a gem faz isso pelos controllers. Assim que tiver certeza sobre isso escrevo algo. A questão é que tive que escrever um maldito passo para indexar e chamá-lo toda vez que algo era criado. Algo como abaixo:
 
-&nbsp;
-
-Dado /ˆque preciso reindexar minhas coisas$/ do
-
-Minhas.reindex
-
-end
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dado</span><span class="sr"> /ˆque preciso reindexar minhas coisas$/</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Minhas</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 &#8230; Em um features da vida
 
-Dado que crio uma coisa minha
-
-E que preciso reindexar minhas coisa
-
-Eu vejo essa coisa na busca
-
-&#8230;
-
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="no">Dado</span> <span class="n">que</span> <span class="n">crio</span> <span class="n">uma</span> <span class="n">coisa</span> <span class="n">minha</span>
+</span><span class='line'>    <span class="n">E</span> <span class="n">que</span> <span class="n">preciso</span> <span class="n">reindexar</span> <span class="n">minhas</span> <span class="n">coisa</span>
+</span><span class='line'>    <span class="no">Eu</span> <span class="n">vejo</span> <span class="n">essa</span> <span class="n">coisa</span> <span class="n">na</span> <span class="n">busca</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
 
-&nbsp;
+
 </div>
 
 
@@ -322,11 +320,11 @@ Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre com
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

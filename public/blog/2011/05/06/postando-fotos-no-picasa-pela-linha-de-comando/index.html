@@ -95,39 +95,53 @@
 Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente &#8220;ajuda&#8221; ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
 
 Para instalá-lo, no Ubuntu, é bem simples:
-[cc lang=&#8221;bash&#8221;]
-sudo apt-get install googlecl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install googlecl
+</span></code></pre></td></tr></table></div></figure>
 
 Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
-[cc lang=&#8221;bash&#8221;]
-pip install googlecl
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install googlecl
+</span></code></pre></td></tr></table></div></figure>
 
 Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
 Uma vez instalado é só alegria e usar:
-[cc lang=&#8221;bash&#8221;]
-andre@vermelhinho:~$ google help
-Welcome to the Google CL tool!
-Commands are broken into several parts:
-service, task, options, and arguments.
-For example, in the command
-&#8220;&gt; picasa post &#8211;title &#8220;My Cat Photos&#8221; photos/cats/*&#8221;
-the service is &#8220;picasa&#8221;, the task is &#8220;post&#8221;, the single
-option is a title of &#8220;My Cat Photos&#8221;, and the argument is the
-path to the photos.
-
-The available services are
-&#8216;picasa&#8217;, &#8216;blogger&#8217;, &#8216;youtube&#8217;, &#8216;docs&#8217;, &#8216;contacts&#8217;, &#8216;calendar&#8217;, &#8216;finance&#8217;
-Enter &#8220;&gt; help &#8221; for more information on a service.
-Or, just &#8220;quit&#8221; to quit.
-andre@vermelhinho:~$
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre@vermelhinho:~<span class="nv">$ </span>google <span class="nb">help</span>
+</span><span class='line'>Welcome to the Google CL tool!
+</span><span class='line'>Commands are broken into several parts:
+</span><span class='line'>service, task, options, and arguments.
+</span><span class='line'>For example, in the <span class="nb">command</span>
+</span><span class='line'><span class="s2">&quot;&amp;gt; picasa post --title &quot;</span>My Cat Photos<span class="s2">&quot; photos/cats/*&quot;</span>
+</span><span class='line'>the service is <span class="s2">&quot;picasa&quot;</span>, the task is <span class="s2">&quot;post&quot;</span>, the single
+</span><span class='line'>option is a title of <span class="s2">&quot;My Cat Photos&quot;</span>, and the argument is the
+</span><span class='line'>path to the photos.
+</span><span class='line'>
+</span><span class='line'>The available services are
+</span><span class='line'><span class="s1">&#39;picasa&#39;</span>, <span class="s1">&#39;blogger&#39;</span>, <span class="s1">&#39;youtube&#39;</span>, <span class="s1">&#39;docs&#39;</span>, <span class="s1">&#39;contacts&#39;</span>, <span class="s1">&#39;calendar&#39;</span>, <span class="s1">&#39;finance&#39;</span>
+</span><span class='line'>Enter <span class="s2">&quot;&amp;gt; help &quot;</span> <span class="k">for </span>more information on a service.
+</span><span class='line'>Or, just <span class="s2">&quot;quit&quot;</span> to quit.
+</span><span class='line'>andre@vermelhinho:~<span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
 
 E para enviar suas foto fica mais ou menos assim:
-[cc lang=&#8221;bash&#8221;]
-google picasa create &#8220;Cat Photos&#8221; ~/photos/cats/*.jpg
-[/cc] 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>google picasa create <span class="s2">&quot;Cat Photos&quot;</span> ~/photos/cats/*.jpg
+</span></code></pre></td></tr></table></div></figure> 
 </div>
 
 
@@ -199,11 +213,11 @@ google picasa create &#8220;Cat Photos&#8221; ~/photos/cats/*.jpg
       </li>
     
       <li class="post">
-        <a href="/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/">Confie na sua intuiÃ§Ã£o e nÃ£o seja teimoso.</a>
+        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+        <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, frameworks, etc para MVC no Javascript</a>
       </li>
     
   </ul>

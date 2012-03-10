@@ -114,35 +114,35 @@
         <loc>
             http://www.andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/
         </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:05:41-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/
         </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:03:35-03:00</lastmod>
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:07:40-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/
         </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:08:27-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/
         </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:08:56-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/
         </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
+        <lastmod>2012-03-10T17:09:27-03:00</lastmod>
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/2011/05/23/instalando-o-nodejs-e-npm/</loc>
@@ -232,12 +232,6 @@
     </url>
     <url>
         <loc>
-            http://www.andrefonseca.net/blog/2011/12/08/confie-na-sua-intuicao-e-nao-seja-teimoso/
-        </loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
             http://www.andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/
         </loc>
         <lastmod>2012-03-03T00:42:26-03:00</lastmod>
@@ -254,10 +248,10 @@
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/archives/</loc>
-        <lastmod>2012-03-10T15:37:57-03:00</lastmod>
+        <lastmod>2012-03-10T17:09:27-03:00</lastmod>
     </url>
     <url>
         <loc>http://www.andrefonseca.net/</loc>
-        <lastmod>2012-03-10T15:37:57-03:00</lastmod>
+        <lastmod>2012-03-10T17:09:27-03:00</lastmod>
     </url>
 </urlset>
