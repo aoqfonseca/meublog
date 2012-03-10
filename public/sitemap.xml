@@ -1,372 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2009/01/22/buscaestudos/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2009/02/09/data-centerinovarvirtualizacao/</loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2009/03/04/integration-continuous/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/03/15/javaplc/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2009/03/17/vmsrdb/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/03/24/endereco-ip/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/03/29/como-fazer-um-telnet-pelo-python-num-servidor-oopnevms-2/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
+        <lastmod>2012-03-10T15:30:33-03:00</lastmod>
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/2009/03/29/groovy-como-opcao/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/04/04/regular-expression/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/04/13/groovy_e_java/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
+        <lastmod>2012-03-10T15:34:54-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/
         </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/04/17/usando_using_c/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
+        <lastmod>2012-03-10T15:37:57-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://www.andrefonseca.net/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/05/03/gerando-de-forma-automatica-suas-classes/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/05/04/instalando-o-python-e-o-cheetah-no-windows/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/05/16/74/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/05/19/o-valor-do-terceiro-grau-faculdade/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/05/26/uso-de-rede-sem-fio-em-automacao-respondendo-duvidas/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/05/28/blog-de-automacao-muito-bom/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/05/28/guia-de-comandos-basicos-do-git/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/02/tdd-desenvolvimento-guiado-por-testes/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/02/usando-banco-de-dados/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/04/servicos-de-hospedagem/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/05/dicas-para-probemas-modernos-com-nossos-gadgets/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/09/por-onde-comecar-em-ti/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/09/python-por-onde-comecar/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/10/porque-ainda-usamos-linux/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/10/usando-svn-como-repositorio-de-codigo/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/11/qual-e-o-melhor-tamanho-de-uma-equipe/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/16/criando-um-relogio-em-python/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/16/novidades-nem-sempre-sao-as-melhores-coisas/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/16/um-programa-python-para-tocar-mp3/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/17/como-usar-o-navegador-safari-no-ubuntu/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/17/satira-ao-twitter/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/17/wireless-nao-mais-pensar-em-se-vai-usar-e-sim-quando/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/18/instalando-o-cruise-control-net-e-resolvendo-alguns-problemas/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/19/comando-para-remover-e-criar-servico-no-windows/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/06/20/instalando-o-django-no-seu-ubuntu/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/21/finalmente-minha-primeira-pagina-com-django/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/06/30/post-desabafo-quando-o-ambiente-e-ruim-o-produto-e-deste-ambiente-e-ruim/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/07/13/como-instalar-o-django-num-servidor-ubuntu-usando-postgres-e-lighttpd/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/07/21/inovar-para-superar-a-crise/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/07/26/codigo-ruby-de-robot-para-twitter/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/07/26/inteligencia-coletiva-uma-visao-geral/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/07/30/121/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/08/05/pen-story-animacao-genial/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/09/gerenciamente-de-alarmes-em-projetos-de-supervisorios-e-ihm/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/09/robot-do-twitter-atrapalhando-meu-acesso-a-ele/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/22/sendo-sustentavel-em-desenvolvimento-de-projetos/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/26/java-e-mal-ou-sao-os-javeiros-que-sao-maus/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/08/27/zzzzz/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/28/comparando-arquivos-uma-ideia-de-ferramenta/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/08/30/ferramentas-de-engenharia-na-contramao-do-progresso/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/09/01/usando-atributos-customizavel-em-c/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/09/04/instalando-e-configurando-o-mac-ports/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/09/09/uma-experiencia-a-compartilhar/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/09/20/padroes-de-projeto/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/09/26/documentar-e-preciso-e-faz-bem/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/10/08/escola-e-fabrica-de-fracassados/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/10/21/parabola-do-cachorro-inteligente/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/10/22/palestra-de-padroes-de-projeto-no-riojug/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/10/24/sucesso-e-feito-de-lagrima-e-suor/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/10/30/evento-developers-conference-rio-de-janeiro-inscreva-se/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/10/31/e-melhor-ligar-o-radar-para-a-linguagem-scala/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/11/07/introducao-a-linguagem-scala-parte-1/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/11/12/resposta-a-email-empresa-grande-ou-pequena/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/11/18/existe-uma-escolha-perfeita/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/11/19/automatizando-o-operacional/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/11/27/comunicar-e-preciso/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/12/04/entendendo-os-decoradores-em-python-parte-1/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2009/12/10/medo-de-mudar/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2009/12/23/problema-para-escrever-um-arquivo-com-utf-8-em-groovy/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/01/07/qual-melhor-dia-para-comecar-e-terminar-um-sprint-jack-milunksy/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/01/08/flex-for-kids-2010/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/01/11/devemos-considerar-seguranca-no-escopo-do-sistema/
         </loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
@@ -377,17 +31,7 @@
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/01/12/algumas-consideracoes-sobre-o-mercado/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2010/01/12/objetos-trocam-mensagens/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/01/13/bases-de-conhecimento/</loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
@@ -404,67 +48,7 @@
     </url>
     <url>
         <loc>
-            http://www.andrefonseca.net/blog/2010/01/21/historias-tecnicas-eles-devem-estar-no-backlog/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/01/27/mais-um-pouco-sobre-testes-automatizados/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
             http://www.andrefonseca.net/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/02/08/lumis-contrata-analista-desenvolvedor-junior/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/02/09/vagas-para-analista-java-e-analista-c/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/02/12/sera-que-o-sistema-toyota-e-falho/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/03/12/pyccuracy-uma-boa-ferramenta-de-teste-coloque-a-na-sua-maleta/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/03/19/e-preciso-acreditar/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/03/23/nova-revolucao-industrial/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/04/11/martelo-e-para-pregar-e-nao-apertar-parafusos/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/04/13/para-bom-desenvolvedor-editor-de-texto-basta/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/04/20/porque-decidi-usar-python-eou-rails-e-ser-agil/
         </loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
@@ -475,37 +59,7 @@
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2010/05/19/clinicos-gerais-ou-especialistas/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/05/20/buscar-problemas/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2010/05/31/shu-ha-ri/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/06/02/como-evoluir/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/06/15/diario-de-bordo-deste-ultimos-tempos/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/06/16/nao-sejamos-tao-radicais/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/06/26/culpa-nem-sempre-e-do-processo/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/07/12/otuma-mensagem-para-meus-amigos/</loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
@@ -515,34 +69,8 @@
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2010/08/24/focos-nas-pessoas/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://www.andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/09/10/despertar-de-uma-nova-consciencia-sera/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/09/11/os-antigos-construtores-romanos-eram-como-bons-programadores/
-        </loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/09/14/limite-e-um-amigo-legal/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2010/09/18/monte-de-gente-trabalhando-com-cueca-em-cima-da-calca/
         </loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
@@ -557,25 +85,13 @@
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2010/12/05/nem-todo-mundo-e-agil/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://www.andrefonseca.net/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/
         </loc>
         <lastmod>2012-03-03T00:30:44-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2010/12/14/dividindo-algumas-experiencias/</loc>
-        <lastmod>2012-03-03T00:30:44-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2010/12/17/estudos-compartilhados-parte-iii/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2010/12/20/tim-mega-fail/</loc>
         <lastmod>2012-03-03T00:30:45-03:00</lastmod>
     </url>
     <url>
@@ -585,17 +101,7 @@
         <lastmod>2012-03-03T00:30:45-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2011/02/11/codigo-legado/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
         <loc>http://www.andrefonseca.net/blog/2011/03/09/tentando-ser-mais-produtivo/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.andrefonseca.net/blog/2011/03/15/processo-por-processo-nao-resolve-aceite-e-mude/
-        </loc>
         <lastmod>2012-03-03T00:30:45-03:00</lastmod>
     </url>
     <url>
@@ -621,18 +127,6 @@
         <lastmod>2012-03-03T00:30:45-03:00</lastmod>
     </url>
     <url>
-        <loc>http://www.andrefonseca.net/blog/2011/04/09/valor-para-o-cliente/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2011/04/10/evento-flisol-e-devinrio-2011/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2011/04/20/voce-realmente-esta-testando/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://www.andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/
         </loc>
@@ -652,10 +146,6 @@
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/2011/05/23/instalando-o-nodejs-e-npm/</loc>
-        <lastmod>2012-03-03T00:30:45-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.andrefonseca.net/blog/2011/05/26/colocando-uma-tarefa-no-cron/</loc>
         <lastmod>2012-03-03T00:30:45-03:00</lastmod>
     </url>
     <url>
@@ -764,10 +254,10 @@
     </url>
     <url>
         <loc>http://www.andrefonseca.net/blog/archives/</loc>
-        <lastmod>2012-03-04T15:49:56-03:00</lastmod>
+        <lastmod>2012-03-10T15:37:57-03:00</lastmod>
     </url>
     <url>
         <loc>http://www.andrefonseca.net/</loc>
-        <lastmod>2012-03-04T15:49:56-03:00</lastmod>
+        <lastmod>2012-03-10T15:37:57-03:00</lastmod>
     </url>
 </urlset>

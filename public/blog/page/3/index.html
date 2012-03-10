@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Esse é daqueles posts que escrevo para não esquecer algumas coisas.  Nessa semana precisei colocar um job no cron do meu sistema para que ele &hellip;">
+  <meta name="description" content="A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,67 +64,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/26/colocando-uma-tarefa-no-cron/">Colocando Uma Tarefa No Cron</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-26T00:00:00-03:00" pubdate data-updated="true">May 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Esse é daqueles posts que escrevo para não esquecer algumas coisas.  Nessa semana precisei colocar um job no cron do meu sistema para que ele apagasse todos os arquivos que foram criados a mais de X minutos. Esse job deveria rodar de 10 em 10 minutos.  A linha ficou assim:
-
-[cc lnag=&#8221;bash&#8221;]
-*/1 * * * * for name in `find /opt/participacoes/uploads/videos  -name &#8216;*&#8217; -type f  -cmin +3 -print`; do echo $name; rm -f $name ; done &gt; /dev/null 2&gt;&amp;1
-[/cc]
-
-Essa linha pega todos os arquivos dentro de uma pasta e joga seus nomes numa lista. Essa lista é lida no loop e o comando de remove é feito.  Uma coisa interessante nessa lista é que só pega arquivos regulares, tudo isso graças a opção -type f. Você pode ver mais  opções digitando
-
-[cc lang=&#8221;bash&#8221;]
-man find
-[/cc]
-
-Outro detalhe legal dessa linha é como você define o intervalo de tempo para execução de algo no cron. No cron, funciona da seguinte forma:  A B C D E  onde cada um é: 
-<ul>	
-<li> A - o minuto no qual quer que seu job execute. Ex: 0 ou 30 </li>
-<li>B - hora</li>
-<li>C - dia</li>
-<li>D - mes</li>
-<li>E - ano </li>
-</ul>
-
-Se caso queira fazer algo como intervalo de tempo (quero que algo rode a cada 10 minutos) você pode usar */10(intervalo de tempo).
-
-Existe ainda a opção de usar alias especiais do tipo @daily. Para mais informação, peça ajuda ao google ou ao man na sua linha de comando.  
-
-Uma última coisa é que estou jogando a saída da execução para o dev/null (para o limbo - lugar nenhum).  Assim eu não fico com alertas e saidas indesejadas. 
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -434,141 +373,6 @@ google picasa create &#8220;Cat Photos&#8221; ~/photos/cats/*.jpg
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/20/voce-realmente-esta-testando/">VocÃª Realmente EstÃ¡ Testando?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-20T00:00:00-03:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Na maioria dos livros que li nos últimos tempos do mais diversos assuntos ligados a engenharia de software, testes automatizados, e mais especificamente, TDD (test driven development) e BDD (behavior driven development) são dominantes. É certo que, atualmente, se desejamos ter qualidade e velocidade de entrega nos nosso produtos precisamos de testes automatizados. E vou além: digo que abordagens como TDD e BDD auxiliam o desenvolvedor a escrever código melhor e mais focado no valor para o cliente.
-
-A questão é que se estabeleceu axiomas - verdades absolutas - onde para ser bom o projeto precisa ter 100% de cobertura de código e  ter testes unitários e testes de integração e testes de aceitação (tela e feature), etc.  Isso nem sempre é verdade e pode ser um verdadeiro &#8220;tiro no pé&#8221;. Antes de mais nada é preciso entender a real função do teste.  E qual será a melhor forma de utilizá-lo.  Não estou discutindo aqui abordagens e sim se estamos usando de forma inteligente e consciente os testes.
-
-Em uma conversa recente com <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, vimos, que, por exemplo, em alguns casos testes de aceitação que usavam Cucumber ou Pyccuracy, estavamos testando mais o navegador que a funcionalidade em si. Quando falamos de cobertura temos outro ponto interessante: 100% não é garantia de nada. Já ouvi falar  de sistemas com 100% de cobertura que quando foram fazer refactoring - confiando na cobertura de testes,  &#8221;quebrou&#8221; tudo ao colocar em produção pois vários detalhes escaparam.  Isso porque, provavelmente existiam diversos testes que faziam &#8220;nada&#8221; e que ali estavam apenas para garantir a cobertura mínima.
-
-Novamente citando <a href="http://blog.heynemann.com.br/">Bernardo Heynemann</a>, ele me disse que para os que estão começando, é importante seguir uma fórmula:  testes unitários, testes de integração, testes de aceitação, etc. Isso porque ainda estão formando sua base de experiência e tem pouco discernimento para saber quais seriam os pontos críticos a serem testados para termos a garantia de qualidade.  Mas a medida que for ganhando bagagem e aguçando seu senso crítico, é importante se questionar o que testar, como testar, etc.
-
-Uma coisa que sempre falo é que testar da trabalho. Por mais que possa trazer benefícios, ainda é mais trabalho. Se falamos de testes automatizados - programáticos - é mais linha de código. Por exemplo, tiveram coisas que levei mais tempo escrevendo os testes do que implementando.  Teste onera sim.
-
-Antes de mais nada quero esclarecer que não sou contra testes. Muito pelo contrário, acredito que não existe a possibilidade de fazer algo bem sem usar TDD ou BDD. A questão que levanto é o quanto estamos realmente testando nossos sistemas e o quanto estamos apenas &#8220;inventando&#8221; para cumprir com regras pré-definidas que ninguém de fato entendeu para que servem.
-
-Um exemplo disso que estou falando é quando temos diversos níveis de teste em nossa aplicação &#8230; E testamos a mesma coisa em todos eles. Sabe aquele teste que você fica criando o Model, colocando os dados  no banco, acessando o banco, etc? Isso mesmo. É um bom smell disso que estou falando.
-
-Uma coisa que faço é primeiro me concentrar no objetivo que quero atingir com aquele teste. Tudo mais é superfluo e logo pode ser ignorado(entenda mock e outras tecnicas).  Logo, se quero testar as chamadas do controller de minha aplicação, eu não preciso, nem quero me preocupar com que está acontecendo dentro do Model associado.   Outro ponto é se já testei algo em algum ponto, evito ficar testando novamente&#8230; Se por acaso isso for necessário é sinal que preciso fazer um refactoring no meu código.
-
-Em futuro artigos pretendo trazer o assunto e ir mais fundo inclusive trazendo exemplos, trechos de código, etc.  Até a próxima.
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/evento-flisol-e-devinrio-2011/">Evento Flisol E Devinrio 2011</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00-03:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Esse final de semana rolou o Flisol. O Flisol  é um evento de software livre. Fugindo da agenda comum de instalações e evangelizações, o pessoal da UniRio inovou mais uma vez e montou uma grade de palestras ampla e muito legal. Eu tive o prazer, junto com o Guilhermes Souza, de ser um dos palestrantes, onde falei de Código Legado abordando bem a questão de engenharia de software.
-
-Durante o evento também tivemos a oportunidade de fazer uma reunião de trabalho sobre o DevinRio 2011 e posso dizer de agora que queremos continuar mantendo o nível e superá-lo.  Para dar um gostinho gravamos alguns depoimentos do pessoal que foi ao evento no sábado dizendo porque deve ir no DevinRio desse ano. Vale a pena conferir. Peço desculpas por faltar nome de alguns mas esse amigo aqui esqueceu de anotá-los. Obrigado  a todos.
-
-&nbsp;
-<iframe src="http://player.vimeo.com/video/22216448?color=59a5d1" width="600" height="450" frameborder="0"></iframe><p><a href="http://vimeo.com/22216448">Por que voce deve ir ao DevinRio 2011</a> from <a href="http://vimeo.com/user2993643">andre fonseca</a> on <a href="http://vimeo.com">Vimeo</a>.</p><p>Depoimentos do pessoal no Flisol falando porque você deve ir no DevinRio desse ano</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/09/valor-para-o-cliente/">Valor Para O Cliente</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-09T00:00:00-03:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p align="justify">Numa conversa recente com alguns colegas do trabalho falamos sobre a questão onde o programador, amante de tecnologia, tende a esquecer alguns aspectos comerciais daquilo que ele está fazendo. </p> <p align="justify">Qual de nós não quiz aquela oportunidade para usar a mais nova versão daquela biblioteca no seu projeto e ouviu um sonoro não do coordenador ou gerente ou qualquer outro que seja? Quem nunca ficou mega empolgado fazendo um mega refactoring no código e depois de mostrou para algum amigo a sua proeza onde um emanharado de coisas ficou mais compreensível ou melhor arquitetado? </p> <p align="justify">Nós desenvolvedores por natureza, espero que a maioria, somos apaixonado por tecnologia. Tanto que acreditamos que isso seja a única razão de nossa existencia e esquecemos com frequencia qualquer coisas. Pois todo o resto é um mero coadjuvante da tecnologia. </p> <p align="justify">A questão que isso dentro do nossos produtos, os quais estamos sendo pagos para fazer ou pretendemos ganhar dinheiro com ele acaba, em muitos casos, atrapalhando. Eu mesmo sou um exemplo disse: por várias vezes gastei um tempo considerável dentro de uma tarefa fazendo um reestudo e redesing sendo que poderia ter focado mais na entrega do valor ao cliente naquele momento. </p> <p align="justify">Poucos de nós tem em mente que o foco princípal de nosso atividade é cliente satisfeito. Criamos parametros de medidas e raríssimos são aqueles que levam em conta se estamos ou não entregando mais ou menos valor. Isso até mesmo dentro de toda essa hype de ágil. </p> <p align="justify">Temos métrica para dizer cobertura de testes; temos métricas para dizer o quanto nosso código é claro; verificar duplicidades; mas não nos preocupamos se no final o cliente está feliz (imaginaram um gráfico no quadro com o humor do cliente por entrega?)</p> <p align="justify">Antes que pensem que penso que devemos é fazer as coisas de qualquer jeito e entregar pois isso é o importa para o cliente e ponto final … Bom senso é a palavra chave da mensagem que quero passar para vocês. </p> <p align="justify">BOM SENSO</p> <p align="justify">O grande segredo que devemos perseguir é encontrar o equilíbrio ideal entre entregar valor o quanto antes possível para o cliente sem abrir mão de qualidade. </p> <p align="justify">Já vi milhares de pessoas adotaram tática de 100% de cobertura, políticas severas de escritura de código(exemplo: proíbido usar if) e isso depois virar um mega gargalo nas entregas. Ter código claro e bonito é legal, desde que isso ajuda a gente a atender o cliente pois é ele que nos paga. </p> <p align="justify">Minha mãe sempre me dizia na minha infância: </p> <blockquote> <p align="justify">O ótimo é o inimigo do bom</p></blockquote> <p align="justify">Temos que ter cuidado com esse nosso lado Geek de ser e dar uma suavizada nessa tendencia de só pensar na parte técnica da coisa e passarmso a ter uma visão total do produto. Depois disso, usar essa visão para definir o quão fundo vale a pena refatorar aquele código. </p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/">Mais Uma Do SOLR - Dynamic Fields</a></h1>
     
     
@@ -841,6 +645,278 @@ Eu vejo essa coisa na busca
 &nbsp;
 
 Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
+
+&nbsp;
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
+
+Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
+
+A primeira conclusão que chegamos foi que precisamos tirar esse busca do banco de dados. Banco de dados são excelentes desde que mantenha sua busca navegando pelos indices das tabelas. Tente um fulltext search e verá o quanto será penoso, até mesmo em bases pequenas.  Para resolver isso pensamos em alguma solução de indexação e a melhor que vimos no momento foi o <a href="http://lucene.apache.org/solr/#intro">SOLR</a>.:
+<blockquote>Solr is the popular, blazing fast open source enterprise search platform from the Apache Lucene project. Its major features include powerful full-text search, hit highlighting, faceted search, dynamic clustering, database integration, and rich document (e.g., Word, PDF) handling. Solr is highly scalable, providing distributed search and index replication, and it powers the search and navigation features of many of the world&#8217;s largest internet sites.
+
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as <a href="http://tomcat.apache.org/">Tomcat</a>. Solr uses the <a href="http://lucene.apache.org/java/">Lucene Java</a> search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&#8217;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</blockquote>
+Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  java para indexação e busca) que permite que a gente fale com ela via HTTP (busque e indexe).  Roda em cima de um container servlet. Aqui no nosso caso usamos o jetty ao invés do Tomcat.
+
+O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
+
+Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
+<pre>  class Post
+    #...
+  end
+
+  Sunspot.setup(Post) do
+    text :title, :description, :stored =&gt; true
+    string :author_name
+    integer :blog_id
+    integer :category_ids
+    float :average_rating, :using =&gt; :ratings_average
+    time :published_at
+    string :sort_title do
+      title.downcase.sub(/^(an?|the)\W+/, ''/) if title = self.title
+    end
+  end</pre>
+No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
+<pre>Sunspot.search(Post) do
+    keyword "teste"
+    with :author_name, "andre fonseca"
+    with :average_rating, 10.3
+  end</pre>
+Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
+<pre>class MinhaClass &lt;&lt; ActiveRecord</pre>
+<pre>
+<pre>    searchable do</pre>
+<pre>      text :nome, do |minha_classe|</pre>
+<pre>        minha_classe.outro.nome</pre>
+<pre>      end</pre>
+<pre>    end</pre>
+</pre>
+<pre>end</pre>
+A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
+<pre>Sunspot.search(Post) do</pre>
+<pre>    config.gem "sunspot"</pre>
+<pre>    config.gem "sunspot_rails"</pre>
+<pre>end</pre>
+Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
+Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
+<pre>config.include SunspotMatchers</pre>
+<pre>&nbsp;</pre>
+<pre>config.before do</pre>
+<pre>  Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)</pre>
+<pre>end</pre>
+<pre>&nbsp;</pre>
+<pre>config.after(:each, :type => type) do</pre>
+<pre>  ::Sunspot.session = ::Sunspot.session.original_session</pre>
+<pre>end</pre>
+Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
+Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/">Usando Sinatra Para Evitar Overdesign</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-20T00:00:00-03:00" pubdate data-updated="true">Mar 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
+
+Ruby on Rails, ou RoR ou somente Rails é uma framework de desenvolvimento de aplicações web, cuja a filosofia gira em torno de evitar ao máximo desperdícios com configurações, repetições, etc. Para ser bem objetivo, em Rails tudo é baseado em convenção e tudo é voltado para se escrever o mínimo de código para se implementar um comportamento. Caso queira saber mais peça ajuda ao grande oráculo (google)&#8230; para ajudar um pouco você pode começar pelos Railscast que são gratuítos e ajudam muito a entender.
+
+Mas sendo tão orientado a produtividade como o Rail é, ele também pode se tornar um overdesign - um escolha que tem mais recursos e estruturas do que precisa - e uma má escolha para quem deseja fazer um sitema web muito simples e com poucos recursos.
+
+&nbsp;
+
+Imagine que você deseja fazer um sistema web que simplesmente irá receber uma requisição do usuário, tratá-la (sem necessariamente criar algo num banco de dados, por exemplo) e renderizar uma resposta. Um bom exemplo disso foram alguns projetos que foram feitos durante o evento FISL 2010, pela galera #horaextra.  No meio do evento, decidimos fazer um site onde teríamos ao invés de um horóscopo, teríamos um desoróscopo, com mensagens nada animadoras. Assim surgiu o <a href="http://www.desoroscopo.com.br">desoroscopo</a>.
+
+A princípio todo ele foi feito usando Rails. Mas logo nos primeiros releases, fomos vendo que não precisávamos de muitos recursos, principalmente de um banco de dados. Sendo assim, ter ali um activerecord, activecontroller, routes e etc era algo que não precisávamos. Era um overdesign para a solução que desejamos.  Foi então, que o Marcos Tapajós, tomou a iniciativa de reescrever todo o sistema usando outro framework ruby  baseado em RACK que é mega simples : SINATRA.  Vale ressaltar que essa reescrita foi feita em menos de uma hora(a se levar em conta o fato do Tapajós dominar bem ruby e o próprio Sinatra) .
+
+A questão que o site está até hoje no ar e tem números bem expressivos de visitas e em nenhum momento não sentimos falta de algum recurso que rails tem e o Sinatra não.
+
+<img class="alignleft" title="Sinatra logo" src="http://www.sinatrarb.com/images/logo.gif" alt="" width="109" height="76" />
+
+Sinatra é um framework web feito em Ruby baseado em Rack. Em sua própria documentação, seus criadores, vão além e o chamam de DSL ressaltando sua simplicidade. Todo o seu poder está no fato de precisar de quase nada para estar funcionando. Chega ao limite de precisar apenas a gem instalada e um script com as definições de rotas e seus tratamento in line. Veja exemplo abaixo retirado do site da documentação.
+<pre># myapp.rb
+require 'sinatra'
+
+get '/' do
+  'Hello world!'
+end</pre>
+Note que com apenas 3 linhas de código o sistema ao acessar a url padrão (localhost:4567) já está respondendo. Isso é realmente impressionante.  Entretanto, tudo tem um preço. Caso precise fazer algo que vá além do muito simples, estará por sua própria conta e risco. Claro que pode lançar mão de uma gem para ajudá-lo (isso é algo muito comum no ecossistema Ruby) mas nem tudo será resolvido.
+
+Carrego comigo uma regra que sempre me ajuda muito.  Se meu sistema precisa de mais do que uma entidade, entidades que se relacionam, vai além do que uma 4 ou 5 rotas&#8230; já começo a tender para usar o Rails do que qualquer d&#8217;outra coisa. Mas se meus sistema não fala com banco de dados, tem poucas rotas, sempre que posso farei com usando Sinatra.
+
+Tenho mais dois exemplos sobre isso:  Sou um dos organizadores do <a href="http://www.devinrio.com.br">DevinRio</a>, e na edição de 2010, tínhamos os desafio de fazermos um site. Na hora optamos por fazê-lo toda usando Sinatra. Isso porque sinatra é simples e aproveitamos a facilidade de deploy e gestão do produto <a href="http://heroku.com">heroku</a>.  O sistema aguentou requisição para caramba e foi um sucesso, tanto que vamos usar a mesma infra/tecnologia para a edição deste ano.
+
+O segundo exemplo vem do meu trabalho:  precisávamos criar um sistema que iria receber uploads de mídias (fotos, vídeo, etc), gravá-las no disco e processá-las de forma assíncrona.  Muitos poderiam pensar que esses requisitos nos levariam facilmente a querer fazer isso com rails ou até com outra tecnologia/framework(scala, java, etc).  Entretanto, resolvemos fazê-lo em Sinatra. Foi a melhor decisão.  A aplicação ficou simples, limpa e coesa.  E com ajuda de algumas outras gems, o Sinatra está dando conta do recado com maestria.
+
+Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica a dica: fique atento. Leia bastante, converse com outros colegas, amigos e profissionais. Esteja aberto as novidades. Elas podem acabar salvando o seu dia. Evite resolver tudo sempre da mesma forma. Diversifique. Mesmo que seja apenas para testar.  Pluralidade é a palavra da vez.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/09/tentando-ser-mais-produtivo/">Tentando Ser Mais Produtivo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-09T00:00:00-03:00" pubdate data-updated="true">Mar 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><img class="alignright" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="aumentando a produtividade" src="http://t2.gstatic.com/images?q=tbn:ANd9GcTUmzvCLqs_n-rMBJ_MBC0L4GsUB8QczP6EipEGaGpbW3Vc3MdLLg" alt="" width="140" height="171" />Ultimamente venho tentando melhorar a minha produtividade. Eu sofro de um problema de perda de atenção&#8230; Eu perco o foco muito facilmente. Basta qualquer coisas acontecer minha volta para que eu perca o foco naquilo que estou fazendo. Parte dessa perda de foco vem do fato de estar fazendo alo que não me agrade, ou considere chato naquele momento. Bom de qualquer jeito, dentro de qualquer atividade ou profissão, existem partes que não são tão glamorosas, mas que precisam ser feitas. Chega uma hora que fica chato e começa a nos comprometer em nossa vida profisional, pois, por mais que fizesse tudo e bem rápido sempre fica a sensação que estou enrolando ou preciso de alguém para me lembrar a todo momento o que tenho que fazer.
+
+Conversei isso com algumas pessoas e vi que esse &#8220;problema&#8221; era mais comum do que imaginava. E isso tende a ser agravado com a nossa famosa vida moderna. O que não nos falta são armadilhas para nossa atenção: e-mail, twitter, facebook, gtalk, msn, y!, etc. Se contabilizarmos o tempo que gastamos nesses exemplos acima, acreditem, muitos ficarão muito assustado com o tamanho do número.
+
+<img class="alignleft" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="produtividade" src="http://t1.gstatic.com/images?q=tbn:ANd9GcTHqwpQppjUo8TC6IGJkd48tatLMeRvj_pV1fcxy3HM-S3Oh_jJ" alt="" width="182" height="177" />Bom partindo disso e somado ao fato de eu já ter dificuldade, resolvi adotar algumas dicas de estratégia do meu amigo Sylvestre MergulhãoUma delas, e que tem me ajudado muito, é ter horário para fazer cada atividade. Ao invés de ficar verificando aleatoriamente a minah caixa de e-mail e twitter, estabeleci que somente verei quando chego, volto do almoço e ao sair. Ainda não consegui atingir a disciplina total&#8230; mas já consegui avanços. Outra coisa que estou fazendo é a técnica do INBOX ZERO. Tento manter minha caixa de entrada vazia sempre&#8230; deixei de seguir um monte de listas, limpei os spams, criar filtros mais inteligentes - uso muito os labels embora isso só sirva para quem tem gmail. Evito ler as mensagens na hora, marco as importantes para lê-las em casa depois com calma. Outra coisa que desliguei todo o tipo de alerta em tela&#8230; tipo o Growl. Isso reduz a minha ansiedade em querer ver oque acabou de chegar e com isso, me ajuda a focar.
+
+Por fim, uma última técnica é o pomodoro. Existe muita polêmica em volta dela entretanto, para mim, tenho conseguido. Estabeleço intervalos de 25 min; entre intervalos descanso 5min.Aqui cabe um ressalva: tudo isso que disse deram certo comigo.
+
+Um aviso importante é que devemos fazer isso para melhorar nosso desempenho porém não podemos esquecer que pausas e pequenas de focos são importante para mantermos nossa criatividade e descansar.
+
+Concluindo, hoje vivemos num mundo que somos cobrados como máquinas onde o importante é nosso rendimento máximo. Além disso parece que um dia de 24 horas tem sido pouco para o tanto de coisa que gostaríamos de fazer. Logo, a capacidade de focar nunca foi tão valorizada. Agora deixo o espaço dos comentários para que cada um diga como tem feito para melhorar.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
+
+Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
+<h2>Definir fazendo</h2>
+A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
+
+Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
+
+Nisso se encaixa o conceito de arquitetura emergente.
+<h2>Arquitetura emergente</h2>
+Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
+
+Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
+
+As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
+<h2>Refactoring</h2>
+Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
+
+Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
+
+Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
+
+Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
+
+Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
 
 &nbsp;
 </div>

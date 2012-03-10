@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Groovy como opÃ§Ã£o - Meu Blog, by Andre Fonseca</title>
+  <title>Groovy como opção - Meu Blog, by Andre Fonseca</title>
   <meta name="author" content="Andre Fonseca">
 
   
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Groovy Como OpÃ§Ã£o</h1>
+      <h1 class="entry-title">Groovy Como Opção</h1>
     
     
       <p class="meta">
@@ -91,38 +91,59 @@
 
 
 <div class="entry-content">Durante o encontro de TI, houve uma apresentação do <a href="http://gc.blog.br">Guilherme Chapiewiski</a>, onde ele falou um pouco do que ele acredita que venha ser as tecnologias que estão na &#8220;moda&#8221; ou que virão a ser moda. Em sua apresentação ele apresentou o Ruby, Python (<a href="http://www.djangoproject.com/">Django</a>), falou do Java e por fim do ASP.NET. De cada uma citada, ele apresentou seu entendimento de prós e contras.  Concordo com ele em parte mas não é o objetivo aqui deste post.
-Acabou que devido o interesse por parte dos participantes no tema não tive a oportunidade de conversar com ele depois, pois acredito que na palestra dele &#8220;faltou&#8221; falar também no Groovy. O Groovy é uma linguagem criada, totalmente, em Java, com o objetivo de ser algo parecido com Ruby, python, etc.  Hoje, com as melhorias continuas que vem recebendo, tornou-se um excelente opção frente as demais.  Possui característica semelhantes ao Ruby, Python, etc, como por exemplo a questão da flexibilidade para sintaxe e escrita de código, tipagens dinamicas, closures, etc. (veja exemplo abaixo)
-<code>
-nome = ["a","b","C"]
-nome.each{
-     println it
-}
-</code>
-Outro exemplo
-<code>
-//Exemplo retirado do site do Groovy.
-import groovy.xml.MarkupBuilder
-import org.custommonkey.xmlunit.*
-</code>
 
-<code>
-def writer = new StringWriter()
-def xml = new MarkupBuilder(writer)
-xml.records() {
-  car(name:'HSV Maloo', make:'Holden', year:2006) {
-    country('Australia')
-    record(type:'speed', 'Production Pickup Truck with speed of 271kph')
-  }
-  car(name:'P50', make:'Peel', year:1962) {
-    country('Isle of Man')
-    record(type:'size', 'Smallest Street-Legal Car at 99cm wide and 59 kg in weight')
-  }
-  car(name:'Royale', make:'Bugatti', year:1931) {
-    country('France')
-    record(type:'price', 'Most Valuable Car at $15 million')
-  }
-}
-</code>
+Acabou que devido o interesse por parte dos participantes no tema não tive a oportunidade de conversar com ele depois, pois acredito que na palestra dele &#8220;faltou&#8221; falar também no Groovy. O Groovy é uma linguagem criada, totalmente, em Java, com o objetivo de ser algo parecido com Ruby, python, etc.  Hoje, com as melhorias continuas que vem recebendo, tornou-se um excelente opção frente as demais.  Possui característica semelhantes ao Ruby, Python, etc, como por exemplo a questão da flexibilidade para sintaxe e escrita de código, tipagens dinamicas, closures, etc. (veja exemplo abaixo)
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">nome</span> <span class="o">=</span> <span class="o">[</span><span class="s">&quot;a&quot;</span><span class="o">,</span><span class="s">&quot;b&quot;</span><span class="o">,</span><span class="s">&quot;C&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="n">nome</span><span class="o">.</span><span class="na">each</span><span class="o">{</span>
+</span><span class='line'>     <span class="n">println</span> <span class="n">it</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Outro exemplo
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">groovy.xml.MarkupBuilder</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.custommonkey.xmlunit.*</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">def</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringWriter</span><span class="o">()</span>
+</span><span class='line'><span class="n">def</span> <span class="n">xml</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MarkupBuilder</span><span class="o">(</span><span class="n">writer</span><span class="o">)</span>
+</span><span class='line'><span class="n">xml</span><span class="o">.</span><span class="na">records</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">car</span><span class="o">(</span><span class="nl">name:</span><span class="err">&#39;</span><span class="n">HSV</span> <span class="n">Maloo</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">make:</span><span class="err">&#39;</span><span class="n">Holden</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">year:</span><span class="mi">2006</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">country</span><span class="o">(</span><span class="err">&#39;</span><span class="n">Australia</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">record</span><span class="o">(</span><span class="nl">type:</span><span class="err">&#39;</span><span class="n">speed</span><span class="err">&#39;</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">Production</span> <span class="n">Pickup</span> <span class="n">Truck</span> <span class="n">with</span> <span class="n">speed</span> <span class="n">of</span> <span class="mi">271</span><span class="n">kph</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="n">car</span><span class="o">(</span><span class="nl">name:</span><span class="err">&#39;</span><span class="n">P50</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">make:</span><span class="err">&#39;</span><span class="n">Peel</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">year:</span><span class="mi">1962</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">country</span><span class="o">(</span><span class="err">&#39;</span><span class="n">Isle</span> <span class="n">of</span> <span class="n">Man</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">record</span><span class="o">(</span><span class="nl">type:</span><span class="err">&#39;</span><span class="n">size</span><span class="err">&#39;</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">Smallest</span> <span class="n">Street</span><span class="o">-</span><span class="n">Legal</span> <span class="n">Car</span> <span class="n">at</span> <span class="mi">99</span><span class="n">cm</span> <span class="n">wide</span> <span class="n">and</span> <span class="mi">59</span> <span class="n">kg</span> <span class="n">in</span> <span class="n">weight</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="n">car</span><span class="o">(</span><span class="nl">name:</span><span class="err">&#39;</span><span class="n">Royale</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">make:</span><span class="err">&#39;</span><span class="n">Bugatti</span><span class="err">&#39;</span><span class="o">,</span> <span class="nl">year:</span><span class="mi">1931</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">country</span><span class="o">(</span><span class="err">&#39;</span><span class="n">France</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">record</span><span class="o">(</span><span class="nl">type:</span><span class="err">&#39;</span><span class="n">price</span><span class="err">&#39;</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">Most</span> <span class="n">Valuable</span> <span class="n">Car</span> <span class="n">at</span> <span class="n">$15</span> <span class="n">million</span><span class="err">&#39;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 A sua comunidade é bastante ativa e vem trabalhando firme no proposito de torná-la interessante e poderosa, o que a torna uma séria candidata a ser a segunda linguagem &#8220;oficial&#8221; da plataforma JAVA ( para mim no curto tempo JAVA deixará ser uma linguagem a se codificar para uma plataforma para desenvolver sobre - assunto para outro post). Isso porque, além de todo o trabalho, Groovy oferece aos desenvolvedores Java uma transição suave, pois permite que escreve em sintaxe JAVa dentro de seus programas,  trabalha com classe Java, etc.
 Além de tudo isso já citado, ainda temos a questão da grande quantidade de extensões, plugins, frameworks feitos em e para groovy que so enriquecem, como por exemplo, existe uma implementação Rails em groovy que é excelente.
@@ -167,10 +188,10 @@ Além de tudo isso já citado, ainda temos a questão da grande quantidade de ex
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/29/como-fazer-um-telnet-pelo-python-num-servidor-oopnevms-2/" title="Previous Post: Como fazer um telnet pelo python num servidor OpenVMS">&laquo; Como fazer um telnet pelo python num servidor OpenVMS</a>
+        <a class="basic-alignment left" href="/blog/2009/03/17/vmsrdb/" title="Previous Post: Erro ao conectar RDB via odbc (VMS )">&laquo; Erro ao conectar RDB via odbc (VMS )</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/04/04/regular-expression/" title="Next Post: Usando ExpressÃµes Regulares">Usando ExpressÃµes Regulares &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/" title="Next Post: Lendo um arquivo permitindo que outro processo ou programa o altere">Lendo um arquivo permitindo que outro processo ou programa o altere &raquo;</a>
       
     </p>
   </footer>

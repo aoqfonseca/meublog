@@ -91,15 +91,17 @@
 
 
 <div class="entry-content">Esse post é para eu lembrar como se faz para resolver um problema. Quando tenta-se conectar a um RDB que está num alpha via ODBC (tem que ter o driver para isso) e aparece o erro [ORACLE][ODBC][RDB]RDB-F-BAD_DB_HANDLE &#8230;.
+
 As configurações do obdc, em meu caso pelo menos, são: Service : Generic e String : attache &#8216;filename file$db&#8217;;
+
 Googleando a internet achei que a solução seria (funcionou no meu caso)
 1 - Log no seu aplha
 2 - Vá para o diretório sys$manager
 3 - Veja o log do banco ( faça um dir por dir *SQLSRV_DIS*.LOG
 4- Entre no arquivo&#8230; nas últimas linhas deve aparecer algo parecido com :
-<code>
----EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.340 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.360 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.670 2008— %SQLSRV-I-EVENT_LOG, event logged at line 4455 in file COM_DIALOG.C;1 %SQLSRV-E-READERR, Error on read %SYSTEM-F-LINKDISCON, network partner disconnected logical link ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.680 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.700 2008— %SQLSRV-I-EVENT_LOG, event logged at line 286 in file DISP.C;1 %SQLSRV-W-EXCEPTION_RAISE, Exception raised: DBS_SYSERVICEFAILED %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 2 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.710 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.940 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000029 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.960 2008—
-</code>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.340 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.360 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.670 2008— %SQLSRV-I-EVENT_LOG, event logged at line 4455 in file COM_DIALOG.C;1 %SQLSRV-E-READERR, Error on <span class="nb">read</span> %SYSTEM-F-LINKDISCON, network partner disconnected logical link ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.680 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.700 2008— %SQLSRV-I-EVENT_LOG, event logged at line 286 in file DISP.C;1 %SQLSRV-W-EXCEPTION_RAISE, Exception raised: DBS_SYSERVICEFAILED %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 2 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.710 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.940 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000029 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.960 2008—
+</span></code></pre></td></tr></table></div></figure>
 
 A origem deste problema vem da questão da versão do SQL que está sendo executado (Versão 7) sendo assim é necessário mudar a versão do serviço generic para a 7.1 , para isso tem que ser feito os passos
 
@@ -108,21 +110,29 @@ A origem deste problema vem da questão da versão do SQL que está sendo execut
 3 - Vai aparecer o prompt SQLSRV
 4 - Digite o comando : show service generic full;
 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Service GENERIC
+</span><span class='line'>State:                    RUNNING
+</span><span class='line'>Owner:                    SQLSRV<span class="nv">$DEFLT</span>
+</span><span class='line'>Owner Password:                Protocol:                 SQL/Services     Default Connect Username:      Default Connect Password:     SQL version:              STANDARD     Autostart:                on     Process init:                  Attach:                        Schema:                        Reuse:                    SESSION     Database Authorization:   CONNECT USERNAME     dbsrc file:                    SQL init file:                 Appl Transaction Usage:   SERIAL     Idle User Timeout:             Idle Exec Timeout:        1800 seconds     Min Executors:            2     Max Executors:            10     Running Executors:        2     Clients Per Executor:     1     Active Clients:           1 Access to service GENERIC     Granted to users:         PUBLIC  PRIVILEGED_USER <span class="s1">&#39;SQLSRV$DEFLT&#39;</span> SQLSRV&gt;
+</span></code></pre></td></tr></table></div></figure>
 
-<code>
-Service GENERIC
-State:                    RUNNING
-Owner:                    SQLSRV$DEFLT
-Owner Password:                Protocol:                 SQL/Services     Default Connect Username:      Default Connect Password:     SQL version:              STANDARD     Autostart:                on     Process init:                  Attach:                        Schema:                        Reuse:                    SESSION     Database Authorization:   CONNECT USERNAME     dbsrc file:                    SQL init file:                 Appl Transaction Usage:   SERIAL     Idle User Timeout:             Idle Exec Timeout:        1800 seconds     Min Executors:            2     Max Executors:            10     Running Executors:        2     Clients Per Executor:     1     Active Clients:           1 Access to service GENERIC     Granted to users:         PUBLIC  PRIVILEGED_USER 'SQLSRV$DEFLT' SQLSRV>
-</code>
  5 - Execute a sequencia
-<code>
-SQLSRV> shutdown service generic;
-SQLSRV> alter service generic sql version 7.1;
-SQLSRV> show service generic full;
-SQLSRV> start service generic;
-SQLSRV> exit
-</code>
+ 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>SQLSRV&gt; shutdown service generic;
+</span><span class='line'>SQLSRV&gt; alter service generic sql version 7.1;
+</span><span class='line'>SQLSRV&gt; show service generic full;
+</span><span class='line'>SQLSRV&gt; start service generic;
+</span><span class='line'>SQLSRV&gt; <span class="nb">exit</span>
+</span></code></pre></td></tr></table></div></figure>
 </div>
 
 
@@ -164,10 +174,10 @@ SQLSRV> exit
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/15/javaplc/" title="Previous Post: Fazendo Java conversar com o PLC">&laquo; Fazendo Java conversar com o PLC</a>
+        <a class="basic-alignment left" href="/blog/2009/02/09/data-centerinovarvirtualizacao/" title="Previous Post: Dificuldade em inovar em data centers industriais">&laquo; Dificuldade em inovar em data centers industriais</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/24/endereco-ip/" title="Next Post: Sites para descobrir a localizaÃ§Ã£o de  Ip">Sites para descobrir a localizaÃ§Ã£o de  Ip &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/29/groovy-como-opcao/" title="Next Post: Groovy como opção">Groovy como opção &raquo;</a>
       
     </p>
   </footer>

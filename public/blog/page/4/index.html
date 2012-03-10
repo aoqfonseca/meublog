@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que &hellip;">
+  <meta name="description" content="No artigo passado da série &#8220;Estudo compartilhados&#8221;, abordei mais a questão da Orientação a Objeto e como ainda não nos entendemos bem com &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,448 +64,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
-
-Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
-
-A primeira conclusão que chegamos foi que precisamos tirar esse busca do banco de dados. Banco de dados são excelentes desde que mantenha sua busca navegando pelos indices das tabelas. Tente um fulltext search e verá o quanto será penoso, até mesmo em bases pequenas.  Para resolver isso pensamos em alguma solução de indexação e a melhor que vimos no momento foi o <a href="http://lucene.apache.org/solr/#intro">SOLR</a>.:
-<blockquote>Solr is the popular, blazing fast open source enterprise search platform from the Apache Lucene project. Its major features include powerful full-text search, hit highlighting, faceted search, dynamic clustering, database integration, and rich document (e.g., Word, PDF) handling. Solr is highly scalable, providing distributed search and index replication, and it powers the search and navigation features of many of the world&#8217;s largest internet sites.
-
-Solr is written in Java and runs as a standalone full-text search server within a servlet container such as <a href="http://tomcat.apache.org/">Tomcat</a>. Solr uses the <a href="http://lucene.apache.org/java/">Lucene Java</a> search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&#8217;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</blockquote>
-Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  java para indexação e busca) que permite que a gente fale com ela via HTTP (busque e indexe).  Roda em cima de um container servlet. Aqui no nosso caso usamos o jetty ao invés do Tomcat.
-
-O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
-
-Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
-<pre>  class Post
-    #...
-  end
-
-  Sunspot.setup(Post) do
-    text :title, :description, :stored =&gt; true
-    string :author_name
-    integer :blog_id
-    integer :category_ids
-    float :average_rating, :using =&gt; :ratings_average
-    time :published_at
-    string :sort_title do
-      title.downcase.sub(/^(an?|the)\W+/, ''/) if title = self.title
-    end
-  end</pre>
-No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
-<pre>Sunspot.search(Post) do
-    keyword "teste"
-    with :author_name, "andre fonseca"
-    with :average_rating, 10.3
-  end</pre>
-Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
-<pre>class MinhaClass &lt;&lt; ActiveRecord</pre>
-<pre>
-<pre>    searchable do</pre>
-<pre>      text :nome, do |minha_classe|</pre>
-<pre>        minha_classe.outro.nome</pre>
-<pre>      end</pre>
-<pre>    end</pre>
-</pre>
-<pre>end</pre>
-A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
-<pre>Sunspot.search(Post) do</pre>
-<pre>    config.gem "sunspot"</pre>
-<pre>    config.gem "sunspot_rails"</pre>
-<pre>end</pre>
-Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
-Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
-<pre>config.include SunspotMatchers</pre>
-<pre>&nbsp;</pre>
-<pre>config.before do</pre>
-<pre>  Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)</pre>
-<pre>end</pre>
-<pre>&nbsp;</pre>
-<pre>config.after(:each, :type => type) do</pre>
-<pre>  ::Sunspot.session = ::Sunspot.session.original_session</pre>
-<pre>end</pre>
-Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
-Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/">Usando Sinatra Para Evitar Overdesign</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-20T00:00:00-03:00" pubdate data-updated="true">Mar 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
-
-Ruby on Rails, ou RoR ou somente Rails é uma framework de desenvolvimento de aplicações web, cuja a filosofia gira em torno de evitar ao máximo desperdícios com configurações, repetições, etc. Para ser bem objetivo, em Rails tudo é baseado em convenção e tudo é voltado para se escrever o mínimo de código para se implementar um comportamento. Caso queira saber mais peça ajuda ao grande oráculo (google)&#8230; para ajudar um pouco você pode começar pelos Railscast que são gratuítos e ajudam muito a entender.
-
-Mas sendo tão orientado a produtividade como o Rail é, ele também pode se tornar um overdesign - um escolha que tem mais recursos e estruturas do que precisa - e uma má escolha para quem deseja fazer um sitema web muito simples e com poucos recursos.
-
-&nbsp;
-
-Imagine que você deseja fazer um sistema web que simplesmente irá receber uma requisição do usuário, tratá-la (sem necessariamente criar algo num banco de dados, por exemplo) e renderizar uma resposta. Um bom exemplo disso foram alguns projetos que foram feitos durante o evento FISL 2010, pela galera #horaextra.  No meio do evento, decidimos fazer um site onde teríamos ao invés de um horóscopo, teríamos um desoróscopo, com mensagens nada animadoras. Assim surgiu o <a href="http://www.desoroscopo.com.br">desoroscopo</a>.
-
-A princípio todo ele foi feito usando Rails. Mas logo nos primeiros releases, fomos vendo que não precisávamos de muitos recursos, principalmente de um banco de dados. Sendo assim, ter ali um activerecord, activecontroller, routes e etc era algo que não precisávamos. Era um overdesign para a solução que desejamos.  Foi então, que o Marcos Tapajós, tomou a iniciativa de reescrever todo o sistema usando outro framework ruby  baseado em RACK que é mega simples : SINATRA.  Vale ressaltar que essa reescrita foi feita em menos de uma hora(a se levar em conta o fato do Tapajós dominar bem ruby e o próprio Sinatra) .
-
-A questão que o site está até hoje no ar e tem números bem expressivos de visitas e em nenhum momento não sentimos falta de algum recurso que rails tem e o Sinatra não.
-
-<img class="alignleft" title="Sinatra logo" src="http://www.sinatrarb.com/images/logo.gif" alt="" width="109" height="76" />
-
-Sinatra é um framework web feito em Ruby baseado em Rack. Em sua própria documentação, seus criadores, vão além e o chamam de DSL ressaltando sua simplicidade. Todo o seu poder está no fato de precisar de quase nada para estar funcionando. Chega ao limite de precisar apenas a gem instalada e um script com as definições de rotas e seus tratamento in line. Veja exemplo abaixo retirado do site da documentação.
-<pre># myapp.rb
-require 'sinatra'
-
-get '/' do
-  'Hello world!'
-end</pre>
-Note que com apenas 3 linhas de código o sistema ao acessar a url padrão (localhost:4567) já está respondendo. Isso é realmente impressionante.  Entretanto, tudo tem um preço. Caso precise fazer algo que vá além do muito simples, estará por sua própria conta e risco. Claro que pode lançar mão de uma gem para ajudá-lo (isso é algo muito comum no ecossistema Ruby) mas nem tudo será resolvido.
-
-Carrego comigo uma regra que sempre me ajuda muito.  Se meu sistema precisa de mais do que uma entidade, entidades que se relacionam, vai além do que uma 4 ou 5 rotas&#8230; já começo a tender para usar o Rails do que qualquer d&#8217;outra coisa. Mas se meus sistema não fala com banco de dados, tem poucas rotas, sempre que posso farei com usando Sinatra.
-
-Tenho mais dois exemplos sobre isso:  Sou um dos organizadores do <a href="http://www.devinrio.com.br">DevinRio</a>, e na edição de 2010, tínhamos os desafio de fazermos um site. Na hora optamos por fazê-lo toda usando Sinatra. Isso porque sinatra é simples e aproveitamos a facilidade de deploy e gestão do produto <a href="http://heroku.com">heroku</a>.  O sistema aguentou requisição para caramba e foi um sucesso, tanto que vamos usar a mesma infra/tecnologia para a edição deste ano.
-
-O segundo exemplo vem do meu trabalho:  precisávamos criar um sistema que iria receber uploads de mídias (fotos, vídeo, etc), gravá-las no disco e processá-las de forma assíncrona.  Muitos poderiam pensar que esses requisitos nos levariam facilmente a querer fazer isso com rails ou até com outra tecnologia/framework(scala, java, etc).  Entretanto, resolvemos fazê-lo em Sinatra. Foi a melhor decisão.  A aplicação ficou simples, limpa e coesa.  E com ajuda de algumas outras gems, o Sinatra está dando conta do recado com maestria.
-
-Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica a dica: fique atento. Leia bastante, converse com outros colegas, amigos e profissionais. Esteja aberto as novidades. Elas podem acabar salvando o seu dia. Evite resolver tudo sempre da mesma forma. Diversifique. Mesmo que seja apenas para testar.  Pluralidade é a palavra da vez.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/15/processo-por-processo-nao-resolve-aceite-e-mude/">Processo Por Processo NÃ£o Resolve. Aceite E Mude.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-15T00:00:00-03:00" pubdate data-updated="true">Mar 15<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">A gente sabe quando está mais consciente de algo quando é capaz de ver as falhas dele. Hoje está na moda dizer que é ágil ou que sua empresa usa algum &#8220;método ágil&#8221;.  E por aí segue as diversas sopas de letrinhas e nomes pomposos.  A pouco tempo atrás a tábua de salvação era o Scrum que agora já é &#8220;jogado a fogueira&#8221; pelos seus antigos defensores e em seu lugar ouço muito de Kanban, lean, etc.  Eu pessoalmente não gosto de modas, prefiro seguir aquilo que me facilite a vida e torne-me mais produtivo, feliz, etc.
-
-<img class="alignleft" style="margin: 7px;" title="processo" src="http://t0.gstatic.com/images?q=tbn:ANd9GcQzoGfDTEmeFs0lzNHr5wyh6Va7LO1XH3XROjkfZM74798rCPBT" alt="" width="193" height="128" />Antes de mais nada, deixem eu dizer qual é o significa, para mim, de ser ágil: Pelo dicionário, ser ágil é alguém que se move com facilidade e preteza; para mim ser ágil é ser rápido e resiliente as mudanças; é ir além de aceitar as mudanças&#8230; é entender que ela é uma característica da vida.  Quando falamos de TI isso fica mais focado ainda na questão de ser rápido. Gosto de usar a figura de barcos: ser ágil é ser como um pequeno veleiro que pode mudar de direção facilmente.
-
-Frente a isso fica mais fácil entender o que vou dizer a seguir: acredito que nem 1% das empresas que dizem ser ágeis se encaixam na &#8220;minha definição&#8221;.  Penso, sinceramente, que elas apenas trocaram de nomes, no fim é exatamente as mesmas coisas só que trocaram suas roupas. Antes eram cronogramas, agora são cartões com bluetaks pelas paredes, burns downs e quadro brancos.  Antes tinhamos gerentes, agora temos os Scrum Masters.
-
-Uma outra coisa que considero ruim é que as pessoas não conseguem entender que devemos fazer aquilo que nos torna mais feliz e produtivos. Se controle em cascata deixa a nossa equipe mais produtiva será isso que irei usar. Simples assim. Seguir os processos ips letri é bom quando a gente não está acostumado e ainda não está maduro nele. Entretanto, depois de certo tempo seguir o processo e fazer as coisas só por que dizem que deve ser feito não é nada inteligente.
-
-Uma vez ouvi uma história dos macacos que são colocados numa jaula. Cada vez que algum deles tentava pegar uma banana, todos tomavam uma descarga elétrica. Assim, com o tempo, foram trocando os macacos um a um. Eles desenvolveram um comportamento interessante de bater naquele que tentasse acessar a banana para evitar os choques.  Mesmo tempos depois tendo desligado os choques, os novos habitantes da gaiola batiam naquele que tentava acessar as bananas reproduzindo o comportamente sem nem mais saber porque.
-
-Isso acontece o tempo todo em nosso meio. As pessoas fazem daily meetings e nem sabem mais porque&#8230; fazem por que tem que ser assim e ponto final. Cara se na sua equipe já existe a comunicação o daily pode ser uma grande perda de tempo. Pense nisso.  Reviews e retrospectivas também podem ser perdas de tempo. O próprio XP diz que é interessante que os conflitos sejam resolvidos o quanto antes e que a comunicação deve ser permanete e fluída. Assim ter uma reunião para conversar, para mim, por si só é um contra senso.
-
-Ultimamente, o meu time tem usado algo que se assemelha mais ao kanban: kanban é a ferramente visual e não o processo. O processo é algo mais Lean - tentamos sempre manter o fluxo de entregas de forma constante e sem interrupções.  Procuramos sempre o que é melhor para nossa produtividade. Eliminar desperdícios mesmo que isso seja parte do próprio processo como se diz no livro. Inteligência é usar algo e adaptá-lo a sua necessidades. Seguir processos sem questioná-los é escolher não evoluir e correr o risco de acertar.
-
-Colar post it na parede não diz que você é ágil. Ser ágil, para mim, é ser adaptativo. Mudar e procurar sempre o gradiente máximo.  Toda vez que leio o manifesto ágil, vejo ali um pedido para sermos mais inteligentes e produtivos. Usar processos não é ser ágil.. trocar waterfall por scrum não vai magicamente fazer entregar mais. É algo mais perto da cultura que deve ser mexida.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/09/tentando-ser-mais-produtivo/">Tentando Ser Mais Produtivo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-09T00:00:00-03:00" pubdate data-updated="true">Mar 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><img class="alignright" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="aumentando a produtividade" src="http://t2.gstatic.com/images?q=tbn:ANd9GcTUmzvCLqs_n-rMBJ_MBC0L4GsUB8QczP6EipEGaGpbW3Vc3MdLLg" alt="" width="140" height="171" />Ultimamente venho tentando melhorar a minha produtividade. Eu sofro de um problema de perda de atenção&#8230; Eu perco o foco muito facilmente. Basta qualquer coisas acontecer minha volta para que eu perca o foco naquilo que estou fazendo. Parte dessa perda de foco vem do fato de estar fazendo alo que não me agrade, ou considere chato naquele momento. Bom de qualquer jeito, dentro de qualquer atividade ou profissão, existem partes que não são tão glamorosas, mas que precisam ser feitas. Chega uma hora que fica chato e começa a nos comprometer em nossa vida profisional, pois, por mais que fizesse tudo e bem rápido sempre fica a sensação que estou enrolando ou preciso de alguém para me lembrar a todo momento o que tenho que fazer.
-
-Conversei isso com algumas pessoas e vi que esse &#8220;problema&#8221; era mais comum do que imaginava. E isso tende a ser agravado com a nossa famosa vida moderna. O que não nos falta são armadilhas para nossa atenção: e-mail, twitter, facebook, gtalk, msn, y!, etc. Se contabilizarmos o tempo que gastamos nesses exemplos acima, acreditem, muitos ficarão muito assustado com o tamanho do número.
-
-<img class="alignleft" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="produtividade" src="http://t1.gstatic.com/images?q=tbn:ANd9GcTHqwpQppjUo8TC6IGJkd48tatLMeRvj_pV1fcxy3HM-S3Oh_jJ" alt="" width="182" height="177" />Bom partindo disso e somado ao fato de eu já ter dificuldade, resolvi adotar algumas dicas de estratégia do meu amigo Sylvestre MergulhãoUma delas, e que tem me ajudado muito, é ter horário para fazer cada atividade. Ao invés de ficar verificando aleatoriamente a minah caixa de e-mail e twitter, estabeleci que somente verei quando chego, volto do almoço e ao sair. Ainda não consegui atingir a disciplina total&#8230; mas já consegui avanços. Outra coisa que estou fazendo é a técnica do INBOX ZERO. Tento manter minha caixa de entrada vazia sempre&#8230; deixei de seguir um monte de listas, limpei os spams, criar filtros mais inteligentes - uso muito os labels embora isso só sirva para quem tem gmail. Evito ler as mensagens na hora, marco as importantes para lê-las em casa depois com calma. Outra coisa que desliguei todo o tipo de alerta em tela&#8230; tipo o Growl. Isso reduz a minha ansiedade em querer ver oque acabou de chegar e com isso, me ajuda a focar.
-
-Por fim, uma última técnica é o pomodoro. Existe muita polêmica em volta dela entretanto, para mim, tenho conseguido. Estabeleço intervalos de 25 min; entre intervalos descanso 5min.Aqui cabe um ressalva: tudo isso que disse deram certo comigo.
-
-Um aviso importante é que devemos fazer isso para melhorar nosso desempenho porém não podemos esquecer que pausas e pequenas de focos são importante para mantermos nossa criatividade e descansar.
-
-Concluindo, hoje vivemos num mundo que somos cobrados como máquinas onde o importante é nosso rendimento máximo. Além disso parece que um dia de 24 horas tem sido pouco para o tanto de coisa que gostaríamos de fazer. Logo, a capacidade de focar nunca foi tão valorizada. Agora deixo o espaço dos comentários para que cada um diga como tem feito para melhorar.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/11/codigo-legado/">CÃ³digo Legado</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-11T00:00:00-02:00" pubdate data-updated="true">Feb 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Nesse últimos tempos tenho me dedicado bastante a estudar engenharia de software.  Tomei essa decisão pois percebi que embora linguagem ajude, não dominar alguns princípios da software é uma grande causa de sistemas mal escritos e cheios de problemas que temos por ai.  Posso mostrar códigos de Java que são verdadeiras obras de arte e código em Ruby (o pessoal sempre se orgulha de dizer que é algo bonito) um vergonha e impossíveis de mexer.
-
-Como já falei em artigos anteriores - pesquise no histórico - existem várias coisas que independente no que irá escrever sua aplicação  devemos não apenas saber e sim dominar para sermos verdadeiros &#8220;mestres&#8221; .  Cito algumas: TDD, Refactoring, Orientação a Objeto, Arquitetura de sistemas, etc.
-
-Ainda dentro da engenharia de software tem uma outra coisa que tem me chamado muito atenção: como lidar com um código já escrito.  Em todos os livros que li até o momento, a maioria fala de experiências de criarmos sistemas do zero&#8230; Com isso vão mostrando as decisões e como as práticas como TDD, design evolutivo, etc ajudam. Poucos citaram casos onde já tinha algo pronto e foi preciso implementar novas features.
-
-Foi então que me deparei com o livro: Working Effectively with Legacy Code do Michael Feather. Este livro foi escrito com as benções dos papas do mundo de TI como Uncle Bob, Joshua Kerievsky,  Martins Fowler, Kent Beck, entre outros. O livro trata exatamente do que seu título diz: Lidar de forma eficaz com código legado. Código legado, como é definido, é algo que já existia antes e não tem nenhum teste que nos possibilite uma alteração segura.
-
-Hoje é pouco provável que em nossas carreiras nunca nos depararemos com algum código legado.  Embora ainda tenha muito projeto novo surgindo sempre iremos precisar de algum outro sistema, trecho de código, etc.  Eu mesmo, posso citar diversos casos. Inclusive em projetos que estou trabalhando. Começar certo é muito mais fácil do que fazer o certo quando já existe algo &#8220;mal feito&#8221;.   Num projeto novo temos nada e com isso total liberdade de escolha: escolher arquitetura, linguagem, etc. Além disso, podemos sempre desenvolver seguindo premissa boas de testes automatizados,  passos bem pequenos e incrementais e por ai segue.
-
-Quando temos algo já pronto e que devemos simplesmente adicionar funcionalidades ou acertá-lo, o buraco é bem mais lá em baixo.  Nenhum cliente vai querer pagar para você &#8220;reescrever&#8221; nada, ele quer somente que seja adicionada um nova funcionalidadizinha. Temos que fazer o melhor possível com que nos foi dado mesmo que, na maioria dos casos,  você não conheça as entranhas da parada., tenha ouvido aquelas histórias tristes de porque &#8220;é assim e não assado&#8221;- se é que quem  fez esteja por perto e isso sem contar, no pior dos casos, quando nem temos acesso ao fonte de um programa.
-
-Me lembro bem da vez que tivemos que montar um sistema para falar com um CRM.  Até que me provem o contrário, desconheço algum CRM escrito que seja bem feito. Todos tem um emaranhado de banco de dados, rotinas, tabelas com nomes que não dizem nada. Bem tivemos que construir toda uma &#8220;casquinha&#8221; por cima daquilo que fizesse sentido e pudéssemos confiar (testes e cia). No final tudo ficou bem legal pois para integrações futuras, extender a nossa casquinha bastava para resolver o problema. Outra situação tive foi ter um sistema que entregava as paradas de uma forma bem tosca. A solução foi fazer um esquema de pattern de adpater e encapsular a busca dos dados nesse sistema escroto.
-
-Quem nunca entrou num projeto já começado e não ficou resmungando do que existia?  Esse livro mostra uma série de técnicas que ajudam nesse processo de lidar com coisas alheias que considerar ruim .  Eles primeiro divide os problemas em grupos e vai mostrando o passo a passo de soluções.
-
-Recomendo muito.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
-
-Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
-<h2>Definir fazendo</h2>
-A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
-
-Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
-
-Nisso se encaixa o conceito de arquitetura emergente.
-<h2>Arquitetura emergente</h2>
-Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
-
-Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
-
-As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
-<h2>Refactoring</h2>
-Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
-
-Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
-
-Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
-
-Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
-
-Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/20/tim-mega-fail/">TIM Mega Fail</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-20T00:00:00-02:00" pubdate data-updated="true">Dec 20<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">A poucos dias atrás ( no dia 10 de dezembro) estive na loja da TIM no Barra Shopping (mais precisamente no New York City Center). Chegando lá conversei com o atendente sobre o fato de querer adquirir um Iphone e me refidelizar a empresa para aproveitar os descontos oferecidos.
-
-Minha primeira decepção veio com o fato de que não poderia fazer isso na loja e sim, somente, pelo telefone. Liguei para o tal *144 e após 5 tentativas consegui fazer a operação e fui informado que o prazo seria de, NO MÁXIMO, 7 dias úteis.
-
-Terminado o prazo, entrei em contato com eles novamente pelo *144, com o protocolo 2010218457158,  e o atendente disse que na verdade o prazo era de 15 a 20 dias úteis para o Rio de Janeiro.
-
-Como assim? Mudou a regra? Devem ter vendido mais do que o estoque e agora mudam a regra sem avisos e ponto final.
-
-Bem vindo a república das bananas, onde empresas como a TIM fazem o quer e nada acontece?
-
-O pior dessa história é constatar que não existe uma outra opção válida. Se for para a CLARO terá problemas, se for para a VIVO teremos problemas&#8230; Cadê os chupa sangue da ANATEL para resolver isso ? Devem estar de férias pagas com meu dinheiro.
-
-DEsculpem pelo desabafo mas sinceramente acho que temos que contar mais histórias como essa para ver se isso acaba!
-
-ATUALIZAÇÃO:
-
-Liguei para o 155 da Anatel e registrei um chamado. Eles me deram o prazo de 5 dias uteis para que a TIM entre em contato. Sinceramente, acredito que eles estão nem ai para os clientes.  Vi que tem bastante gente reclamando deles.
-
-O serviço de celular não é ruim. O maior problema dela é o SAC. Porque com cliente não posso entrar numa loja e comprar o aparelho?
-
-Sinceramente se não tiver resposta até amanhã cancelo a operação e mudo para outra operadora.
-
-&nbsp;
-
-ATUALIZAÇÃO 23/12/2010
-
-A Tim mandou um torpedo dizendo que registrou minha reclamação e  que devo aguardar o contato deles. Isso foi na terça-feira dia 21/12. Até agora ninguém entrou em contato comigo. Eles estão pedindo muito um processo.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -576,74 +134,6 @@ Até a próxima pessoal.
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/12/14/dividindo-algumas-experiencias/">Dividindo Algumas ExperiÃªncias</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-14T00:00:00-02:00" pubdate data-updated="true">Dec 14<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Nestes últimos dias em meu trabalho estamos desenvolvendo uma aplicação para receber vídeos e fotos. Essa aplicação, na nossa intenção, tem como objetivo servir de plataforma para qualquer produto que queira receber mídia. Por isso, várias escolhas de implementação, infra, etc foram feitas nesse sentido e algumas gostaria de compartilhar com vocês e também alguns desafios que encontramos.
-
-Antes de mais nada deixa eu explicar o porque fazer um produto para upload de foto e vídeo.  Quanto ao vídeo, todo eles devem ser processados para que fiquem disponíveis. Esse processamento é algo lento e custoso. Assim, não queríamos que ao fazer um envio de vídeos nosso usuário ficasse um tempão esperando o processamento da mídia para ter o seu cadastramento feito. Logo, decidimos que esse processo deve ser feito de forma assíncrona, ou seja, ao receber o arquivo colocamos ele numa fila para ser processado e o feedback para o usuário é quase que imediato.
-
-<strong>Esse parte do processamento assíncrono foi desenvolvido por outras pessoas que já estavam na equipe antes de mim. São elas <a href="http://codificando.com/">Emerson Macedo</a>, Rodrigo Lopes e <a href="http://eltonokada.wordpress.com/">Elton Okada</a>. </strong>
-
-Quanto as fotos embora elas não sejam processadas após seu upload, queremos poder manipulá-las. Assim, por exemplo, dado uma foto, quero poder, pela url, informar alguns parametros que façam com que receba o arquivo na dimensão desejada, rotacionada, cropada e etc.
-
-Outros aspecto é que queremos que nosso sistema seja holístico, ou seja, seja simples de usar e fácil de integrar em qualquer tecnologia/linguagem. A escolha óbvia para isso foi implementar nosso produto com uma interface REST.
-
-Dado o conhecimento do time em Ruby, Sinatra e Ruby on Rails, decidimos que nossa aplicação deve ser escrita em Ruby. Por ser simples do ponto de vista web, optamos por fazê-la em Sinatra.  O Rails seria um tiro de canhão e nos oferece mais recursos do que precisamos. A escolha pelo Sinatra também se deu pois a versão anterior também foi feita nele e funcionava muito bem.
-
-Escolhido o Sinatra, passamos a escolher qual gem nos ajudaria na missão de tratar o upload dos arquivos. Antes já existia algo desenvolvido que fazia somente o tratamento de vídeos, também em Sinatra e eles usavam o <strong>CarrieWave</strong>.
-
-O CarrieWave é muito bom e bem simples de implementar, o problema dele, para nós, era a questão dos arquivos temporários que ficavam. Isso acabava enchendo o disco e nos dava uma boa dor de cabeça. Para resolver isso, o pessoal fez um monkey patch que após salvar o arquivo no store definitivo apagava o arquivo temporário.
-
-<a href="http://blog.mar.ti.ns">Alexandre Nunes</a>, pesquisando, encontrou uma nova gem que tem sido recomendada. É o dragonfly.  Ela tem um conceito interessante de aplicação que deixa seu uso mais simples. Além disso, aparentemente, resolvia do problema dos arquivos temporários.
-<h2>Os problemas</h2>
-Bom vamos para a parte chata e triste da história.
-
-A primeira decepção foi que ao contrário do que pensávamos o problema de arquivos temporários continuava.  Não era um problema exclusivo da gem CarrieWave. A origem do mal está em outra parte.
-
-Bom, tendo esse mega desafio em mãos, partimos para resolvê-lo.  Conversei com várias pessoas que dominam o Ruby mais do que eu.  Ainda não tenho um causa clara para isso mas várias hipóteses.
-
-Sabemos que, nosso sistema usa a classe tempfile do ruby mesmo. (tempfile.rb, veja documentação). Com isso, a gestão do ciclo de vida dela é feita pelo Garbage Colector do Ruby.  Isso significa que, quem apaga o arquivo tmp é o Ruby (o interpretador ativo) e não o sistema operacional.
-
-Assim, lembrando de minha época como programador java, e conversando com o <strong><a href="http://coisascomuns.com.br/">Rafael Martins</a></strong> (mais conhecido com o Cabra da Globo.com) vimos que possívelmente algo ainda fazia referencia aos arquivos e com isso o GC não conseguia apagar os arquivos.
-
-Lendo a documentação do Ruby, vi que existe diferenças entre a forma de fechar o arquivo. Uma delas, close!, o interpretador além de fechar o stream ele executa um unlink: ele zera todas as referencias àquele arquivo e com isso o GC pode apagá-lo depois.
-
-Outra coisa que o Rafael Martins me explicou é que, no caso do REE (ruby enterprise edition) ele guarde a referencia dos objetos numa tabela. Provavelmente é isso que pode estar dando o problema dos arquivos temporário não serem apagados.
-
-Bem é isso que temos até o momento. Prometo que assim que avançarmos mais um pouco coloco mais novidades
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/">Estudos Compartilhados - Part II - OrientaÃ§Ã£o a Objeto</a></h1>
     
     
@@ -699,6 +189,488 @@ Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
 &nbsp;
 
 &nbsp;
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/12/03/estudos-compartilhados-introducao/">Estudos Compartilhados - IntroduÃ§Ã£o</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-03T00:00:00-02:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Adotei com uma das minhas metas estudar mais sobre engenharia de software e zerar alguns débitos. Nessa cruzada, com ajuda de amigos como <a href="http://blog.m.artins.net/">Alexandre Martins</a>,  montei uma lista de livros. Alguns desses livros são: Clean Code, Pragmatic Programmer,  Agile Software Development, Refactoring, etc. Todos, se notarem, não são sobre uma linguagem específica e sim sobre melhores práticas, padrões, etc.
+
+Poucos pessoas sabem mas minha formação é de engenheiro eletrônico&#8230; Sou engenheiro. Com isso, sempre me  senti um pouco atrás de alguém que estudou informática pois nunca tive aquelas cadeiras de algorítmos, introduções, estrutura de dados, banco de dados, e etc.  Aos poucos fui suprimindo essa &#8220;fraqueza&#8221; com muita leitura, perguntas, ensaios, e por aí vai.  Assim, acabei com &#8220;gaps&#8221; de banco de dados, sistema operacionais (isso até que estudei em engenharia numa disciplina eletiva),  algorítmos (livros e muitos exercício - recomendo o projeto Euler).  Mas ainda ficou a questão dos conceitos, das melhores práticas, patterns, entre outras coisas semelhantes. A sorte, se é que isso possa ser chamado de sorte, é que as  faculdades nem ensinam este tipo de coisa, e quem quiser saber vai ter que correr atrás tanto quanto eu.
+
+Conversando com o pessoal que conheço, admiro e trabalho junto, tentei  através de suas experiências delinear um caminho seguir. <a href="http://blog.m.artins.net/">Alexandre Martins</a>, já estava preparando uma material parecido com isso para um &#8220;coaching&#8221; que está realizando com o nossa equipe.  Participando desse &#8220;treinamento&#8221; e conversando com ele, este me sugeriu alguns livros e pontos que deveria atacar.  Confesso que no início, os pontos citados me soaram estranhos, pois já estou na estrada - como diria um conhecido - não é de hoje.
+
+<a href="http://blog.m.artins.net/">Alexandre Martins</a> sugeriu que atacasse os seguintes temas :
+<ol>
+	<li>Orientação a Objeto</li>
+	<li>Design Patterns</li>
+	<li>TDD</li>
+	<li>BDD</li>
+	<li>Prática Agéis</li>
+	<li>etc</li>
+</ol>
+Se pegarmos um profissional com  mais de 6 anos de experiência e se perguntarmos se ele conhece bem orientação a objeto afirmo que na totalidade dos casos ele irá responder que domina.  Entretanto, se pegarmos o código de uma parte desses profissionais veremos que  muitos princípios não são aplicados, vários códigos com estruturas repetidas sem necessidade (monte de get e set para apenas passar e receber valor),  monte de if ao invés de usar polimorfismo, problemas de acoplamentos, e por aí a nossa lista pode seguir.
+<blockquote>O Paulo da Caelum, recentemente, um excelente artigo que foi publicado no blog da Celum em 2006 por ele muito bom que mostra um pouco do que estou querendo dizer.  Para ler <a href="http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/">clique aqui</a></blockquote>
+Muita coisa se tornou repetitivas: fazemos por que é assim que deve ser feito e nem paramos para pensar se faz sentido ou não.  Um bom exemplo, inclusive citado no artigo, é o caso do GET e SET. Quantos de nós, que programamos em Java principalmente, ao clicar uma classe e definir esses atributos não colocamos juntos( com a ajuda abençoada do Eclipse) os GET e SET ?  Alguém por acaso já parou para pensar se é preciso?  Para ilustrar melhor imaginem que temos uma classe de dados apenas, os famosos DTO ou VO. Algo como :
+
+class Aluno {
+
+String nome
+
+}
+
+Tenho certeza que tem um monte de gente achando que está faltando o get /set e o atributo deveria ser private. Se não existe nenhuma lógica além de definir valor a ser implementada, qual é o sentido do GET? Não é mais prático e elegante chamar  &#8221;usuarioAndre.nome = andre&#8221;?
+<h2>CLEAN CODE e AGILE SOFTWARE DEVELOPMENT</h2>
+Esse dois livros, irão ajudar e muito com esse primeira questão da Orientação Objeto e a melhor forma de colocar isso para trabalhar a nosso favor.  Inclusive, serão nesses dois livros que você irá encontrar o significa da sigla : S.O.L.I.D.
+<ul>
+	<li>S : Single Responsability</li>
+	<li>O: Open and close principle</li>
+	<li>L :  Liskov Substitution</li>
+	<li>I :  Interface Segregation</li>
+	<li>D: Dependency inversion</li>
+</ul>
+Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
+
+no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/13/palestra-aumentando-seu-lucro-com-python-fisl-2010/">Palestra Aumentando Seu Lucro Com Python - FISL 2010</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-13T00:00:00-02:00" pubdate data-updated="true">Nov 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Pessoal a muito tempo estou devendo a publicação dos slides que eu fiz no FISL 2010. Bom, menos uma pendência em meu back log. Segue abaixo a apresentação. Espero que gostem.
+<div style="width:425px" id="__ss_5771845"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/aoqfonseca/fisl-aumentando-lucropython" title="Fisl aumentando lucro-python">Fisl aumentando lucro-python</a></strong><object id="__sse5771845" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=fisl-aumentandolucropython-101113175832-phpapp01&stripped_title=fisl-aumentando-lucropython&userName=aoqfonseca" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse5771845" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=fisl-aumentandolucropython-101113175832-phpapp01&stripped_title=fisl-aumentando-lucropython&userName=aoqfonseca" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/aoqfonseca">aoqfonseca</a>.</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/">Muita Coisa Acontecendo Por aÃ­&#8230; Vamos Tomar Uma Cerveja?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-08T00:00:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Por várias vezes que posso me procuro ir tomar uma cerveja com meus amigos. Essa cerveja é chamada de #horaextra e acabou ficando famosa. Mas é só uma cerveja onde amigos, a maioria trabalha no mercado de TI / desenvolvimento,  se encontram e conversam sobre coisa que gostamos -  como todo bom GEEK (gostamos de tecnologia) acabamos por falar, na maioria dos casos,  sobre tecnologia. O importante desse encontro, sem grandes objetivos, é que ao nos dispormos em ir até um bar e ficar lá conversando, sempre tem algumas coisas que surgem.
+
+Nesses últimos tempos, motivados por alguns de nossos &#8220;membros&#8221; que tem vem se aventurando pelos caminhos do empreendorismo,  o papo tem sido muito na temática da tecnologia mas também sobre como podemos tornar nossas ideias em produtos que virão a dar lucro. Dada a paixão daqueles que falam é impossível não se empolgar e querer sair dali imediatamente para casa e &#8220;criar&#8221; um produto revolucionário que nos colocará na história. Algo tipo Google (forcei a barra mas é para um boa causa).  Como disse um colega : &#8220;Me sinto como acho que aqueles caras do vale silício se sentiram quando começaram&#8230; participando de um momento ímpar das coisas&#8221;. Exageros postos de lado, eu sinceramente que muita coisa que dizemos nesse encontram são realmente revolucionários. São controversos. São diferentes. E quem disse que a gente quer fazer mais do mesmo?
+
+Como já disse aqui nesse blog: <strong>Estamos vivendo uma nova revolução industrial</strong>.  Estamos vivendo uma época onde temos um novo paradigma que se abre como uma imensa oportunidade de investimento. O mundo está conectado e sedento por informação, comodidade, por diferenciais.  A tempos atrás, alguns falavam de bolha da internet. Ela após um breve período ela estourou. Entretanto, as oportunidades continuam por aí e, em minha humilde opinião, sobre um terreno mais sólido que tínhamos a 10 anos. Ainda temos um mercado sedento por produtos de qualidade. Ainda temos um mercado ávido por novidades. Ainda temos um mercado demandando coisas e, de certa forma e sobre um olhar justo, disposta a pagar por estas &#8220;coisas&#8221;.
+
+A tempos atrás ter uma vida on line era uma coisa nerds. Poucos eram que tinham uma vida on line.  Isso mudou radicalmente. Ouso afirmar que quase todo mundo com um nível médio de instrução tem esse tal vida na rede: Redes sociais, twitter, e-mails(todo mundo tem), bate-papos, etc. Segundo um jornal que li, nesses últimos anos, houveram momentos que a venda on line, de determinados artigos, superaram a venda das lojas físicas.  Vivemos a era dos livros na amazon, e não é só os já ditos heavy-users que compram, são as ditas pessoas comuns.  Outros estudos indicam que faixas de pessoas, principalmente os adolescentes, gastam mais tempo na internet do que vendo TV.  Tudo isso mostra o imenso potencial que existe e justifica a minha afirmação do parágrafo acima: <strong><span style="text-decoration: underline;">Estamos vivendo uma nova revolução.</span></strong>
+
+O pessoal dessa cerveja de toda segunda, acabamos por sintonizar essa vibração e,  tendo alguns perfil empreendedor,  muitos estão vendo as chances e se lançando. Daí, a sensação de estar participando de um movimento que resultará em algo grande. Embora seja só um chopp como outro qualquer (não levamos notebook, nem programados, só levamos dinheiro para pagar a conta).  Nosso grupo está capitaneado diversos produtos que estão por aí. Um dos que mais me chamou a atenção dessa última leva foi uma ideia do <a href="http://vp.blog.br/">Vitor Pellegrino</a>: SprintSlags. Baseando-se na ideia do todo trabalhando por todos e gerando coersão (essa foi para o Henrique Bastos) . Essas coersão acaba por elevar a todos, mesmo que para quem esteja fora, pareça um socialismo mal praticado.
+
+Taí umas das coisa que considero revolucionária que esse pessoal bebedor vem trazendo. Uma nova consciencia sobre a questão de compartilhar:
+<blockquote>eu te ajudo pois te ajudando estou ajudando a mudar a situação&#8230; mudando a situação estou criando oportunidades para mim e com isso contar com sua ajuda para meu projeto depois.</blockquote>
+Ficou difícil entender. Fica ligado nos próximos capítulos que vou explicar melhor isso.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/15/colocando-auditoria-de-mudanca-na-sua-app-rails/">Colocando Auditoria De MudanÃ§a Na Sua App Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-15T00:00:00-03:00" pubdate data-updated="true">Jul 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Bom no meu projeto atual estou usando Ruby on Rails. Estou adorando. A coisa é realmente fantástica e me sinto obrigado a dizer que é a melhor opção para desenvolver produtos web.  Mas não é por isso que resolvi escrever este post. Quero compartilhar um aprendizado adquirido.
+
+Dentro da nossa aplicação precisamos mapear (auditoria) as alterações que são feitas em um determinado objeto.  Seria registrar no banco de dados quais campos alterados e, além disso, registra também qual era o valor antes e depois da alteração. Vamos a um exemplo.  Imaginemos que tenho um usuario; esse usuário tem nome, telefone e endereço. Ao alterar o nome dele, quero que fique resgistrado que seu nome foi alterado de um valor &#8220;A&#8221; para um valor &#8220;B&#8221;.
+
+Ficando claro a necessidades vamos para a solução.  Passei então para procurar algum plugin que me ajudasse nessa missão. Encontrei vários.  &#8221;Acts_as_audited&#8221;,  foi um dos mais interessante que encontrei e recomendo se seu modelo for simples sem relacionamentos muito para muitos.  Mas apesar do plugin resolver o problema, fiquei intrigado de como seria possível fazer isso. Imaginei soluções das mais mirabolantes. Desde de criação de metodos proxies, a magias negras de alta classe (desculpem a brincadeira rubistas) .
+
+Oque achei, como tudo no Ruby, foi a coisa mais simples e fácil já vista. Desde a versão 2.0 do rails, as classes active records ganharam alguns métodos que ajudam bastante nessa missão. São eles: changed?, changes, &lt;atributo&gt;_changed?, &lt;atributo&gt;_was, etc.
+
+changed?  : ele indica se houve ou não alteração nos atributos do objeto. (false se não e true se sim)
+
+changes : devolver um dicionario com as alterações que ocorreram. A chave dele é a propriedade e o valor é uma tupla com o valor antigo e o novo valor
+
+&lt;atributo&gt;_changed? : é um metodo que diz se o atributo mudou. Algo como : usuario.nome_changed?
+
+&lt;atributo&gt;_was : mostra o valor antigo do atributo
+
+&lt;atributo&gt;_will_change! : meio que força a flag indicando que houve uma alteração.
+
+Com esses métodos na mão é possível, sem ajuda do plugin fazer você mesmo sua funcionalidade de auditoria do sistema de forma bastante maneira.  Basta além deles usar os triggers before e after (create, update, etc) do model para chamar os métodos que farão a mágica acontecer.
+
+Espero que ajude. Para saber mais, veja o screencast:<a href="http://media.railscasts.com/ipod_videos/109_tracking_attribute_changes.m4v"> tracking_attribute_changes.m4v</a>
+
+Abraços e até a próxima
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/31/shu-ha-ri/">Shu Ha Ri</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-31T00:00:00-03:00" pubdate data-updated="true">May 31<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><img class="alignnone" title="Shu Ha RI" src="http://upload.wikimedia.org/wikipedia/commons/e/e2/ShuHaRi.png" alt="Shu Ha RI" width="417" height="179" />
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/06/fazendo-upload-de-arquivo-com-webdriver/">Fazendo Upload De Arquivo Com WebDriver</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-06T00:00:00-03:00" pubdate data-updated="true">May 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">A um tempo atrás alguém postou um comentário aqui no blog perguntando como ele poderia testar a questão do upload de arquivo usando o Selenium.
+
+Bem, pedindo ajuda para o grande sábio Google, encontrei a página (<a href="http://www.google.com/codesearch/p?hl=en#2tHw6m3DZzo/trunk/common/test/java/org/openqa/selenium/UploadTest.java&q=Upload%20package:http://selenium\.googlecode\.com&sa=N&cd=5&ct=rc">clique aqui</a>) com um trecho de código que reproduzo parte abaixo mostrando como fazer.
+
+Pelo jeito ele somente irá funcionar para o IE pois os demais browser não aceitam que você digite no campo de file. (Me corrijam se eu estiver errado).
+
+Espero que ajude:
+[cc lang=&#8221;Java&#8221;]
+package org.openqa.selenium;
+
+import static org.openqa.selenium.Ignore.Driver.CHROME;
+import static org.openqa.selenium.Ignore.Driver.IPHONE;
+import static org.openqa.selenium.Ignore.Driver.SELENESE;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
+/**
+ * Demonstrates how to use WebDriver with a file input element.
+ *
+ * @author jmleyba@gmail.com (Jason Leyba)
+ */
+@Ignore(value = IPHONE, reason = &#8220;File uploads not allowed on the iPhone&#8221;)
+public class UploadTest extends AbstractDriverTestCase {
+
+  private static final String LOREM_IPSUM_TEXT = &#8220;lorem ipsum dolor sit amet&#8221;;
+  private static final String FILE_HTML = &#8221;<div>&#8221; + LOREM_IPSUM_TEXT + &#8221;</div>&#8221;;
+
+  private File testFile;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    testFile = createTmpFile(FILE_HTML);
+  }
+
+  @JavascriptEnabled
+  @Ignore(value = {CHROME, SELENESE},
+          reason = &#8220;Chrome: File input elements are not supported yet&#8221;)
+  public void testFileUploading() throws Exception {
+    driver.get(uploadPage);
+    driver.findElement(By.id(&#8220;upload&#8221;)).sendKeys(testFile.getAbsolutePath());
+    driver.findElement(By.id(&#8220;go&#8221;)).submit();
+
+    driver.switchTo().frame(&#8220;upload_target&#8221;);
+
+    WebElement body = driver.findElement(By.xpath(&#8220;//body&#8221;));
+    assertEquals(&#8220;Page source is: &#8221; + driver.getPageSource(),
+        LOREM_IPSUM_TEXT, body.getText());
+  }
+
+  private File createTmpFile(String content) throws IOException {
+    File f = File.createTempFile(&#8220;webdriver&#8221;, &#8220;tmp&#8221;);
+    f.deleteOnExit();
+
+    OutputStream out = new FileOutputStream(f);
+    PrintWriter pw = new PrintWriter(out);
+    pw.write(content);
+    pw.flush();
+    pw.close();
+    out.close();
+
+    return f;
+  }
+}
+
+[/cc] 
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao/">Usando O Webdriver Para Fazer Testes De AceitaÃ§Ã£o</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:00:00-02:00" pubdate data-updated="true">Jan 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">A pouco tempo consegui um brecha com ajuda da minha colega Arlene para implantarmos no projeto que estou trabalhando teste automatizados.  Com a carta de alforria em mãos partimos para pesquisar no mercado qual seria a melhor que se encaixaria em nosso contexto de aplicação.  Para que entenda,  trabalhamos com desenvolvimento de portal usando a ferramenta <a href="http://www.lumis.com.br">Lumis </a>(eu trabalho na Lumis!!!).  Portais são aplicações bastante difíceis de serem testadas de forma automática; devido a questão do conteúdo dinâmico e pouco previsível não existe muita margem para que busque por padrões.
+
+Com estas limitações em mãos, acabamos nos deparando com a api <a href="webdriver.googlecode.com/">WebDriver</a> . A um tempo atrás eu já tinha mexido um pouco com o <a href="seleniumhq.org/">selenium </a>e adorei. Com isso, tentei achar algo que se assemelhasse a ele mas que me facilitasse a vida em relação a portais ( não tem muito como usar ids dos elementos no html, url não fixas, etc) . O webdriver, ao contrário do selenium, não é um javascript que executa dentro de uma página simulando a navegação&#8230; o webdriver é realmente um &#8220;envelope&#8221; em cima do seu navegador.  No caso do Firefox ele é uma extensão, no caso do Internet Explorer (blargh) ele usa as chamadas de control que ele proporciona, e por ai vai. Com isso, os teste ficam mais próximos da realidade de uso do usuário, e a api para escrever  os cenários mais simples.  Veja o trecho:
+[cc-lang =&#8221;java&#8221;]
+WebDriver driver = new FirefoxDriver();
+driver.get(&#8220;http://localhost:8080/&#8221;);
+HomePage homePage = new HomePage(webDriver);
+String valor = homePage.searchFirstItemforMoreRead();
+[/cc-lang]
+[cc-lang =&#8221;java&#8221;]
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage  extends Page {
+private static final String PAGE_TITLE = &#8220;teste&#8221;;
+
+public HomePage(WebDriver driver){
+super(driver,PAGE_TITLE);
+}
+
+public AdminPage navegateToAdministration(){
+webDriver.navigate().to(this.composeUrl(&#8220;admin&#8221;));
+return new AdminPage(webDriver);
+}
+
+public String searchOneTextOfDestaque3(){
+return this.webDriver.findElement(By.xpath(&#8220;//div[@class=&#8217;destaques3&#8217;]/h5/a&#8221;)).getText();
+}
+
+public String searchFirstItemforMoreRead(){
+return this.webDriver.findElement(By.xpath(&#8220;//div[@class=&#8217;aba_conteudo ativo&#8217;]/ol[@class=&#8217;mais_lidas&#8217;]/li[@class=&#8217;item1&#8217;]/a/span&#8221;)).getText();
+}
+
+public List searchDestaque3Texts(){
+return this.webDriver.findElements(By.xpath(&#8220;//div[@class=&#8217;destaques3&#8217;]/h5/a&#8221;));
+}
+
+}
+[/cc-lang]
+
+Pelo exemplo acima fica fácil de ver o quão fácil é criar um teste em webdriver.  Recomendo experimentar
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/20/sprint-day-para-fazer-o-site-do-pythoncampus/">Sprint Day Para Fazer O Site Do PythonCampus</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-20T00:00:00-02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Hoje, o pessoal da pythonOnRio, #horaextra, dojoRio, e muitos outros se encontraram na Myfreecomm para fazermos um Sprint Day para fazermos o site do PythonCampus. O PythonCampus é uma iniciativa da galera de levar uma caravana de pessoas apaixonadas por tecnologia para as universidades para mostrar que é possível transformar a paixão por tecnologia em uma carreira de sucesso.
+
+Essa iniciativa vem desde do ano passado e já percorreu diversas entidades no rio e em outras cidades, sendo um sucesso por onde passa.  Mas sempre sentíamos falta de termos um canal de comunicação, mais precisamente, um site.  Um site onde pudéssemos colocar mais informações sobre essa galera, oque fazemos, como fazemos, como nos contactar, página de eventos, etc.  Tudo isso começa a se tornar possível graças a um dia como hoje.
+
+Nesse dia, várias pessoas se juntaram no escritório da MyFreeComm, no rio de janeiro, em pleno feriado com dia ensolarado e com céu azul, para fazer um sprint de um dia onde o objetivo era fazer o máximo possível para colocar um site para a nossa comunidade no ar.
+
+O primeiro desafio vou descobrir o que fazer. Henrique Bastos orquestrou os trabalhos e durante toda a manhã, promoveu brainstorms, backlog plaining, e outras coisas tão interessante quanto.  Apesar de termos demorado um pouco mais do que eu gostaria, o resultado não poderia ser melhor: começamos nossa tarde com um backlog muito bem definido, como a ideia geral do que queremos para o site e com todos os integrantes vibrando na mesma frequência.
+
+Terminado nossa reunião partimos direto para colocarmos as coisas em prática.  Alguns estavam incrédulos quanto ao fato de conseguirmos entregar o site funcional em apenas um dia.  E foi exatamente isso que aconteceu.
+
+Em breve coloco os links para as fotos do making off.     E para quem duvidou : pythoncampus.org
 </div>
   
   

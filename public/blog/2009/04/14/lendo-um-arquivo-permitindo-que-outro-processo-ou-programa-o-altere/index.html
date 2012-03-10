@@ -91,27 +91,41 @@
 
 
 <div class="entry-content">Estava escrevendo um sistema no meu trabalho em C# (csharp) onde se conecta ao log de uma aplicação e escreve as linhas deste num panel (winform). A primeira dificuldade foi como poderia permanecer lendo o arquivo de forma continua. Resolvi com o trecho de codigo abaixo:
-<code>
-....
-try
-{
-      StreamReader reader = new StreamReader (File.OpenRead("<caminho completo do arquivo>"))
-      while (true)
-      {
-           msg = reader.ReadLine();
-           ...
-     }
-}
-catch(Exception e)
-{
-     System.Console.WriteLine(e.Message);
-}
-</code>
-Bem isso funcionou bem, a questão que ao fazer isso, por padrão o sistema trava o arquivo não permitindo que outro processo possa escrever no documento. Como queria apenas ler e permitir que a aplicação continuasse a escrever seu log, a solução foi, explicitar o a abertura do arquivo, pelo metodo Open, algumas diretivas. Fica mais ou menos assim:
-<code>
-StreamReader reader = new StreamReader(File.Open("path",FileMode.Open,FileAccess.Read, FileShare.ReadWrite));
-...
-</code>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">try</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>      <span class="n">StreamReader</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StreamReader</span> <span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">OpenRead</span><span class="p">(</span><span class="s">&quot;&lt;caminho completo do arquivo&gt;&quot;</span><span class="p">))</span>
+</span><span class='line'>      <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>           <span class="n">msg</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span><span class='line'>           <span class="p">...</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>     <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+    Bem isso funcionou bem, a questão que ao fazer isso, por padrão o sistema trava o arquivo não permitindo que outro processo possa escrever no documento. Como queria apenas ler e permitir que a aplicação continuasse a escrever seu log, a solução foi, explicitar o a abertura do arquivo, pelo metodo Open, algumas diretivas. Fica mais ou menos assim:
+    
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">StreamReader</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StreamReader</span><span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">,</span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span><span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">,</span> <span class="n">FileShare</span><span class="p">.</span><span class="n">ReadWrite</span><span class="p">));</span>
+</span><span class='line'><span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
 Isso funcionou legal e me serviu bem pois agora tenho uma ferramenta simples para ficar vendo o log da minha aplicação.
 </div>
 
@@ -154,10 +168,10 @@ Isso funcionou legal e me serviu bem pois agora tenho uma ferramenta simples par
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/04/13/groovy_e_java/" title="Previous Post: Groovy Ã© âJAVAâ">&laquo; Groovy Ã© âJAVAâ</a>
+        <a class="basic-alignment left" href="/blog/2009/03/29/groovy-como-opcao/" title="Previous Post: Groovy como opção">&laquo; Groovy como opção</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/04/17/usando_using_c/" title="Next Post: Usando using no seu codigo C#">Usando using no seu codigo C# &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/" title="Next Post: Uso do modificador static dentro do Java">Uso do modificador static dentro do Java &raquo;</a>
       
     </p>
   </footer>
