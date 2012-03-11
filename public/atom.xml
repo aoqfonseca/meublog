@@ -4,7 +4,7 @@
   <title><![CDATA[Meu Blog, by Andre Fonseca]]></title>
   <link href="http://www.andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://www.andrefonseca.net/"/>
-  <updated>2012-03-10T17:10:06-03:00</updated>
+  <updated>2012-03-10T22:25:00-03:00</updated>
   <id>http://www.andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -177,48 +177,61 @@ Num próximo artigo vamos entrar em mais detalhe sobre o backbone.
     <link href="http://www.andrefonseca.net/blog/2011/10/25/python-decorators/"/>
     <updated>2011-10-25T00:00:00-02:00</updated>
     <id>http://www.andrefonseca.net/blog/2011/10/25/python-decorators</id>
-    <content type="html"><![CDATA[A um bom tempo atrás (dezembro de 2009) escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto. 
+    <content type="html"><![CDATA[A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
 
-De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto. 
+De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
 
-No wiki do Python, a definição de decorator, é de uma forma que temos para alterar um comportamento de um função ou métodos dentro de um código. Seria como se pudéssemos adicionar ou até alterar a lógica sem sermos muitos intrusivos.
+No wiki do Python, a definição de decorator, é de uma forma que temos para alterar um comportamento de um função ou métodos dentro de um código. Seria com  se pudéssemos adicionar ou até alterar a lógica sem sermos muitos intrusivos.
 
 Um bom exemplo seria o decorator classmethod. Veja abaixo:
 
-[cc lang=&#8221;python&#8221;]
-class OlaMundo(object): 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    def metodo1(self):
-        print &#8220;Ola Mundo&#8221;
-[/cc]
+Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
 
-Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo. 
-
-[cc lang=&#8221;python&#8221;]
-olaMundo = OlaMundo()
-olaMundo.metodo1()
-OlaMundo.metodo1(olaMundo)
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
+</span><span class='line'><span class="n">olaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">()</span>
+</span><span class='line'><span class="n">OlaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">(</span><span class="n">olaMundo</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
 
-[cc lang=&#8221;python&#8221;]
-class OlaMundo(object): 
-
-    def metodo1(self):
-        print &#8220;Ola Mundo&#8221;
-
-metodo1 = classmethod(metodo1)
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">metodo1</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">metodo1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
 
-[cc lang=&#8221;python&#8221;]
-class OlaMundo(object): 
-    @classmethod
-    def metodo1(self):
-        print &#8220;Ola Mundo&#8221;
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="nd">@classmethod</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 <h2>O que são os Decorators e como funciona:</h2>
 
@@ -228,29 +241,38 @@ Claro que a definição acima é simplista, mas ajuda a entender.
 
 Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
 
-[cc lang=&#8221;python&#8221;]
-class MeuDecorador(object):
-   
-    def __init__(self, function):
-        self.f = function
-    
-    def __call__(self):
-        print &#8220;Ola Mundo&#8221;
-@MeuDecorador
-def funcao():
-    print &#8220;algo assim&#8221;
-
-funcao()
-
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MeuDecorador</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">function</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'><span class="nd">@MeuDecorador</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">funcao</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;algo assim&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">funcao</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
 
 
-    
 <h2>Para que servem e por que usar:</h2>
 
-Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali. 
+Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
 
 Referência.
 [1] <a href="http://wiki.python.org/moin/PythonDecorators">http://wiki.python.org/moin/PythonDecorators</a>
@@ -258,8 +280,6 @@ Referência.
 [3] <a href="http://devlog.waltercruz.com/python_decorators">http://devlog.waltercruz.com/python_decorators</a>
 [4] <a href="http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html">http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html</a>
 [5] <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a>
-
-
 ]]></content>
   </entry>
   
