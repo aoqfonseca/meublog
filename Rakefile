@@ -216,7 +216,10 @@ task :deploy do
   end
 
   Rake::Task[:copydot].invoke(source_dir, public_dir)
-  Rake::Task["#{deploy_default}"].execute
+  # Rake::Task["#{deploy_default}"].execute
+  system "git add ."
+  system "git commit -m 'subida para deploy' "
+  system "git push heroku master"
 end
 
 desc "Generate website and deploy"

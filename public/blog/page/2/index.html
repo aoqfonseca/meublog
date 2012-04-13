@@ -1,81 +1,163 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html lang="zh-cn">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>Meu Blog, by Andre Fonseca</title>
+
   <meta name="author" content="Andre Fonseca">
-
   
-  <meta name="description" content="Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo &hellip;">
+  <meta name="description" content="Jasmine BDD: Instalando E Escrevendo Primeiro Teste Oct 2nd, 2011 Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD &hellip;">
+  
   
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
   <link rel="canonical" href="http://www.andrefonseca.net/blog/page/2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
 </head>
-
-<body   >
-    <a href="http://github.com/aoqfonseca"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
-  <header role="banner"><hgroup>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
   <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
   
-    <h2>Pensamentos, opiniões e alguns estudos</h2>
+    <p>Pensamentos, opiniões e alguns estudos</p>
   
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</div>
+<ul id="social-links">
+  
+    <li><a class="feed" href="/atom.xml" title="RSS">RSS</a></li>
+  
+  
+    <li><a class="twitter" href="http://twitter.com/aoqfonseca" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/aoqfonseca" title="GitHub">GitHub</a> </li>
   
 </ul>
+<div class="clear"></div>
+<ul id="nav">
   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
+    <li> <a href="/" class="current">blog</a> </li>
   
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
+    <div id="main"> 
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a>
+    </h1>
   
   
+
+
+
+
+
+
+
+
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/">Escolhendo Minha Ferramenta De TDD Para Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
+
+
+<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
+</div>
+
+<div class="post-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
+
+Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
+
+Avisos paroquiais feitos vamos ao que interessa.
+
+Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
+
+O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
+
+Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
+
+&nbsp;
+
+Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
+
+&nbsp;
+[cc lang=&#8221;html&#8221;]
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
+[/cc]
+
+&nbsp;
+Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
+
+Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
+
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+//Aqui dentro as expectativas
+});
+[/cc]
+
+&nbps;
+
+Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
+
+Assim se continuar nossos testes ficarão assim: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+  it(&#8220;deve ser true&#8221;, function(){
+    expect(true).toBeTruthy();
+  });
+});
+[/cc]
+
+&nbsp;
+
+Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
+
+Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/">Escolhendo Minha Ferramenta De TDD Para Javascript</a>
+    </h1>
+  
+  
 
 
 
@@ -88,13 +170,9 @@
 
 
 <time datetime="2011-09-30T00:00:00-03:00" pubdate data-updated="true">Sep 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+<div class="post-content">Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
 
 Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
 
@@ -149,22 +227,16 @@ Agora tudo isso parece que só é para código javascript que você escreve para
 
 Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/">Respondendo Uma Pergunta Sobre TDD</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/">Respondendo Uma Pergunta Sobre TDD</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -177,13 +249,9 @@ Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmin
 
 
 <time datetime="2011-09-28T00:00:00-03:00" pubdate data-updated="true">Sep 28<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">No post que anterior, no qual falei sobre <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a>, recebi um comentário perguntando dentro de algumas situações se O TDD se encaixava ou não.  Como a dúvida é recorrente e o tema é bastante controverso, resolvi, ao invés de responder o comentário dele, escrever um post.
+<div class="post-content">No post que anterior, no qual falei sobre <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a>, recebi um comentário perguntando dentro de algumas situações se O TDD se encaixava ou não.  Como a dúvida é recorrente e o tema é bastante controverso, resolvi, ao invés de responder o comentário dele, escrever um post.
 
 A primeira coisa, em minha opinião, que tem que ficar clara, que <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um metodologia de desenvolvimento e não de projeto. Usamos <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> para gerar código melhor e com isso aumentar a qualidade do que estamos fazendo.  Testar antes não é garantia de zero bugs, mas ajuda a construir uma solução melhor pensada, simples, concisa,  e, sim, com testes automatizados que irão evitar muitos bugs.
 
@@ -209,22 +277,16 @@ Por fim espero ter te ajudado. E caso tenham dúvidas podem comentar que irei re
 
 &nbsp;
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/09/27/tdd-no-frontend/">TDD No FrontEnd</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/27/tdd-no-frontend/">TDD No FrontEnd</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -237,13 +299,9 @@ Por fim espero ter te ajudado. E caso tenham dúvidas podem comentar que irei re
 
 
 <time datetime="2011-09-27T00:00:00-03:00" pubdate data-updated="true">Sep 27<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código &#8220;server side, no meu código &#8220;client side&#8221;. Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
+<div class="post-content">Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código &#8220;server side, no meu código &#8220;client side&#8221;. Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
 
 Os ditos desenvolvedores FrontEnd hão de concordar comigo que muitas vezes o código Javascript fica uma verdadeira bagunça. São poucos que procuram organizar as coisas, criar componentes e funções para os comportamentos repetidos e etc. Fica a dica de ver a palestra do <a title="Leonardo Balter" href="http://leobalter.net" target="_blank">LeoBalter</a> - WTF Javascript.
 
@@ -265,22 +323,16 @@ algo.click(&#8230;
 Outra coisa que vem com o uso de TDD na escrita de javascript é que você começa a ter uma rede de proteção que quando for necessário alterar algo fará com fique mais tranquilo quanto a introduzir um bug ou quebrar um comportamento já existente.
 Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual estou usando.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/">Usando Parametros Da Linha De Comando No Rake E No Capistrano</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/">Usando Parametros Da Linha De Comando No Rake E No Capistrano</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -293,13 +345,9 @@ Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual esto
 
 
 <time datetime="2011-09-06T00:00:00-03:00" pubdate data-updated="true">Sep 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
+<div class="post-content">Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
 todos os projetos que já trabalhei até hoje exigem um bom número de task em RAKE e CAPISTRANO. Desde que meus modelos são tão grandes quanto necessário, estas task e receitas são em geral pequenas e procuram fazer pouco lógica delegando para o modelo apropriado&#8230;
 O que desejo é falar sobre é que sempre estamos precisando passar parametros para estas tasks, e na maioria das vezes é bastante  escassa as documentações para fazer isso. 
 Imagine que  você quer fazer algo como: 
@@ -332,22 +380,16 @@ end
 
 Para maiores detalhes veja o artigo original e leia a documentação do Capistrano. Fiquem a vontade para comentar e assim que puder respondo. 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/06/30/palestra-no-fisl/">Palestra No Fisl</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/30/palestra-no-fisl/">Palestra No Fisl</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -360,31 +402,21 @@ Para maiores detalhes veja o artigo original e leia a documentação do Capistra
 
 
 <time datetime="2011-06-30T00:00:00-03:00" pubdate data-updated="true">Jun 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Segue abaixo o slides da palestra que acabei de dar no FISL. Obrigado a todos que assistiram e deram seu feedback.
+<div class="post-content">Segue abaixo o slides da palestra que acabei de dar no FISL. Obrigado a todos que assistiram e deram seu feedback.
 <div style="width:425px" id="__ss_8470619"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/aoqfonseca/codigo-legado-fisl-8470619" title="Codigo legado fisl" target="_blank">Codigo legado fisl</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/8470619" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/aoqfonseca" target="_blank">aoqfonseca</a> </div> </div>
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -397,13 +429,9 @@ Para maiores detalhes veja o artigo original e leia a documentação do Capistra
 
 
 <time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+<div class="post-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
 Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
 Navegue para achar o jar : selenium-server
 Renomeie esse jar para um arquivo zip: 
@@ -434,22 +462,16 @@ jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
 [/cc]
 Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/06/07/usando-jasmine/">Usando Jasmine</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/07/usando-jasmine/">Usando Jasmine</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -462,13 +484,9 @@ Pronto agora você tem um jar do selenium server com suporte a versão que quer 
 
 
 <time datetime="2011-06-07T00:00:00-03:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Num post passado dei uma breve introdução do <a title="Site do Jasmine" href="http://pivotal.github.com/jasmine/">Jasmine</a>.  Jasmine é uma biblioteca de BDD para JavaScript. Nesse artigo quero mostrar um passo a passo simples para você escrever seus primeiros testes.  Se estiver fazendo uma app em Ruby, mais precisamente em Rails, tudo isso fica muito fácil pois basta instalar a gem do Jasmine e seguir os passos que o próprio site indica. Abaixo mostrarei como fazer quando você está apenas desenvolvendo um javascript - fora do contexto de uma app.
+<div class="post-content">Num post passado dei uma breve introdução do <a title="Site do Jasmine" href="http://pivotal.github.com/jasmine/">Jasmine</a>.  Jasmine é uma biblioteca de BDD para JavaScript. Nesse artigo quero mostrar um passo a passo simples para você escrever seus primeiros testes.  Se estiver fazendo uma app em Ruby, mais precisamente em Rails, tudo isso fica muito fácil pois basta instalar a gem do Jasmine e seguir os passos que o próprio site indica. Abaixo mostrarei como fazer quando você está apenas desenvolvendo um javascript - fora do contexto de uma app.
 
 Primeiro instale o NodeJS e o npm em sua máquina. Caso não saiba como, no meu blog mesmo tem um artigo explicando como fazer isso (veja no histórico).  Tendo esses dois instalados, vá a sua linha de comando e execute o seguinte comando:
 [cc lang=&#8221;bash&#8221;]
@@ -499,22 +517,16 @@ jasmine ci
 [/cc]
 Se você estiver fazendo isso no Mac OS 10.6.6 ou superior deve ocorrer. Assim que tiver a solução eu aviso aqui.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/06/03/instalando-rvm/">Instalando RVM</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/03/instalando-rvm/">Instalando RVM</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -527,13 +539,9 @@ Se você estiver fazendo isso no Mac OS 10.6.6 ou superior deve ocorrer. Assim q
 
 
 <time datetime="2011-06-03T00:00:00-03:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
+<div class="post-content">O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
 Para instalar é bem fácil e basta seguir as instruções do site do produto (<a href="https://rvm.beginrescueend.com/">clique aqui</a> para ver)
 No seu terminal digite o comando para baixar e instalar: 
 [cc lang=&#8221;bash&#8221;]
@@ -556,22 +564,16 @@ rvm gemset use participacoes
 [/cc]
 Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. Prontinho e tudo funcionando. 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/">IntroduÃ§Ã£o De Teste JavaScript Com Jasmine</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/">IntroduÃ§Ã£o De Teste JavaScript Com Jasmine</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -584,13 +586,9 @@ Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. 
 
 
 <time datetime="2011-06-02T00:00:00-03:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
+<div class="post-content">No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
 Recomendo muito a galera ir. Vai ser um dia muito legal com gente altamente compartilhando suas experiências, trazendo novidades e como são seus dias a dias de projetos e empresa. 
 Eu serei um dos que irá apresentar nesse evento. O assunto será Jasmine. <a href="http://pivotal.github.com/jasmine/">Jasmine</a> é uma biblioteca de teste para JavaScript. Ele é mais focado no princípio de BDD (Behavior Driven Dev.) do que em TDD. Sendo assim apresenta uma sintaxe, que eu pessoalmente gosto muito, para escrever teste que fica bastante elegante poderoso. Além disso oferece suporte a testes assíncronos e spies (bibliotecas para &#8220;espionar&#8221; chamadas de métodos e fazer mock) de forma muito simples. 
 Para quem desenvolve com Ruby, verá a forma de escrever suas especificação é muito semelhante ao <a href="http://rspec.info/">RSpec</a>. Veja o exemplo abaixo: 
@@ -605,110 +603,73 @@ Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplifica
 Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
 Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
 </div>
-  
-  
+ </div>
 
 
-    </article>
+<div id="pagination">
+  
+    <a class="prev" href="/blog/page/3/">&laquo;Previous</a>
   
   
-    <article>
+    <a class="next" href="/">Next&raquo;</a>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 Andre Fonseca 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas para Javascript</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Reading</h2>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/23/instalando-o-nodejs-e-npm/">Instalando O NodeJS E Npm</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-23T00:00:00-03:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo aprendizado e depois por causa da natureza da aplicação ficar bem com uma arquitetura de push.
-
-Primeiro passo é instalar tudo que você precisa para desenvolver com NodeJS&#8230; NodeJS e NPM. O npm é um gerenciador de pacotes &#8220;semelhante&#8221; ao rubygem/pypi. A dica inicial é esquecer tutoriais que ensinam a instalar via script (curl &#8230;. ), apt gets, ports ou brew&#8230; A melhor forma é clonar o repositório de cada um (NodeJS e NPM) e executar os comandos sugiros no README:
-
-[cc lang=&#8221;bash&#8221;]
-git clone https://github.com/joyent/node.git
-cd node
-./configure
-make
-make install
-[/cc]
-
-Com  isso ele irá verificar as depencias necessária para ele funcionar e listá-las. Caso algo ele indique que deve instalar algo, busque o pacote no google e veja como instalar. Para ubuntu é fácil um apt-get resolve, para outros um yum install, etc.
-
-Repita a mesma coisa para o NPM
-
-[cc lang=&#8221;bash&#8221;]
-git clone https://github.com/isaacs/npm.git
-cd npm
-sudo make install
-[/cc]
-
-Para instalar seus pacotes para desenvolver com NodeJS basta agora ir na linha de comando e digitar <em>npm install &lt;nome do pacote&gt;</em> . Isso irá instalar o pacote. OBS: O npm por padrão instala os pacotes dentro do diretório corrente algo como node_modules. Assim caso queira que os pacotes seja instalados globalmente, ou seja, para toda a máquina, use o -g ou &#8211;global junto com o comando install.
-
-Dentro do <a href="http://blog.nodejs.org/2011/05/01/npm-1-0-released/">blog do node</a>, tem uma excelente explicação de como fazer, sendo que você deve reter o seguinte para o início.  Ao instalar algo no  global, você estará instalando na pasta : &#8220;/usr/local/lib/node_modules&#8221;.  Depois disso, caso queira que essa biblioteca esteja acessível dentro do seu projeto, você deve criar um link para esse global. Para isso:
-
-[cc lang=&#8221;bash&#8221;]
-cd seu_projeto
-npm link <nome do pacote>
-[/cc]
-
-Isso irá criar um link dentro da pasta local node_modules para a pasta global do pacote. E voilá !
-Muito obrigado ao Emerson Macedo (codificando.com ou codificando.org) pela ajuda.
-
-Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP vou postando as escolhas e as descobertas.
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/3/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/">Newer &rarr;</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    
-  
-</aside>
-
+        <p>Please set your Douban ID in _config.yml</p>
+      
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Andre Fonseca -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
+  <p class="powered">
+    Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/iwinux/compbits">Compbits</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
   
 
 
-
+  
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -719,9 +680,9 @@ Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP 
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+  
 
-
-
+  
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -731,9 +692,6 @@ Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP 
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-
-
-
 
 
 </body>

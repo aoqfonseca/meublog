@@ -1,81 +1,121 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html lang="zh-cn">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>Meu Blog, by Andre Fonseca</title>
+
   <meta name="author" content="Andre Fonseca">
-
   
-  <meta name="description" content="A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar &hellip;">
+  <meta name="description" content="Bibliotecas Para Javascript Apr 13th, 2012 Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo &hellip;">
+  
   
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
   <link rel="canonical" href="http://www.andrefonseca.net">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
 </head>
-
-<body   >
-    <a href="http://github.com/aoqfonseca"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
-  <header role="banner"><hgroup>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
   <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
   
-    <h2>Pensamentos, opiniões e alguns estudos</h2>
+    <p>Pensamentos, opiniões e alguns estudos</p>
   
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</div>
+<ul id="social-links">
+  
+    <li><a class="feed" href="/atom.xml" title="RSS">RSS</a></li>
+  
+  
+    <li><a class="twitter" href="http://twitter.com/aoqfonseca" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/aoqfonseca" title="GitHub">GitHub</a> </li>
   
 </ul>
+<div class="clear"></div>
+<ul id="nav">
   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
+    <li> <a href="/" class="current">blog</a> </li>
   
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
+    <div id="main"> 
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas Para Javascript</a>
+    </h1>
   
   
+
+
+
+
+
+
+
+
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/04/onde-buscar/">Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a></h1>
-    
-    
-      <p class="meta">
-        
+
+
+<time datetime="2012-04-13T00:02:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+</div>
+
+<div class="post-content"><p>Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas páginas praticamente se limitava, na maioria dos casos, a algumas linhas que vinham aninhadas ali mesmo dentro do html e faziam o básicão: algum menu, esconder mostrar um elemento, etc. Hoje, temos elementos como carrocéis, galerias de fotos, popins, modais, animações das mais variadas e não é mais três linhas e sim arquivos que chegam até a casa dos megasbytes. Existem casos onde a página enviada no request chega a ser apenas um esqueleto e toda inteligência fica por conta de milhares de linhas de javacript.</p>
+
+<p>Com isso fica evidente que precisamos cada vez ter mais cuidado com essas peças de código que colocamos em nossas páginas, como melhorar nossa modelagem (usando conceitos de Orientaçção a Objeto para aumentar reutilização), melhor distribuição por arquivos, namespaces, módulos, e muitas outras que iremos aborda aqui ou em outros artigos.</p>
+
+<h3>Orientação a objeto e um monte de lib de terceiros</h3>
+
+<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
+
+<p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
+
+<p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
+
+<p>Por essas que acredito que uma forma melhor é quebrar as libs em &#8220;pedaços menores&#8221; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
+
+<h3>Patterns</h3>
+
+<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
+
+<h3>MVC - Model View Controller</h3>
+
+<p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
+
+<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &#8221; negócio&#8221; (o domain).</p>
+
+<p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
+
+<p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
+
+<p>[1] http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)
+[2] http://microjs.com/ - Catálogo de MicroJS.
+[3] http://mootools.net/ - Página do Mootools
+[4] http://www.prototypejs.org/ - Biblioteca Prototype
+[5] http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js
+[6] http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</p>
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2012/03/04/onde-buscar/">Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a>
+    </h1>
+  
+  
 
 
 
@@ -88,13 +128,9 @@
 
 
 <time datetime="2012-03-04T15:29:00-03:00" pubdate data-updated="true">Mar 4<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content"><p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
+<div class="post-content"><p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
 Acontece que com a internet e seus poderosos buscadores, buscar alguma coisa, ou melhor, pesquisar sobre um determinado assunto não é algo tão demorado e custoso.
 Quem tem mais de 30 anos deve se lembrar de quando tinhámos que ir a bibliotecas e pegar uns 10 livros e ficar ali escrevendo os textos e resumindo-os para fazer um trabalho da escola. Hoje, qualquer criança acessa a internet e tem um acervo muito maior e indexado, tornado-os, inclusive, muitos preguiçosos. Mas não quero discutir isso e sim o quanto isso nos impacta.</p>
 
@@ -116,22 +152,16 @@ O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, ne
 <p>Como disse lá no início, para mim, valorizo mais quem saber buscar do que aquele que apenas sabe. Isso mostra a sua capacidade de lidar com o desconhecido. Aprender é a habilidade do momento.
 E você está preparado para isso?</p>
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como Ver a última Tag Que Foi Criada No Git</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como Ver a última Tag Que Foi Criada No Git</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -144,13 +174,9 @@ E você está preparado para isso?</p>
 
 
 <time datetime="2012-02-29T00:00:00-03:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
+<div class="post-content">O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
 Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -159,22 +185,16 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
 
 Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -187,13 +207,9 @@ Esse comando busca na lista de revisões pelas tags e com isso você consegue ve
 
 
 <time datetime="2012-02-22T00:00:00-02:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.
+<div class="post-content">A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.
 
 O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.
 
@@ -216,22 +232,16 @@ Outro ponto importante de nosso problema é que o time também se acomodou no mo
 Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.
 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -244,13 +254,9 @@ Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e escla
 
 
 <time datetime="2011-11-25T00:00:00-02:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
+<div class="post-content">Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
 
 <a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
 
@@ -287,22 +293,16 @@ Agora vão as dicas com os pulos do gato:
 2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, Frameworks, Etc Para MVC No Javascript</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, Frameworks, Etc Para MVC No Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -315,13 +315,9 @@ Agora vão as dicas com os pulos do gato:
 
 
 <time datetime="2011-10-27T00:00:00-02:00" pubdate data-updated="true">Oct 27<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema. Como uso cada vez maior de javascript em nossas páginas (front ends) fica evidente que precisamos buscar melhorar a estrutura de nossos códigos para que fica fácil evoluir, entender e manutenciar. 
+<div class="post-content">Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema. Como uso cada vez maior de javascript em nossas páginas (front ends) fica evidente que precisamos buscar melhorar a estrutura de nossos códigos para que fica fácil evoluir, entender e manutenciar. 
 
 No artigo passado apresentei o conceito e mostrei, bem superficialmente, o que é e como fazer isso. A idéia é aprofundar mais no assunto e mostrar bibliotecas que  vão facilitar nossa missão. 
 
@@ -354,22 +350,16 @@ Num próximo artigo vamos entrar em mais detalhe sobre o backbone.
 [5] <a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone" target="_blank">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</a>
 [6] <a href="http://documentcloud.github.com/backbone/" target="_blank">http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</a>
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/25/python-decorators/">Python Decorators</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -382,13 +372,9 @@ Num próximo artigo vamos entrar em mais detalhe sobre o backbone.
 
 
 <time datetime="2011-10-25T00:00:00-02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
+<div class="post-content">A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
 
 De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
 
@@ -492,22 +478,16 @@ Referência.
 [4] <a href="http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html">http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html</a>
 [5] <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a>
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando Growl Com Python E Ferramenta De Autotest</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando Growl Com Python E Ferramenta De Autotest</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -520,13 +500,9 @@ Referência.
 
 
 <time datetime="2011-10-20T00:00:00-02:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: Autotest (<a href="http://www.zenspider.com/ZSS/Products/ZenTest/" title="Autotest site" target="_blank">zentest</a>). 
+<div class="post-content">A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: Autotest (<a href="http://www.zenspider.com/ZSS/Products/ZenTest/" title="Autotest site" target="_blank">zentest</a>). 
 
 Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.
 
@@ -566,22 +542,16 @@ Depois você registra seu notifier e usa o método notify, passando o nome da ap
 
 Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro. 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/18/mvc-no-javascript/">MVC No Javascript</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/18/mvc-no-javascript/">MVC No Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -594,13 +564,9 @@ Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em
 
 
 <time datetime="2011-10-18T00:00:00-02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">No artigo anterior que escrevi sobre Jasmine, recebi um comentário de um amigo no qual ele me perguntava como fazer para testar códigos Javascript que interagem com o DOM ou que tenham uma certa dependência dele. 
+<div class="post-content">No artigo anterior que escrevi sobre Jasmine, recebi um comentário de um amigo no qual ele me perguntava como fazer para testar códigos Javascript que interagem com o DOM ou que tenham uma certa dependência dele. 
 
 O primeiro impulso foi de responder para usar um recurso de Fixtures ( ou similiar), onde ele pode &#8220;criar&#8221; elementos no DOM durante um cenário de teste e depois removê-los para não atrapalhar os demais.  Embora isso resolva o problema dele - de testar funções que precisem de elementos HTML, a pergunta dele suscita uma discussão bem mais ampla e interessante. 
 
@@ -662,22 +628,16 @@ O exemplo acima é apenas conceitual e está faltando coisa para caramba. Mostra
 
 Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas e frameworks para ajudar nesse sentido.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -690,13 +650,9 @@ Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas 
 
 
 <time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.
+<div class="post-content">Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.
 
 &nbsp;
 Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código: 
@@ -764,149 +720,71 @@ Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo 
 
 
 </div>
-  
-  
+ </div>
 
 
-    </article>
+<div id="pagination">
+  
+    <a class="prev" href="/blog/page/2/">&laquo;Previous</a>
   
   
-    <article>
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 Andre Fonseca 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas para Javascript</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Reading</h2>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
-
-Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
-
-Avisos paroquiais feitos vamos ao que interessa.
-
-Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
-
-O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
-
-Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
-
-<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
-
-&nbsp;
-
-Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
-
-&nbsp;
-[cc lang=&#8221;html&#8221;]
-<html>
-<head>
-  <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/Player.js"></script>
-  <script type="text/javascript" src="src/Song.js"></script>
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/SpecHelper.js"></script>
-  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
-
-</head>
-<body>
-
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
-
-</body>
-</html>
-[/cc]
-
-&nbsp;
-Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
-
-Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
-
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-//Aqui dentro as expectativas
-});
-[/cc]
-
-&nbps;
-
-Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
-
-Assim se continuar nossos testes ficarão assim: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-  it(&#8220;deve ser true&#8221;, function(){
-    expect(true).toBeTruthy();
-  });
-});
-[/cc]
-
-&nbsp;
-
-Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
-
-Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    
-  
-</aside>
-
+        <p>Please set your Douban ID in _config.yml</p>
+      
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Andre Fonseca -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
+  <p class="powered">
+    Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/iwinux/compbits">Compbits</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
   
 
 
-
+  
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -917,9 +795,9 @@ Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar 
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+  
 
-
-
+  
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -929,9 +807,6 @@ Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar 
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-
-
-
 
 
 </body>

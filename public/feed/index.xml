@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Meu Blog, by Andre Fonseca]]></title>
+  <link href="http://www.andrefonseca.net/feed" rel="self"/>
+  <link href="http://www.andrefonseca.net/"/>
+  <updated>2012-04-13T00:30:58-03:00</updated>
+  <id>http://www.andrefonseca.net/</id>
+  <author>
+    <name><![CDATA[Andre Fonseca]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bibliotecas para Javascript]]></title>
+    <link href="http://www.andrefonseca.net/blog/2012/04/13/bibliotecas-javascript/"/>
+    <updated>2012-04-13T00:02:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2012/04/13/bibliotecas-javascript</id>
+    <content type="html"><![CDATA[<p>Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas páginas praticamente se limitava, na maioria dos casos, a algumas linhas que vinham aninhadas ali mesmo dentro do html e faziam o básicão: algum menu, esconder mostrar um elemento, etc. Hoje, temos elementos como carrocéis, galerias de fotos, popins, modais, animações das mais variadas e não é mais três linhas e sim arquivos que chegam até a casa dos megasbytes. Existem casos onde a página enviada no request chega a ser apenas um esqueleto e toda inteligência fica por conta de milhares de linhas de javacript.</p>
+
+<p>Com isso fica evidente que precisamos cada vez ter mais cuidado com essas peças de código que colocamos em nossas páginas, como melhorar nossa modelagem (usando conceitos de Orientaçção a Objeto para aumentar reutilização), melhor distribuição por arquivos, namespaces, módulos, e muitas outras que iremos aborda aqui ou em outros artigos.</p>
+
+<h3>Orientação a objeto e um monte de lib de terceiros</h3>
+
+<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
+
+<p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
+
+<p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
+
+<p>Por essas que acredito que uma forma melhor é quebrar as libs em &#8220;pedaços menores&#8221; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
+
+<h3>Patterns</h3>
+
+<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
+
+<h3>MVC - Model View Controller</h3>
+
+<p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
+
+<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &#8221; negócio&#8221; (o domain).</p>
+
+<p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
+
+<p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
+
+<p>[1] http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)
+[2] http://microjs.com/ - Catálogo de MicroJS.
+[3] http://mootools.net/ - Página do Mootools
+[4] http://www.prototypejs.org/ - Biblioteca Prototype
+[5] http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js
+[6] http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Não precisa saber tudo mas o onde buscar sim.]]></title>
+    <link href="http://www.andrefonseca.net/blog/2012/03/04/onde-buscar/"/>
+    <updated>2012-03-04T15:29:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2012/03/04/onde-buscar</id>
+    <content type="html"><![CDATA[<p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
+Acontece que com a internet e seus poderosos buscadores, buscar alguma coisa, ou melhor, pesquisar sobre um determinado assunto não é algo tão demorado e custoso.
+Quem tem mais de 30 anos deve se lembrar de quando tinhámos que ir a bibliotecas e pegar uns 10 livros e ficar ali escrevendo os textos e resumindo-os para fazer um trabalho da escola. Hoje, qualquer criança acessa a internet e tem um acervo muito maior e indexado, tornado-os, inclusive, muitos preguiçosos. Mas não quero discutir isso e sim o quanto isso nos impacta.</p>
+
+<h3>O antigo profissional</h3>
+
+<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &#8220;armazenamento&#8221; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
+Eram pessoas que tinha uma memória invejável. Nem sempre o racicionio era valorizado. Saber algo era um diferencial. Saber oque fazer com a informação era outro ponto que não vinha ao caso naquele momento.</p>
+
+<h3>A internet e seu impacto</h3>
+
+<p>Com a vinda a internet o conhecimento começou a migrar dos livros para os grande sistemas on line. Vários impactos aconteceram por isso, um deles foi a democratização dessas informações e uma maior facilidade de acesso.
+Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&#8230; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
+Não precisamos mais de memórias maravilhosas. Os computadores fazem isso melhor do que a gente.
+O importante agora é o raciocínio analítico. É capacidade de extrapolar a informação e dar um fim útil dentro dos nossos objetivos.
+O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&#8230; Delegamos isso para os sistemas.</p>
+
+<h3>Conclusão</h3>
+
+<p>Como disse lá no início, para mim, valorizo mais quem saber buscar do que aquele que apenas sabe. Isso mostra a sua capacidade de lidar com o desconhecido. Aprender é a habilidade do momento.
+E você está preparado para isso?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Como ver a última tag que foi criada no git]]></title>
+    <link href="http://www.andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/"/>
+    <updated>2012-02-29T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git</id>
+    <content type="html"><![CDATA[O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
+Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git describe --tags <span class="k">$(</span>git rev-list --tags --max-count<span class="o">=</span>1<span class="k">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cada um tem que saber seu papel e sua responsabilidade.]]></title>
+    <link href="http://www.andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/"/>
+    <updated>2012-02-22T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade</id>
+    <content type="html"><![CDATA[A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.
+
+O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.
+
+Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.
+
+O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.
+
+Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.
+
+Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.
+
+Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.
+
+PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.
+
+Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.
+
+Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.
+
+Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Customizando a renderizaÃ§Ã£o do template de form do admin do Django]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/"/>
+    <updated>2011-11-25T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django</id>
+    <content type="html"><![CDATA[Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
+
+<a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
+
+Sinceramente isso é maravilhoso se você não fugir muito da formato que já mencionei antes. Caso precise de ir mais além ou então precisa modificar um pouco as coisas do que se espera que elas sejam, a coisa ganha uma complexidade. Mas calma&#8230; Também não é nenhuma ciência de foguete&#8230; Com um simples passo a passo, é simples mudar a cara de um formulário, listagem ,etc.
+
+Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.
+
+Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.
+
+A receita é bem simples:
+
+Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:
+
+[cc lang=&#8221;bash&#8221;]
+minha_app/templates/admin/minha_app/meu_modelo/
+[/cc]
+
+&nbsp;
+
+Depois coloque um arquivo dentro para substituir:
+
+[cc lang=&#8221;bash&#8221;]
+minha_app/templates/admin/minha_app/meu_modelo/change_form.html
+[/cc]
+
+&nbsp;
+
+Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes. 
+
+Agora vão as dicas com os pulos do gato: 
+
+1. O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro. 
+
+2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bilbiotecas, frameworks, etc para MVC no Javascript]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/"/>
+    <updated>2011-10-27T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript</id>
+    <content type="html"><![CDATA[Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema. Como uso cada vez maior de javascript em nossas páginas (front ends) fica evidente que precisamos buscar melhorar a estrutura de nossos códigos para que fica fácil evoluir, entender e manutenciar. 
+
+No artigo passado apresentei o conceito e mostrei, bem superficialmente, o que é e como fazer isso. A idéia é aprofundar mais no assunto e mostrar bibliotecas que  vão facilitar nossa missão. 
+
+Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso.  Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona.
+
+Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. 
+
+A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos. Um catálogo delas é o <a href="http://microjs.com/">MicroJS</a>.
+
+Existem outras opções mais extensas ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa. 
+
+Um pequena brecha para falar uma coisa: hoje penso que tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa. Isso vou deixar para falar em outro post. 
+
+Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com).  Imagina como seria a complexidade do código para implementar tal cenário. 
+
+Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção.
+
+Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.
+
+Por fim, você pode optar por algum framework que permita separar tudo e promova suas interações de forma simples. Um bom exemplo disso é a <a href="http://documentcloud.github.com/backbone/" title="BackBone.js" target="_blank">BackBone.js</a> . Ele permite que você separe, já disse isso, muito bem as responsabilidades e torna fácil as interações. 
+
+Num próximo artigo vamos entrar em mais detalhe sobre o backbone. 
+
+<h2>Referências:</h2>
+
+[1] <a href="http://pt.wikipedia.org/wiki/MVC" title="MVC" target="_blank">http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</a>
+[2] <a href="http://microjs.com/" target="_blank">http://microjs.com/ - Catálogo de MicroJS.</a>
+[3] <a href="http://mootools.net/" target="_blank">http://mootools.net/</a> - Página do Mootools
+[4] <a href="http://www.prototypejs.org/" target="_blank">http://www.prototypejs.org/ - Biblioteca Prototype</a>
+[5] <a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone" target="_blank">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</a>
+[6] <a href="http://documentcloud.github.com/backbone/" target="_blank">http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</a>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Decorators]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/25/python-decorators/"/>
+    <updated>2011-10-25T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/25/python-decorators</id>
+    <content type="html"><![CDATA[A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
+
+De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
+
+No wiki do Python, a definição de decorator, é de uma forma que temos para alterar um comportamento de um função ou métodos dentro de um código. Seria com  se pudéssemos adicionar ou até alterar a lógica sem sermos muitos intrusivos.
+
+Um bom exemplo seria o decorator classmethod. Veja abaixo:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
+</span><span class='line'><span class="n">olaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">()</span>
+</span><span class='line'><span class="n">OlaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">(</span><span class="n">olaMundo</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">metodo1</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">metodo1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="nd">@classmethod</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2>O que são os Decorators e como funciona:</h2>
+
+Os decorators do Python são como macros ( já disse isso) que quanto o interpretador os encontra os substitui por um estrutura que foi definida. No caso do classmethod ele &#8220;substitui&#8221; pela a chamada original. 
+
+Claro que a definição acima é simplista, mas ajuda a entender.
+
+Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MeuDecorador</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">function</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'><span class="nd">@MeuDecorador</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">funcao</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;algo assim&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">funcao</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
+
+
+<h2>Para que servem e por que usar:</h2>
+
+Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
+
+Referência.
+[1] <a href="http://wiki.python.org/moin/PythonDecorators">http://wiki.python.org/moin/PythonDecorators</a>
+[2] <a href="http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html">http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html</a>
+[3] <a href="http://devlog.waltercruz.com/python_decorators">http://devlog.waltercruz.com/python_decorators</a>
+[4] <a href="http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html">http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html</a>
+[5] <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando growl com python e ferramenta de autotest]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/"/>
+    <updated>2011-10-20T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest</id>
+    <content type="html"><![CDATA[A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: Autotest (<a href="http://www.zenspider.com/ZSS/Products/ZenTest/" title="Autotest site" target="_blank">zentest</a>). 
+
+Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.
+
+Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/" title="Site do Flávio Amieiro" target="_blank">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação). 
+
+Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br/" title="Blog do Bernardo Heynemann" target="_blank">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta: 
+
+[cc lang=&#8221;bash&#8221;]
+peon make test -d tests
+[/cc]
+
+O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto. 
+
+Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl. 
+
+Pesquisando encontrei uma forma de fazer isso. 
+
+Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples: 
+
+[cc lang=&#8221;python&#8221;]
+try:
+    import Growl
+except ImportError:
+     return
+
+path_image = abspath(join(dirname(__file__), image))
+icon = {&#8216;applicationIcon&#8217;: Growl.Image.imageFromPath(path_image)}
+
+growl = Growl.GrowlNotifier(app_name, [app_name], **icon)
+growl.register()
+growl.notify(app_name, title, message)
+[/cc]
+
+Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.
+
+Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto! 
+
+Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro. 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MVC no javascript]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/18/mvc-no-javascript/"/>
+    <updated>2011-10-18T00:00:00-02:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/18/mvc-no-javascript</id>
+    <content type="html"><![CDATA[No artigo anterior que escrevi sobre Jasmine, recebi um comentário de um amigo no qual ele me perguntava como fazer para testar códigos Javascript que interagem com o DOM ou que tenham uma certa dependência dele. 
+
+O primeiro impulso foi de responder para usar um recurso de Fixtures ( ou similiar), onde ele pode &#8220;criar&#8221; elementos no DOM durante um cenário de teste e depois removê-los para não atrapalhar os demais.  Embora isso resolva o problema dele - de testar funções que precisem de elementos HTML, a pergunta dele suscita uma discussão bem mais ampla e interessante. 
+
+Hoje é um fato que nossos front-end ( client side ou interface web ou como queira chamar) são cada vez mais ricos &#8230; Tem muito ( mas muito mesmo) código Javascript para criar uma experiência para o usuário boa. Se acha que estou exagerando, abrar seus próprios arquivos ou então converse com um desenvolver front-end mais experiente. 
+
+Com uso maior do javascript, o cuidado com seu uso também tem que ser maior. Não é mais aquela função de duas linhas que abre um alert ou aquelas validações simples do seu form. Acredito que em muitas páginas a quantidade de linhas de Javascript é maior que a de html e css. Tudo depende da riqueza da experiência ( veja que não estou considerando CSS3 que &#8220;substitui&#8221; bastante algumas coisas). 
+
+Mas chega de enrolação e vamos ao que interessa: como a gente organiza melhor o nosso código. 
+<strong>Primeira dica é separá-lo em um arquivo. Nada de script na página, por favor</strong>. Deixe para fazer isso em última instância. Acredite, sempre existe um jeito de desacoplar. 
+
+Caso você já tenha programado alguma coisa no SERVER-SIDE(adoro esse nome, parece que é outra dimensão), sabe que existem diversos padrões de designs( boas práticas). Um deles, e mais famoso, é o MVC - model view controller. Esse pattern ajuda a gente manter bem separado a lógicas de apresentação da lógica de negócio. Assim ao mexer num, não necessariamente precisará mexer noutro. 
+
+Seguindo essa filosofia, procuro desenvolver minhas lógicas de forma que eu separe bem oque é apresentação/animação da lógica de &#8220;negócio&#8221; da minha página. Por exemplo, imaginemos que agora temos que validar alguns dados e mostrar um aviso com os erros. O que faria seria quebrar isso em diversas funções. Uma para cada camada, no mínimo: 
+[cc lang=&#8221;javascript&#8221;]
+function validaCampo(dados){
+&#8230;
+}
+
+function avisaErro(mensagem){
+&#8230;
+}
+
+Erros = {
+  &#8220;nome_obrigatorio&#8221;: &#8220;Campo nome deve ser obrigatorio&#8221;
+}
+[/cc]
+
+Sei que o exemplo acima pode ser muito simples. Mas ele facilita testar e ainda por cima facilita alterar qualquer coisa na lógica de cada parte sem ter que mexer em um monte de lugar ou ter um método de 40 linhas para fazer uma validação. 
+
+Outro exemplo, mais próximo do real, imagina que recebe dados de um form, posta-os via ajax, atualiza uma listagem abaixo e mostra mensagem de sucesso ou erro: 
+
+[cc lang=&#8221;javascript&#8221;]
+function Requisicao(){
+}
+
+Requisicao.prototype.envia = function(url,dados){ //faz algo aqui};
+
+function ItemLista(){}
+
+ItemLista.prototype.renderizaHtml = function(){ //aqui voce pode colocar a logica e escrever o item no html};
+
+function submit(){
+  var form = document.getElementByTag(&#8220;form&#8221;);
+  &#8230;
+  var requisicao = new Requisicao();
+  var item; 
+  try {
+    requisicao.envia(form.url); 
+    item  = new Item(requisicao);
+  catch {
+    avisaErro(&#8220;Ocorreu um envio no envia de dados&#8221;);
+  }
+
+  item.renderizaHtml();
+}
+[/cc]
+
+O exemplo acima é apenas conceitual e está faltando coisa para caramba. Mostra bem, como separar bem as coisas e garantir uma boa legibilidade. Para testar isso você pode fazer sem precisar de acessar o DOM, fazendo mock das chamadas onde isso ocorre. 
+
+Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas e frameworks para ajudar nesse sentido.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jasmine testes:  Usando o before e o after e testes assincronos.]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/"/>
+    <updated>2011-10-06T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos</id>
+    <content type="html"><![CDATA[Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.
+
+&nbsp;
+Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;teste de algo&#8221;, function(){
+    it(&#8220;deve acontecer algo e o valor ser outro&#8221;, function(){
+        expect(true).toBeTruthy();
+    });
+});
+[/cc]
+
+&nbsp;
+
+No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função. 
+
+Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois). 
+Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo: 
+
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;teste algo com before e after&#8221;, function(){
+    var variavel;
+
+    beforeEach(function(){
+        variavel = true;
+    });
+
+    afterEach(function(){
+        variavel = false;
+    });
+
+    it(&#8220;teste&#8221;, function(){
+        expect(variavel).toBeTruthy();
+    });
+});
+[/cc]
+
+&nbsp;
+Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;teste algo com before e after&#8221;, function(){
+    var variavel;
+
+    beforeEach(function(){
+        variavel = true;
+        setTimeout(function(){
+            variavel = false;
+        }, 100);
+
+    });
+
+    it(&#8220;teste&#8221;, function(){
+        expect(variavel).toBeTruthy();
+        waits(200);
+        runs(function(){
+            expect(variavel).toBeFalsy();
+        });
+    });
+});
+[/cc]
+
+&nbsp;
+O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.
+
+Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jasmine BDD: Instalando e escrevendo primeiro teste]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/"/>
+    <updated>2011-10-02T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste</id>
+    <content type="html"><![CDATA[Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
+
+Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
+
+Avisos paroquiais feitos vamos ao que interessa.
+
+Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
+
+O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
+
+Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
+
+&nbsp;
+
+Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
+
+&nbsp;
+[cc lang=&#8221;html&#8221;]
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
+[/cc]
+
+&nbsp;
+Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
+
+Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
+
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+//Aqui dentro as expectativas
+});
+[/cc]
+
+&nbps;
+
+Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
+
+Assim se continuar nossos testes ficarão assim: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+  it(&#8220;deve ser true&#8221;, function(){
+    expect(true).toBeTruthy();
+  });
+});
+[/cc]
+
+&nbsp;
+
+Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
+
+Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Escolhendo minha ferramenta de TDD para Javascript]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/"/>
+    <updated>2011-09-30T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript</id>
+    <content type="html"><![CDATA[Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+
+Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
+
+Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
+
+[cc lang=&#8221;ruby&#8221;]
+describe &#8220;Model Aluno&#8221; do
+  before :each do
+    @aluno = Aluno.new
+  end
+
+  subject { @aluno.nome }
+
+  it &#8220;Deve ser um model válido&#8221; do
+    @aluno.should be_valid
+  end
+end
+[/cc]
+
+&nbsp;
+Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
+
+Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
+
+Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
+
+Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
+[cc lang=&#8221;javascript&#8221;]
+spyOn(minhaClasse, &#8220;meuMetodo&#8221;)
+&#8230;
+it(&#8220;ve se foi chamado&#8221;, function(){
+  minhaClasse.meuMetodo(&#8220;qualquer string&#8221;);
+  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
+});
+[/cc]
+
+&nbsp;
+
+Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
+[cc lang=&#8221;javascript&#8221;]
+//codigo de animaçao com tempo aqui
+..
+wait(500);
+run(function(){
+expect(elemento.style(&#8216;display&#8217;)).toEquals(&#8216;none&#8217;)
+});
+[/cc]
+
+&nbsp;
+
+Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
+
+Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Respondendo uma pergunta sobre TDD]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/"/>
+    <updated>2011-09-28T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd</id>
+    <content type="html"><![CDATA[No post que anterior, no qual falei sobre <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a>, recebi um comentário perguntando dentro de algumas situações se O TDD se encaixava ou não.  Como a dúvida é recorrente e o tema é bastante controverso, resolvi, ao invés de responder o comentário dele, escrever um post.
+
+A primeira coisa, em minha opinião, que tem que ficar clara, que <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um metodologia de desenvolvimento e não de projeto. Usamos <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> para gerar código melhor e com isso aumentar a qualidade do que estamos fazendo.  Testar antes não é garantia de zero bugs, mas ajuda a construir uma solução melhor pensada, simples, concisa,  e, sim, com testes automatizados que irão evitar muitos bugs.
+
+<a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é uma forma de trabalho que se encaixa em qualquer modelo de equipe/projeto.  Se o seu time está em algo mais ágil ou waterfall, não faz a mínima diferença. Sem o seu time, irá entregar complexidade, pontos por caso de uso ou pontos de função isso também não faz diferença.  Pois, como já disse, <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um filosofia de desenvolvimento e não de gestão.
+
+Ela trabalha em cima de ciclos pequenos onde a gente escreve o teste com a necessidade; após escrevemos o código para atender a necessidade e fazer o teste passar e por fim revistamos a solução para melhorá-la buscando princípios de <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" target="_blank">Clean Code</a> ( SOLID).  Se no final desse ciclo temos uma história entrega (por exemplo uso de quadros - Kanban, etc) ou se temos um ponto de função, observe que não faz diferença.  O que pode acontecer, no caso de pf é que deverá prever isso ( eu acho - nunca trabalhei com pontos de função).
+
+Uma boa dica é que procure um DOJO (acesse o site do <a href="http://dojorio.wordpress.com/" target="_blank">DojoRio</a>) e veja na prática isso acontecer e como ela não tem relação com a gestão.
+
+Se quer entender mais sobre TDD leia o <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="_blank">livro</a> do Kent Beck. Existe uma infinidade de outros livros sobre tão bons, mas acredito que seja legal começar pelo início. Depois a medida que for se sentindo mais confortável &#8230;
+
+Assim, sem mais rodeios vamos a resposta a pergunta que me fizeram:
+
+1. Posso usar TDD com um projeto que me exija entregar 4 a 40Pf ou qualquer outra coisas?
+
+SIM ! Se acha que estou exagerando, procure o Alex Gomes da <a href="http://www.seatecnologia.com.br/" target="_blank">SEA Tecnologias</a>. Seu maior cliente é o governo federal.  Existem outros exemplos como por exemplo
+
+2. Código legado ?
+
+Sim dá para usar TDD. Para te ajudar recomendo a leitura do livro <a title="Livro na Amazon" href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052" target="_blank">Working Effectively with Legacy Code</a> do Michael Feathers. Ele é uma excelente forma de ver como você pode testar o seu código legado.
+
+Por fim espero ter te ajudado. E caso tenham dúvidas podem comentar que irei responder.
+
+&nbsp;
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TDD no FrontEnd]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/09/27/tdd-no-frontend/"/>
+    <updated>2011-09-27T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/09/27/tdd-no-frontend</id>
+    <content type="html"><![CDATA[Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código &#8220;server side, no meu código &#8220;client side&#8221;. Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
+
+Os ditos desenvolvedores FrontEnd hão de concordar comigo que muitas vezes o código Javascript fica uma verdadeira bagunça. São poucos que procuram organizar as coisas, criar componentes e funções para os comportamentos repetidos e etc. Fica a dica de ver a palestra do <a title="Leonardo Balter" href="http://leobalter.net" target="_blank">LeoBalter</a> - WTF Javascript.
+
+Na grande maioria dos projetos que acompanhei (trabalhei ou vi) as coisa cresciam de maneira muito orgânica e com isso, nunca via uma preocupação com nomes de métodos, separação, DRY e outros princípios de &#8220;Clean Code&#8221;.
+
+TDD, na minha visão, é muito mais para ajudar nesse sentido do que simplesmente criar teste automatizados. Quando escrevemos os teste antes, estamos ali &#8220;verbalizando&#8221; a forma que gostaria que nossas apis seja consumidas &#8230; estamos na posição de quem irá usar um dia aquilo. Só nisso a diferença é mostruosa: já começamos a ver coisas repetidas; nomes de métodos; coisas que deveriam estar em classes e etc.
+
+Um exemplo seria quantas vezes não buscamos um mesmo elemento no mesmo script? Sabia que isso é perda de processamento? Muitas vezes bastava que fizesse isso e guardasse a referência numa variável. Isso, ao escrever os testes antes, fica bem evidente. Tente você mesmo e me diga.
+[cc lang=&#8221;javascript&#8221;]
+$(&#8220;algo&#8221;).hide();
+&#8230;
+$(&#8220;algo).click(function(){ &#8230;
+//Poderiamos ter algo mais assim e os testes irão mostrar isso - famosos smells
+var algo = $(&#8220;algo&#8221;)
+algo.hide()
+algo.click(&#8230;
+[/cc]
+
+Outra coisa que vem com o uso de TDD na escrita de javascript é que você começa a ter uma rede de proteção que quando for necessário alterar algo fará com fique mais tranquilo quanto a introduzir um bug ou quebrar um comportamento já existente.
+Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual estou usando.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando parametros da linha de comando no Rake e no Capistrano]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/"/>
+    <updated>2011-09-06T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano</id>
+    <content type="html"><![CDATA[Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
+todos os projetos que já trabalhei até hoje exigem um bom número de task em RAKE e CAPISTRANO. Desde que meus modelos são tão grandes quanto necessário, estas task e receitas são em geral pequenas e procuram fazer pouco lógica delegando para o modelo apropriado&#8230;
+O que desejo é falar sobre é que sempre estamos precisando passar parametros para estas tasks, e na maioria das vezes é bastante  escassa as documentações para fazer isso. 
+Imagine que  você quer fazer algo como: 
+[cc lang=&#8221;bash&#8221;]
+rake options:show opt1=value1
+[/cc]
+E dentro da task deseja pegar esse valor e fazer algo. Para resolver fica mais ou menos assim: 
+[cc lang=&#8221;ruby&#8221;]
+namespace :options do
+
+  desc &#8220;Show how to read in command line options&#8221;
+  task :show do
+    p &#8220;option1 is #{ENV[&#8216;opt1&#8217;]}&#8221;
+  end
+
+end
+[/cc]
+
+Usando parametros da linha de comando do Capistrano: 
+Aqui as coisas são um pouco diferente. É necessário que use a opção -s na linha de comando para ativar a função de parser do chave/valor. Veja o exemplo abaixo: 
+[cc lang=&#8221;bash&#8221;]
+cap -a show_options -s opt1=value1
+[/cc]
+Assim você um dicionário dentro do capistrano (receita) que a chave é opt1 e o valor dele é value1. voce pode acessar diretamente a chave por causa do method-missing que implementa isso para você. Fica assim o código. 
+[cc lang=&#8221;ruby&#8221;]
+task :show_options do
+  p &#8220;option1 is #{opt1}&#8221;
+end
+[/cc]
+
+Para maiores detalhes veja o artigo original e leia a documentação do Capistrano. Fiquem a vontade para comentar e assim que puder respondo. 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Palestra no fisl]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/06/30/palestra-no-fisl/"/>
+    <updated>2011-06-30T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/06/30/palestra-no-fisl</id>
+    <content type="html"><![CDATA[Segue abaixo o slides da palestra que acabei de dar no FISL. Obrigado a todos que assistiram e deram seu feedback.
+<div style="width:425px" id="__ss_8470619"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/aoqfonseca/codigo-legado-fisl-8470619" title="Codigo legado fisl" target="_blank">Codigo legado fisl</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/8470619" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/aoqfonseca" target="_blank">aoqfonseca</a> </div> </div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Alterando a versÃ£o firefox do selenium-server.jar]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/"/>
+    <updated>2011-06-28T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar</id>
+    <content type="html"><![CDATA[Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
+Navegue para achar o jar : selenium-server
+Renomeie esse jar para um arquivo zip: 
+[cc lang=&#8221;bash&#8221;]
+mv selenium-server.jar selenium-server.zip
+[/cc]
+Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
+[cc lang=&#8221;bash&#8221;]
+mkdir selenium-server
+cp selenium-server.zip selenium-server/
+cd selenium-server
+unzip selenium-server.zip
+rm selenium-server.zip
+[/cc]
+Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
+[cc lang=&#8221;bash&#8221;]
+find . -name &#8220;*.rdf&#8221;
+[/cc]
+Altere a linha abaixo para a versão que queres suportar: 
+[cc lang=&#8221;java&#8221;]
+<em:maxVersion>5.*</em:maxVersion>
+[/cc]
+Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
+[cc lang=&#8221;bash&#8221;]
+zip -r selenium-server *
+mv selenium-server.zip selenium-server.jar
+jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
+[/cc]
+Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando Jasmine]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/06/07/usando-jasmine/"/>
+    <updated>2011-06-07T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/06/07/usando-jasmine</id>
+    <content type="html"><![CDATA[Num post passado dei uma breve introdução do <a title="Site do Jasmine" href="http://pivotal.github.com/jasmine/">Jasmine</a>.  Jasmine é uma biblioteca de BDD para JavaScript. Nesse artigo quero mostrar um passo a passo simples para você escrever seus primeiros testes.  Se estiver fazendo uma app em Ruby, mais precisamente em Rails, tudo isso fica muito fácil pois basta instalar a gem do Jasmine e seguir os passos que o próprio site indica. Abaixo mostrarei como fazer quando você está apenas desenvolvendo um javascript - fora do contexto de uma app.
+
+Primeiro instale o NodeJS e o npm em sua máquina. Caso não saiba como, no meu blog mesmo tem um artigo explicando como fazer isso (veja no histórico).  Tendo esses dois instalados, vá a sua linha de comando e execute o seguinte comando:
+[cc lang=&#8221;bash&#8221;]
+npm -g install jasmine-tool
+[/cc]
+
+Esse comando acima instalará em seu computador um conjunto de ferramentas que irá possibilitar, você executar seus testes e outras coisas interessantes. Veja o site do produto <a href="https://github.com/jamescarr/jasmine-tool">clicando aqui</a>. 
+Instalada a ferramenta, entre na sua pasta de projeto e digite o comando: 
+[cc lang=&#8221;bash&#8221;]
+andre.fonseca@mac179016 ~/projects/test $ jasmine init
+Jasmine has been installed with example specs.
+
+To run the server:
+
+jasmine run
+
+To run the server and monitor for changes:
+
+jasmine mon
+
+To run the automated CI task with WebDriver:
+
+jasmine ci
+[/cc]
+Isso irá montar uma estrutura de projeto pronta para ser usada para os seus testes. Verá que já terá alguns exemplos para teste. Para ver se está tudo ok, rode o comando de teste: 
+[cc lang=&#8221;bash&#8221;]
+jasmine ci
+[/cc]
+Se você estiver fazendo isso no Mac OS 10.6.6 ou superior deve ocorrer. Assim que tiver a solução eu aviso aqui.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Instalando RVM]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/06/03/instalando-rvm/"/>
+    <updated>2011-06-03T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/06/03/instalando-rvm</id>
+    <content type="html"><![CDATA[O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
+Para instalar é bem fácil e basta seguir as instruções do site do produto (<a href="https://rvm.beginrescueend.com/">clique aqui</a> para ver)
+No seu terminal digite o comando para baixar e instalar: 
+[cc lang=&#8221;bash&#8221;]
+bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+[/cc]
+Fique atento que o comando acima precisa do git instalado.  Depois disso, no meu caso, preciso de várias versões do ruby na minha máquina. Uma delas é o Ruby Enterprise. Para instalá-los, faça: 
+[cc lang="bash"]
+andre.fonseca@mac179016 ~ $ rvm install ree
+Installing Ruby Enterprise Edition from source to: /Users/andre.fonseca/.rvm/rubies/ree-1.8.7-2011.03
+ree-1.8.7-2011.03 - #fetching (ruby-enterprise-1.8.7-2011.03)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 7713k  100 7713k    0     0   545k      0  0:00:14  0:00:14 --:--:-- 1499k
+[/cc]
+Esse comando de cima irá instalar o REE. O resto das distribuições deve procurar pelo nome (1.9 --> ruby-1.9.2, por exemplo). 
+Por fim, você pode criar um gemset (pasta de gems) para cada projeto. Para isso use os comandos (no meu exemplo abaixo estou criando um gemset chamado participacoes, para um projeto meu) 
+[cc lang=&#8221;bash&#8221;]
+rvm gemset create participacoes
+rvm gemset use participacoes
+[/cc]
+Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. Prontinho e tudo funcionando. 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[IntroduÃ§Ã£o de teste JavaScript com Jasmine]]></title>
+    <link href="http://www.andrefonseca.net/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/"/>
+    <updated>2011-06-02T00:00:00-03:00</updated>
+    <id>http://www.andrefonseca.net/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine</id>
+    <content type="html"><![CDATA[No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
+Recomendo muito a galera ir. Vai ser um dia muito legal com gente altamente compartilhando suas experiências, trazendo novidades e como são seus dias a dias de projetos e empresa. 
+Eu serei um dos que irá apresentar nesse evento. O assunto será Jasmine. <a href="http://pivotal.github.com/jasmine/">Jasmine</a> é uma biblioteca de teste para JavaScript. Ele é mais focado no princípio de BDD (Behavior Driven Dev.) do que em TDD. Sendo assim apresenta uma sintaxe, que eu pessoalmente gosto muito, para escrever teste que fica bastante elegante poderoso. Além disso oferece suporte a testes assíncronos e spies (bibliotecas para &#8220;espionar&#8221; chamadas de métodos e fazer mock) de forma muito simples. 
+Para quem desenvolve com Ruby, verá a forma de escrever suas especificação é muito semelhante ao <a href="http://rspec.info/">RSpec</a>. Veja o exemplo abaixo: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;Aqui vai uma descricao&#8221;, function(){
+  it (&#8220;linha de teste&#8221;, function(){
+    expect(true).toBeTrue();
+  }
+}
+[/cc]
+Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplificando seria que ela não precisa de uma página) para executar. E é totalmente auto-contida: só precisa dela mesma para funcionar e nenhuma outra biblioteca.
+Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
+Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
+]]></content>
+  </entry>
+  
+</feed>

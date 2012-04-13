@@ -1,81 +1,122 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html lang="zh-cn">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>Meu Blog, by Andre Fonseca</title>
+
   <meta name="author" content="Andre Fonseca">
-
   
-  <meta name="description" content="Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples &hellip;">
+  <meta name="description" content="Instalando O NodeJS E Npm May 23rd, 2011 A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a &hellip;">
+  
   
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
   <link rel="canonical" href="http://www.andrefonseca.net/blog/page/3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
 </head>
-
-<body   >
-    <a href="http://github.com/aoqfonseca"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
-  <header role="banner"><hgroup>
+  
+<body class="default">
+  <div id="wrapper">
+    <div id="header">
   <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
   
-    <h2>Pensamentos, opiniões e alguns estudos</h2>
+    <p>Pensamentos, opiniões e alguns estudos</p>
   
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</div>
+<ul id="social-links">
+  
+    <li><a class="feed" href="/atom.xml" title="RSS">RSS</a></li>
+  
+  
+    <li><a class="twitter" href="http://twitter.com/aoqfonseca" title="Twitter">Twitter</a></li>
+  
+  
+    <li> <a class="github" href="https://github.com/aoqfonseca" title="GitHub">GitHub</a> </li>
   
 </ul>
+<div class="clear"></div>
+<ul id="nav">
   
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.andrefonseca.net" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
+    <li> <a href="/" class="current">blog</a> </li>
   
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+
+  
+    <li><a href="/blog/archives">archives</a></li>
+  
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
+    <div id="main"> 
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/05/23/instalando-o-nodejs-e-npm/">Instalando O NodeJS E Npm</a>
+    </h1>
   
   
+
+
+
+
+
+
+
+
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a></h1>
-    
-    
-      <p class="meta">
-        
+
+
+<time datetime="2011-05-23T00:00:00-03:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
+</div>
+
+<div class="post-content">A um tempo comecei a brincar com NodeJS.  Peguei uma aplicação que tinha feito em Sinatra e resolvi que a reescreveria em NodeJS: primeiro pelo aprendizado e depois por causa da natureza da aplicação ficar bem com uma arquitetura de push.
+
+Primeiro passo é instalar tudo que você precisa para desenvolver com NodeJS&#8230; NodeJS e NPM. O npm é um gerenciador de pacotes &#8220;semelhante&#8221; ao rubygem/pypi. A dica inicial é esquecer tutoriais que ensinam a instalar via script (curl &#8230;. ), apt gets, ports ou brew&#8230; A melhor forma é clonar o repositório de cada um (NodeJS e NPM) e executar os comandos sugiros no README:
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/joyent/node.git
+cd node
+./configure
+make
+make install
+[/cc]
+
+Com  isso ele irá verificar as depencias necessária para ele funcionar e listá-las. Caso algo ele indique que deve instalar algo, busque o pacote no google e veja como instalar. Para ubuntu é fácil um apt-get resolve, para outros um yum install, etc.
+
+Repita a mesma coisa para o NPM
+
+[cc lang=&#8221;bash&#8221;]
+git clone https://github.com/isaacs/npm.git
+cd npm
+sudo make install
+[/cc]
+
+Para instalar seus pacotes para desenvolver com NodeJS basta agora ir na linha de comando e digitar <em>npm install &lt;nome do pacote&gt;</em> . Isso irá instalar o pacote. OBS: O npm por padrão instala os pacotes dentro do diretório corrente algo como node_modules. Assim caso queira que os pacotes seja instalados globalmente, ou seja, para toda a máquina, use o -g ou &#8211;global junto com o comando install.
+
+Dentro do <a href="http://blog.nodejs.org/2011/05/01/npm-1-0-released/">blog do node</a>, tem uma excelente explicação de como fazer, sendo que você deve reter o seguinte para o início.  Ao instalar algo no  global, você estará instalando na pasta : &#8220;/usr/local/lib/node_modules&#8221;.  Depois disso, caso queira que essa biblioteca esteja acessível dentro do seu projeto, você deve criar um link para esse global. Para isso:
+
+[cc lang=&#8221;bash&#8221;]
+cd seu_projeto
+npm link <nome do pacote>
+[/cc]
+
+Isso irá criar um link dentro da pasta local node_modules para a pasta global do pacote. E voilá !
+Muito obrigado ao Emerson Macedo (codificando.com ou codificando.org) pela ajuda.
+
+Pronto, para o começo está de bom tamanho. Assim que for avançando com a APP vou postando as escolhas e as descobertas.
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a>
+    </h1>
+  
+  
 
 
 
@@ -88,13 +129,9 @@
 
 
 <time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true">May 12<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
+<div class="post-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
@@ -158,22 +195,16 @@ Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu tam
 
 Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/">Script Para OrganizaÃ§Ã£o Das Minhas Fotos</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/">Script Para OrganizaÃ§Ã£o Das Minhas Fotos</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -186,13 +217,9 @@ Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM 
 
 
 <time datetime="2011-05-06T00:00:00-03:00" pubdate data-updated="true">May 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da morte&#8221;.  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
+<div class="post-content">A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da morte&#8221;.  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
 
 Após a chegada do novo computador, montado  e o Ubuntu 11.04 instalado no novo computador (o pessoal insiste em mandar coisas com o SO Windows já instalado mas isso é papo para outro post), resolvi dar uma olhada no backup e organizar principalmente minhas fotos que estavam uma verdadeira zona: fotos de assuntos diferentes na mesma pasta, tudo misturada, etc.
 
@@ -253,22 +280,16 @@ Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde
 
 Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/">Postando Fotos No Picasa Pela Linha De Comando</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/">Postando Fotos No Picasa Pela Linha De Comando</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -281,13 +302,9 @@ Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para
 
 
 <time datetime="2011-05-06T00:00:00-03:00" pubdate data-updated="true">May 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Creio que depois de ler o meu último post, todo mundo já está com suas fotos arrumadinhas. Sendo assim é hora de compartilhá-las com seus amigos. Eu uso o Picasa para isso pois gosto dele e sempre me atendeu bem. Muitos amigos dizem que o Flickr é melhor mas prefiro meu bom e satisfatório picasa. Muitos fariam é baixar o picasa desktop (nem sei se tem para o Ubuntu) e a partir dele iriam organizar suas fotos e montar seus albuns e por fim, publicá-los na grande rede.
+<div class="post-content">Creio que depois de ler o meu último post, todo mundo já está com suas fotos arrumadinhas. Sendo assim é hora de compartilhá-las com seus amigos. Eu uso o Picasa para isso pois gosto dele e sempre me atendeu bem. Muitos amigos dizem que o Flickr é melhor mas prefiro meu bom e satisfatório picasa. Muitos fariam é baixar o picasa desktop (nem sei se tem para o Ubuntu) e a partir dele iriam organizar suas fotos e montar seus albuns e por fim, publicá-los na grande rede.
 
 Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente &#8220;ajuda&#8221; ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
 
@@ -340,22 +357,16 @@ E para enviar suas foto fica mais ou menos assim:
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>google picasa create <span class="s2">&quot;Cat Photos&quot;</span> ~/photos/cats/*.jpg
 </span></code></pre></td></tr></table></div></figure> 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/">Mais Uma Do SOLR - Dynamic Fields</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/">Mais Uma Do SOLR - Dynamic Fields</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -368,13 +379,9 @@ E para enviar suas foto fica mais ou menos assim:
 
 
 <time datetime="2011-04-08T00:00:00-03:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Como alguns que acompanham o blog já devem ter percebido, eu estou usando o SOLR em um projeto. O SOLR é um servidor Web de busca, feito em cima do Lucene (grupo Apache). Ele é realmente poderoso e simples de usar. Recomendo muito para quem precisa fazer buscar textuais pesados e que tem uma quantidade razoável de documentos/dados para indexar.  Como minha aplicação é Rails, estou usando uma GEM, chamada Sunspot, que serve de DSL (facilitador) nessa &#8220;conexão&#8221; entre minha app e o SOLR.
+<div class="post-content">Como alguns que acompanham o blog já devem ter percebido, eu estou usando o SOLR em um projeto. O SOLR é um servidor Web de busca, feito em cima do Lucene (grupo Apache). Ele é realmente poderoso e simples de usar. Recomendo muito para quem precisa fazer buscar textuais pesados e que tem uma quantidade razoável de documentos/dados para indexar.  Como minha aplicação é Rails, estou usando uma GEM, chamada Sunspot, que serve de DSL (facilitador) nessa &#8220;conexão&#8221; entre minha app e o SOLR.
 
 Nesse dias surgiu a necessidade de fazer uma nova feature em nosso sistema que parece ser bem simples mas como busco pelo SOLR a coisa ganhou bastante complexidade.Só para que entendam o problema, deixe me contextualizá-los.  Minha aplicação é uma ferramenta de seleção de pessoas - CASTING. Nela um administrador cria uma campanha e define um formulários com N perguntas que serão respondido pelo candidato. Ao finalizar o preenchimento, esse formulário vira um inscrições e salvamos suas respostas.  Surgiu então a necessidade de buscarmos por inscrições através de valores de respostas a perguntas específicas:  Quero buscar por todas as inscrições que responderam Vasco para a pergunta &#8220;Qual é o seu time do coração?&#8221;.
 
@@ -425,22 +432,16 @@ Com isso acima, fica pronto a configuração. Para busca fica assim:
 Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
 Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/">Usando SOLR Parte 2 - Testes E Cucumber</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/">Usando SOLR Parte 2 - Testes E Cucumber</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -453,13 +454,9 @@ Espero sinceramente que isso ajuda alguém como outros blogs que consultei me aj
 
 
 <time datetime="2011-03-31T00:00:00-03:00" pubdate data-updated="true">Mar 31<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
+<div class="post-content">Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
 
 Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
 
@@ -619,22 +616,16 @@ Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre com
 
 
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -647,13 +638,9 @@ Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre com
 
 
 <time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
+<div class="post-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
 
 Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
 
@@ -765,22 +752,16 @@ Outra dica muito válida é que você provavelmente não vai querer ter um SOLR 
 Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
 Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/">Usando Sinatra Para Evitar Overdesign</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/">Usando Sinatra Para Evitar Overdesign</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -793,13 +774,9 @@ Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas q
 
 
 <time datetime="2011-03-20T00:00:00-03:00" pubdate data-updated="true">Mar 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
+<div class="post-content">Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
 
 Ruby on Rails, ou RoR ou somente Rails é uma framework de desenvolvimento de aplicações web, cuja a filosofia gira em torno de evitar ao máximo desperdícios com configurações, repetições, etc. Para ser bem objetivo, em Rails tudo é baseado em convenção e tudo é voltado para se escrever o mínimo de código para se implementar um comportamento. Caso queira saber mais peça ajuda ao grande oráculo (google)&#8230; para ajudar um pouco você pode começar pelos Railscast que são gratuítos e ajudam muito a entender.
 
@@ -832,22 +809,16 @@ O segundo exemplo vem do meu trabalho:  precisávamos criar um sistema que iria
 
 Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica a dica: fique atento. Leia bastante, converse com outros colegas, amigos e profissionais. Esteja aberto as novidades. Elas podem acabar salvando o seu dia. Evite resolver tudo sempre da mesma forma. Diversifique. Mesmo que seja apenas para testar.  Pluralidade é a palavra da vez.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/03/09/tentando-ser-mais-produtivo/">Tentando Ser Mais Produtivo</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/09/tentando-ser-mais-produtivo/">Tentando Ser Mais Produtivo</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -860,13 +831,9 @@ Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica 
 
 
 <time datetime="2011-03-09T00:00:00-03:00" pubdate data-updated="true">Mar 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content"><img class="alignright" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="aumentando a produtividade" src="http://t2.gstatic.com/images?q=tbn:ANd9GcTUmzvCLqs_n-rMBJ_MBC0L4GsUB8QczP6EipEGaGpbW3Vc3MdLLg" alt="" width="140" height="171" />Ultimamente venho tentando melhorar a minha produtividade. Eu sofro de um problema de perda de atenção&#8230; Eu perco o foco muito facilmente. Basta qualquer coisas acontecer minha volta para que eu perca o foco naquilo que estou fazendo. Parte dessa perda de foco vem do fato de estar fazendo alo que não me agrade, ou considere chato naquele momento. Bom de qualquer jeito, dentro de qualquer atividade ou profissão, existem partes que não são tão glamorosas, mas que precisam ser feitas. Chega uma hora que fica chato e começa a nos comprometer em nossa vida profisional, pois, por mais que fizesse tudo e bem rápido sempre fica a sensação que estou enrolando ou preciso de alguém para me lembrar a todo momento o que tenho que fazer.
+<div class="post-content"><img class="alignright" style="margin-top: 7px; margin-bottom: 7px; margin-left: 9px; margin-right: 9px;" title="aumentando a produtividade" src="http://t2.gstatic.com/images?q=tbn:ANd9GcTUmzvCLqs_n-rMBJ_MBC0L4GsUB8QczP6EipEGaGpbW3Vc3MdLLg" alt="" width="140" height="171" />Ultimamente venho tentando melhorar a minha produtividade. Eu sofro de um problema de perda de atenção&#8230; Eu perco o foco muito facilmente. Basta qualquer coisas acontecer minha volta para que eu perca o foco naquilo que estou fazendo. Parte dessa perda de foco vem do fato de estar fazendo alo que não me agrade, ou considere chato naquele momento. Bom de qualquer jeito, dentro de qualquer atividade ou profissão, existem partes que não são tão glamorosas, mas que precisam ser feitas. Chega uma hora que fica chato e começa a nos comprometer em nossa vida profisional, pois, por mais que fizesse tudo e bem rápido sempre fica a sensação que estou enrolando ou preciso de alguém para me lembrar a todo momento o que tenho que fazer.
 
 Conversei isso com algumas pessoas e vi que esse &#8220;problema&#8221; era mais comum do que imaginava. E isso tende a ser agravado com a nossa famosa vida moderna. O que não nos falta são armadilhas para nossa atenção: e-mail, twitter, facebook, gtalk, msn, y!, etc. Se contabilizarmos o tempo que gastamos nesses exemplos acima, acreditem, muitos ficarão muito assustado com o tamanho do número.
 
@@ -878,22 +845,16 @@ Um aviso importante é que devemos fazer isso para melhorar nosso desempenho por
 
 Concluindo, hoje vivemos num mundo que somos cobrados como máquinas onde o importante é nosso rendimento máximo. Além disso parece que um dia de 24 horas tem sido pouco para o tanto de coisa que gostaríamos de fazer. Logo, a capacidade de focar nunca foi tão valorizada. Agora deixo o espaço dos comentários para que cada um diga como tem feito para melhorar.
 </div>
-  
-  
+ </div>
 
-
-    </article>
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a>
+    </h1>
   
   
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -906,13 +867,9 @@ Concluindo, hoje vivemos num mundo que somos cobrados como máquinas onde o impo
 
 
 <time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
+</div>
 
-
-  <div class="entry-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
+<div class="post-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
 
 Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
 <h2>Definir fazendo</h2>
@@ -940,104 +897,73 @@ Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design p
 
 &nbsp;
 </div>
-  
-  
+ </div>
 
 
-    </article>
+<div id="pagination">
+  
+    <a class="prev" href="/blog/page/4/">&laquo;Previous</a>
   
   
-    <article>
+    <a class="next" href="/blog/page/2/">Next&raquo;</a>
+  
+</div>
+ </div>
+    <div id="footer">
+  <div class="panels">
+    <div class="license">
+      <h2>License</h2>
+      <p>如非特别声明，本 Blog 的文章由 Andre Fonseca 创作，采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 Unported 许可协议</a>进行许可。</p>
+    </div>
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        
+          <li>
+            <a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas para Javascript</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+          </li>
+        
+      </ul>
+    </div>
+
+    <div class="douban">
+      <h2>Reading</h2>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/17/estudos-compartilhados-parte-iii/">Estudos Compartilhados - Parte III</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-17T00:00:00-02:00" pubdate data-updated="true">Dec 17<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">No artigo passado da série &#8220;Estudo compartilhados&#8221;, abordei mais a questão da Orientação a Objeto e como ainda não nos entendemos bem com ela.  No finalzinho do artigo, rapidamente, falei sobre os testes automatizados no famoso TDD.
-
-TDD virou um buzzword. Traduzindo: Uma palavrinha da moda.  Hoje as empresa já colocam nos seus anuncios de vagas que o candidato que conhece TDD é um diferencial, outras até exigem. A questão é: Você sabe realmente o que é TDD?
-
-<strong>TDD é a sigla em inglês para TEST DRIVEN DESIGN ou design dirigido por testes. </strong>
-
-Mais uma vez para me ajudar com essa questão, pedi a ajuda para meu amigo <a href="blog.mar.ti.ns">Alexandre Martins</a>, e ele me recomendou ( meio óbvio), o livro do Kent Beck , criador do TDD,  <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&amp;qid=1292588088&amp;sr=8-1">TEST-DRIVEN DEVELOPMENT</a> . Além desse, Nunes também me recomendou alguns artigos e outros livros como o <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1292588280&amp;sr=8-1">Growing Object-Oriented Software, Guide by Test</a>, que mostram o caminho das pedras e como o teste pode ser o melhor amigo do desenvolvedor.
-
-Numa conversa com outra pessoa, Rafael Martins (Cabra) da Globo.com,  concluímos que muita gente acaba por ter uma visão torta do que vem ser testar antes. Testar antes parte da premissa, na minha concepção, de que é preciso um problema para procurarmos a solução. Seria mais ou menos assim:  Você tem que comer quando sentir fome, pois do contrário, você está sendo guloso e indo além de suas capacidades.
-
-Quando você cria os seus teste antes, baseado em suas necessidades, está de certa forma, criando um problema a ser resolvido. Se for disciplinado e apenas resolver aquele problema e repetir esse ciclo até que todos os requisitos sejam atendidos, a solução literalmente emerge. Isso mesmo: EMERGE.
-
-Muitas das pessoas que me ouviram falar disso, respondem dizendo que é mentira ou exagero da minha parte que a solução EMERGE. Convido, os descrentes, a assistir e participar de uma sessão de dojo.
-
-No livro <a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445/ref=sr_1_3?s=books&amp;ie=UTF8&amp;qid=1292594363&amp;sr=1-3">Agile Software Development</a>, também do UncleBob,  existe um capítulo em que ele descreve o desenvolvimento de um sistema para pontuação de boliche em que faz um par (pair programming) com outra pessoa e segue  conceitos como TDD e baby steps. É simplesmente revelador. Sei que exagerado mas é isso mesmo: REVELADOR ; pois ele simplesmente vai fazendo o sistema &#8220;sem pensar&#8221;. Dando pequenos passos, e sempre mantendo um dialogo e trocas constante com seu amigo, o design vai surgindo diante deles e se mostrando diferente do que se imaginava de inicio.
-<h2>TDD evita desperdício</h2>
-Um outro livro que recomendo muito é o Pragmatic Programmer. Nesse livro ele procura mostrar que o pragmatismo é uma boa filosofia para nós que fazemos software. Dentro disso, uma das coisas é a questão de evitar o desperdício.
-
-Evitar desperdício é algo muito amplo e engloba diversas atitudes que devemos ter como: automatizar tarefas repetitivas,  tornar simples fazer o certo,  não fazer mais do que é preciso, etc.
-
-Muitos se perguntam o que fazer para ser um programador ou ter um time altamente eficiente. Eu acredito que a solução vem de evitar desperdício e fazer o &#8220;justo necessário&#8221;. Isso também é conhecido como evitar o OverDesign. Sabe aquela aplicação simples para enviar arquivo para um servidor que o pessoal quer fazer com um monte de camada, abstrações, etc, justificando que isso facilitará uma possível modificação futura&#8230;Isso é um excelente exemplo de gasto desnecessário.
-
-Quando fazemos TDD e nos disciplinamos a fazer o teste passar (isso mesmo) a gente fica focado; ao ficar focado evitamos desvios e perdas de tempos fazendo coisas para necessidades que não existem ainda.
-<blockquote><strong>ATENÇÃO: ISSO NÃO SIGNIFICA QUE VOCÊ DEVE FAZER ARQUITETURA PORCA. SEU CÓDIGO DEVE SER LIMPO.</strong></blockquote>
-Testar depois é apenas automatizar. TDD é mais uma ferramenta de design.
-
-Até a próxima pessoal.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/4/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    
-  
-</aside>
-
+        <p>Please set your Douban ID in _config.yml</p>
+      
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Andre Fonseca -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
 
-</footer>
+  <p class="powered">
+    Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/iwinux/compbits">Compbits</a>
+  </p>
+</div>
+
+  </div> <!-- #wrapper end -->
+
+  
+
   
 
 
-
+  
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -1048,9 +974,9 @@ Até a próxima pessoal.
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+  
 
-
-
+  
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -1060,9 +986,6 @@ Até a próxima pessoal.
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
-
-
-
 
 
 </body>
