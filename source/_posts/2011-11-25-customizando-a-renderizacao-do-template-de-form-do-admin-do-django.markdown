@@ -10,7 +10,8 @@ type: post
 published: true
 meta:
   _edit_last: "1"
----
+--
+
 Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.
 
 No projeto onde estou trabalhando, precisei *customizar* a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
