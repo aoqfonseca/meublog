@@ -4,7 +4,7 @@
   <title><![CDATA[Meu Blog - by Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/feed" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-07-17T21:15:54-03:00</updated>
+  <updated>2012-07-17T21:19:19-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -465,152 +465,6 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
 <p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
 
 <p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jasmine BDD: Instalando e escrevendo primeiro teste]]></title>
-    <link href="http://andrefonseca.net/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/"/>
-    <updated>2011-10-02T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste</id>
-    <content type="html"><![CDATA[Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
-
-Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
-
-Avisos paroquiais feitos vamos ao que interessa.
-
-Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
-
-O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
-
-Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
-
-<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
-
-&nbsp;
-
-Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
-
-&nbsp;
-[cc lang=&#8221;html&#8221;]
-<html>
-<head>
-  <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/Player.js"></script>
-  <script type="text/javascript" src="src/Song.js"></script>
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/SpecHelper.js"></script>
-  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
-
-</head>
-<body>
-
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
-
-</body>
-</html>
-[/cc]
-
-&nbsp;
-Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
-
-Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
-
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-//Aqui dentro as expectativas
-});
-[/cc]
-
-&nbps;
-
-Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
-
-Assim se continuar nossos testes ficarão assim: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-  it(&#8220;deve ser true&#8221;, function(){
-    expect(true).toBeTruthy();
-  });
-});
-[/cc]
-
-&nbsp;
-
-Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
-
-Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Escolhendo minha ferramenta de TDD para Javascript]]></title>
-    <link href="http://andrefonseca.net/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/"/>
-    <updated>2011-09-30T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript</id>
-    <content type="html"><![CDATA[Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
-
-Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
-
-Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
-
-[cc lang=&#8221;ruby&#8221;]
-describe &#8220;Model Aluno&#8221; do
-  before :each do
-    @aluno = Aluno.new
-  end
-
-  subject { @aluno.nome }
-
-  it &#8220;Deve ser um model válido&#8221; do
-    @aluno.should be_valid
-  end
-end
-[/cc]
-
-&nbsp;
-Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
-
-Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
-
-Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
-
-Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
-[cc lang=&#8221;javascript&#8221;]
-spyOn(minhaClasse, &#8220;meuMetodo&#8221;)
-&#8230;
-it(&#8220;ve se foi chamado&#8221;, function(){
-  minhaClasse.meuMetodo(&#8220;qualquer string&#8221;);
-  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
-});
-[/cc]
-
-&nbsp;
-
-Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
-[cc lang=&#8221;javascript&#8221;]
-//codigo de animaçao com tempo aqui
-..
-wait(500);
-run(function(){
-expect(elemento.style(&#8216;display&#8217;)).toEquals(&#8216;none&#8217;)
-});
-[/cc]
-
-&nbsp;
-
-Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
-
-Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
 ]]></content>
   </entry>
   
@@ -1304,6 +1158,73 @@ Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
 &nbsp;
 
 &nbsp;
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Estudos compartilhados - introduÃ§Ã£o]]></title>
+    <link href="http://andrefonseca.net/blog/2010/12/03/estudos-compartilhados-introducao/"/>
+    <updated>2010-12-03T00:00:00-02:00</updated>
+    <id>http://andrefonseca.net/blog/2010/12/03/estudos-compartilhados-introducao</id>
+    <content type="html"><![CDATA[Adotei com uma das minhas metas estudar mais sobre engenharia de software e zerar alguns débitos. Nessa cruzada, com ajuda de amigos como <a href="http://blog.m.artins.net/">Alexandre Martins</a>,  montei uma lista de livros. Alguns desses livros são: Clean Code, Pragmatic Programmer,  Agile Software Development, Refactoring, etc. Todos, se notarem, não são sobre uma linguagem específica e sim sobre melhores práticas, padrões, etc.
+
+Poucos pessoas sabem mas minha formação é de engenheiro eletrônico&#8230; Sou engenheiro. Com isso, sempre me  senti um pouco atrás de alguém que estudou informática pois nunca tive aquelas cadeiras de algorítmos, introduções, estrutura de dados, banco de dados, e etc.  Aos poucos fui suprimindo essa &#8220;fraqueza&#8221; com muita leitura, perguntas, ensaios, e por aí vai.  Assim, acabei com &#8220;gaps&#8221; de banco de dados, sistema operacionais (isso até que estudei em engenharia numa disciplina eletiva),  algorítmos (livros e muitos exercício - recomendo o projeto Euler).  Mas ainda ficou a questão dos conceitos, das melhores práticas, patterns, entre outras coisas semelhantes. A sorte, se é que isso possa ser chamado de sorte, é que as  faculdades nem ensinam este tipo de coisa, e quem quiser saber vai ter que correr atrás tanto quanto eu.
+
+Conversando com o pessoal que conheço, admiro e trabalho junto, tentei  através de suas experiências delinear um caminho seguir. <a href="http://blog.m.artins.net/">Alexandre Martins</a>, já estava preparando uma material parecido com isso para um &#8220;coaching&#8221; que está realizando com o nossa equipe.  Participando desse &#8220;treinamento&#8221; e conversando com ele, este me sugeriu alguns livros e pontos que deveria atacar.  Confesso que no início, os pontos citados me soaram estranhos, pois já estou na estrada - como diria um conhecido - não é de hoje.
+
+<a href="http://blog.m.artins.net/">Alexandre Martins</a> sugeriu que atacasse os seguintes temas :
+<ol>
+	<li>Orientação a Objeto</li>
+	<li>Design Patterns</li>
+	<li>TDD</li>
+	<li>BDD</li>
+	<li>Prática Agéis</li>
+	<li>etc</li>
+</ol>
+Se pegarmos um profissional com  mais de 6 anos de experiência e se perguntarmos se ele conhece bem orientação a objeto afirmo que na totalidade dos casos ele irá responder que domina.  Entretanto, se pegarmos o código de uma parte desses profissionais veremos que  muitos princípios não são aplicados, vários códigos com estruturas repetidas sem necessidade (monte de get e set para apenas passar e receber valor),  monte de if ao invés de usar polimorfismo, problemas de acoplamentos, e por aí a nossa lista pode seguir.
+<blockquote>O Paulo da Caelum, recentemente, um excelente artigo que foi publicado no blog da Celum em 2006 por ele muito bom que mostra um pouco do que estou querendo dizer.  Para ler <a href="http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/">clique aqui</a></blockquote>
+Muita coisa se tornou repetitivas: fazemos por que é assim que deve ser feito e nem paramos para pensar se faz sentido ou não.  Um bom exemplo, inclusive citado no artigo, é o caso do GET e SET. Quantos de nós, que programamos em Java principalmente, ao clicar uma classe e definir esses atributos não colocamos juntos( com a ajuda abençoada do Eclipse) os GET e SET ?  Alguém por acaso já parou para pensar se é preciso?  Para ilustrar melhor imaginem que temos uma classe de dados apenas, os famosos DTO ou VO. Algo como :
+
+class Aluno {
+
+String nome
+
+}
+
+Tenho certeza que tem um monte de gente achando que está faltando o get /set e o atributo deveria ser private. Se não existe nenhuma lógica além de definir valor a ser implementada, qual é o sentido do GET? Não é mais prático e elegante chamar  &#8221;usuarioAndre.nome = andre&#8221;?
+<h2>CLEAN CODE e AGILE SOFTWARE DEVELOPMENT</h2>
+Esse dois livros, irão ajudar e muito com esse primeira questão da Orientação Objeto e a melhor forma de colocar isso para trabalhar a nosso favor.  Inclusive, serão nesses dois livros que você irá encontrar o significa da sigla : S.O.L.I.D.
+<ul>
+	<li>S : Single Responsability</li>
+	<li>O: Open and close principle</li>
+	<li>L :  Liskov Substitution</li>
+	<li>I :  Interface Segregation</li>
+	<li>D: Dependency inversion</li>
+</ul>
+Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
+
+no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Muita coisa acontecendo por aÃ­... Vamos tomar uma cerveja?]]></title>
+    <link href="http://andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/"/>
+    <updated>2010-09-08T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja</id>
+    <content type="html"><![CDATA[Por várias vezes que posso me procuro ir tomar uma cerveja com meus amigos. Essa cerveja é chamada de #horaextra e acabou ficando famosa. Mas é só uma cerveja onde amigos, a maioria trabalha no mercado de TI / desenvolvimento,  se encontram e conversam sobre coisa que gostamos -  como todo bom GEEK (gostamos de tecnologia) acabamos por falar, na maioria dos casos,  sobre tecnologia. O importante desse encontro, sem grandes objetivos, é que ao nos dispormos em ir até um bar e ficar lá conversando, sempre tem algumas coisas que surgem.
+
+Nesses últimos tempos, motivados por alguns de nossos &#8220;membros&#8221; que tem vem se aventurando pelos caminhos do empreendorismo,  o papo tem sido muito na temática da tecnologia mas também sobre como podemos tornar nossas ideias em produtos que virão a dar lucro. Dada a paixão daqueles que falam é impossível não se empolgar e querer sair dali imediatamente para casa e &#8220;criar&#8221; um produto revolucionário que nos colocará na história. Algo tipo Google (forcei a barra mas é para um boa causa).  Como disse um colega : &#8220;Me sinto como acho que aqueles caras do vale silício se sentiram quando começaram&#8230; participando de um momento ímpar das coisas&#8221;. Exageros postos de lado, eu sinceramente que muita coisa que dizemos nesse encontram são realmente revolucionários. São controversos. São diferentes. E quem disse que a gente quer fazer mais do mesmo?
+
+Como já disse aqui nesse blog: <strong>Estamos vivendo uma nova revolução industrial</strong>.  Estamos vivendo uma época onde temos um novo paradigma que se abre como uma imensa oportunidade de investimento. O mundo está conectado e sedento por informação, comodidade, por diferenciais.  A tempos atrás, alguns falavam de bolha da internet. Ela após um breve período ela estourou. Entretanto, as oportunidades continuam por aí e, em minha humilde opinião, sobre um terreno mais sólido que tínhamos a 10 anos. Ainda temos um mercado sedento por produtos de qualidade. Ainda temos um mercado ávido por novidades. Ainda temos um mercado demandando coisas e, de certa forma e sobre um olhar justo, disposta a pagar por estas &#8220;coisas&#8221;.
+
+A tempos atrás ter uma vida on line era uma coisa nerds. Poucos eram que tinham uma vida on line.  Isso mudou radicalmente. Ouso afirmar que quase todo mundo com um nível médio de instrução tem esse tal vida na rede: Redes sociais, twitter, e-mails(todo mundo tem), bate-papos, etc. Segundo um jornal que li, nesses últimos anos, houveram momentos que a venda on line, de determinados artigos, superaram a venda das lojas físicas.  Vivemos a era dos livros na amazon, e não é só os já ditos heavy-users que compram, são as ditas pessoas comuns.  Outros estudos indicam que faixas de pessoas, principalmente os adolescentes, gastam mais tempo na internet do que vendo TV.  Tudo isso mostra o imenso potencial que existe e justifica a minha afirmação do parágrafo acima: <strong><span style="text-decoration: underline;">Estamos vivendo uma nova revolução.</span></strong>
+
+O pessoal dessa cerveja de toda segunda, acabamos por sintonizar essa vibração e,  tendo alguns perfil empreendedor,  muitos estão vendo as chances e se lançando. Daí, a sensação de estar participando de um movimento que resultará em algo grande. Embora seja só um chopp como outro qualquer (não levamos notebook, nem programados, só levamos dinheiro para pagar a conta).  Nosso grupo está capitaneado diversos produtos que estão por aí. Um dos que mais me chamou a atenção dessa última leva foi uma ideia do <a href="http://vp.blog.br/">Vitor Pellegrino</a>: SprintSlags. Baseando-se na ideia do todo trabalhando por todos e gerando coersão (essa foi para o Henrique Bastos) . Essas coersão acaba por elevar a todos, mesmo que para quem esteja fora, pareça um socialismo mal praticado.
+
+Taí umas das coisa que considero revolucionária que esse pessoal bebedor vem trazendo. Uma nova consciencia sobre a questão de compartilhar:
+<blockquote>eu te ajudo pois te ajudando estou ajudando a mudar a situação&#8230; mudando a situação estou criando oportunidades para mim e com isso contar com sua ajuda para meu projeto depois.</blockquote>
+Ficou difícil entender. Fica ligado nos próximos capítulos que vou explicar melhor isso.
 ]]></content>
   </entry>
   

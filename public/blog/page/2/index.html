@@ -7,7 +7,7 @@
 
   <meta name="author" content="Andre Fonseca">
   
-  <meta name="description" content="Alterando a VersÃ£o Firefox Do selenium-server.jar Jun 28th, 2011 Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&# &hellip;">
+  <meta name="description" content="Script Para OrganizaÃ§Ã£o Das Minhas Fotos May 6th, 2011 A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da &hellip;">
   
   
 
@@ -48,149 +48,6 @@
 </ul>
 
     <div id="main"> 
-
-  
-  <div class="post"> <div class="post-header">
-  
-    <h1 class="post-title">
-      <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a>
-    </h1>
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
-</div>
-
-<div class="post-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
-Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
-Navegue para achar o jar : selenium-server
-Renomeie esse jar para um arquivo zip: 
-[cc lang=&#8221;bash&#8221;]
-mv selenium-server.jar selenium-server.zip
-[/cc]
-Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
-[cc lang=&#8221;bash&#8221;]
-mkdir selenium-server
-cp selenium-server.zip selenium-server/
-cd selenium-server
-unzip selenium-server.zip
-rm selenium-server.zip
-[/cc]
-Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
-[cc lang=&#8221;bash&#8221;]
-find . -name &#8220;*.rdf&#8221;
-[/cc]
-Altere a linha abaixo para a versão que queres suportar: 
-[cc lang=&#8221;java&#8221;]
-<em:maxVersion>5.*</em:maxVersion>
-[/cc]
-Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
-[cc lang=&#8221;bash&#8221;]
-zip -r selenium-server *
-mv selenium-server.zip selenium-server.jar
-jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
-[/cc]
-Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
-</div>
- </div>
-
-  
-  <div class="post"> <div class="post-header">
-  
-    <h1 class="post-title">
-      <a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a>
-    </h1>
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true">May 12<span>th</span>, 2011</time>
-</div>
-
-<div class="post-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
-Existem caminhos alternativos para instalá-lo. Mas não recomendo.
-Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
-</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
-</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
-</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>
-</span><span class='line'>Principal Commands:
-</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
-</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
-</span><span class='line'>uninstall formula ...
-</span><span class='line'>update
-</span><span class='line'>
-</span><span class='line'>Other Commands:
-</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
-</span><span class='line'>options formula
-</span><span class='line'>deps formula
-</span></code></pre></td></tr></table></div></figure>
-
-Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
-Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
-</span></code></pre></td></tr></table></div></figure>
-Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
-</span></code></pre></td></tr></table></div></figure>
-
-Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
-</div>
- </div>
 
   
   <div class="post"> <div class="post-header">
@@ -909,6 +766,107 @@ Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
 &nbsp;
 
 &nbsp;
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2010/12/03/estudos-compartilhados-introducao/">Estudos Compartilhados - IntroduÃ§Ã£o</a>
+    </h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-03T00:00:00-02:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2010</time>
+</div>
+
+<div class="post-content">Adotei com uma das minhas metas estudar mais sobre engenharia de software e zerar alguns débitos. Nessa cruzada, com ajuda de amigos como <a href="http://blog.m.artins.net/">Alexandre Martins</a>,  montei uma lista de livros. Alguns desses livros são: Clean Code, Pragmatic Programmer,  Agile Software Development, Refactoring, etc. Todos, se notarem, não são sobre uma linguagem específica e sim sobre melhores práticas, padrões, etc.
+
+Poucos pessoas sabem mas minha formação é de engenheiro eletrônico&#8230; Sou engenheiro. Com isso, sempre me  senti um pouco atrás de alguém que estudou informática pois nunca tive aquelas cadeiras de algorítmos, introduções, estrutura de dados, banco de dados, e etc.  Aos poucos fui suprimindo essa &#8220;fraqueza&#8221; com muita leitura, perguntas, ensaios, e por aí vai.  Assim, acabei com &#8220;gaps&#8221; de banco de dados, sistema operacionais (isso até que estudei em engenharia numa disciplina eletiva),  algorítmos (livros e muitos exercício - recomendo o projeto Euler).  Mas ainda ficou a questão dos conceitos, das melhores práticas, patterns, entre outras coisas semelhantes. A sorte, se é que isso possa ser chamado de sorte, é que as  faculdades nem ensinam este tipo de coisa, e quem quiser saber vai ter que correr atrás tanto quanto eu.
+
+Conversando com o pessoal que conheço, admiro e trabalho junto, tentei  através de suas experiências delinear um caminho seguir. <a href="http://blog.m.artins.net/">Alexandre Martins</a>, já estava preparando uma material parecido com isso para um &#8220;coaching&#8221; que está realizando com o nossa equipe.  Participando desse &#8220;treinamento&#8221; e conversando com ele, este me sugeriu alguns livros e pontos que deveria atacar.  Confesso que no início, os pontos citados me soaram estranhos, pois já estou na estrada - como diria um conhecido - não é de hoje.
+
+<a href="http://blog.m.artins.net/">Alexandre Martins</a> sugeriu que atacasse os seguintes temas :
+<ol>
+	<li>Orientação a Objeto</li>
+	<li>Design Patterns</li>
+	<li>TDD</li>
+	<li>BDD</li>
+	<li>Prática Agéis</li>
+	<li>etc</li>
+</ol>
+Se pegarmos um profissional com  mais de 6 anos de experiência e se perguntarmos se ele conhece bem orientação a objeto afirmo que na totalidade dos casos ele irá responder que domina.  Entretanto, se pegarmos o código de uma parte desses profissionais veremos que  muitos princípios não são aplicados, vários códigos com estruturas repetidas sem necessidade (monte de get e set para apenas passar e receber valor),  monte de if ao invés de usar polimorfismo, problemas de acoplamentos, e por aí a nossa lista pode seguir.
+<blockquote>O Paulo da Caelum, recentemente, um excelente artigo que foi publicado no blog da Celum em 2006 por ele muito bom que mostra um pouco do que estou querendo dizer.  Para ler <a href="http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/">clique aqui</a></blockquote>
+Muita coisa se tornou repetitivas: fazemos por que é assim que deve ser feito e nem paramos para pensar se faz sentido ou não.  Um bom exemplo, inclusive citado no artigo, é o caso do GET e SET. Quantos de nós, que programamos em Java principalmente, ao clicar uma classe e definir esses atributos não colocamos juntos( com a ajuda abençoada do Eclipse) os GET e SET ?  Alguém por acaso já parou para pensar se é preciso?  Para ilustrar melhor imaginem que temos uma classe de dados apenas, os famosos DTO ou VO. Algo como :
+
+class Aluno {
+
+String nome
+
+}
+
+Tenho certeza que tem um monte de gente achando que está faltando o get /set e o atributo deveria ser private. Se não existe nenhuma lógica além de definir valor a ser implementada, qual é o sentido do GET? Não é mais prático e elegante chamar  &#8221;usuarioAndre.nome = andre&#8221;?
+<h2>CLEAN CODE e AGILE SOFTWARE DEVELOPMENT</h2>
+Esse dois livros, irão ajudar e muito com esse primeira questão da Orientação Objeto e a melhor forma de colocar isso para trabalhar a nosso favor.  Inclusive, serão nesses dois livros que você irá encontrar o significa da sigla : S.O.L.I.D.
+<ul>
+	<li>S : Single Responsability</li>
+	<li>O: Open and close principle</li>
+	<li>L :  Liskov Substitution</li>
+	<li>I :  Interface Segregation</li>
+	<li>D: Dependency inversion</li>
+</ul>
+Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
+
+no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/">Muita Coisa Acontecendo Por aÃ­&#8230; Vamos Tomar Uma Cerveja?</a>
+    </h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-08T00:00:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2010</time>
+</div>
+
+<div class="post-content">Por várias vezes que posso me procuro ir tomar uma cerveja com meus amigos. Essa cerveja é chamada de #horaextra e acabou ficando famosa. Mas é só uma cerveja onde amigos, a maioria trabalha no mercado de TI / desenvolvimento,  se encontram e conversam sobre coisa que gostamos -  como todo bom GEEK (gostamos de tecnologia) acabamos por falar, na maioria dos casos,  sobre tecnologia. O importante desse encontro, sem grandes objetivos, é que ao nos dispormos em ir até um bar e ficar lá conversando, sempre tem algumas coisas que surgem.
+
+Nesses últimos tempos, motivados por alguns de nossos &#8220;membros&#8221; que tem vem se aventurando pelos caminhos do empreendorismo,  o papo tem sido muito na temática da tecnologia mas também sobre como podemos tornar nossas ideias em produtos que virão a dar lucro. Dada a paixão daqueles que falam é impossível não se empolgar e querer sair dali imediatamente para casa e &#8220;criar&#8221; um produto revolucionário que nos colocará na história. Algo tipo Google (forcei a barra mas é para um boa causa).  Como disse um colega : &#8220;Me sinto como acho que aqueles caras do vale silício se sentiram quando começaram&#8230; participando de um momento ímpar das coisas&#8221;. Exageros postos de lado, eu sinceramente que muita coisa que dizemos nesse encontram são realmente revolucionários. São controversos. São diferentes. E quem disse que a gente quer fazer mais do mesmo?
+
+Como já disse aqui nesse blog: <strong>Estamos vivendo uma nova revolução industrial</strong>.  Estamos vivendo uma época onde temos um novo paradigma que se abre como uma imensa oportunidade de investimento. O mundo está conectado e sedento por informação, comodidade, por diferenciais.  A tempos atrás, alguns falavam de bolha da internet. Ela após um breve período ela estourou. Entretanto, as oportunidades continuam por aí e, em minha humilde opinião, sobre um terreno mais sólido que tínhamos a 10 anos. Ainda temos um mercado sedento por produtos de qualidade. Ainda temos um mercado ávido por novidades. Ainda temos um mercado demandando coisas e, de certa forma e sobre um olhar justo, disposta a pagar por estas &#8220;coisas&#8221;.
+
+A tempos atrás ter uma vida on line era uma coisa nerds. Poucos eram que tinham uma vida on line.  Isso mudou radicalmente. Ouso afirmar que quase todo mundo com um nível médio de instrução tem esse tal vida na rede: Redes sociais, twitter, e-mails(todo mundo tem), bate-papos, etc. Segundo um jornal que li, nesses últimos anos, houveram momentos que a venda on line, de determinados artigos, superaram a venda das lojas físicas.  Vivemos a era dos livros na amazon, e não é só os já ditos heavy-users que compram, são as ditas pessoas comuns.  Outros estudos indicam que faixas de pessoas, principalmente os adolescentes, gastam mais tempo na internet do que vendo TV.  Tudo isso mostra o imenso potencial que existe e justifica a minha afirmação do parágrafo acima: <strong><span style="text-decoration: underline;">Estamos vivendo uma nova revolução.</span></strong>
+
+O pessoal dessa cerveja de toda segunda, acabamos por sintonizar essa vibração e,  tendo alguns perfil empreendedor,  muitos estão vendo as chances e se lançando. Daí, a sensação de estar participando de um movimento que resultará em algo grande. Embora seja só um chopp como outro qualquer (não levamos notebook, nem programados, só levamos dinheiro para pagar a conta).  Nosso grupo está capitaneado diversos produtos que estão por aí. Um dos que mais me chamou a atenção dessa última leva foi uma ideia do <a href="http://vp.blog.br/">Vitor Pellegrino</a>: SprintSlags. Baseando-se na ideia do todo trabalhando por todos e gerando coersão (essa foi para o Henrique Bastos) . Essas coersão acaba por elevar a todos, mesmo que para quem esteja fora, pareça um socialismo mal praticado.
+
+Taí umas das coisa que considero revolucionária que esse pessoal bebedor vem trazendo. Uma nova consciencia sobre a questão de compartilhar:
+<blockquote>eu te ajudo pois te ajudando estou ajudando a mudar a situação&#8230; mudando a situação estou criando oportunidades para mim e com isso contar com sua ajuda para meu projeto depois.</blockquote>
+Ficou difícil entender. Fica ligado nos próximos capítulos que vou explicar melhor isso.
 </div>
  </div>
 

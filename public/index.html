@@ -644,7 +644,7 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
   <div class="post"> <div class="post-header">
   
     <h1 class="post-title">
-      <a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a>
+      <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a>
     </h1>
   
   
@@ -659,85 +659,39 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
   
 
 
-<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
+<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
 </div>
 
-<div class="post-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
-
-Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
-
-Avisos paroquiais feitos vamos ao que interessa.
-
-Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
-
-O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
-
-Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
-
-<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
-
-&nbsp;
-
-Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
-
-&nbsp;
-[cc lang=&#8221;html&#8221;]
-<html>
-<head>
-  <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/Player.js"></script>
-  <script type="text/javascript" src="src/Song.js"></script>
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/SpecHelper.js"></script>
-  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
-
-</head>
-<body>
-
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
-
-</body>
-</html>
+<div class="post-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
+Navegue para achar o jar : selenium-server
+Renomeie esse jar para um arquivo zip: 
+[cc lang=&#8221;bash&#8221;]
+mv selenium-server.jar selenium-server.zip
 [/cc]
-
-&nbsp;
-Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
-
-Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
-
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-//Aqui dentro as expectativas
-});
+Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
+[cc lang=&#8221;bash&#8221;]
+mkdir selenium-server
+cp selenium-server.zip selenium-server/
+cd selenium-server
+unzip selenium-server.zip
+rm selenium-server.zip
 [/cc]
-
-&nbps;
-
-Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
-
-Assim se continuar nossos testes ficarão assim: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;contexto&#8221;, function(){
-  it(&#8220;deve ser true&#8221;, function(){
-    expect(true).toBeTruthy();
-  });
-});
+Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
+[cc lang=&#8221;bash&#8221;]
+find . -name &#8220;*.rdf&#8221;
 [/cc]
-
-&nbsp;
-
-Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
-
-Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+Altere a linha abaixo para a versão que queres suportar: 
+[cc lang=&#8221;java&#8221;]
+<em:maxVersion>5.*</em:maxVersion>
+[/cc]
+Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
+[cc lang=&#8221;bash&#8221;]
+zip -r selenium-server *
+mv selenium-server.zip selenium-server.jar
+jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
+[/cc]
+Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
 </div>
  </div>
 
@@ -745,7 +699,7 @@ Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar 
   <div class="post"> <div class="post-header">
   
     <h1 class="post-title">
-      <a href="/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/">Escolhendo Minha Ferramenta De TDD Para Javascript</a>
+      <a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a>
     </h1>
   
   
@@ -760,63 +714,72 @@ Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar 
   
 
 
-<time datetime="2011-09-30T00:00:00-03:00" pubdate data-updated="true">Sep 30<span>th</span>, 2011</time>
+<time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true">May 12<span>th</span>, 2011</time>
 </div>
 
-<div class="post-content">Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+<div class="post-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
+Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
+Existem caminhos alternativos para instalá-lo. Mas não recomendo.
+Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
+</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
+</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>
+</span><span class='line'>Principal Commands:
+</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
+</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
+</span><span class='line'>uninstall formula ...
+</span><span class='line'>update
+</span><span class='line'>
+</span><span class='line'>Other Commands:
+</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
+</span><span class='line'>options formula
+</span><span class='line'>deps formula
+</span></code></pre></td></tr></table></div></figure>
 
-[cc lang=&#8221;ruby&#8221;]
-describe &#8220;Model Aluno&#8221; do
-  before :each do
-    @aluno = Aluno.new
-  end
+Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
+Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
+</span></code></pre></td></tr></table></div></figure>
+Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-  subject { @aluno.nome }
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
 
-  it &#8220;Deve ser um model válido&#8221; do
-    @aluno.should be_valid
-  end
-end
-[/cc]
-
-&nbsp;
-Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
-
-Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
-
-Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
-
-Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
-[cc lang=&#8221;javascript&#8221;]
-spyOn(minhaClasse, &#8220;meuMetodo&#8221;)
-&#8230;
-it(&#8220;ve se foi chamado&#8221;, function(){
-  minhaClasse.meuMetodo(&#8220;qualquer string&#8221;);
-  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
-});
-[/cc]
-
-&nbsp;
-
-Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
-[cc lang=&#8221;javascript&#8221;]
-//codigo de animaçao com tempo aqui
-..
-wait(500);
-run(function(){
-expect(elemento.style(&#8216;display&#8217;)).toEquals(&#8216;none&#8217;)
-});
-[/cc]
-
-&nbsp;
-
-Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
-
-Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
+Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 </div>
  </div>
 
