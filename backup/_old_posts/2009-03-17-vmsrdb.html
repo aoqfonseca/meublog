@@ -1,0 +1,49 @@
+--- 
+layout: post
+title: Erro ao conectar RDB via odbc (VMS )
+tags: 
+- "automação"
+- rdb
+- vms
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Esse post é para eu lembrar como se faz para resolver um problema. Quando tenta-se conectar a um RDB que está num alpha via ODBC (tem que ter o driver para isso) e aparece o erro [ORACLE][ODBC][RDB]RDB-F-BAD_DB_HANDLE ....
+
+As configurações do obdc, em meu caso pelo menos, são: Service : Generic e String : attache 'filename file$db';
+
+Googleando a internet achei que a solução seria (funcionou no meu caso)
+1 - Log no seu aplha
+2 - Vá para o diretório sys$manager
+3 - Veja o log do banco ( faça um dir por dir *SQLSRV_DIS*.LOG
+4- Entre no arquivo... nas últimas linhas deve aparecer algo parecido com :
+{% codeblock lang:bash %}
+---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.340 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.360 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.670 2008— %SQLSRV-I-EVENT_LOG, event logged at line 4455 in file COM_DIALOG.C;1 %SQLSRV-E-READERR, Error on read %SYSTEM-F-LINKDISCON, network partner disconnected logical link ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.680 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.700 2008— %SQLSRV-I-EVENT_LOG, event logged at line 286 in file DISP.C;1 %SQLSRV-W-EXCEPTION_RAISE, Exception raised: DBS_SYSERVICEFAILED %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000028 %SQLSRV-I-CONNECTSTATE, Connect state: 2 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.710 2008— ---EVENT BEG: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.940 2008— %SQLSRV-I-EVENT_LOG, event logged at line 2814 in file CMD.C;1 %SQLSRV-I-CONNECTNAME, Connect : CONNECT_0000029 %SQLSRV-I-CONNECTSTATE, Connect state: 4 %SQLSRV-I-USERNAME, User name: FIELD %SQLSRV-I-NODENAME, Node : 192.168.1.1 %SQLSRV-I-APPLNAME, Application : odbcad32 %SQLSRV-I-SERVICENAME, Service : GENERIC ---EVENT END: EVENT_LOG ------------------------ Tue Mar 11 12:02:41.960 2008—
+{% endcodeblock %}
+
+A origem deste problema vem da questão da versão do SQL que está sendo executado (Versão 7) sendo assim é necessário mudar a versão do serviço generic para a 7.1 , para isso tem que ser feito os passos
+
+1- Va para o sys$system
+2- execute run sqlsrv_manager71
+3 - Vai aparecer o prompt SQLSRV
+4 - Digite o comando : show service generic full;
+
+{% codeblock lang:bash %}
+Service GENERIC
+State:                    RUNNING
+Owner:                    SQLSRV$DEFLT
+Owner Password:                Protocol:                 SQL/Services     Default Connect Username:      Default Connect Password:     SQL version:              STANDARD     Autostart:                on     Process init:                  Attach:                        Schema:                        Reuse:                    SESSION     Database Authorization:   CONNECT USERNAME     dbsrc file:                    SQL init file:                 Appl Transaction Usage:   SERIAL     Idle User Timeout:             Idle Exec Timeout:        1800 seconds     Min Executors:            2     Max Executors:            10     Running Executors:        2     Clients Per Executor:     1     Active Clients:           1 Access to service GENERIC     Granted to users:         PUBLIC  PRIVILEGED_USER 'SQLSRV$DEFLT' SQLSRV>
+{% endcodeblock %}
+
+ 5 - Execute a sequencia
+ 
+{% codeblock lang:bash %}
+SQLSRV> shutdown service generic;
+SQLSRV> alter service generic sql version 7.1;
+SQLSRV> show service generic full;
+SQLSRV> start service generic;
+SQLSRV> exit
+{% endcodeblock %}

@@ -1,0 +1,37 @@
+--- 
+layout: post
+title: O bom, o feio e o mal em desenvolvimento - parte 1 - testes automatizados
+tags: 
+- atualidades
+- automatizar
+- bdd
+- desenvolvimento
+- "Inform\xC3\xA1tica"
+- Java
+- TDD
+- teste
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+<div id="_mcePaste"><img class="alignleft" title="bom, feio e mal" src="http://i.s8.com.br/images/dvds/cover/img4/1027174_4.jpg" alt="" width="300" height="300" />Conversando com um colega do trabalho, discutíamos sobre a questão dos testes automatizados. Confesso, que nessa altura dos acontecimentos de TI, esse assunto estaria mais que esgotado, porém para minha surpresa, existe gente que ainda insiste dizer que é "perda de tempo" e outros termos menos lisonjeiros.</div>
+<div></div>
+<div id="_mcePaste">Esse colega me contou de um projeto onde existiam diversos problemas e que o cliente estava bastante insastifeito, entre outras coisas, com a qualidade das entregas. Isso porque, segundo o próprio cliente, várias vezes as alterações feitas ocasionavame na quebra de funcionamento em outras partes que aparentemente não tinham relação com a mudança pedida.</div>
+<div id="_mcePaste">Quem um dia já trabalho com portais, por exemplo, sabe a encrenca que isso é: páginas, conteúdo dinâmico, caches primários e secundários, gestão de conteúdo instâncias de serviços, etc. Com isso, o entrelaçamento das coisas  é enorme e qualquer alteração implica, considerando situação ideal, no teste de todo o portal. Testar o portal inteiro significa, para uma pessoa, horas e até dias de trabalho (se considerarmos portais de notícias como o G1 e o R7). Agora imagina testar todo o portal a cada commit que for feito... impossível né! não quando automatizamos nossos testes ao invés de delegar isso para uma pessoa.</div>
+<div></div>
+<div id="_mcePaste">Antes que comecem o apedrejamento em praça pública de minha pessoa, não estou dizendo para demitir toda a sua equipe de testes (os famosos homologadores). Estou dizendo que as coisas podem ser feitas com um pouco mais de inteligência e maior valor agregado para o cliente.</div>
+<div id="_mcePaste">Voltando a história do meu amigo, devido a questões de negócio, optaram por não "gastar" tempo em criar testes automatizados e o cliente se prontificou em testar tudo que era feito através de sua equipe interna de testadores profissionais. Nem preciso dizer que esta é a raiz da insatisfação do cliente com o quesito qualidade do projeto. Fazendo uso de um ditado popular : "Cão com muito dono ou nenhum, morre de fome de sede" .</div>
+<div id="_mcePaste"></div>
+<div>Nessa história, quem tomava a decisão estava com uma visão antiga e com prazo de validade vencido sobre a questão de testes. Eles realmente acreditaram ( e acreditam - daqui a pouco chego lá) que investir em automatizar testes é custo e não investimento.  Esqueceram de considerar a qualidade... pensaram somente que precisavam colocar no ar o mais rápido o possível o sistema e os "fins justificariam os meios empregados". Eles já estão pagando o preço pela péssima escolha, mas como todo "cego opcional" eles, pasmem vocês, não querem que "percamos" tempo em fazer esses bobeiras e culpam os desenvolvedores de todos os erros chamando-nos de incompetentes.</div>
+<div></div>
+<div id="_mcePaste">A minha resposta para este conhecido foi simples: mude de emprego. Faltou alguém de visão no projeto para entender que teste nunca é demais. Testes automatizados são um ganho e não perda de tempo. Vejam que nem estou falando em TDD, estou apenas considerando os testes !!!!</div>
+<div></div>
+<div id="_mcePaste">Quando "cercamos" nossas as aplicações testes, no mínimo estamos tentando protejar a consistencia da aplicação, evitando que mudanças quebrem-na. Claro que esse testes poderiam ser feitos por uma pessoa, mas imagine o custo (dinheiro mesmo !!!! tempo!!!) para que isso fosse feito num tempo hábil e com um retorno rápido para o desenvolvedor... Teste automatizados garantem isso. Sua aplicação pode ser testado o tempo todo e com isso, mesmo pequenas alterações levam a testar o todo verificando se a integridade não foi quebrada.</div>
+<div></div>
+<div id="_mcePaste">Isso, apesar de no começo representar mais trabalho, no final, gera um valor agregado imenso pois as coisas são entregues quando realmente estão prontas e com uma qualidade minima. Caso ainda queiram passar pela equipe de homologação, essa ficará livre para testar os requisitos e não se campo numérico aceita string.</div>
+<div></div>
+<div id="_mcePaste">Na literatura corrente, e por isso não foi me extender mais, existem diversos livros, artigos, blogs, textos, twitter, etc mostrando e provando porque devemos usar testes automatizados. Porém, me assusta o fato de ainda existirem gerentes, diretores e donos de empresa que consideram isso perda de tempo. Para estes a previsão é sombria. O mercado está aquecido por isso qualquer "bundão" consegue vender algo. Haverá um momento de retração e nova expansão e aí, somente quem estiver pronto, ágil e preparado sobreviverá... e não acredito que esses caras que eu citei estarão preparados.</div>
+<div></div>
+<div id="_mcePaste">Bem isso, até a próxima.</div>

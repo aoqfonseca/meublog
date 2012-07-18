@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Meu Blog, by Andre Fonseca</title>
+  <title>Meu Blog - by Andre Fonseca</title>
 
   <meta name="author" content="Andre Fonseca">
   
@@ -14,15 +14,15 @@
   <link rel="canonical" href="http://andrefonseca.net">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Meu Blog - by Andre Fonseca" type="application/atom+xml">
 </head>
   
 <body class="default">
   <div id="wrapper">
     <div id="header">
-  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
+  <h1><a href="/">Meu Blog - by Andre Fonseca</a></h1>
   
-    <p>Pensamentos, opiniões e alguns estudos</p>
+    <p>Pensamentos opiniões e alguns estudos</p>
   
 </div>
 <ul id="social-links">
@@ -99,12 +99,17 @@
 
 <p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
 
-<p>[1] http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)
-[2] http://microjs.com/ - Catálogo de MicroJS.
-[3] http://mootools.net/ - Página do Mootools
-[4] http://www.prototypejs.org/ - Biblioteca Prototype
-[5] http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js
-[6] http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</p>
+<h3>Referencias</h3>
+
+<ol>
+<li>http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</li>
+<li>http://microjs.com/ - Catálogo de MicroJS.</li>
+<li>http://mootools.net/ - Página do Mootools</li>
+<li>http://www.prototypejs.org/ - Biblioteca Prototype</li>
+<li>http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</li>
+<li>http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</li>
+</ol>
+
 </div>
  </div>
 
@@ -176,14 +181,15 @@ E você está preparado para isso?</p>
 <time datetime="2012-02-29T00:00:00-03:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time>
 </div>
 
-<div class="post-content">O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
-Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:
+<div class="post-content"><p>O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
+Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git describe --tags <span class="k">$(</span>git rev-list --tags --max-count<span class="o">=</span>1<span class="k">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.
+
+<p>Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.</p>
 </div>
  </div>
 
@@ -209,28 +215,27 @@ Esse comando busca na lista de revisões pelas tags e com isso você consegue ve
 <time datetime="2012-02-22T00:00:00-02:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2012</time>
 </div>
 
-<div class="post-content">A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.
+<div class="post-content"><p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
 
-O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.
+<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
 
-Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.
+<p>Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.</p>
 
-O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.
+<p>O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.</p>
 
-Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.
+<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
 
-Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.
+<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
 
-Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.
+<p>Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.</p>
 
-PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.
+<p>PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.</p>
 
-Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.
+<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
 
-Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.
+<p>Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.</p>
 
-Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.
-
+<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
 </div>
  </div>
 
@@ -238,7 +243,7 @@ Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e escla
   <div class="post"> <div class="post-header">
   
     <h1 class="post-title">
-      <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django</a>
+      <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a Renderizacao Do Template De Form Do Admin Do Django</a>
     </h1>
   
   
@@ -256,99 +261,56 @@ Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e escla
 <time datetime="2011-11-25T00:00:00-02:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time>
 </div>
 
-<div class="post-content">Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
+<div class="post-content"><p>&#8211;
+layout: post
+title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+tags:
+- django
+- form
+- template
+status: publish
+type: post
+published: true
+meta:</p>
 
-<a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
+<h2>  _edit_last: &#8220;1&#8221;</h2>
 
-Sinceramente isso é maravilhoso se você não fugir muito da formato que já mencionei antes. Caso precise de ir mais além ou então precisa modificar um pouco as coisas do que se espera que elas sejam, a coisa ganha uma complexidade. Mas calma&#8230; Também não é nenhuma ciência de foguete&#8230; Com um simples passo a passo, é simples mudar a cara de um formulário, listagem ,etc.
+<p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
-Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.
+<p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
 
-Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.
+<p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
-A receita é bem simples:
+<p>Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.</p>
 
-Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:
+<p>A receita é bem simples:</p>
 
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/
-[/cc]
+<p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
 
-&nbsp;
-
-Depois coloque um arquivo dentro para substituir:
-
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/change_form.html
-[/cc]
-
-&nbsp;
-
-Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes. 
-
-Agora vão as dicas com os pulos do gato: 
-
-1. O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro. 
-
-2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
-
-</div>
- </div>
-
-  
-  <div class="post"> <div class="post-header">
-  
-    <h1 class="post-title">
-      <a href="/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/">Bilbiotecas, Frameworks, Etc Para MVC No Javascript</a>
-    </h1>
-  
-  
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Depois coloque um arquivo dentro para substituir:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes.</p>
+
+<p>Agora vão as dicas com os pulos do gato:</p>
+
+<ol>
+<li><p>O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro.</p></li>
+<li><p>Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app.</p></li>
+</ol>
 
 
-
-
-  
-
-
-<time datetime="2011-10-27T00:00:00-02:00" pubdate data-updated="true">Oct 27<span>th</span>, 2011</time>
-</div>
-
-<div class="post-content">Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema. Como uso cada vez maior de javascript em nossas páginas (front ends) fica evidente que precisamos buscar melhorar a estrutura de nossos códigos para que fica fácil evoluir, entender e manutenciar. 
-
-No artigo passado apresentei o conceito e mostrei, bem superficialmente, o que é e como fazer isso. A idéia é aprofundar mais no assunto e mostrar bibliotecas que  vão facilitar nossa missão. 
-
-Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso.  Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona.
-
-Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. 
-
-A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos. Um catálogo delas é o <a href="http://microjs.com/">MicroJS</a>.
-
-Existem outras opções mais extensas ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa. 
-
-Um pequena brecha para falar uma coisa: hoje penso que tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa. Isso vou deixar para falar em outro post. 
-
-Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com).  Imagina como seria a complexidade do código para implementar tal cenário. 
-
-Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção.
-
-Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.
-
-Por fim, você pode optar por algum framework que permita separar tudo e promova suas interações de forma simples. Um bom exemplo disso é a <a href="http://documentcloud.github.com/backbone/" title="BackBone.js" target="_blank">BackBone.js</a> . Ele permite que você separe, já disse isso, muito bem as responsabilidades e torna fácil as interações. 
-
-Num próximo artigo vamos entrar em mais detalhe sobre o backbone. 
-
-<h2>Referências:</h2>
-
-[1] <a href="http://pt.wikipedia.org/wiki/MVC" title="MVC" target="_blank">http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</a>
-[2] <a href="http://microjs.com/" target="_blank">http://microjs.com/ - Catálogo de MicroJS.</a>
-[3] <a href="http://mootools.net/" target="_blank">http://mootools.net/</a> - Página do Mootools
-[4] <a href="http://www.prototypejs.org/" target="_blank">http://www.prototypejs.org/ - Biblioteca Prototype</a>
-[5] <a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone" target="_blank">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</a>
-[6] <a href="http://documentcloud.github.com/backbone/" target="_blank">http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</a>
+<p>Bem é isso e espero que ajude alguém pois bati bastante cabeça para resolver essa, por incrivel e simples que pareça.</p>
 </div>
  </div>
 
@@ -467,16 +429,16 @@ Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe qu
 O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
 
 
-<h2>Para que servem e por que usar:</h2>
+##Para que servem e por que usar:##
 
 Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
 
 Referência.
-[1] <a href="http://wiki.python.org/moin/PythonDecorators">http://wiki.python.org/moin/PythonDecorators</a>
-[2] <a href="http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html">http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html</a>
-[3] <a href="http://devlog.waltercruz.com/python_decorators">http://devlog.waltercruz.com/python_decorators</a>
-[4] <a href="http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html">http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html</a>
-[5] <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a>
+1. [http://wiki.python.org/moin/PythonDecorators&#8221;>http://wiki.python.org/moin/PythonDecorators</a>
+2. [ http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html](http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html)
+3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
+4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
+5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
 </div>
  </div>
 
@@ -502,131 +464,57 @@ Referência.
 <time datetime="2011-10-20T00:00:00-02:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
 </div>
 
-<div class="post-content">A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: Autotest (<a href="http://www.zenspider.com/ZSS/Products/ZenTest/" title="Autotest site" target="_blank">zentest</a>). 
+<div class="post-content"><p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
 
-Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.
+<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
 
-Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/" title="Site do Flávio Amieiro" target="_blank">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação). 
+<p>Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação).</p>
 
-Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br/" title="Blog do Bernardo Heynemann" target="_blank">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta: 
+<p>Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br" title="Blog do Bernardo Heynemann">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta:</p>
 
-[cc lang=&#8221;bash&#8221;]
-peon make test -d tests
-[/cc]
-
-O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto. 
-
-Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl. 
-
-Pesquisando encontrei uma forma de fazer isso. 
-
-Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples: 
-
-[cc lang=&#8221;python&#8221;]
-try:
-    import Growl
-except ImportError:
-     return
-
-path_image = abspath(join(dirname(__file__), image))
-icon = {&#8216;applicationIcon&#8217;: Growl.Image.imageFromPath(path_image)}
-
-growl = Growl.GrowlNotifier(app_name, [app_name], **icon)
-growl.register()
-growl.notify(app_name, title, message)
-[/cc]
-
-Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.
-
-Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto! 
-
-Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro. 
-</div>
- </div>
-
-  
-  <div class="post"> <div class="post-header">
-  
-    <h1 class="post-title">
-      <a href="/blog/2011/10/18/mvc-no-javascript/">MVC No Javascript</a>
-    </h1>
-  
-  
+<figure class='code'><figcaption><span>lang=&#8221;bash&#8221;</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>peon make test -d tests</span></code></pre></td></tr></table></div></figure>
 
 
+<p>O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto.</p>
+
+<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
+
+<p>Pesquisando encontrei uma forma de fazer isso.</p>
+
+<p>Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="kn">import</span> <span class="nn">Growl</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+</span><span class='line'>     <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">path_image</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="n">image</span><span class="p">))</span>
+</span><span class='line'><span class="n">icon</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;applicationIcon&#39;</span><span class="p">:</span> <span class="n">Growl</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">path_image</span><span class="p">)}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">growl</span> <span class="o">=</span> <span class="n">Growl</span><span class="o">.</span><span class="n">GrowlNotifier</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="p">[</span><span class="n">app_name</span><span class="p">],</span> <span class="o">**</span><span class="n">icon</span><span class="p">)</span>
+</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.</p>
 
+<p>Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto!</p>
 
-
-
-  
-
-
-<time datetime="2011-10-18T00:00:00-02:00" pubdate data-updated="true">Oct 18<span>th</span>, 2011</time>
-</div>
-
-<div class="post-content">No artigo anterior que escrevi sobre Jasmine, recebi um comentário de um amigo no qual ele me perguntava como fazer para testar códigos Javascript que interagem com o DOM ou que tenham uma certa dependência dele. 
-
-O primeiro impulso foi de responder para usar um recurso de Fixtures ( ou similiar), onde ele pode &#8220;criar&#8221; elementos no DOM durante um cenário de teste e depois removê-los para não atrapalhar os demais.  Embora isso resolva o problema dele - de testar funções que precisem de elementos HTML, a pergunta dele suscita uma discussão bem mais ampla e interessante. 
-
-Hoje é um fato que nossos front-end ( client side ou interface web ou como queira chamar) são cada vez mais ricos &#8230; Tem muito ( mas muito mesmo) código Javascript para criar uma experiência para o usuário boa. Se acha que estou exagerando, abrar seus próprios arquivos ou então converse com um desenvolver front-end mais experiente. 
-
-Com uso maior do javascript, o cuidado com seu uso também tem que ser maior. Não é mais aquela função de duas linhas que abre um alert ou aquelas validações simples do seu form. Acredito que em muitas páginas a quantidade de linhas de Javascript é maior que a de html e css. Tudo depende da riqueza da experiência ( veja que não estou considerando CSS3 que &#8220;substitui&#8221; bastante algumas coisas). 
-
-Mas chega de enrolação e vamos ao que interessa: como a gente organiza melhor o nosso código. 
-<strong>Primeira dica é separá-lo em um arquivo. Nada de script na página, por favor</strong>. Deixe para fazer isso em última instância. Acredite, sempre existe um jeito de desacoplar. 
-
-Caso você já tenha programado alguma coisa no SERVER-SIDE(adoro esse nome, parece que é outra dimensão), sabe que existem diversos padrões de designs( boas práticas). Um deles, e mais famoso, é o MVC - model view controller. Esse pattern ajuda a gente manter bem separado a lógicas de apresentação da lógica de negócio. Assim ao mexer num, não necessariamente precisará mexer noutro. 
-
-Seguindo essa filosofia, procuro desenvolver minhas lógicas de forma que eu separe bem oque é apresentação/animação da lógica de &#8220;negócio&#8221; da minha página. Por exemplo, imaginemos que agora temos que validar alguns dados e mostrar um aviso com os erros. O que faria seria quebrar isso em diversas funções. Uma para cada camada, no mínimo: 
-[cc lang=&#8221;javascript&#8221;]
-function validaCampo(dados){
-&#8230;
-}
-
-function avisaErro(mensagem){
-&#8230;
-}
-
-Erros = {
-  &#8220;nome_obrigatorio&#8221;: &#8220;Campo nome deve ser obrigatorio&#8221;
-}
-[/cc]
-
-Sei que o exemplo acima pode ser muito simples. Mas ele facilita testar e ainda por cima facilita alterar qualquer coisa na lógica de cada parte sem ter que mexer em um monte de lugar ou ter um método de 40 linhas para fazer uma validação. 
-
-Outro exemplo, mais próximo do real, imagina que recebe dados de um form, posta-os via ajax, atualiza uma listagem abaixo e mostra mensagem de sucesso ou erro: 
-
-[cc lang=&#8221;javascript&#8221;]
-function Requisicao(){
-}
-
-Requisicao.prototype.envia = function(url,dados){ //faz algo aqui};
-
-function ItemLista(){}
-
-ItemLista.prototype.renderizaHtml = function(){ //aqui voce pode colocar a logica e escrever o item no html};
-
-function submit(){
-  var form = document.getElementByTag(&#8220;form&#8221;);
-  &#8230;
-  var requisicao = new Requisicao();
-  var item; 
-  try {
-    requisicao.envia(form.url); 
-    item  = new Item(requisicao);
-  catch {
-    avisaErro(&#8220;Ocorreu um envio no envia de dados&#8221;);
-  }
-
-  item.renderizaHtml();
-}
-[/cc]
-
-O exemplo acima é apenas conceitual e está faltando coisa para caramba. Mostra bem, como separar bem as coisas e garantir uma boa legibilidade. Para testar isso você pode fazer sem precisar de acessar o DOM, fazendo mock das chamadas onde isso ocorre. 
-
-Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas e frameworks para ajudar nesse sentido.
+<p>Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro.</p>
 </div>
  </div>
 
@@ -652,73 +540,283 @@ Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas 
 <time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
 </div>
 
-<div class="post-content">Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.
+<div class="post-content"><p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
+
+<p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste de algo&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;deve acontecer algo e o valor ser outro&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função.</p>
+
+<p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
+Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>        <span class="nx">waits</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">runs</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
+
+<p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
+</div>
+ </div>
+
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/10/02/jasmine-bdd-instalando-e-escrevendo-primeiro-teste/">Jasmine BDD: Instalando E Escrevendo Primeiro Teste</a>
+    </h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-02T00:00:00-03:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2011</time>
+</div>
+
+<div class="post-content">Para os que ficaram interessados devido aos posts anteriores em usar o Jasmine BDD para fazer (até começar a fazer) seus testes, esse será o primeiro de uma série de artigos que tentaram explicar o como usar, como escrever seus testes e coisas mais avançadas como assíncrono e stub.
+
+Primeira coisa é que caso não esteja familiarizado em escrever testes ou está começando a programar, antes de mais nada aprender os conceitos básicos e procure um Dojo mais próximo de você. Independente de ser testes em javascript ou qualquer outra linguagem, escrever testes é uma forma de pensar e filosofia que deve ser aprendida. Senão, você ficará perdido, sem saber por onde começar e além disso, não conseguirá colher os benefícios que isso trará para seu produto.
+
+Avisos paroquiais feitos vamos ao que interessa.
+
+Antes de escrever a sua primeira linha de qualquer coisa é preciso que instale as coisas. Nesse momento, seguiremos do jeito mais simples e hard, sem uso de ferramentas, linhas de comando, etc. Vamos nos ater ao básico e mais simples.
+
+O Jasmine BDD é uma biblioteca Javascript. (.js). Ele roda dentro de uma página com alguma markup que permite que ele coloque na tela a saída do resultado da tela. Sendo assim, acesso o site do produto (c<a title="Jasmine" href="http://pivotal.github.com/jasmine/" target="_blank">lique aqui</a>). Na página principal escolhe a opção de standalone. (voce pode ir direto para esse <a title="Jasmine BDD Download" href="http://pivotal.github.com/jasmine/download.html" target="_blank">link</a>).
+
+Ao descompactar o arquivo verá uma estrutura de arquivos e pastas, praticamente pronta para uso. Para rodar os testes basta carregar o SpecRunner.html no seu browser preferido.  Suas specs(js com testes). Devem ficar dentro da pasta spec (vejo o exemplo que vem junto). É costume chamar o nome do arquivo com o nome do que irá testar seguido de Spec.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28.png"><img class="aligncenter size-medium wp-image-677" title="Screen shot 2011-09-30 at 16.52.28" src="http://metronus.com/blog/wp-content/uploads/2011/09/Screen-shot-2011-09-30-at-16.52.28-300x77.png" alt="" width="300" height="77" /></a>
 
 &nbsp;
-Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código: 
+
+Para incluir um novo teste ou um novo arquivo de dependencia (tipo jquery ou mootools) bastar colocar a chamada no SpecRunner.html
+
+&nbsp;
+[cc lang=&#8221;html&#8221;]
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>
+[/cc]
+
+&nbsp;
+Só com isso, você já tem o seu framework de teste funcionando perfeitamente em sua máquina. 
+
+Seu arquivo de teste é composto por, basicamente, dois blocos - um dentro do outro. Num bloco você descreve ou define o contexto. Ele é definido pelo método describe. Assim todo teste jasmine deve começar por:
+
 [cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste de algo&#8221;, function(){
-    it(&#8220;deve acontecer algo e o valor ser outro&#8221;, function(){
-        expect(true).toBeTruthy();
-    });
+describe(&#8220;contexto&#8221;, function(){
+//Aqui dentro as expectativas
+});
+[/cc]
+
+&nbps;
+
+Assim como o Rspec, no qual o Jasmine se inspirou, a idéia não é simplesmente pensar em testes unitários e sim criar expectativas, coisa que tem mais a ver com o <a href="http://pt.wikipedia.org/wiki/Behavior_Driven_Development" target="_blank">BDD</a>.
+
+Assim se continuar nossos testes ficarão assim: 
+[cc lang=&#8221;javascript&#8221;]
+describe(&#8220;contexto&#8221;, function(){
+  it(&#8220;deve ser true&#8221;, function(){
+    expect(true).toBeTruthy();
+  });
 });
 [/cc]
 
 &nbsp;
 
-No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função. 
+Pronto taí o seu primeiro teste com jasmine escrito. Onde, o it define o ponto de teste dentro daquele contexto. Ele contém uma frase que será exiba na execução do teste no HTMl e facilita o entendimento do objeto do teste. Os asserts são feitos usando um método expect que define oque será auditado e em seguida o que espera de resultado. 
 
-Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois). 
-Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo: 
+Ficamos por aqui. No próximo post, vou falar sobre os matcher e vamos avançar mais sobre jasmine.
+</div>
+ </div>
 
+  
+  <div class="post"> <div class="post-header">
+  
+    <h1 class="post-title">
+      <a href="/blog/2011/09/30/escolhendo-minha-ferramenta-de-tdd-para-javascript/">Escolhendo Minha Ferramenta De TDD Para Javascript</a>
+    </h1>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-30T00:00:00-03:00" pubdate data-updated="true">Sep 30<span>th</span>, 2011</time>
+</div>
+
+<div class="post-content">Seguindo dentro da temática de testes e javascript. Quero falar de frameworks de testes.  Como já disse em artigos anteriores me rendi a pouco tempo a usar TDD para escrever meus javascript  (mais precisamente meus códigos de front end).  No momento que resolvi, influenciado por alguns, amigos parti em busca de ferramentas e frameworks que tornassem essa tarefa mais simples e produtiva.
+
+Nesse mesmo momento estava trabalhando com um projeto em Rails e usava o <a title="Rspec page" href="http://rspec.info/" target="_blank">Rspec</a> para fazer os testes de todo meu código server.  O Rspec possui uma forma, sintaxe, para escrita de código que considero elegante e funcional: facilita a leitura, a compreensão e a escrita pois tem um jeitão que meio que te leva a escrever seus teste de forma bem estruturada.
+
+Essa estrutura é basicamente formado por um contexto, que pode ou não conter outros contextos, e dentro dele as suas especificações. Assim se temos um Model a ser testado posso quebrar meus testes em vários contextos, por exemplo:
+
+[cc lang=&#8221;ruby&#8221;]
+describe &#8220;Model Aluno&#8221; do
+  before :each do
+    @aluno = Aluno.new
+  end
+
+  subject { @aluno.nome }
+
+  it &#8220;Deve ser um model válido&#8221; do
+    @aluno.should be_valid
+  end
+end
+[/cc]
+
+&nbsp;
+Note como fica claro o alvo e o objetivo do teste. Para quem precisar entender o sistema basta ler as especificações do sistema que conseguirá pegar bem o funcionamento das coisas. 
+
+Bem, após ter provado isso, queria algo igual para testar meu javascript. A princípio pensei em usar o QUnit, pois ele é o framework oficial do pessoal que dsenvolve o Jquery. Como sempre achei o Jquery legal, pensei que algo que eles usem deve ser bom. Meu primeiro contato não foi bom e achei que meus testes ficaram feios, ruim de entender e ainda tinha vários problemas de mock, stub e testes assíncronos.
+
+Descobri então o <a href="http://pivotal.github.com/jasmine/" title="Jasmine BDD" target="_blank">Jasmine BDD</a>. Ele é exatamente tudo que queria pois seus desenvolvedores se inspiraram no RSpec para fazê-lo. Logo os primeiros pré-requisitos foram atendidos. Outra parada killer - lembrando que estava trabalhando num projeto rails - é sua integração com a app. Basta uma gem e alguns yamls e tudo funciona perfeitamente. Basta um rake jasmine e seus teste rodam. 
+
+Outro ponto sensacional é o fato dele já trazer uma api maravilhosa que muito lembra o Mock do Rails, incluso. Para ver se alguma coisa foi chamada fica mais ou menos assim: 
 [cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste algo com before e after&#8221;, function(){
-    var variavel;
-
-    beforeEach(function(){
-        variavel = true;
-    });
-
-    afterEach(function(){
-        variavel = false;
-    });
-
-    it(&#8220;teste&#8221;, function(){
-        expect(variavel).toBeTruthy();
-    });
+spyOn(minhaClasse, &#8220;meuMetodo&#8221;)
+&#8230;
+it(&#8220;ve se foi chamado&#8221;, function(){
+  minhaClasse.meuMetodo(&#8220;qualquer string&#8221;);
+  expect(minhaClasse.meuMetodo).toHaveBeenCalledWith(jasmine.any(String));
 });
 [/cc]
 
 &nbsp;
-Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste: 
+
+Por fim a decisão final veio pelo suporte que a api tem para teste assíncronos. Ou seja, sabe toda aquelas coisas de callback que você tem ou testes de animação.. Fica muito simples de escrever:
 [cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste algo com before e after&#8221;, function(){
-    var variavel;
-
-    beforeEach(function(){
-        variavel = true;
-        setTimeout(function(){
-            variavel = false;
-        }, 100);
-
-    });
-
-    it(&#8220;teste&#8221;, function(){
-        expect(variavel).toBeTruthy();
-        waits(200);
-        runs(function(){
-            expect(variavel).toBeFalsy();
-        });
-    });
+//codigo de animaçao com tempo aqui
+..
+wait(500);
+run(function(){
+expect(elemento.style(&#8216;display&#8217;)).toEquals(&#8216;none&#8217;)
 });
 [/cc]
 
 &nbsp;
-O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.
 
-Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.
+Agora tudo isso parece que só é para código javascript que você escreve para o seu client side. Mas se você gosto do javascript no server side saiba que a biblioteca também pode e deve ser usado. Existem excelente pacotes para Node e outras plataformas (V8, Java - Rhino, etc).
 
-
+Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmine para você que ficou interessado mergulhar de cabeça nessa também.
 </div>
  </div>
 
@@ -758,7 +856,7 @@ Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo 
           </li>
         
           <li>
-            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
+            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando A Renderizacao Do Template De Form Do Admin Do Django</a>
           </li>
         
       </ul>

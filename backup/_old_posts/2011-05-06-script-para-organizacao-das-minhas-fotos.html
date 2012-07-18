@@ -1,0 +1,57 @@
+--- 
+layout: post
+title: "Script para organiza\xC3\xA7\xC3\xA3o das minhas fotos"
+tags: 
+- atualidades
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+A pouco tempo atrás comprei um novo computador pois meu antigo estava a "beira da morte".  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
+
+Após a chegada do novo computador, montado  e o Ubuntu 11.04 instalado no novo computador (o pessoal insiste em mandar coisas com o SO Windows já instalado mas isso é papo para outro post), resolvi dar uma olhada no backup e organizar principalmente minhas fotos que estavam uma verdadeira zona: fotos de assuntos diferentes na mesma pasta, tudo misturada, etc.
+
+Como programador que sou decidi que iria arrumar algo que pudesse fazer isso de forma automatizada. A primeira tentativa foi buscar no google por alguma ferramenta gratuita que já fizesse isso porém logo desisti. Já venho um tempo estudando Shell Script e Bash e depois de um twitter do conhecido Marcos Tapajós, resolvi que iria fazer isso por script.. até porque não achei ferramentas para fazer do jeito que eu queria.
+
+Passei a buscar como faria esse script, pois a minha idéia era de pegar todos as minhas fotos que estavam espalhadas por várias pastas e arrumá-las agrupando-as por ano, mês e dia.  Confesso que pensei em fazer algo programa em Python ou Ruby ou Groovy para resolver meu problema, entretanto, cismei que deveria fazer isso em shell script pelo aprendizado e por acreditar que seria mais rápido e simples.
+
+Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra da Globo.com (Magno) e ele me deu a dica de alguns sites que tinham exatamente o que eu queria. Sendo bem sincero bastou ir no google e digitar : organize photo shell script, que apareceu vários que faziam oque eu queria. Assim, resolvi escrever esse post para passar adiante (em português)  o script que fiz baseado no que eu encontrei e com o passo a passo (não encontrei nada em português - provavelmente erro meu).
+
+Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
+
+{% codeblock lang:bash %}
+sudo apt-get install libimage-exiftool-perl
+{% endcodeblock %}
+
+Uma vez que eles esteja instalado, crie um arquivo para o seu script:
+
+{% codeblock lang:bash %}
+touch organiza_fotos.sh
+vim organiza_fotos.sh
+{% endcodeblock %}
+
+Agora com o editor aberto é só copiar e colar o código abaixo:
+{% codeblock lang:bash %}
+#!/bin/sh
+
+from=/media/Externo/minhas_imagens
+to=/media/Externo/fotos_organizadas
+find $from -iname '*jpg' | while read FILENAME
+do
+year=`exiftool "$FILENAME"  | awk '/Date\/Time Original/ {print $4}'|cut -f1 -d':'`
+month=`exiftool "$FILENAME"  | awk '/Date\/Time Original/ {print $4}'|cut -f2 -d':'`
+day=`exiftool "$FILENAME"  | awk '/Date\/Time Original/ {print $4}'|cut -f3 -d':'`
+target=$to/$year/$month/$day
+mkdir -p $target
+cp "$FILENAME" $target
+echo "Moved $FILENAME to $target"
+done
+{% endcodeblock %}
+
+&nbsp;
+
+Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde ele buscará as fotos; a segunda qual será o caminho base para onde as fotos organizadas serão copiadas.
+
+Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.

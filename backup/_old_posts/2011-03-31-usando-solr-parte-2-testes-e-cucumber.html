@@ -1,0 +1,125 @@
+--- 
+layout: post
+title: Usando SOLR parte 2 - Testes e Cucumber
+tags: 
+- atualidades
+- cucumber
+- rspec
+- ruby
+- solr
+- sunspot
+status: publish
+type: post
+---
+Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
+
+Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
+
+Bem vamos lá. Imaginemos que você quer que a classe Minha seja indexa e posteriormente busca pelo SOLR, basta colocar no top o require:
+
+{% codeblock lang:ruby %}
+
+require 'sunspot'
+require 'sunspot_rails'
+
+{% endcodeblock %}
+
+Feito isso e mais os passos já descritos, creio que agora já temos algo funcional.
+
+Bem vamos para a parte de testar a coisa. Claro que todos nós somos adeptos do TDD (Test Driven Development - Desenvolvimento Orientado a Testes) e por isso vamos sempre querer escrever nossas especificações antes. Falei especificações pois considero que você seja uma pessoa experta e esteja usando o RSPEC.
+
+Para isso, como disse na parte 1, é preciso que você use alguns matchers que irão facilitar em muito a sua vida. Eles estão dentro da gem sunspot_matchers. Dentro do seu spec_helper (isso já vale para todo projeto ruby que esteja usando o Rspec), coloque as linhas:
+
+{% codeblock lang:ruby %}
+require 'sunspot_matchers'
+
+...
+
+config.include SunspotMatcher
+
+...
+
+config.before do
+    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+end
+
+config.after do
+    Sunspot.session = Sunspot.session.original_session
+end
+{% endcodeblock %}
+
+Estamos fazendo aqui (acredito que já tenho dito isso) é colocando uma interceptador das chamadas da DSL a sessão com o SOLR para ver se tudo está ocorrendo do jeito que queremos. Seria algo como o nosso mocka, para quem conhcece.
+
+Segue abaixo um exemplo de um código de teste. Veja como fica bem simples testar se a busca, no caso, está incluindo os itens que preciso para fazer a filtragem:
+
+{% codeblock lang:ruby %}
+it "Deve filtrar pela data de finalizacao maior que" do
+    data = DateTime.now.strftime("%d/%m/%Y")
+    encontrados = Inscricao.busca({:campanha_id =&gt; "1", :start_date =&gt; data})
+    data = Date.strptime(data, '%d/%m/%Y')
+    Sunspot.session.should be_a_search_for(Inscricao)
+    Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).greater_than(data)})
+end
+
+it "Deve filtrar pela data finalizacao menor que" do
+    data = DateTime.now.strftime("%d/%m/%Y")
+    encontrados = Inscricao.busca({:campanha_id =&gt; "1", :end_date =&gt; data})
+    data = Date.strptime(data, '%d/%m/%Y')
+    Sunspot.session.should be_a_search_for(Inscricao)
+    Sunspot.session.should have_search_params(:with, Proc.new { with(:finalizada_em).less_than(data)})
+end
+
+it "Deve filtrar pela data de nascimento maior que" do
+    data = Date.today.years_ago(20)
+    encontrados = Inscricao.busca({:campanha_id =&gt; "1", :idade_final =&gt; "20"})
+    Sunspot.session.should be_a_search_for(Inscricao)
+    Sunspot.session.should have_search_params(:with, Proc.new { with(:data_nascimento).greater_than(data)})
+end
+
+{% endcodeblock %}
+
+A coisa fica bem próxima as expectations que estamos acostumados a usar.  Com isso temos nossos testes de especificação prontos e podemos então passar para os teste de aceitação.
+
+Antes que alguém comece a dizer que estou "roubando" pois estou fazendos os testes de aceitação depois de já ter algo implementado, quero dizer que sou adepto da abordagem emergente. Vou implementado os testes a medida da necessidade - isso é o que chamam de inside out.
+
+Imagino que você que esteja lendo e desenvolvendo junto comigo deva usar o Cucumber para fazer os seus testes de aceitação. Também imagino que, ao contrário dos testes de especificação ou microtestes, você agora queira que as coisas estejam rodando a vera.
+
+Para ter um SOLR funcionando para você executar os seus testes de Cucumber, vá no arquivo, features/support/env.rb e coloque as seguintes linhas:
+
+{% codeblock lang:ruby %}
+
+::Sunspot::Rails::Server.new.start
+Before do
+    Inscricao.reindex
+end
+
+After do
+    Inscricao.remove_all_from_index!
+end
+
+at_exit do
+    puts "Saindo do solr"
+    ::Sunspot::Rails::Server.new.stop
+end
+
+{% endcodeblock %}
+
+Essas linhas irão iniciar um SOLR; a cada teste pedir para reindexar os dados neles e por fim, quando tudo terminar, ele irá parar o solr que você iniciou.  Uma breve ressalva:  tive um mega problema... quando fiz isso, meus teste de jeito algum passavam. Isso porque, por motivos que ainda não sei, quando criamos na mão nossos arquivos, precisamos pedir que sejam indexados, ou seja,  ele não indexa automaticamente. Pelo oque li a gem faz isso pelos controllers. Assim que tiver certeza sobre isso escrevo algo. A questão é que tive que escrever um maldito passo para indexar e chamá-lo toda vez que algo era criado. Algo como abaixo:
+
+{% codeblock lang:ruby %}
+Dado /ˆque preciso reindexar minhas coisas$/ do
+    Minhas.reindex
+end
+{% endcodeblock %}
+
+... Em um features da vida
+
+{% codeblock lang:ruby %}
+    Dado que crio uma coisa minha
+    E que preciso reindexar minhas coisa
+    Eu vejo essa coisa na busca
+{% endcodeblock %}
+
+Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
+
+

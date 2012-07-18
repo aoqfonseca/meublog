@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Meu Blog, by Andre Fonseca]]></title>
+  <title><![CDATA[Meu Blog - by Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-04-13T15:43:09-03:00</updated>
+  <updated>2012-07-17T21:15:54-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -46,12 +46,17 @@
 
 <p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
 
-<p>[1] http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)
-[2] http://microjs.com/ - Catálogo de MicroJS.
-[3] http://mootools.net/ - Página do Mootools
-[4] http://www.prototypejs.org/ - Biblioteca Prototype
-[5] http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js
-[6] http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</p>
+<h3>Referencias</h3>
+
+<ol>
+<li>http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</li>
+<li>http://microjs.com/ - Catálogo de MicroJS.</li>
+<li>http://mootools.net/ - Página do Mootools</li>
+<li>http://www.prototypejs.org/ - Biblioteca Prototype</li>
+<li>http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</li>
+<li>http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</li>
+</ol>
+
 ]]></content>
   </entry>
   
@@ -89,14 +94,15 @@ E você está preparado para isso?</p>
     <link href="http://andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/"/>
     <updated>2012-02-29T00:00:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git</id>
-    <content type="html"><![CDATA[O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
-Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:
+    <content type="html"><![CDATA[<p>O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
+Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git describe --tags <span class="k">$(</span>git rev-list --tags --max-count<span class="o">=</span>1<span class="k">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.
+
+<p>Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.</p>
 ]]></content>
   </entry>
   
@@ -105,112 +111,85 @@ Esse comando busca na lista de revisões pelas tags e com isso você consegue ve
     <link href="http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/"/>
     <updated>2012-02-22T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade</id>
-    <content type="html"><![CDATA[A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.
+    <content type="html"><![CDATA[<p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
 
-O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.
+<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
 
-Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.
+<p>Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.</p>
 
-O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.
+<p>O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.</p>
 
-Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.
+<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
 
-Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.
+<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
 
-Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.
+<p>Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.</p>
 
-PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.
+<p>PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.</p>
 
-Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.
+<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
 
-Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.
+<p>Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.</p>
 
-Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.
-
+<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Customizando a renderizaÃ§Ã£o do template de form do admin do Django]]></title>
+    <title type="html"><![CDATA[Customizando A Renderizacao Do Template De Form Do Admin Do Django]]></title>
     <link href="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/"/>
     <updated>2011-11-25T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django</id>
-    <content type="html"><![CDATA[Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
+    <content type="html"><![CDATA[<p>&#8211;
+layout: post
+title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+tags:
+- django
+- form
+- template
+status: publish
+type: post
+published: true
+meta:</p>
 
-<a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
+<h2>  _edit_last: &#8220;1&#8221;</h2>
 
-Sinceramente isso é maravilhoso se você não fugir muito da formato que já mencionei antes. Caso precise de ir mais além ou então precisa modificar um pouco as coisas do que se espera que elas sejam, a coisa ganha uma complexidade. Mas calma&#8230; Também não é nenhuma ciência de foguete&#8230; Com um simples passo a passo, é simples mudar a cara de um formulário, listagem ,etc.
+<p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
-Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.
+<p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
 
-Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.
+<p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
-A receita é bem simples:
+<p>Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.</p>
 
-Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:
+<p>A receita é bem simples:</p>
 
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/
-[/cc]
+<p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
 
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
+</span></code></pre></td></tr></table></div></figure>
 
-Depois coloque um arquivo dentro para substituir:
 
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/change_form.html
-[/cc]
+<p>Depois coloque um arquivo dentro para substituir:</p>
 
-&nbsp;
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
+</span></code></pre></td></tr></table></div></figure>
 
-Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes. 
 
-Agora vão as dicas com os pulos do gato: 
+<p>Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes.</p>
 
-1. O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro. 
+<p>Agora vão as dicas com os pulos do gato:</p>
 
-2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
+<ol>
+<li><p>O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro.</p></li>
+<li><p>Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app.</p></li>
+</ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bilbiotecas, frameworks, etc para MVC no Javascript]]></title>
-    <link href="http://andrefonseca.net/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/"/>
-    <updated>2011-10-27T00:00:00-02:00</updated>
-    <id>http://andrefonseca.net/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript</id>
-    <content type="html"><![CDATA[Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema. Como uso cada vez maior de javascript em nossas páginas (front ends) fica evidente que precisamos buscar melhorar a estrutura de nossos códigos para que fica fácil evoluir, entender e manutenciar. 
 
-No artigo passado apresentei o conceito e mostrei, bem superficialmente, o que é e como fazer isso. A idéia é aprofundar mais no assunto e mostrar bibliotecas que  vão facilitar nossa missão. 
-
-Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso.  Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona.
-
-Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. 
-
-A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos. Um catálogo delas é o <a href="http://microjs.com/">MicroJS</a>.
-
-Existem outras opções mais extensas ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa. 
-
-Um pequena brecha para falar uma coisa: hoje penso que tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa. Isso vou deixar para falar em outro post. 
-
-Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com).  Imagina como seria a complexidade do código para implementar tal cenário. 
-
-Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção.
-
-Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.
-
-Por fim, você pode optar por algum framework que permita separar tudo e promova suas interações de forma simples. Um bom exemplo disso é a <a href="http://documentcloud.github.com/backbone/" title="BackBone.js" target="_blank">BackBone.js</a> . Ele permite que você separe, já disse isso, muito bem as responsabilidades e torna fácil as interações. 
-
-Num próximo artigo vamos entrar em mais detalhe sobre o backbone. 
-
-<h2>Referências:</h2>
-
-[1] <a href="http://pt.wikipedia.org/wiki/MVC" title="MVC" target="_blank">http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</a>
-[2] <a href="http://microjs.com/" target="_blank">http://microjs.com/ - Catálogo de MicroJS.</a>
-[3] <a href="http://mootools.net/" target="_blank">http://mootools.net/</a> - Página do Mootools
-[4] <a href="http://www.prototypejs.org/" target="_blank">http://www.prototypejs.org/ - Biblioteca Prototype</a>
-[5] <a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone" target="_blank">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</a>
-[6] <a href="http://documentcloud.github.com/backbone/" target="_blank">http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</a>
+<p>Bem é isso e espero que ajude alguém pois bati bastante cabeça para resolver essa, por incrivel e simples que pareça.</p>
 ]]></content>
   </entry>
   
@@ -312,16 +291,16 @@ Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe qu
 O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
 
 
-<h2>Para que servem e por que usar:</h2>
+##Para que servem e por que usar:##
 
 Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
 
 Referência.
-[1] <a href="http://wiki.python.org/moin/PythonDecorators">http://wiki.python.org/moin/PythonDecorators</a>
-[2] <a href="http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html">http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html</a>
-[3] <a href="http://devlog.waltercruz.com/python_decorators">http://devlog.waltercruz.com/python_decorators</a>
-[4] <a href="http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html">http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html</a>
-[5] <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a>
+1. [http://wiki.python.org/moin/PythonDecorators&#8221;>http://wiki.python.org/moin/PythonDecorators</a>
+2. [ http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html](http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html)
+3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
+4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
+5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
 ]]></content>
   </entry>
   
@@ -330,114 +309,57 @@ Referência.
     <link href="http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/"/>
     <updated>2011-10-20T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest</id>
-    <content type="html"><![CDATA[A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: Autotest (<a href="http://www.zenspider.com/ZSS/Products/ZenTest/" title="Autotest site" target="_blank">zentest</a>). 
+    <content type="html"><![CDATA[<p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
 
-Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.
+<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
 
-Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/" title="Site do Flávio Amieiro" target="_blank">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação). 
+<p>Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação).</p>
 
-Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br/" title="Blog do Bernardo Heynemann" target="_blank">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta: 
+<p>Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br" title="Blog do Bernardo Heynemann">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta:</p>
 
-[cc lang=&#8221;bash&#8221;]
-peon make test -d tests
-[/cc]
+<figure class='code'><figcaption><span>lang=&#8221;bash&#8221;</span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>peon make test -d tests</span></code></pre></td></tr></table></div></figure>
 
-O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto. 
 
-Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl. 
+<p>O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto.</p>
 
-Pesquisando encontrei uma forma de fazer isso. 
+<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
 
-Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples: 
+<p>Pesquisando encontrei uma forma de fazer isso.</p>
 
-[cc lang=&#8221;python&#8221;]
-try:
-    import Growl
-except ImportError:
-     return
+<p>Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples:</p>
 
-path_image = abspath(join(dirname(__file__), image))
-icon = {&#8216;applicationIcon&#8217;: Growl.Image.imageFromPath(path_image)}
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="kn">import</span> <span class="nn">Growl</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+</span><span class='line'>     <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">path_image</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="n">image</span><span class="p">))</span>
+</span><span class='line'><span class="n">icon</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;applicationIcon&#39;</span><span class="p">:</span> <span class="n">Growl</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">path_image</span><span class="p">)}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">growl</span> <span class="o">=</span> <span class="n">Growl</span><span class="o">.</span><span class="n">GrowlNotifier</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="p">[</span><span class="n">app_name</span><span class="p">],</span> <span class="o">**</span><span class="n">icon</span><span class="p">)</span>
+</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-growl = Growl.GrowlNotifier(app_name, [app_name], **icon)
-growl.register()
-growl.notify(app_name, title, message)
-[/cc]
 
-Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.
+<p>Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.</p>
 
-Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto! 
+<p>Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto!</p>
 
-Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro. 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MVC no javascript]]></title>
-    <link href="http://andrefonseca.net/blog/2011/10/18/mvc-no-javascript/"/>
-    <updated>2011-10-18T00:00:00-02:00</updated>
-    <id>http://andrefonseca.net/blog/2011/10/18/mvc-no-javascript</id>
-    <content type="html"><![CDATA[No artigo anterior que escrevi sobre Jasmine, recebi um comentário de um amigo no qual ele me perguntava como fazer para testar códigos Javascript que interagem com o DOM ou que tenham uma certa dependência dele. 
-
-O primeiro impulso foi de responder para usar um recurso de Fixtures ( ou similiar), onde ele pode &#8220;criar&#8221; elementos no DOM durante um cenário de teste e depois removê-los para não atrapalhar os demais.  Embora isso resolva o problema dele - de testar funções que precisem de elementos HTML, a pergunta dele suscita uma discussão bem mais ampla e interessante. 
-
-Hoje é um fato que nossos front-end ( client side ou interface web ou como queira chamar) são cada vez mais ricos &#8230; Tem muito ( mas muito mesmo) código Javascript para criar uma experiência para o usuário boa. Se acha que estou exagerando, abrar seus próprios arquivos ou então converse com um desenvolver front-end mais experiente. 
-
-Com uso maior do javascript, o cuidado com seu uso também tem que ser maior. Não é mais aquela função de duas linhas que abre um alert ou aquelas validações simples do seu form. Acredito que em muitas páginas a quantidade de linhas de Javascript é maior que a de html e css. Tudo depende da riqueza da experiência ( veja que não estou considerando CSS3 que &#8220;substitui&#8221; bastante algumas coisas). 
-
-Mas chega de enrolação e vamos ao que interessa: como a gente organiza melhor o nosso código. 
-<strong>Primeira dica é separá-lo em um arquivo. Nada de script na página, por favor</strong>. Deixe para fazer isso em última instância. Acredite, sempre existe um jeito de desacoplar. 
-
-Caso você já tenha programado alguma coisa no SERVER-SIDE(adoro esse nome, parece que é outra dimensão), sabe que existem diversos padrões de designs( boas práticas). Um deles, e mais famoso, é o MVC - model view controller. Esse pattern ajuda a gente manter bem separado a lógicas de apresentação da lógica de negócio. Assim ao mexer num, não necessariamente precisará mexer noutro. 
-
-Seguindo essa filosofia, procuro desenvolver minhas lógicas de forma que eu separe bem oque é apresentação/animação da lógica de &#8220;negócio&#8221; da minha página. Por exemplo, imaginemos que agora temos que validar alguns dados e mostrar um aviso com os erros. O que faria seria quebrar isso em diversas funções. Uma para cada camada, no mínimo: 
-[cc lang=&#8221;javascript&#8221;]
-function validaCampo(dados){
-&#8230;
-}
-
-function avisaErro(mensagem){
-&#8230;
-}
-
-Erros = {
-  &#8220;nome_obrigatorio&#8221;: &#8220;Campo nome deve ser obrigatorio&#8221;
-}
-[/cc]
-
-Sei que o exemplo acima pode ser muito simples. Mas ele facilita testar e ainda por cima facilita alterar qualquer coisa na lógica de cada parte sem ter que mexer em um monte de lugar ou ter um método de 40 linhas para fazer uma validação. 
-
-Outro exemplo, mais próximo do real, imagina que recebe dados de um form, posta-os via ajax, atualiza uma listagem abaixo e mostra mensagem de sucesso ou erro: 
-
-[cc lang=&#8221;javascript&#8221;]
-function Requisicao(){
-}
-
-Requisicao.prototype.envia = function(url,dados){ //faz algo aqui};
-
-function ItemLista(){}
-
-ItemLista.prototype.renderizaHtml = function(){ //aqui voce pode colocar a logica e escrever o item no html};
-
-function submit(){
-  var form = document.getElementByTag(&#8220;form&#8221;);
-  &#8230;
-  var requisicao = new Requisicao();
-  var item; 
-  try {
-    requisicao.envia(form.url); 
-    item  = new Item(requisicao);
-  catch {
-    avisaErro(&#8220;Ocorreu um envio no envia de dados&#8221;);
-  }
-
-  item.renderizaHtml();
-}
-[/cc]
-
-O exemplo acima é apenas conceitual e está faltando coisa para caramba. Mostra bem, como separar bem as coisas e garantir uma boa legibilidade. Para testar isso você pode fazer sem precisar de acessar o DOM, fazendo mock das chamadas onde isso ocorre. 
-
-Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas e frameworks para ajudar nesse sentido.
+<p>Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro.</p>
 ]]></content>
   </entry>
   
@@ -446,73 +368,103 @@ Bom num próximo artigo avançamos mais no assunto e mostro algumas bibliotecas 
     <link href="http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/"/>
     <updated>2011-10-06T00:00:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos</id>
-    <content type="html"><![CDATA[Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.
+    <content type="html"><![CDATA[<p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
 
-&nbsp;
-Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste de algo&#8221;, function(){
-    it(&#8220;deve acontecer algo e o valor ser outro&#8221;, function(){
-        expect(true).toBeTruthy();
-    });
-});
-[/cc]
+<p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
 
-&nbsp;
-
-No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função. 
-
-Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois). 
-Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo: 
-
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste algo com before e after&#8221;, function(){
-    var variavel;
-
-    beforeEach(function(){
-        variavel = true;
-    });
-
-    afterEach(function(){
-        variavel = false;
-    });
-
-    it(&#8220;teste&#8221;, function(){
-        expect(variavel).toBeTruthy();
-    });
-});
-[/cc]
-
-&nbsp;
-Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;teste algo com before e after&#8221;, function(){
-    var variavel;
-
-    beforeEach(function(){
-        variavel = true;
-        setTimeout(function(){
-            variavel = false;
-        }, 100);
-
-    });
-
-    it(&#8220;teste&#8221;, function(){
-        expect(variavel).toBeTruthy();
-        waits(200);
-        runs(function(){
-            expect(variavel).toBeFalsy();
-        });
-    });
-});
-[/cc]
-
-&nbsp;
-O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.
-
-Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste de algo&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;deve acontecer algo e o valor ser outro&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função.</p>
+
+<p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
+Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>        <span class="nx">waits</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">runs</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
+
+<p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
 ]]></content>
   </entry>
   
@@ -663,118 +615,6 @@ Fiquem ligado no blog que em breve vou colocar uns tutoriais de coisas do Jasmin
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Respondendo uma pergunta sobre TDD]]></title>
-    <link href="http://andrefonseca.net/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/"/>
-    <updated>2011-09-28T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd</id>
-    <content type="html"><![CDATA[No post que anterior, no qual falei sobre <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a>, recebi um comentário perguntando dentro de algumas situações se O TDD se encaixava ou não.  Como a dúvida é recorrente e o tema é bastante controverso, resolvi, ao invés de responder o comentário dele, escrever um post.
-
-A primeira coisa, em minha opinião, que tem que ficar clara, que <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um metodologia de desenvolvimento e não de projeto. Usamos <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> para gerar código melhor e com isso aumentar a qualidade do que estamos fazendo.  Testar antes não é garantia de zero bugs, mas ajuda a construir uma solução melhor pensada, simples, concisa,  e, sim, com testes automatizados que irão evitar muitos bugs.
-
-<a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é uma forma de trabalho que se encaixa em qualquer modelo de equipe/projeto.  Se o seu time está em algo mais ágil ou waterfall, não faz a mínima diferença. Sem o seu time, irá entregar complexidade, pontos por caso de uso ou pontos de função isso também não faz diferença.  Pois, como já disse, <a title="Wikipedia TDD" href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">TDD</a> é um filosofia de desenvolvimento e não de gestão.
-
-Ela trabalha em cima de ciclos pequenos onde a gente escreve o teste com a necessidade; após escrevemos o código para atender a necessidade e fazer o teste passar e por fim revistamos a solução para melhorá-la buscando princípios de <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" target="_blank">Clean Code</a> ( SOLID).  Se no final desse ciclo temos uma história entrega (por exemplo uso de quadros - Kanban, etc) ou se temos um ponto de função, observe que não faz diferença.  O que pode acontecer, no caso de pf é que deverá prever isso ( eu acho - nunca trabalhei com pontos de função).
-
-Uma boa dica é que procure um DOJO (acesse o site do <a href="http://dojorio.wordpress.com/" target="_blank">DojoRio</a>) e veja na prática isso acontecer e como ela não tem relação com a gestão.
-
-Se quer entender mais sobre TDD leia o <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="_blank">livro</a> do Kent Beck. Existe uma infinidade de outros livros sobre tão bons, mas acredito que seja legal começar pelo início. Depois a medida que for se sentindo mais confortável &#8230;
-
-Assim, sem mais rodeios vamos a resposta a pergunta que me fizeram:
-
-1. Posso usar TDD com um projeto que me exija entregar 4 a 40Pf ou qualquer outra coisas?
-
-SIM ! Se acha que estou exagerando, procure o Alex Gomes da <a href="http://www.seatecnologia.com.br/" target="_blank">SEA Tecnologias</a>. Seu maior cliente é o governo federal.  Existem outros exemplos como por exemplo
-
-2. Código legado ?
-
-Sim dá para usar TDD. Para te ajudar recomendo a leitura do livro <a title="Livro na Amazon" href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052" target="_blank">Working Effectively with Legacy Code</a> do Michael Feathers. Ele é uma excelente forma de ver como você pode testar o seu código legado.
-
-Por fim espero ter te ajudado. E caso tenham dúvidas podem comentar que irei responder.
-
-&nbsp;
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TDD no FrontEnd]]></title>
-    <link href="http://andrefonseca.net/blog/2011/09/27/tdd-no-frontend/"/>
-    <updated>2011-09-27T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/09/27/tdd-no-frontend</id>
-    <content type="html"><![CDATA[Sou um adepto de TDD e por isso sempre procurei uma forma de aplicar tudo que aplicava no meu código &#8220;server side, no meu código &#8220;client side&#8221;. Muitas vezes, essa solução era usar alguma ferramenta (ou biblioteca) que simulava a navegação do cliente pela página. Embora isso seja excelente, não era exatamente o que queria. Queria algo que me permitisse construir todo o javascript usando a filosofia de TDD ( e com isso conseguir um código limpo).
-
-Os ditos desenvolvedores FrontEnd hão de concordar comigo que muitas vezes o código Javascript fica uma verdadeira bagunça. São poucos que procuram organizar as coisas, criar componentes e funções para os comportamentos repetidos e etc. Fica a dica de ver a palestra do <a title="Leonardo Balter" href="http://leobalter.net" target="_blank">LeoBalter</a> - WTF Javascript.
-
-Na grande maioria dos projetos que acompanhei (trabalhei ou vi) as coisa cresciam de maneira muito orgânica e com isso, nunca via uma preocupação com nomes de métodos, separação, DRY e outros princípios de &#8220;Clean Code&#8221;.
-
-TDD, na minha visão, é muito mais para ajudar nesse sentido do que simplesmente criar teste automatizados. Quando escrevemos os teste antes, estamos ali &#8220;verbalizando&#8221; a forma que gostaria que nossas apis seja consumidas &#8230; estamos na posição de quem irá usar um dia aquilo. Só nisso a diferença é mostruosa: já começamos a ver coisas repetidas; nomes de métodos; coisas que deveriam estar em classes e etc.
-
-Um exemplo seria quantas vezes não buscamos um mesmo elemento no mesmo script? Sabia que isso é perda de processamento? Muitas vezes bastava que fizesse isso e guardasse a referência numa variável. Isso, ao escrever os testes antes, fica bem evidente. Tente você mesmo e me diga.
-[cc lang=&#8221;javascript&#8221;]
-$(&#8220;algo&#8221;).hide();
-&#8230;
-$(&#8220;algo).click(function(){ &#8230;
-//Poderiamos ter algo mais assim e os testes irão mostrar isso - famosos smells
-var algo = $(&#8220;algo&#8221;)
-algo.hide()
-algo.click(&#8230;
-[/cc]
-
-Outra coisa que vem com o uso de TDD na escrita de javascript é que você começa a ter uma rede de proteção que quando for necessário alterar algo fará com fique mais tranquilo quanto a introduzir um bug ou quebrar um comportamento já existente.
-Num próximo artigo irei falar de bibliotecas de teste de Javascript e qual estou usando.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Usando parametros da linha de comando no Rake e no Capistrano]]></title>
-    <link href="http://andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/"/>
-    <updated>2011-09-06T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano</id>
-    <content type="html"><![CDATA[Pessoal, segue abaixo uma tradução livre de um post interessante que explica como você pode usar parametros da linha de comando dentro de sua task do RAKE ou do CAPISTRANO. O original se encontra <a title="Ryan's Scraps" href="http://ryandaigle.com/articles/2007/6/22/using-command-line-parameters-w-rake-and-capistrano" target="_blank">aqui</a>
-todos os projetos que já trabalhei até hoje exigem um bom número de task em RAKE e CAPISTRANO. Desde que meus modelos são tão grandes quanto necessário, estas task e receitas são em geral pequenas e procuram fazer pouco lógica delegando para o modelo apropriado&#8230;
-O que desejo é falar sobre é que sempre estamos precisando passar parametros para estas tasks, e na maioria das vezes é bastante  escassa as documentações para fazer isso. 
-Imagine que  você quer fazer algo como: 
-[cc lang=&#8221;bash&#8221;]
-rake options:show opt1=value1
-[/cc]
-E dentro da task deseja pegar esse valor e fazer algo. Para resolver fica mais ou menos assim: 
-[cc lang=&#8221;ruby&#8221;]
-namespace :options do
-
-  desc &#8220;Show how to read in command line options&#8221;
-  task :show do
-    p &#8220;option1 is #{ENV[&#8216;opt1&#8217;]}&#8221;
-  end
-
-end
-[/cc]
-
-Usando parametros da linha de comando do Capistrano: 
-Aqui as coisas são um pouco diferente. É necessário que use a opção -s na linha de comando para ativar a função de parser do chave/valor. Veja o exemplo abaixo: 
-[cc lang=&#8221;bash&#8221;]
-cap -a show_options -s opt1=value1
-[/cc]
-Assim você um dicionário dentro do capistrano (receita) que a chave é opt1 e o valor dele é value1. voce pode acessar diretamente a chave por causa do method-missing que implementa isso para você. Fica assim o código. 
-[cc lang=&#8221;ruby&#8221;]
-task :show_options do
-  p &#8220;option1 is #{opt1}&#8221;
-end
-[/cc]
-
-Para maiores detalhes veja o artigo original e leia a documentação do Capistrano. Fiquem a vontade para comentar e assim que puder respondo. 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Palestra no fisl]]></title>
-    <link href="http://andrefonseca.net/blog/2011/06/30/palestra-no-fisl/"/>
-    <updated>2011-06-30T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/06/30/palestra-no-fisl</id>
-    <content type="html"><![CDATA[Segue abaixo o slides da palestra que acabei de dar no FISL. Obrigado a todos que assistiram e deram seu feedback.
-<div style="width:425px" id="__ss_8470619"> <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/aoqfonseca/codigo-legado-fisl-8470619" title="Codigo legado fisl" target="_blank">Codigo legado fisl</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/8470619" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/aoqfonseca" target="_blank">aoqfonseca</a> </div> </div>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Alterando a versÃ£o firefox do selenium-server.jar]]></title>
     <link href="http://andrefonseca.net/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/"/>
     <updated>2011-06-28T00:00:00-03:00</updated>
@@ -813,92 +653,657 @@ Pronto agora você tem um jar do selenium server com suporte a versão que quer 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Usando Jasmine]]></title>
-    <link href="http://andrefonseca.net/blog/2011/06/07/usando-jasmine/"/>
-    <updated>2011-06-07T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/06/07/usando-jasmine</id>
-    <content type="html"><![CDATA[Num post passado dei uma breve introdução do <a title="Site do Jasmine" href="http://pivotal.github.com/jasmine/">Jasmine</a>.  Jasmine é uma biblioteca de BDD para JavaScript. Nesse artigo quero mostrar um passo a passo simples para você escrever seus primeiros testes.  Se estiver fazendo uma app em Ruby, mais precisamente em Rails, tudo isso fica muito fácil pois basta instalar a gem do Jasmine e seguir os passos que o próprio site indica. Abaixo mostrarei como fazer quando você está apenas desenvolvendo um javascript - fora do contexto de uma app.
+    <title type="html"><![CDATA[Setup Ambiente Ruby - instalando homebrew e git]]></title>
+    <link href="http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/"/>
+    <updated>2011-05-12T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git</id>
+    <content type="html"><![CDATA[Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-Primeiro instale o NodeJS e o npm em sua máquina. Caso não saiba como, no meu blog mesmo tem um artigo explicando como fazer isso (veja no histórico).  Tendo esses dois instalados, vá a sua linha de comando e execute o seguinte comando:
-[cc lang=&#8221;bash&#8221;]
-npm -g install jasmine-tool
-[/cc]
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-Esse comando acima instalará em seu computador um conjunto de ferramentas que irá possibilitar, você executar seus testes e outras coisas interessantes. Veja o site do produto <a href="https://github.com/jamescarr/jasmine-tool">clicando aqui</a>. 
-Instalada a ferramenta, entre na sua pasta de projeto e digite o comando: 
-[cc lang=&#8221;bash&#8221;]
-andre.fonseca@mac179016 ~/projects/test $ jasmine init
-Jasmine has been installed with example specs.
+Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
+Existem caminhos alternativos para instalá-lo. Mas não recomendo.
+Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
+</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
+</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
+</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>
+</span><span class='line'>Principal Commands:
+</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
+</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
+</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
+</span><span class='line'>uninstall formula ...
+</span><span class='line'>update
+</span><span class='line'>
+</span><span class='line'>Other Commands:
+</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
+</span><span class='line'>options formula
+</span><span class='line'>deps formula
+</span></code></pre></td></tr></table></div></figure>
 
-To run the server:
+Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
+Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
+</span></code></pre></td></tr></table></div></figure>
+Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-jasmine run
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
+</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
+</span></code></pre></td></tr></table></div></figure>
 
-To run the server and monitor for changes:
-
-jasmine mon
-
-To run the automated CI task with WebDriver:
-
-jasmine ci
-[/cc]
-Isso irá montar uma estrutura de projeto pronta para ser usada para os seus testes. Verá que já terá alguns exemplos para teste. Para ver se está tudo ok, rode o comando de teste: 
-[cc lang=&#8221;bash&#8221;]
-jasmine ci
-[/cc]
-Se você estiver fazendo isso no Mac OS 10.6.6 ou superior deve ocorrer. Assim que tiver a solução eu aviso aqui.
+Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Instalando RVM]]></title>
-    <link href="http://andrefonseca.net/blog/2011/06/03/instalando-rvm/"/>
-    <updated>2011-06-03T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/06/03/instalando-rvm</id>
-    <content type="html"><![CDATA[O RVM é uma forma de criar diversos ambientes de ruby (ambiente Virtuais) de forma isolado um do outro. Assim podemos ter um ambiente para cada projeto nosso e evitar que alguma gem entre em conflito com outro projeto. 
-Para instalar é bem fácil e basta seguir as instruções do site do produto (<a href="https://rvm.beginrescueend.com/">clique aqui</a> para ver)
-No seu terminal digite o comando para baixar e instalar: 
-[cc lang=&#8221;bash&#8221;]
-bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
-[/cc]
-Fique atento que o comando acima precisa do git instalado.  Depois disso, no meu caso, preciso de várias versões do ruby na minha máquina. Uma delas é o Ruby Enterprise. Para instalá-los, faça: 
-[cc lang="bash"]
-andre.fonseca@mac179016 ~ $ rvm install ree
-Installing Ruby Enterprise Edition from source to: /Users/andre.fonseca/.rvm/rubies/ree-1.8.7-2011.03
-ree-1.8.7-2011.03 - #fetching (ruby-enterprise-1.8.7-2011.03)
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 7713k  100 7713k    0     0   545k      0  0:00:14  0:00:14 --:--:-- 1499k
-[/cc]
-Esse comando de cima irá instalar o REE. O resto das distribuições deve procurar pelo nome (1.9 --> ruby-1.9.2, por exemplo). 
-Por fim, você pode criar um gemset (pasta de gems) para cada projeto. Para isso use os comandos (no meu exemplo abaixo estou criando um gemset chamado participacoes, para um projeto meu) 
-[cc lang=&#8221;bash&#8221;]
-rvm gemset create participacoes
-rvm gemset use participacoes
-[/cc]
-Agora é acessar meu projeto e dar um bundle install para instalar minhas Gems. Prontinho e tudo funcionando. 
+    <title type="html"><![CDATA[Script para organizaÃ§Ã£o das minhas fotos]]></title>
+    <link href="http://andrefonseca.net/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/"/>
+    <updated>2011-05-06T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/05/06/script-para-organizacao-das-minhas-fotos</id>
+    <content type="html"><![CDATA[A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da morte&#8221;.  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
+
+Após a chegada do novo computador, montado  e o Ubuntu 11.04 instalado no novo computador (o pessoal insiste em mandar coisas com o SO Windows já instalado mas isso é papo para outro post), resolvi dar uma olhada no backup e organizar principalmente minhas fotos que estavam uma verdadeira zona: fotos de assuntos diferentes na mesma pasta, tudo misturada, etc.
+
+Como programador que sou decidi que iria arrumar algo que pudesse fazer isso de forma automatizada. A primeira tentativa foi buscar no google por alguma ferramenta gratuita que já fizesse isso porém logo desisti. Já venho um tempo estudando Shell Script e Bash e depois de um twitter do conhecido Marcos Tapajós, resolvi que iria fazer isso por script.. até porque não achei ferramentas para fazer do jeito que eu queria.
+
+Passei a buscar como faria esse script, pois a minha idéia era de pegar todos as minhas fotos que estavam espalhadas por várias pastas e arrumá-las agrupando-as por ano, mês e dia.  Confesso que pensei em fazer algo programa em Python ou Ruby ou Groovy para resolver meu problema, entretanto, cismei que deveria fazer isso em shell script pelo aprendizado e por acreditar que seria mais rápido e simples.
+
+Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra da Globo.com (Magno) e ele me deu a dica de alguns sites que tinham exatamente o que eu queria. Sendo bem sincero bastou ir no google e digitar : organize photo shell script, que apareceu vários que faziam oque eu queria. Assim, resolvi escrever esse post para passar adiante (em português)  o script que fiz baseado no que eu encontrei e com o passo a passo (não encontrei nada em português - provavelmente erro meu).
+
+Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install libimage-exiftool-perl
+</span></code></pre></td></tr></table></div></figure>
+
+Uma vez que eles esteja instalado, crie um arquivo para o seu script:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch organiza_fotos.sh
+</span><span class='line'>vim organiza_fotos.sh
+</span></code></pre></td></tr></table></div></figure>
+
+Agora com o editor aberto é só copiar e colar o código abaixo:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">from</span><span class="o">=</span>/media/Externo/minhas_imagens
+</span><span class='line'><span class="nv">to</span><span class="o">=</span>/media/Externo/fotos_organizadas
+</span><span class='line'>find <span class="nv">$from</span> -iname <span class="s1">&#39;*jpg&#39;</span> | <span class="k">while </span><span class="nb">read </span>FILENAME
+</span><span class='line'><span class="k">do</span>
+</span><span class='line'><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f1 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">month</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f2 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">day</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f3 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">target</span><span class="o">=</span><span class="nv">$to</span>/<span class="nv">$year</span>/<span class="nv">$month</span>/<span class="nv">$day</span>
+</span><span class='line'>mkdir -p <span class="nv">$target</span>
+</span><span class='line'>cp <span class="s2">&quot;$FILENAME&quot;</span> <span class="nv">$target</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Moved $FILENAME to $target&quot;</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+&nbsp;
+
+Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde ele buscará as fotos; a segunda qual será o caminho base para onde as fotos organizadas serão copiadas.
+
+Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[IntroduÃ§Ã£o de teste JavaScript com Jasmine]]></title>
-    <link href="http://andrefonseca.net/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/"/>
-    <updated>2011-06-02T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine</id>
-    <content type="html"><![CDATA[No dia 18 de junho vai rolar a primeira edição do evento <a href="http://www.frontinrio.com.br">FrontinRio</a>. Ele foi primeiramente idealizado pelo <a href="http://leobalter.net">Leonardo Balter</a>(@leobalter), e foi organizado por diversas pessoas como Ramon Page, Rafael Tauí, Bernard de Luna, eu, etc.  Esse evento é totalmente focado em desenvolvimento da parte cliente de aplicações web - conhecido pela galera como desenvolvimento Front ou Client. 
-Recomendo muito a galera ir. Vai ser um dia muito legal com gente altamente compartilhando suas experiências, trazendo novidades e como são seus dias a dias de projetos e empresa. 
-Eu serei um dos que irá apresentar nesse evento. O assunto será Jasmine. <a href="http://pivotal.github.com/jasmine/">Jasmine</a> é uma biblioteca de teste para JavaScript. Ele é mais focado no princípio de BDD (Behavior Driven Dev.) do que em TDD. Sendo assim apresenta uma sintaxe, que eu pessoalmente gosto muito, para escrever teste que fica bastante elegante poderoso. Além disso oferece suporte a testes assíncronos e spies (bibliotecas para &#8220;espionar&#8221; chamadas de métodos e fazer mock) de forma muito simples. 
-Para quem desenvolve com Ruby, verá a forma de escrever suas especificação é muito semelhante ao <a href="http://rspec.info/">RSpec</a>. Veja o exemplo abaixo: 
-[cc lang=&#8221;javascript&#8221;]
-describe(&#8220;Aqui vai uma descricao&#8221;, function(){
-  it (&#8220;linha de teste&#8221;, function(){
-    expect(true).toBeTrue();
-  }
-}
-[/cc]
-Outra coisa legal dessa biblioteca é que ela não precisa de um DOM (simplificando seria que ela não precisa de uma página) para executar. E é totalmente auto-contida: só precisa dela mesma para funcionar e nenhuma outra biblioteca.
-Se você quiser usar ainda dentro de um projeto Ruby(com rake), o próprio projeto possui uma gem para instalar que torna o processo ainda mais suave e fácil de ser feito. 
-Jaba feito fica agora o convite para ver minha palestra no dia 18 de junho para conhecerem o restante do <a href="http://pivotal.github.com/jasmine/">Jasmine</a>.
+    <title type="html"><![CDATA[Postando fotos no picasa pela linha de comando]]></title>
+    <link href="http://andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/"/>
+    <updated>2011-05-06T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando</id>
+    <content type="html"><![CDATA[Creio que depois de ler o meu último post, todo mundo já está com suas fotos arrumadinhas. Sendo assim é hora de compartilhá-las com seus amigos. Eu uso o Picasa para isso pois gosto dele e sempre me atendeu bem. Muitos amigos dizem que o Flickr é melhor mas prefiro meu bom e satisfatório picasa. Muitos fariam é baixar o picasa desktop (nem sei se tem para o Ubuntu) e a partir dele iriam organizar suas fotos e montar seus albuns e por fim, publicá-los na grande rede.
+
+Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente &#8220;ajuda&#8221; ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
+
+Para instalá-lo, no Ubuntu, é bem simples:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install googlecl
+</span></code></pre></td></tr></table></div></figure>
+
+Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install googlecl
+</span></code></pre></td></tr></table></div></figure>
+
+Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
+Uma vez instalado é só alegria e usar:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre@vermelhinho:~<span class="nv">$ </span>google <span class="nb">help</span>
+</span><span class='line'>Welcome to the Google CL tool!
+</span><span class='line'>Commands are broken into several parts:
+</span><span class='line'>service, task, options, and arguments.
+</span><span class='line'>For example, in the <span class="nb">command</span>
+</span><span class='line'><span class="s2">&quot;&amp;gt; picasa post --title &quot;</span>My Cat Photos<span class="s2">&quot; photos/cats/*&quot;</span>
+</span><span class='line'>the service is <span class="s2">&quot;picasa&quot;</span>, the task is <span class="s2">&quot;post&quot;</span>, the single
+</span><span class='line'>option is a title of <span class="s2">&quot;My Cat Photos&quot;</span>, and the argument is the
+</span><span class='line'>path to the photos.
+</span><span class='line'>
+</span><span class='line'>The available services are
+</span><span class='line'><span class="s1">&#39;picasa&#39;</span>, <span class="s1">&#39;blogger&#39;</span>, <span class="s1">&#39;youtube&#39;</span>, <span class="s1">&#39;docs&#39;</span>, <span class="s1">&#39;contacts&#39;</span>, <span class="s1">&#39;calendar&#39;</span>, <span class="s1">&#39;finance&#39;</span>
+</span><span class='line'>Enter <span class="s2">&quot;&amp;gt; help &quot;</span> <span class="k">for </span>more information on a service.
+</span><span class='line'>Or, just <span class="s2">&quot;quit&quot;</span> to quit.
+</span><span class='line'>andre@vermelhinho:~<span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+E para enviar suas foto fica mais ou menos assim:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>google picasa create <span class="s2">&quot;Cat Photos&quot;</span> ~/photos/cats/*.jpg
+</span></code></pre></td></tr></table></div></figure> 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mais uma do SOLR - Dynamic Fields]]></title>
+    <link href="http://andrefonseca.net/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/"/>
+    <updated>2011-04-08T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/04/08/mais-uma-do-solr-dynamic-fields</id>
+    <content type="html"><![CDATA[Como alguns que acompanham o blog já devem ter percebido, eu estou usando o SOLR em um projeto. O SOLR é um servidor Web de busca, feito em cima do Lucene (grupo Apache). Ele é realmente poderoso e simples de usar. Recomendo muito para quem precisa fazer buscar textuais pesados e que tem uma quantidade razoável de documentos/dados para indexar.  Como minha aplicação é Rails, estou usando uma GEM, chamada Sunspot, que serve de DSL (facilitador) nessa &#8220;conexão&#8221; entre minha app e o SOLR.
+
+Nesse dias surgiu a necessidade de fazer uma nova feature em nosso sistema que parece ser bem simples mas como busco pelo SOLR a coisa ganhou bastante complexidade.Só para que entendam o problema, deixe me contextualizá-los.  Minha aplicação é uma ferramenta de seleção de pessoas - CASTING. Nela um administrador cria uma campanha e define um formulários com N perguntas que serão respondido pelo candidato. Ao finalizar o preenchimento, esse formulário vira um inscrições e salvamos suas respostas.  Surgiu então a necessidade de buscarmos por inscrições através de valores de respostas a perguntas específicas:  Quero buscar por todas as inscrições que responderam Vasco para a pergunta &#8220;Qual é o seu time do coração?&#8221;.
+
+Muitos, se não considerarmos que estamos usando o SOLR e que vamos fazer essa pesquisa direto no banco de dados, vão dizer é a solução bem simples: Se resume a um query onde informo o campo e o valor de resposta desejado. Tendo isso busca pelas inscrições que tenha aquela resposta. Simples, não é? Nem tanto. O meu cliente deseja que isso esteja integrado aos demais filtros já existentes - idade, sexo, estado, status, etc.
+
+Bem antes desse nova funcionalidade, a busca direto no banco, dado a quantidade de dados, já se mostrou inviável. Logo, sem chances de eu largar o SOLR e voltar para o banco ou tentar fazer algo híbrido.
+
+Parte para tentar descobrir se existia algo dentro do universo do SOLR e/ou do Sunspot onde eu pudesse definir um campo do indice de forma dinâmica, ou seja, para cada instancia que for criando. Depois de um certo tempo gasto com o Oráculo (Google) , fiquei feliz que mais uma vez nem a gem nem o servidor me decepcionou.
+
+O Sunspot tem um recurso que é o &#8220;dynamic field&#8221; que é o seguinte: todo o indice de sua classe é feito no build da classe, ou seja, no seu load.  Como precisava definir coisas que só existiriam no contexto da instância, eu precisa de algum recurso que me permitisse delegar a criação de alguns campos nesse momento de indexação (instancia). Esse recurso de &#8220;dynamic&#8221; é exatamente isso: ele  configura um bloco que será criado quando ele for indexar. Com isso eu pude buscar no SOLR por campos que só existem para algumas inscrições.
+
+Em termos de código é mais ou menos o seguinte. Imagine que sua Inscricao tenha uma relação has_many com Resposta.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Inscricao</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">has_many</span> <span class="ss">:repostas</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+A classe Resposta faz referencia a um campo de seu formulário. Logo a busca terá como nome do campo do indice o campo + id e seu valor será a resposta. Assim o mapeamento fica:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">respostas</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="k">do</span> <span class="o">|</span><span class="n">mapa</span><span class="p">,</span> <span class="n">resposta</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">mapa</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span> <span class="n">resposta</span><span class="o">.</span><span class="n">campo</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_sym</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">resposta</span><span class="o">.</span><span class="n">valor</span><span class="p">})</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+Com isso acima, fica pronto a configuração. Para busca fica assim:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">search</span> <span class="k">do</span>
+</span><span class='line'><span class="n">dynamic</span> <span class="ss">:respostas</span> <span class="k">do</span>
+</span><span class='line'><span class="n">with</span><span class="p">(:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;teste&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
+Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando SOLR parte 2 - Testes e Cucumber]]></title>
+    <link href="http://andrefonseca.net/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/"/>
+    <updated>2011-03-31T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber</id>
+    <content type="html"><![CDATA[Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
+
+Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
+
+Bem vamos lá. Imaginemos que você quer que a classe Minha seja indexa e posteriormente busca pelo SOLR, basta colocar no top o require:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_rails&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Feito isso e mais os passos já descritos, creio que agora já temos algo funcional.
+
+Bem vamos para a parte de testar a coisa. Claro que todos nós somos adeptos do TDD (Test Driven Development - Desenvolvimento Orientado a Testes) e por isso vamos sempre querer escrever nossas especificações antes. Falei especificações pois considero que você seja uma pessoa experta e esteja usando o RSPEC.
+
+Para isso, como disse na parte 1, é preciso que você use alguns matchers que irão facilitar em muito a sua vida. Eles estão dentro da gem sunspot_matchers. Dentro do seu spec_helper (isso já vale para todo projeto ruby que esteja usando o Rspec), coloque as linhas:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_matchers&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatcher</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Estamos fazendo aqui (acredito que já tenho dito isso) é colocando uma interceptador das chamadas da DSL a sessão com o SOLR para ver se tudo está ocorrendo do jeito que queremos. Seria algo como o nosso mocka, para quem conhcece.
+
+Segue abaixo um exemplo de um código de teste. Veja como fica bem simples testar se a busca, no caso, está incluindo os itens que preciso para fazer a filtragem:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de finalizacao maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:start_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data finalizacao menor que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:end_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de nascimento maior que&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="o">.</span><span class="n">years_ago</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:idade_final</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;20&quot;</span><span class="p">})</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:data_nascimento</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+A coisa fica bem próxima as expectations que estamos acostumados a usar.  Com isso temos nossos testes de especificação prontos e podemos então passar para os teste de aceitação.
+
+Antes que alguém comece a dizer que estou &#8220;roubando&#8221; pois estou fazendos os testes de aceitação depois de já ter algo implementado, quero dizer que sou adepto da abordagem emergente. Vou implementado os testes a medida da necessidade - isso é o que chamam de inside out.
+
+Imagino que você que esteja lendo e desenvolvendo junto comigo deva usar o Cucumber para fazer os seus testes de aceitação. Também imagino que, ao contrário dos testes de especificação ou microtestes, você agora queira que as coisas estejam rodando a vera.
+
+Para ter um SOLR funcionando para você executar os seus testes de Cucumber, vá no arquivo, features/support/env.rb e coloque as seguintes linhas:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">start</span>
+</span><span class='line'><span class="no">Before</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">After</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">remove_all_from_index!</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">at_exit</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Saindo do solr&quot;</span>
+</span><span class='line'>    <span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">stop</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Essas linhas irão iniciar um SOLR; a cada teste pedir para reindexar os dados neles e por fim, quando tudo terminar, ele irá parar o solr que você iniciou.  Uma breve ressalva:  tive um mega problema&#8230; quando fiz isso, meus teste de jeito algum passavam. Isso porque, por motivos que ainda não sei, quando criamos na mão nossos arquivos, precisamos pedir que sejam indexados, ou seja,  ele não indexa automaticamente. Pelo oque li a gem faz isso pelos controllers. Assim que tiver certeza sobre isso escrevo algo. A questão é que tive que escrever um maldito passo para indexar e chamá-lo toda vez que algo era criado. Algo como abaixo:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dado</span><span class="sr"> /ˆque preciso reindexar minhas coisas$/</span> <span class="k">do</span>
+</span><span class='line'>    <span class="no">Minhas</span><span class="o">.</span><span class="n">reindex</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+&#8230; Em um features da vida
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="no">Dado</span> <span class="n">que</span> <span class="n">crio</span> <span class="n">uma</span> <span class="n">coisa</span> <span class="n">minha</span>
+</span><span class='line'>    <span class="n">E</span> <span class="n">que</span> <span class="n">preciso</span> <span class="n">reindexar</span> <span class="n">minhas</span> <span class="n">coisa</span>
+</span><span class='line'>    <span class="no">Eu</span> <span class="n">vejo</span> <span class="n">essa</span> <span class="n">coisa</span> <span class="n">na</span> <span class="n">busca</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Usando o SOLR na sua app Rails - parte  1]]></title>
+    <link href="http://andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/"/>
+    <updated>2011-03-30T00:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1</id>
+    <content type="html"><![CDATA[Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
+
+Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
+
+A primeira conclusão que chegamos foi que precisamos tirar esse busca do banco de dados. Banco de dados são excelentes desde que mantenha sua busca navegando pelos indices das tabelas. Tente um fulltext search e verá o quanto será penoso, até mesmo em bases pequenas.  Para resolver isso pensamos em alguma solução de indexação e a melhor que vimos no momento foi o <a href="http://lucene.apache.org/solr/#intro">SOLR</a>.:
+<blockquote>Solr is the popular, blazing fast open source enterprise search platform from the Apache Lucene project. Its major features include powerful full-text search, hit highlighting, faceted search, dynamic clustering, database integration, and rich document (e.g., Word, PDF) handling. Solr is highly scalable, providing distributed search and index replication, and it powers the search and navigation features of many of the world&#8217;s largest internet sites.
+
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as <a href="http://tomcat.apache.org/">Tomcat</a>. Solr uses the <a href="http://lucene.apache.org/java/">Lucene Java</a> search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&#8217;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</blockquote>
+Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  java para indexação e busca) que permite que a gente fale com ela via HTTP (busque e indexe).  Roda em cima de um container servlet. Aqui no nosso caso usamos o jetty ao invés do Tomcat.
+
+O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
+
+Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="k">class</span> <span class="nc">Post</span>
+</span><span class='line'>        <span class="c1">#...</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">text</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:stored</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:author_name</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:blog_id</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:category_ids</span>
+</span><span class='line'>    <span class="n">float</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="ss">:using</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="ss">:ratings_average</span>
+</span><span class='line'>    <span class="n">time</span> <span class="ss">:published_at</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:sort_title</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">title</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^(an?|the)\W+/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">/</span><span class="p">)</span> <span class="k">if</span> <span class="n">title</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure> 
+
+No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">keyword</span> <span class="s2">&quot;teste&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:author_name</span><span class="p">,</span> <span class="s2">&quot;andre fonseca&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="mi">10</span><span class="o">.</span><span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>  
+
+Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MinhaClass</span> <span class="o">&gt;&gt;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">text</span> <span class="ss">:nome</span><span class="p">,</span> <span class="k">do</span> <span class="o">|</span><span class="n">minha_classe</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">minha_classe</span><span class="o">.</span><span class="n">outro</span><span class="o">.</span><span class="n">nome</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot_rails&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
+Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatchers</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="ss">:each</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="n">type</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
+Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Estudos Compartilhados IV - Arquitetura Emergente]]></title>
+    <link href="http://andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/"/>
+    <updated>2010-12-29T00:00:00-02:00</updated>
+    <id>http://andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente</id>
+    <content type="html"><![CDATA[No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
+
+Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
+<h2>Definir fazendo</h2>
+A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
+
+Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
+
+Nisso se encaixa o conceito de arquitetura emergente.
+<h2>Arquitetura emergente</h2>
+Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
+
+Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
+
+As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
+<h2>Refactoring</h2>
+Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
+
+Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
+
+Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
+
+Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
+
+Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
+
+&nbsp;
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Estudos Compartilhados - parte III]]></title>
+    <link href="http://andrefonseca.net/blog/2010/12/17/estudos-compartilhados-parte-iii/"/>
+    <updated>2010-12-17T00:00:00-02:00</updated>
+    <id>http://andrefonseca.net/blog/2010/12/17/estudos-compartilhados-parte-iii</id>
+    <content type="html"><![CDATA[No artigo passado da série &#8220;Estudo compartilhados&#8221;, abordei mais a questão da Orientação a Objeto e como ainda não nos entendemos bem com ela.  No finalzinho do artigo, rapidamente, falei sobre os testes automatizados no famoso TDD.
+
+TDD virou um buzzword. Traduzindo: Uma palavrinha da moda.  Hoje as empresa já colocam nos seus anuncios de vagas que o candidato que conhece TDD é um diferencial, outras até exigem. A questão é: Você sabe realmente o que é TDD?
+
+<strong>TDD é a sigla em inglês para TEST DRIVEN DESIGN ou design dirigido por testes. </strong>
+
+Mais uma vez para me ajudar com essa questão, pedi a ajuda para meu amigo <a href="blog.mar.ti.ns">Alexandre Martins</a>, e ele me recomendou ( meio óbvio), o livro do Kent Beck , criador do TDD,  <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&amp;qid=1292588088&amp;sr=8-1">TEST-DRIVEN DEVELOPMENT</a> . Além desse, Nunes também me recomendou alguns artigos e outros livros como o <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1292588280&amp;sr=8-1">Growing Object-Oriented Software, Guide by Test</a>, que mostram o caminho das pedras e como o teste pode ser o melhor amigo do desenvolvedor.
+
+Numa conversa com outra pessoa, Rafael Martins (Cabra) da Globo.com,  concluímos que muita gente acaba por ter uma visão torta do que vem ser testar antes. Testar antes parte da premissa, na minha concepção, de que é preciso um problema para procurarmos a solução. Seria mais ou menos assim:  Você tem que comer quando sentir fome, pois do contrário, você está sendo guloso e indo além de suas capacidades.
+
+Quando você cria os seus teste antes, baseado em suas necessidades, está de certa forma, criando um problema a ser resolvido. Se for disciplinado e apenas resolver aquele problema e repetir esse ciclo até que todos os requisitos sejam atendidos, a solução literalmente emerge. Isso mesmo: EMERGE.
+
+Muitas das pessoas que me ouviram falar disso, respondem dizendo que é mentira ou exagero da minha parte que a solução EMERGE. Convido, os descrentes, a assistir e participar de uma sessão de dojo.
+
+No livro <a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445/ref=sr_1_3?s=books&amp;ie=UTF8&amp;qid=1292594363&amp;sr=1-3">Agile Software Development</a>, também do UncleBob,  existe um capítulo em que ele descreve o desenvolvimento de um sistema para pontuação de boliche em que faz um par (pair programming) com outra pessoa e segue  conceitos como TDD e baby steps. É simplesmente revelador. Sei que exagerado mas é isso mesmo: REVELADOR ; pois ele simplesmente vai fazendo o sistema &#8220;sem pensar&#8221;. Dando pequenos passos, e sempre mantendo um dialogo e trocas constante com seu amigo, o design vai surgindo diante deles e se mostrando diferente do que se imaginava de inicio.
+<h2>TDD evita desperdício</h2>
+Um outro livro que recomendo muito é o Pragmatic Programmer. Nesse livro ele procura mostrar que o pragmatismo é uma boa filosofia para nós que fazemos software. Dentro disso, uma das coisas é a questão de evitar o desperdício.
+
+Evitar desperdício é algo muito amplo e engloba diversas atitudes que devemos ter como: automatizar tarefas repetitivas,  tornar simples fazer o certo,  não fazer mais do que é preciso, etc.
+
+Muitos se perguntam o que fazer para ser um programador ou ter um time altamente eficiente. Eu acredito que a solução vem de evitar desperdício e fazer o &#8220;justo necessário&#8221;. Isso também é conhecido como evitar o OverDesign. Sabe aquela aplicação simples para enviar arquivo para um servidor que o pessoal quer fazer com um monte de camada, abstrações, etc, justificando que isso facilitará uma possível modificação futura&#8230;Isso é um excelente exemplo de gasto desnecessário.
+
+Quando fazemos TDD e nos disciplinamos a fazer o teste passar (isso mesmo) a gente fica focado; ao ficar focado evitamos desvios e perdas de tempos fazendo coisas para necessidades que não existem ainda.
+<blockquote><strong>ATENÇÃO: ISSO NÃO SIGNIFICA QUE VOCÊ DEVE FAZER ARQUITETURA PORCA. SEU CÓDIGO DEVE SER LIMPO.</strong></blockquote>
+Testar depois é apenas automatizar. TDD é mais uma ferramenta de design.
+
+Até a próxima pessoal.
+
+&nbsp;
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Estudos Compartilhados - Part II - OrientaÃ§Ã£o a Objeto]]></title>
+    <link href="http://andrefonseca.net/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/"/>
+    <updated>2010-12-09T00:00:00-02:00</updated>
+    <id>http://andrefonseca.net/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto</id>
+    <content type="html"><![CDATA[Dando continuidade a série de artigos sobre meus estudos ( O estudo compartilhado),  gostaria de dividir algumas conclusões que tenho chego e lido sobre diversos assuntos.  Um desses assuntos é a Orientação a Objeto e seu uso efetivo e com qualidade.
+
+Dentro dos meus estudos, um livro que me foi recomendado e tem me ajudado muito nessa questão de código mais limpo, melhor uso de Orientação a Objeto, etc é o &#8220;Clean Code&#8221; do UncleBob (Robert Martin). Caso queira comprar tem no site (busque no google) do autor e na Amazon.  Fora o livro procurei por diversos artigos na internet( a maioria encontrei em blogs) para ter mais de um ponto de vista sobre o assunto.
+
+Uma coisa que ficou evidente para mim é que a forma dominante atual para o desenvolvimento é o paradigma OO (orientado a objeto). Nesse paradigma a lógica do negócio é implementado pela criação de objetos, suas relações e interações.  Quem não lembra dos famosos exemplos do Veículos e Carro, Avião e Asa, e um monte de outros exemplos.
+
+Acredito que mais de 90% dos produtos, pincipalmente na WEB, que estão sendo entregues foram feitos usando OO. Sendo assim é de se esperar que hoje já dominamos essa &#8220;ciência&#8221; e que somos extremamentes bons e eficientes em seu uso.
+
+Pasmem vocês, o que encontrei, foi exatamente o contrário.  Tem muito código por aí que ao invés de ficar mais legível, com arquiteturas fáceis de manutenciar, etc são de fato verdadeiros mostrinhos, empilhamentos de milhares de camadas sem necessidade, um monte de método com mil linhas e por aí as aberrações seguem.
+
+Na lista dessas coisas feias que fazemos dentro de OO, uma delas que me chamou muito atenção, pois foi citado em diversos artigos e por gente bastante competente, foi  usarmos padrões de soluções, padrões de código, onde, nem sempre, eles são necessários&#8230; Usamos por usar, por que todo mundo usa ou por que todo mundo faz assim. Isso me lembra muito a história do porco na floresta.
+<p style="text-align: left;"><a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png"><img class="size-full wp-image-511 aligncenter" style="margin-top: 11px; margin-bottom: 11px;" title="Screen shot 2010-12-09 at 12.26.15 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png" alt="" width="493" height="332" /></a> A classe acima é bom exemplo. Eu tirei, essa idéia, de um artigo que o Paulo Caelum postou o link em twitter recentemente.  A gente deve usar get e set somente se ouver alguma lógica que deva ser feita antes de definir um valor. Faz sentido get e set quando temos algo como definir o saldo (recebe um valor e desconta ou adiciona).Fora isso, fica melhor e mais limpo, deixar os atributos públicos. Fica mais significativo.</p>
+<p style="text-align: left;">Com toda a certezas os dinossauros sagrados do Java vão querer me queimar pois estou comentando uma heresia tamanha. Mas faça o exercício de reescrever o código acima sem o get e set e veja se não fica melhor e muito menos verboso.</p>
+Voltando para o livro do Clean Code que  citei lá no início do texto,  um outro aspecto que aprendi que é bastante &#8220;ferido&#8221; é o princípio de Responsabilidade Única.  Uma entidade, ou classe, dev ter uma única personagem ou função na lógica do negócio. Imagine que temos a lógica de um banco por exemplo tivéssemos a super, mega, fodolesca, classe conta que faria tudo&#8230; Além de ficar pouco claro as coisas você teriam com toda a certeza um arquivo de bilhões de linhas impossível de dar manutenção.
+
+Essa regrinha de ouro também se aplica aos métodos.  Quanta vezes, em nome da encapsulação,  vimos colegas e nós mesmos escrevendo método enormes que fazem milhões de coisas?
+
+No livro Clean Code e também no livro de Refactoring do Martin Fowler, tem excelente exemplos disso que citei acima, fazendo até um antes e depois.
+
+<a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png"><img class="alignright size-full wp-image-512" title="Screen shot 2010-12-09 at 12.39.10 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png" alt="" width="426" height="249" /></a>No exemplo ao lado, vemos que num mesmo método, temos a responsabilidade de obtermos todas as matérias, e de cada matéria as provas, de cada prova as notas, somar, calcular a média, e depois verificar se o aluno está aprovado.
+
+É muita coisa para um só pobre método. Além disso - olha que não fiz tudo - fica extremamente confuso para entender a lógica. Imagine coisas parecidas quanto temos lógicas de negócio ainda mais complicadas.
+
+Uma boa ferramenta para ajudar nesse processo são os testes.  Se você for fazendo passos pequenos,  e se deixar levar pelos testes ( crie os testes a medida das necessidades) você verá que o design tenderá a ficar melhor e as classes e/ou metódos seguirão naturalmente  a idéia de uma responsabilidade única.
+
+Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 ]]></content>
   </entry>
   

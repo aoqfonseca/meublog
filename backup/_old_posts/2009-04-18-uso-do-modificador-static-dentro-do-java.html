@@ -1,0 +1,115 @@
+--- 
+layout: post
+title: Uso do modificador static dentro do Java
+tags: 
+- "Inform\xC3\xA1tica"
+- Java
+- tutoriais
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+Uma coisa que poucas pessoas sabem é que, em Java, podemos usar o modificador estático (static) para classes e que tal fato pode ser bastante util na hora de escrever algumas coisas. Antes de mais, me desculpem os mais avançados em programação, é preciso gastar algumas linhas para explicar o que significa estatico.
+Dentro de orientação objeto dependendo da forma que voce declare algo dentro de uma classe, esta "coisa" terá o seu ciclo de vida ligado a classe, ou ao metodo, ou a um bloco, ou ao objeto. Em alguns livros você achará tal explicação como algo instancia do objeto, instancia do metodo, e por ai vai.... Que tal um exemplo para entendermo melhor
+Instancia do Objeto
+- é algo que vai existir enquanto existir o objeto. Não necessariamente nasce com o objeto mas "morre" com ele e seu valor está atrelado ao objeto.
+<code>
+public class Aluno {
+   private String nome;
+    Aluno (String val){
+      this.nome = val;
+   }
+}
+</code>
+No Exemplo acima a variavel nome pertence ao objeto. Sendo assim se fizemos:
+<code>
+...
+Aluno[] sala12 = new Aluno []{
+new Aluno("aluno1"),
+new Aluno("aluno2"),
+new Aluno("aluno3"),
+};
+foreach(Aluno aluno in sala12){
+ System.out.println(aluno.getNome());
+}
+</code>
+Embora façam parte da mesma classe cada um tem seu "nome", logo a variavel nome pertence ao objeto.
+Fazendo uma pequena modificação no codigo da classe Aluno e colocando a variavel nome com o modificador static e executarmos novamente o codigo acima, a saida será o mesmo nome do ultimo setado. Isso porque a variavel deixou ser do contexto do objeto e passou para o dominio da classe; por mais instancias do objeto aluno criadas no processo da JVM, o valor do nome será unico para todas elas
+<code>
+public class Aluno {
+   private static String nome;
+    Aluno (String val){
+      this.nome = val;
+   }
+}
+</code>
+Seguindo esse mesmo raciocinio podemos explicar o escopo de metodo e bloco.... Mas deixo isso para o pessoal estudar senão vai ficar muito extenso o post.
+	<li><strong> Logo ser estatico ou a função do modificador estatico (static) é de informar ao compilador e executor que aquela variavel, emtodo, ou quaisquer outras coisas são da classe</strong></li>
+
+Uma segundo coisa a explicar antes de falarmos de classes estáticas, tipos de classes. Dentro de java voce pode ter os seguintes tipos: top-level e inner classes.
+	<li>Top level classes</li>
+São as classes comuns: cada classe tem seu arquivo proprio e está inserida dentro de um pacote. SEria como escrever o arquivo Aluno.java e dentro dele especificar a classe Aluno. Esta classe aluno será uma top level.  <strong>Este tipo de classe não pode ser estatica</strong>
+<li>Inner classes</li>
+São classes que pertencem a outras classes. São como propriedade de uma classe e declaradas dentro da especificação de uma classe. Elas podem ser anonimas ou locais. Vejam os dois exemplos abaixo:
+<code>
+okButton.addActionListener( new ActionListener(){
+   public void actionPerformed(ActionEvent e){
+      dispose();
+   }
+});
+______________________________________________________
+class ListListener implements ItemListener {
+      List list;
+      public ListListener(List l) {
+         list = l;
+      }
+      public void itemStateChanged(ItemEvent e) {
+         String s = l.getItemSelected();
+         doSomething(s);
+      }
+   }
+   List list1 = new List();
+   list list2 = new List();
+   list1.addItemListener(new ListListener(list1));
+   list2.addItemListener(new ListListener(list2));
+}
+</code>
+As classes locais podem ser estaticas. Isso, de acordo como definimos em cima, significa dizer que voce tem uma classe que está definida dentro da outra classe e pertence a ela e não ao objeto que será instanciado dela.
+Exemplo(tirado do artigo da <a href="http://www.javaworld.com/javaworld/javaqa/1999-08/01-qa-static2.html?page=1">Java world</a>:
+<code>
+public class Filter {
+   Vector criteria = new Vector();
+   public addCriterion(Criterion c) {
+      criteria.addElement(c);
+   }
+   public boolean isTrue(Record rec) {
+      for(Enumeration e=criteria.elements();
+      e.hasMoreElements();) {
+         if(! ((Criterion)e.nextElement()).isTrue(rec))
+             return false;
+      }
+      return true;
+   }
+   public static class Criterion {
+      String colName, colValue;
+      public Criterion(Stirng name, String val) {
+         colName = name; colValue = val;
+      }
+      public boolean isTrue(Record rec) {
+         String data = rec.getData(colName);
+         if(data.equals(colValue)) return true;
+         return false;
+      }
+   }
+}
+</code>
+E para usar:
+<code>
+Filter f = new Filter();
+f.addCriterion(new Filter.Criterion("SYMBOL", "SUNW"));
+f.addCriterion(new Filter.Criterion("SIDE", "BUY"));
+.....
+if(f.isTrue(someRec)) //do some thing .....
+</code>

@@ -1,0 +1,49 @@
+--- 
+layout: post
+title: "Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django"
+tags: 
+- django
+- form
+- template
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
+
+<a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
+
+Sinceramente isso é maravilhoso se você não fugir muito da formato que já mencionei antes. Caso precise de ir mais além ou então precisa modificar um pouco as coisas do que se espera que elas sejam, a coisa ganha uma complexidade. Mas calma... Também não é nenhuma ciência de foguete... Com um simples passo a passo, é simples mudar a cara de um formulário, listagem ,etc.
+
+Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.
+
+Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.
+
+A receita é bem simples:
+
+Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:
+
+[cc lang="bash"]
+minha_app/templates/admin/minha_app/meu_modelo/
+[/cc]
+
+&nbsp;
+
+Depois coloque um arquivo dentro para substituir:
+
+[cc lang="bash"]
+minha_app/templates/admin/minha_app/meu_modelo/change_form.html
+[/cc]
+
+&nbsp;
+
+Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes. 
+
+Agora vão as dicas com os pulos do gato: 
+
+1. O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro. 
+
+2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
+

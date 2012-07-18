@@ -1,18 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://andrefonseca.net/blog/2009/02/09/data-centerinovarvirtualizacao/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2009/03/17/vmsrdb/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2009/03/29/groovy-como-opcao/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://andrefonseca.net/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/
         </loc>
@@ -22,41 +10,7 @@
         <loc>
             http://andrefonseca.net/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/01/11/o-bom-o-feio-e-o-mal-em-desenvolvimento-parte-1-testes-automatizados/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2010/01/12/objetos-trocam-mensagens/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/01/14/o-bom-o-feio-e-o-mal-em-desenvolvimento-parte-2-revisores-e-arquitetos/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/01/20/sprint-day-para-fazer-o-site-do-pythoncampus/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/01/27/usando-o-webdriver-para-fazer-testes-de-aceitacao/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/05/06/fazendo-upload-de-arquivo-com-webdriver/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:07:31-03:00</lastmod>
     </url>
     <url>
         <loc>http://andrefonseca.net/blog/2010/05/31/shu-ha-ri/</loc>
@@ -64,19 +18,7 @@
     </url>
     <url>
         <loc>
-            http://andrefonseca.net/blog/2010/07/15/colocando-auditoria-de-mudanca-na-sua-app-rails/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
             http://andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2010/11/13/palestra-aumentando-seu-lucro-com-python-fisl-2010/
         </loc>
         <lastmod>2012-04-13T15:42:38-03:00</lastmod>
     </url>
@@ -98,14 +40,6 @@
         <loc>
             http://andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/03/09/tentando-ser-mais-produtivo/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/03/20/usando-sinatra-para-evitar-overdesign/</loc>
         <lastmod>2012-04-13T15:42:38-03:00</lastmod>
     </url>
     <url>
@@ -139,45 +73,9 @@
         <lastmod>2012-04-13T15:42:38-03:00</lastmod>
     </url>
     <url>
-        <loc>http://andrefonseca.net/blog/2011/05/23/instalando-o-nodejs-e-npm/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2011/06/02/introducao-de-teste-javascript-com-jasmine/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/06/03/instalando-rvm/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/06/07/usando-jasmine/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://andrefonseca.net/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/06/30/palestra-no-fisl/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2011/09/06/usando-parametros-da-linha-de-comando-no-rake-e-no-capistrano/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/09/27/tdd-no-frontend/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/09/28/respondendo-uma-pergunta-sobre-tdd/</loc>
         <lastmod>2012-04-13T15:42:38-03:00</lastmod>
     </url>
     <url>
@@ -196,45 +94,35 @@
         <loc>
             http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>http://andrefonseca.net/blog/2011/10/18/mvc-no-javascript/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T21:01:54-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:58:14-03:00</lastmod>
     </url>
     <url>
         <loc>http://andrefonseca.net/blog/2011/10/25/python-decorators/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://andrefonseca.net/blog/2011/10/27/bilbiotecas-frameworks-etc-para-mvc-no-javascript/
-        </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:41:55-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:39:33-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:08:33-03:00</lastmod>
     </url>
     <url>
         <loc>
             http://andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/
         </loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:07:28-03:00</lastmod>
     </url>
     <url>
         <loc>http://andrefonseca.net/blog/2012/03/04/onde-buscar/</loc>
@@ -242,11 +130,11 @@
     </url>
     <url>
         <loc>http://andrefonseca.net/blog/2012/04/13/bibliotecas-javascript/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T20:58:16-03:00</lastmod>
     </url>
     <url>
         <loc>http://andrefonseca.net/blog/archives/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T21:01:54-03:00</lastmod>
     </url>
     <url>
         <loc>http://andrefonseca.net/feed/index.xml</loc>
@@ -254,6 +142,6 @@
     </url>
     <url>
         <loc>http://andrefonseca.net/</loc>
-        <lastmod>2012-04-13T15:42:38-03:00</lastmod>
+        <lastmod>2012-07-17T21:01:54-03:00</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,51 @@
+--- 
+layout: post
+title: Objetos trocam mensagens
+tags: 
+- agil
+- arquitetura
+- atualidades
+- Java
+- objeto
+- "orienta\xC3\xA7\xC3\xA3o"
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Mais uma vez, devido a uma outra troca de e-mails,  vi um outro assunto super legal que gostaria de dividir com vocês.  A um certo tempo atrás, no blog do <a href="http://blog.fragmental.com.br">Calcado</a>, li um artigo sobre o fato de objetos não serem atributos + funções. Neste artigo, o <a href="http://blog.fragmental.com.br">Calcado</a>, mostra que os objetos ao invés de possuírem atributos e funções, eles na verdade possuem estados e comportamentos.  Reproduzindo um trecho do artigo :
+<blockquote>Objetos não possuem propriedades + funções, eles possuem<strong>estado + comportamento</strong>. Você provavelmente vai usar atributos (i.e. variáveis de instancia) e funções (de instancia também) para implementar isso mas é um detalhe de implementação, não algo que deva ser exposto [sic]</blockquote>
+Uma outra coisa que penso é que além disso que ele comentou, uma outra dificuldade que vejo no pessoal que está "montando" a arquitetura de sistemas, é definir como será a interação entre objetos.  Quem nunca ficou horas pensando onde colocar determinado método - "<em>o método calcular preço  é da loja ou do produto?</em>"; nome do método,  se deveria expor dados por get e set, etc .  Essa dúvidas vem da nossa visão equivocada da troca de dados entre objetos.
+
+<img class="alignleft" style="margin: 11px;" src="http://images.quebarato.com.br/photos/big/9/7/1B8097_1.jpg" alt="" width="229" height="185" />Se considerarmos que objetos não possuem métodos ou funções( função me parece tão modular e não OO) e sim "portas de entradas".   Essas portas são como caixas de correio por onde enviamos e/ou recebemos mensagens com pedidos ou informações.  Para ficar mais fácil de entender,  imaginemos a situação de uma grande rede de lojas.  Esse grande rede possui diversas lojas, que possuem diversos produtos e clientes.  De cara, podemos dizer que temos 3 entidades :  Cliente, Produto e Loja.
+
+Agora a pergunta: como você implementaria a lógica de obter preço - o cliente vai na loja, pega um produto e quer saber o preço.  Tenho certeza que alguns diriam que colocariam um método getPreco na classe de produto.  Outros fariam um PrecoControlador que pegaria o custo do produto e faria a operação de cálculo pegando a margem de lucro da loja, custo da loja e por seguiria.... Outros inventariam a classe preço que diante a loja e produto se calcularia....  De novo fazendo assim ainda estamos pensando em objetos como conjunto de funções e atributos e esquecendo da troca de mensagens.
+
+Uma forma que vejo mais simples e mais expressiva de fazer (logo fica mais claro para entender o sistema) seria de perguntar para a loja o preço. Sendo assim, o cliente teria um produto e perguntaria a loja o preço. A loja consulta sua tabela de preço e responde.
+<blockquote>Cliente  -- pega produto --  &gt; Produto
+
+Cliente -- informa o produto a loja --&gt; Loja
+
+Loja -- consulta tabela --&gt; Tabela
+
+Loja -- responde ao cliente --&gt;</blockquote>
+Fica bem elegante não... Mas se ainda não conseguiu ver:
+<blockquote>class Andre  extends Cliente
+
+...
+
+Produto lapis = new Lapis();
+
+double preco = lojaAbobrinha.qualEhOPreco(lapis);
+
+..
+
+Abobrinha extends Loja
+
+...
+
+double qualEhOPreco(Produto produto)
+
+minhaTabelaPreco.qualPrecoAtual(produto);</blockquote>
+Quem for fazer a manutenção do código,  só de ler, já começa a entender oque está acontecendo e começa deduzir as demais interações.

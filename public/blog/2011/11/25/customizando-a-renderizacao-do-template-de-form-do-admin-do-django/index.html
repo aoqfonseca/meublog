@@ -1,224 +1,50 @@
+<p>&#8211;
+layout: post
+title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+tags:
+- django
+- form
+- template
+status: publish
+type: post
+published: true
+meta:</p>
 
-<!DOCTYPE HTML>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Meu Blog, by Andre Fonseca</title>
+<h2>  _edit_last: &#8220;1&#8221;</h2>
 
-  <meta name="author" content="Andre Fonseca">
-  
-  <meta name="description" content="Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django Nov 25th, 2011 Esse post é daqueles da série para nunca mais esquecer.  No &hellip;">
-  
-  
+<p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
-  <link rel="canonical" href="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Meu Blog, by Andre Fonseca" type="application/atom+xml">
-</head>
-  
-<body class="default">
-  <div id="wrapper">
-    <div id="header">
-  <h1><a href="/">Meu Blog, by Andre Fonseca</a></h1>
-  
-    <p>Pensamentos, opiniões e alguns estudos</p>
-  
-</div>
-<ul id="social-links">
-  
-    <li><a class="feed" href="/atom.xml" title="RSS">RSS</a></li>
-  
-  
-    <li><a class="twitter" href="http://twitter.com/aoqfonseca" title="Twitter">Twitter</a></li>
-  
-  
-    <li> <a class="github" href="https://github.com/aoqfonseca" title="GitHub">GitHub</a> </li>
-  
-</ul>
-<div class="clear"></div>
-<ul id="nav">
-  
-    <li> <a href="/">blog</a> </li>
-  
+<p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
 
-  
-    <li><a href="/blog/archives">archives</a></li>
-  
-</ul>
+<p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
-    <div id="main"> <div class="post-header">
-  
-    <h1 class="post-title">Customizando a RenderizaÃ§Ã£o Do Template De Form Do Admin Do Django</h1>
-  
-  
+<p>Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.</p>
+
+<p>A receita é bem simples:</p>
+
+<p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Depois coloque um arquivo dentro para substituir:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes.</p>
+
+<p>Agora vão as dicas com os pulos do gato:</p>
+
+<ol>
+<li><p>O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro.</p></li>
+<li><p>Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app.</p></li>
+</ol>
 
 
-
-
-  
-
-
-<time datetime="2011-11-25T00:00:00-02:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time>
-</div>
-
-<div class="post-content">Esse post é daqueles da série para nunca mais esquecer.  No projeto que estou atualmente, precisei customizar a forma que o Admin do <a href="https://www.djangoproject.com/">Django</a> montar os formulários de CRUD para um determinado modelo. Antes de mais nada vamos a uma breve introdução.
-
-<a href="https://www.djangoproject.com/">Django</a> é framework feito em python para a criação de webapps. Sua grande feature é a facilidade de construir sistemas com pouco trabalho. Isso se dá pela sua filosofia de coisas plugáveis e de ter praticamente, se sua app se encaixar no modelo CDA e CMS, tudo pronto bastando ativar as coisas (gestão de usuário, CRUDs dos modelos,  sistema de permissão, etc.)
-
-Sinceramente isso é maravilhoso se você não fugir muito da formato que já mencionei antes. Caso precise de ir mais além ou então precisa modificar um pouco as coisas do que se espera que elas sejam, a coisa ganha uma complexidade. Mas calma&#8230; Também não é nenhuma ciência de foguete&#8230; Com um simples passo a passo, é simples mudar a cara de um formulário, listagem ,etc.
-
-Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.
-
-Partindo para a documentação do Django, consegui fazer o que queria e achei alguns passos e truques que quero compartilhar com vocês.
-
-A receita é bem simples:
-
-Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:
-
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/
-[/cc]
-
-&nbsp;
-
-Depois coloque um arquivo dentro para substituir:
-
-[cc lang=&#8221;bash&#8221;]
-minha_app/templates/admin/minha_app/meu_modelo/change_form.html
-[/cc]
-
-&nbsp;
-
-Com isso, o Django passará a usar esse arquivo para renderizar o form de criação e alterado do seu modelo. Além disso você tem que ter o form o e model admin definidos. Veja a documentação para mais detalhes. 
-
-Agora vão as dicas com os pulos do gato: 
-
-1. O Django tem a estranha a mania de tentar resolver as coisas ao invés de mostrar os erros. Assim, caso seu template tenha algum erro ele irá usar o template dele para montar e não te mostrará nada. Uma forma de forçar o erro é de alterar o caminho do template no seu form e assim ele não fará o chain e não esconderá o erro. 
-
-2. Caso queira mudar todos os forms, coloque o template na raiz do projeto e não da app. 
-
-</div>
-
-
-<div class="post-single">
-  <div class="post-meta">
-    
-
-
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/" data-via="aoqfonseca" data-counturl="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-  </div>
-  <div class="clear"></div>
-
-  
-</div>
- </div>
-    <div id="footer">
-  <div class="panels">
-    <div class="license">
-      <h2>License</h2>
-      <p>Blog sob licença creative common. Autor: Andre Fonseca <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">clique aqui</a></p>
-    </div>
-
-    <div class="posts">
-      <h2>Recent Posts</h2>
-      <ul>
-        
-          <li>
-            <a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas para Javascript</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a renderizaÃ§Ã£o do template de form do admin do Django</a>
-          </li>
-        
-      </ul>
-    </div>
-
-    <div class="douban">
-      <h2>Reading</h2>
-      
-        <p>Please set your Douban ID in _config.yml</p>
-      
-    </div>
-  </div>
-
-  <p class="powered">
-    Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/iwinux/compbits">Compbits</a>
-  </p>
-</div>
-
-  </div> <!-- #wrapper end -->
-
-  
-
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'blogandrefonseca';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-  
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-  
-
-  
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-</body>
-</html>
+<p>Bem é isso e espero que ajude alguém pois bati bastante cabeça para resolver essa, por incrivel e simples que pareça.</p>

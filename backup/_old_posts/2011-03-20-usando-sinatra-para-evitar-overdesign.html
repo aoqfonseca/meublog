@@ -1,0 +1,50 @@
+--- 
+layout: post
+title: Usando Sinatra para evitar overdesign
+tags: 
+- agil
+- atualidades
+- dsl
+- overdesign
+- rack
+- rails
+- ruby
+- sinatra
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+---
+Muita gente que  deseja começar um projeto de sistema web e quer ser rápido e produtivo, logo pensa em usar Rails. Rails é um excelente framework, desenvolvido pelo pessoal da 37signals, que é realmente muito produtivo no que diz respeita a entrega de funcionalidade. Porém até o Rails pode ser um overdesign e um má escolha, dependendo do que deseja realizar.
+
+Ruby on Rails, ou RoR ou somente Rails é uma framework de desenvolvimento de aplicações web, cuja a filosofia gira em torno de evitar ao máximo desperdícios com configurações, repetições, etc. Para ser bem objetivo, em Rails tudo é baseado em convenção e tudo é voltado para se escrever o mínimo de código para se implementar um comportamento. Caso queira saber mais peça ajuda ao grande oráculo (google)... para ajudar um pouco você pode começar pelos Railscast que são gratuítos e ajudam muito a entender.
+
+Mas sendo tão orientado a produtividade como o Rail é, ele também pode se tornar um overdesign - um escolha que tem mais recursos e estruturas do que precisa - e uma má escolha para quem deseja fazer um sitema web muito simples e com poucos recursos.
+
+&nbsp;
+
+Imagine que você deseja fazer um sistema web que simplesmente irá receber uma requisição do usuário, tratá-la (sem necessariamente criar algo num banco de dados, por exemplo) e renderizar uma resposta. Um bom exemplo disso foram alguns projetos que foram feitos durante o evento FISL 2010, pela galera #horaextra.  No meio do evento, decidimos fazer um site onde teríamos ao invés de um horóscopo, teríamos um desoróscopo, com mensagens nada animadoras. Assim surgiu o <a href="http://www.desoroscopo.com.br">desoroscopo</a>.
+
+A princípio todo ele foi feito usando Rails. Mas logo nos primeiros releases, fomos vendo que não precisávamos de muitos recursos, principalmente de um banco de dados. Sendo assim, ter ali um activerecord, activecontroller, routes e etc era algo que não precisávamos. Era um overdesign para a solução que desejamos.  Foi então, que o Marcos Tapajós, tomou a iniciativa de reescrever todo o sistema usando outro framework ruby  baseado em RACK que é mega simples : SINATRA.  Vale ressaltar que essa reescrita foi feita em menos de uma hora(a se levar em conta o fato do Tapajós dominar bem ruby e o próprio Sinatra) .
+
+A questão que o site está até hoje no ar e tem números bem expressivos de visitas e em nenhum momento não sentimos falta de algum recurso que rails tem e o Sinatra não.
+
+<img class="alignleft" title="Sinatra logo" src="http://www.sinatrarb.com/images/logo.gif" alt="" width="109" height="76" />
+
+Sinatra é um framework web feito em Ruby baseado em Rack. Em sua própria documentação, seus criadores, vão além e o chamam de DSL ressaltando sua simplicidade. Todo o seu poder está no fato de precisar de quase nada para estar funcionando. Chega ao limite de precisar apenas a gem instalada e um script com as definições de rotas e seus tratamento in line. Veja exemplo abaixo retirado do site da documentação.
+<pre># myapp.rb
+require 'sinatra'
+
+get '/' do
+  'Hello world!'
+end</pre>
+Note que com apenas 3 linhas de código o sistema ao acessar a url padrão (localhost:4567) já está respondendo. Isso é realmente impressionante.  Entretanto, tudo tem um preço. Caso precise fazer algo que vá além do muito simples, estará por sua própria conta e risco. Claro que pode lançar mão de uma gem para ajudá-lo (isso é algo muito comum no ecossistema Ruby) mas nem tudo será resolvido.
+
+Carrego comigo uma regra que sempre me ajuda muito.  Se meu sistema precisa de mais do que uma entidade, entidades que se relacionam, vai além do que uma 4 ou 5 rotas... já começo a tender para usar o Rails do que qualquer d'outra coisa. Mas se meus sistema não fala com banco de dados, tem poucas rotas, sempre que posso farei com usando Sinatra.
+
+Tenho mais dois exemplos sobre isso:  Sou um dos organizadores do <a href="http://www.devinrio.com.br">DevinRio</a>, e na edição de 2010, tínhamos os desafio de fazermos um site. Na hora optamos por fazê-lo toda usando Sinatra. Isso porque sinatra é simples e aproveitamos a facilidade de deploy e gestão do produto <a href="http://heroku.com">heroku</a>.  O sistema aguentou requisição para caramba e foi um sucesso, tanto que vamos usar a mesma infra/tecnologia para a edição deste ano.
+
+O segundo exemplo vem do meu trabalho:  precisávamos criar um sistema que iria receber uploads de mídias (fotos, vídeo, etc), gravá-las no disco e processá-las de forma assíncrona.  Muitos poderiam pensar que esses requisitos nos levariam facilmente a querer fazer isso com rails ou até com outra tecnologia/framework(scala, java, etc).  Entretanto, resolvemos fazê-lo em Sinatra. Foi a melhor decisão.  A aplicação ficou simples, limpa e coesa.  E com ajuda de algumas outras gems, o Sinatra está dando conta do recado com maestria.
+
+Enfim, até os mais famosos podem não ser as melhores escolhas. Por isso, fica a dica: fique atento. Leia bastante, converse com outros colegas, amigos e profissionais. Esteja aberto as novidades. Elas podem acabar salvando o seu dia. Evite resolver tudo sempre da mesma forma. Diversifique. Mesmo que seja apenas para testar.  Pluralidade é a palavra da vez.

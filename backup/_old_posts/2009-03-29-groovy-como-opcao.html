@@ -1,0 +1,46 @@
+--- 
+layout: post
+title: "Groovy como opção"
+tags: 
+- Groovy
+type: post
+published: true
+meta: {}
+
+---
+Durante o encontro de TI, houve uma apresentação do <a href="http://gc.blog.br">Guilherme Chapiewiski</a>, onde ele falou um pouco do que ele acredita que venha ser as tecnologias que estão na "moda" ou que virão a ser moda. Em sua apresentação ele apresentou o Ruby, Python (<a href="http://www.djangoproject.com/">Django</a>), falou do Java e por fim do ASP.NET. De cada uma citada, ele apresentou seu entendimento de prós e contras.  Concordo com ele em parte mas não é o objetivo aqui deste post.
+
+Acabou que devido o interesse por parte dos participantes no tema não tive a oportunidade de conversar com ele depois, pois acredito que na palestra dele "faltou" falar também no Groovy. O Groovy é uma linguagem criada, totalmente, em Java, com o objetivo de ser algo parecido com Ruby, python, etc.  Hoje, com as melhorias continuas que vem recebendo, tornou-se um excelente opção frente as demais.  Possui característica semelhantes ao Ruby, Python, etc, como por exemplo a questão da flexibilidade para sintaxe e escrita de código, tipagens dinamicas, closures, etc. (veja exemplo abaixo)
+{% codeblock lang:java %}
+nome = ["a","b","C"]
+nome.each{
+     println it
+}
+{% endcodeblock %}
+
+Outro exemplo
+
+{% codeblock lang:java %}
+import groovy.xml.MarkupBuilder
+import org.custommonkey.xmlunit.*
+
+def writer = new StringWriter()
+def xml = new MarkupBuilder(writer)
+xml.records() {
+  car(name:'HSV Maloo', make:'Holden', year:2006) {
+    country('Australia')
+    record(type:'speed', 'Production Pickup Truck with speed of 271kph')
+  }
+  car(name:'P50', make:'Peel', year:1962) {
+    country('Isle of Man')
+    record(type:'size', 'Smallest Street-Legal Car at 99cm wide and 59 kg in weight')
+  }
+  car(name:'Royale', make:'Bugatti', year:1931) {
+    country('France')
+    record(type:'price', 'Most Valuable Car at $15 million')
+  }
+}
+{% endcodeblock %}
+
+A sua comunidade é bastante ativa e vem trabalhando firme no proposito de torná-la interessante e poderosa, o que a torna uma séria candidata a ser a segunda linguagem "oficial" da plataforma JAVA ( para mim no curto tempo JAVA deixará ser uma linguagem a se codificar para uma plataforma para desenvolver sobre - assunto para outro post). Isso porque, além de todo o trabalho, Groovy oferece aos desenvolvedores Java uma transição suave, pois permite que escreve em sintaxe JAVa dentro de seus programas,  trabalha com classe Java, etc.
+Além de tudo isso já citado, ainda temos a questão da grande quantidade de extensões, plugins, frameworks feitos em e para groovy que so enriquecem, como por exemplo, existe uma implementação Rails em groovy que é excelente.
