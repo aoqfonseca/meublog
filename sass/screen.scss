@@ -1,14 +1,10 @@
 @import "compass";
-@import "utilities";
+@include global-reset;
+@include reset-html5;
 
-/* pullquote */
-@import "pullquote";
-
-/* syntax highlight */
-@import "custom-colors";
-@import "solarized";
-@import "syntax";
-
-/* my styles */
-@import "kui";
-
+@import "custom/colors";
+@import "custom/fonts";
+@import "custom/layout";
+@import "base";
+@import "partials";
+@import "custom/styles";
