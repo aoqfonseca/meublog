@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://andrefonseca.net/feed" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-08-20T12:22:03-03:00</updated>
+  <updated>2012-08-25T21:10:34-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Entregando sistemas robustos]]></title>
+    <link href="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/"/>
+    <updated>2012-08-25T19:11:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto</id>
+    <content type="html"><![CDATA[<p>A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &#8220;programador otimista&#8221;.  O &#8220;programador otimista&#8221; é o tipo de profissional que só se preocupava em implementar o &#8220;caminho feliz do sistema&#8221;: implementa o caso de sucesso ou exatamente pedido pelo cliente. Por exemplo: se o cliente quisesse uma funcionalidade para criar novo usuário (cadastro), nosso programador otimista, só implementaria o necessário para ter um novo usuário - nem pensaria em validações de nome correto, email correto, etc.</p>
+
+<p>Para um cliente desavisado, esse profissional cumpre com sucesso e, de certa forma, velocidade suas tarefas. Porém, no final das contas, ele não entrega uma solução completa pois caso algo saia um pouco do cenário de sucesso, o sistema irá congelar e se comportar de forma bizarra.</p>
+
+<h2>Todos nós somos programadores otimistas</h2>
+
+<p>Todos nós somos programadores otimistas. Quanto de nós já não enfrentou prazos curtos de entrega onde existia espaço para mais nada além de fazer o mínimo necessário para atender aos pedidos do cliente ?</p>
+
+<p>Entretanto mesmo com prazos curtos de entrega, conexões falham, bancos falham, servidores param/travam, filers corrompem, e por aí vaí. Assim, nesse contexto, maioria de nossas funcionalidades não estão preparadas para lidar com essas situações caóticas e mesmo assim continuar funcionando sem a necessidade de uma intervenção humana.</p>
+
+<p>Elas não são robustas.</p>
+
+<h2>Sistema não são ilhas</h2>
+
+<p>Nos sistema atuais é quase impossível que você não tenha que se conectar a um outro sistema. Isso mesmo sem considerar que um banco de dados é um sistema externo. Hoje, inclusive tem sido defendido, a maioria dos sistemas são grande mashups - mistura e conexão - de diversos sistemas.</p>
+
+<p>Se você fez um site de venda, terá que se conectar com uma api de cobrança. Outro, você terá que se conectar ao servidor de e-mail, ou então terá que avisar a um outro sistema sobre uma atividade sua. E por aí temos diversos exemplos.</p>
+
+<p>Se os nossos sistemas podem dar erros/defeitos, por que esses outros também não podem? Será que nunca ocorrerá de sua internet cair?</p>
+
+<p>Imaginando que só tenha pensando na funcionalidade pedida pelo seu cliente, enquanto tudo estiver funcionando, ele estará super feliz. Porém o que aconteceria com seu sistema sem uma dessa pontas falhasse? Você ficaria com uma transação incompleta ? O seu sistema iria parar de funcionar?</p>
+
+<h2>Não existe sistema que nunca falhou</h2>
+
+<p>Não existe um sistema que esteja rodando um minimo de tempo em produção que nunca tenha falhado. Imagine agora que esse sistema é um daqueles que você depende para completar uma operação, como por exemplo uma venda.
+Se a gente não pensar em criar algo mais tolerante a falha, provavelmente o seu sistema, no exemplo de vendas, iria parar totalmente gerando um prejuízo enorme. Imagine agora que esse seu sistema fosse o site de vendas da amazon (seriam milhões a cada hora que não conseguisse vender).</p>
+
+<h2>Um livro para ajudar</h2>
+
+<p>Recentemente li um livro que fala exatamente sobre esse assunto. O livro é o [Release It][1] do Michael T. Nygard. Nele o autor explica de forma detalhada como a gente pode se precaver de sermos um programador otimista e quais são as armadilhas que devemos evitar se quisermos produtos mais robustos.
+Recomendo muito essa leitura.</p>
+
+<h2>Mão na massa - O que fazer</h2>
+
+<p>Determine o domínio de seu problema. Em seguinda, monte um esquema com todos os possíveis pontos de falhas e procure soluções e formas de implementar para que seu sistema seja robusto.</p>
+
+<p>No caso de um sistema de venda, você pode, por exemplo optar por um processamento assíncrono do meio de pagamento usando uma fila para não limitar .</p>
+
+<p>Pense no seu sistema além da funcionalidade. Pense no seu sistema como um imenso ecossistema.</p>
+
+<p>[1] http://pragprog.com/book/mnee/release-it</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bibliotecas para Javascript]]></title>
@@ -1204,27 +1253,6 @@ Esse dois livros, irão ajudar e muito com esse primeira questão da Orientaçã
 Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
 
 no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Muita coisa acontecendo por aÃ­... Vamos tomar uma cerveja?]]></title>
-    <link href="http://andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/"/>
-    <updated>2010-09-08T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja</id>
-    <content type="html"><![CDATA[Por várias vezes que posso me procuro ir tomar uma cerveja com meus amigos. Essa cerveja é chamada de #horaextra e acabou ficando famosa. Mas é só uma cerveja onde amigos, a maioria trabalha no mercado de TI / desenvolvimento,  se encontram e conversam sobre coisa que gostamos -  como todo bom GEEK (gostamos de tecnologia) acabamos por falar, na maioria dos casos,  sobre tecnologia. O importante desse encontro, sem grandes objetivos, é que ao nos dispormos em ir até um bar e ficar lá conversando, sempre tem algumas coisas que surgem.
-
-Nesses últimos tempos, motivados por alguns de nossos &#8220;membros&#8221; que tem vem se aventurando pelos caminhos do empreendorismo,  o papo tem sido muito na temática da tecnologia mas também sobre como podemos tornar nossas ideias em produtos que virão a dar lucro. Dada a paixão daqueles que falam é impossível não se empolgar e querer sair dali imediatamente para casa e &#8220;criar&#8221; um produto revolucionário que nos colocará na história. Algo tipo Google (forcei a barra mas é para um boa causa).  Como disse um colega : &#8220;Me sinto como acho que aqueles caras do vale silício se sentiram quando começaram&#8230; participando de um momento ímpar das coisas&#8221;. Exageros postos de lado, eu sinceramente que muita coisa que dizemos nesse encontram são realmente revolucionários. São controversos. São diferentes. E quem disse que a gente quer fazer mais do mesmo?
-
-Como já disse aqui nesse blog: <strong>Estamos vivendo uma nova revolução industrial</strong>.  Estamos vivendo uma época onde temos um novo paradigma que se abre como uma imensa oportunidade de investimento. O mundo está conectado e sedento por informação, comodidade, por diferenciais.  A tempos atrás, alguns falavam de bolha da internet. Ela após um breve período ela estourou. Entretanto, as oportunidades continuam por aí e, em minha humilde opinião, sobre um terreno mais sólido que tínhamos a 10 anos. Ainda temos um mercado sedento por produtos de qualidade. Ainda temos um mercado ávido por novidades. Ainda temos um mercado demandando coisas e, de certa forma e sobre um olhar justo, disposta a pagar por estas &#8220;coisas&#8221;.
-
-A tempos atrás ter uma vida on line era uma coisa nerds. Poucos eram que tinham uma vida on line.  Isso mudou radicalmente. Ouso afirmar que quase todo mundo com um nível médio de instrução tem esse tal vida na rede: Redes sociais, twitter, e-mails(todo mundo tem), bate-papos, etc. Segundo um jornal que li, nesses últimos anos, houveram momentos que a venda on line, de determinados artigos, superaram a venda das lojas físicas.  Vivemos a era dos livros na amazon, e não é só os já ditos heavy-users que compram, são as ditas pessoas comuns.  Outros estudos indicam que faixas de pessoas, principalmente os adolescentes, gastam mais tempo na internet do que vendo TV.  Tudo isso mostra o imenso potencial que existe e justifica a minha afirmação do parágrafo acima: <strong><span style="text-decoration: underline;">Estamos vivendo uma nova revolução.</span></strong>
-
-O pessoal dessa cerveja de toda segunda, acabamos por sintonizar essa vibração e,  tendo alguns perfil empreendedor,  muitos estão vendo as chances e se lançando. Daí, a sensação de estar participando de um movimento que resultará em algo grande. Embora seja só um chopp como outro qualquer (não levamos notebook, nem programados, só levamos dinheiro para pagar a conta).  Nosso grupo está capitaneado diversos produtos que estão por aí. Um dos que mais me chamou a atenção dessa última leva foi uma ideia do <a href="http://vp.blog.br/">Vitor Pellegrino</a>: SprintSlags. Baseando-se na ideia do todo trabalhando por todos e gerando coersão (essa foi para o Henrique Bastos) . Essas coersão acaba por elevar a todos, mesmo que para quem esteja fora, pareça um socialismo mal praticado.
-
-Taí umas das coisa que considero revolucionária que esse pessoal bebedor vem trazendo. Uma nova consciencia sobre a questão de compartilhar:
-<blockquote>eu te ajudo pois te ajudando estou ajudando a mudar a situação&#8230; mudando a situação estou criando oportunidades para mim e com isso contar com sua ajuda para meu projeto depois.</blockquote>
-Ficou difícil entender. Fica ligado nos próximos capítulos que vou explicar melhor isso.
 ]]></content>
   </entry>
   

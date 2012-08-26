@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Entregando sistemas robustos - </title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &#8220;programador otimista&#8221;. O &# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto">
+  <link href="/favicon.ico" rel="icon">
+  
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header role="banner"><hgroup>
+  <h1><a href="/"></a></h1>
+  
+    <h2>AF</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/aoqfonseca">Twitter</a></li>
+  <li><a href="http://github.com/aoqfonseca">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Entregando Sistemas Robustos</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-25T19:11:00-03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &#8220;programador otimista&#8221;.  O &#8220;programador otimista&#8221; é o tipo de profissional que só se preocupava em implementar o &#8220;caminho feliz do sistema&#8221;: implementa o caso de sucesso ou exatamente pedido pelo cliente. Por exemplo: se o cliente quisesse uma funcionalidade para criar novo usuário (cadastro), nosso programador otimista, só implementaria o necessário para ter um novo usuário - nem pensaria em validações de nome correto, email correto, etc.</p>
+
+<p>Para um cliente desavisado, esse profissional cumpre com sucesso e, de certa forma, velocidade suas tarefas. Porém, no final das contas, ele não entrega uma solução completa pois caso algo saia um pouco do cenário de sucesso, o sistema irá congelar e se comportar de forma bizarra.</p>
+
+<h2>Todos nós somos programadores otimistas</h2>
+
+<p>Todos nós somos programadores otimistas. Quanto de nós já não enfrentou prazos curtos de entrega onde existia espaço para mais nada além de fazer o mínimo necessário para atender aos pedidos do cliente ?</p>
+
+<p>Entretanto mesmo com prazos curtos de entrega, conexões falham, bancos falham, servidores param/travam, filers corrompem, e por aí vaí. Assim, nesse contexto, maioria de nossas funcionalidades não estão preparadas para lidar com essas situações caóticas e mesmo assim continuar funcionando sem a necessidade de uma intervenção humana.</p>
+
+<p>Elas não são robustas.</p>
+
+<h2>Sistema não são ilhas</h2>
+
+<p>Nos sistema atuais é quase impossível que você não tenha que se conectar a um outro sistema. Isso mesmo sem considerar que um banco de dados é um sistema externo. Hoje, inclusive tem sido defendido, a maioria dos sistemas são grande mashups - mistura e conexão - de diversos sistemas.</p>
+
+<p>Se você fez um site de venda, terá que se conectar com uma api de cobrança. Outro, você terá que se conectar ao servidor de e-mail, ou então terá que avisar a um outro sistema sobre uma atividade sua. E por aí temos diversos exemplos.</p>
+
+<p>Se os nossos sistemas podem dar erros/defeitos, por que esses outros também não podem? Será que nunca ocorrerá de sua internet cair?</p>
+
+<p>Imaginando que só tenha pensando na funcionalidade pedida pelo seu cliente, enquanto tudo estiver funcionando, ele estará super feliz. Porém o que aconteceria com seu sistema sem uma dessa pontas falhasse? Você ficaria com uma transação incompleta ? O seu sistema iria parar de funcionar?</p>
+
+<h2>Não existe sistema que nunca falhou</h2>
+
+<p>Não existe um sistema que esteja rodando um minimo de tempo em produção que nunca tenha falhado. Imagine agora que esse sistema é um daqueles que você depende para completar uma operação, como por exemplo uma venda.
+Se a gente não pensar em criar algo mais tolerante a falha, provavelmente o seu sistema, no exemplo de vendas, iria parar totalmente gerando um prejuízo enorme. Imagine agora que esse seu sistema fosse o site de vendas da amazon (seriam milhões a cada hora que não conseguisse vender).</p>
+
+<h2>Um livro para ajudar</h2>
+
+<p>Recentemente li um livro que fala exatamente sobre esse assunto. O livro é o [Release It][1] do Michael T. Nygard. Nele o autor explica de forma detalhada como a gente pode se precaver de sermos um programador otimista e quais são as armadilhas que devemos evitar se quisermos produtos mais robustos.
+Recomendo muito essa leitura.</p>
+
+<h2>Mão na massa - O que fazer</h2>
+
+<p>Determine o domínio de seu problema. Em seguinda, monte um esquema com todos os possíveis pontos de falhas e procure soluções e formas de implementar para que seu sistema seja robusto.</p>
+
+<p>No caso de um sistema de venda, você pode, por exemplo optar por um processamento assíncrono do meio de pagamento usando uma fila para não limitar .</p>
+
+<p>Pense no seu sistema além da funcionalidade. Pense no seu sistema como um imenso ecossistema.</p>
+
+<p>[1] http://pragprog.com/book/mnee/release-it</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Andre Fonseca)" rel="author">Andre Fonseca</a></span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-25T19:11:00-03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/" data-via="aoqfonseca" data-counturl="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/13/bibliotecas-javascript/" title="Previous Post: Bibliotecas para Javascript">&laquo; Bibliotecas para Javascript</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogandrefonseca';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/';
+        var disqus_url = 'http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
