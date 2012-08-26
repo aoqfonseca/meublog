@@ -47,7 +47,7 @@ No caso de um sistema de venda, você pode, por exemplo optar por um processamen
 Pense no seu sistema além da funcionalidade. Pense no seu sistema como um imenso ecossistema. 
 
 
-[1] http://pragprog.com/book/mnee/release-it
+[1]: http://pragprog.com/book/mnee/release-it
 
 
 
