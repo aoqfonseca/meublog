@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &#8220;programador otimista&#8221;. O &# &hellip;">
+  <meta name="description" content="Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/01/braziljs/">Braziljs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-01T11:43:00-03:00" pubdate data-updated="true">Sep 1<span>st</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/01/braziljs/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a credenciais, que foi resolvido pelo pessoal da organização,  o evento entrou numa crescente de qualidade e excelência.</p>
+
+<p>Não quero fazer uma análise ou &#8220;crítica&#8221; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida de tratasse cada apresentação de forma isolada.</p>
+
+<p>Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.</p>
+
+<p>Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão - antes nem pensadas - de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome &#8220;científico&#8221; do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.</p>
+
+<p>Javascript não é mais &#8220;tecnologia&#8221; secundária. HTML e CSS não são mais maus necessários para entregarmos nossos webapps (que digo o JSF - trolei !!!!) .
+Javascript acencionou ao status de grande linguagem, se colocando lado a lado com JAVA, C#, Python, Ruby, entre outras. Busca a maturidade e resolver seus problemas. Busca o que há de melhor nas outras e dá seu &#8220;tempero&#8221;. Python me pareceu o grande irmão mais velho.</p>
+
+<p>Seu uso vai além e se mostra uma excelente opção para automatização de tarefas - GruntJS,  jogos, manipulação de imagens, tracking, testes, etc.</p>
+
+<p>O frontend não quer e nem se limita mais ao browser e computadores. Busca as fronteiras onde estão os telefones, smartphones e até TVs. Não falo da TV Digital, e sim da TV como meio de consumo de webapps.</p>
+
+<p>Enfim, o evento mostrou de existe um universo a ser explorado lá fora e muito trabalho a ser feito. Mostrou também que a comunidade está forte e capacitada para  desbravá-lo.</p>
+
+<p>Obrigado a todos.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -821,73 +876,6 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
 <p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
 
 <p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
-Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
-Navegue para achar o jar : selenium-server
-Renomeie esse jar para um arquivo zip: 
-[cc lang=&#8221;bash&#8221;]
-mv selenium-server.jar selenium-server.zip
-[/cc]
-Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
-[cc lang=&#8221;bash&#8221;]
-mkdir selenium-server
-cp selenium-server.zip selenium-server/
-cd selenium-server
-unzip selenium-server.zip
-rm selenium-server.zip
-[/cc]
-Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
-[cc lang=&#8221;bash&#8221;]
-find . -name &#8220;*.rdf&#8221;
-[/cc]
-Altere a linha abaixo para a versão que queres suportar: 
-[cc lang=&#8221;java&#8221;]
-<em:maxVersion>5.*</em:maxVersion>
-[/cc]
-Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
-[cc lang=&#8221;bash&#8221;]
-zip -r selenium-server *
-mv selenium-server.zip selenium-server.jar
-jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
-[/cc]
-Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
 </div>
   
   

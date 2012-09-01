@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Braziljs"
+date: 2012-09-01 11:43
+comments: true
+categories:
+---
+Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a credenciais, que foi resolvido pelo pessoal da organização,  o evento entrou numa crescente de qualidade e excelência.
+
+Não quero fazer uma análise ou "crítica" ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida de tratasse cada apresentação de forma isolada.
+
+Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.
+
+Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão - antes nem pensadas - de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome "científico" do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.
+
+Javascript não é mais "tecnologia" secundária. HTML e CSS não são mais maus necessários para entregarmos nossos webapps (que digo o JSF - trolei !!!!) .
+Javascript acencionou ao status de grande linguagem, se colocando lado a lado com JAVA, C#, Python, Ruby, entre outras. Busca a maturidade e resolver seus problemas. Busca o que há de melhor nas outras e dá seu "tempero". Python me pareceu o grande irmão mais velho.
+
+Seu uso vai além e se mostra uma excelente opção para automatização de tarefas - GruntJS,  jogos, manipulação de imagens, tracking, testes, etc.
+
+O frontend não quer e nem se limita mais ao browser e computadores. Busca as fronteiras onde estão os telefones, smartphones e até TVs. Não falo da TV Digital, e sim da TV como meio de consumo de webapps.
+
+Enfim, o evento mostrou de existe um universo a ser explorado lá fora e muito trabalho a ser feito. Mostrou também que a comunidade está forte e capacitada para  desbravá-lo.
+
+Obrigado a todos.

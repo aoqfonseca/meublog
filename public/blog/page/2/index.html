@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples &hellip;">
+  <meta name="description" content="Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
+Navegue para achar o jar : selenium-server
+Renomeie esse jar para um arquivo zip: 
+[cc lang=&#8221;bash&#8221;]
+mv selenium-server.jar selenium-server.zip
+[/cc]
+Depois disso crie um diretório selenium-server,  copie o arquivo para dentro dele e unzip: 
+[cc lang=&#8221;bash&#8221;]
+mkdir selenium-server
+cp selenium-server.zip selenium-server/
+cd selenium-server
+unzip selenium-server.zip
+rm selenium-server.zip
+[/cc]
+Dentro do diretório busque pelas os arquivos que tem a configuração com o comando abaixo: 
+[cc lang=&#8221;bash&#8221;]
+find . -name &#8220;*.rdf&#8221;
+[/cc]
+Altere a linha abaixo para a versão que queres suportar: 
+[cc lang=&#8221;java&#8221;]
+<em:maxVersion>5.*</em:maxVersion>
+[/cc]
+Depois de alterar todo os arquivos, ainda dentro da pasta execute a sequencia de comandos: 
+[cc lang=&#8221;bash&#8221;]
+zip -r selenium-server *
+mv selenium-server.zip selenium-server.jar
+jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
+[/cc]
+Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -974,81 +1041,6 @@ Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
 &nbsp;
 
 &nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/03/estudos-compartilhados-introducao/">Estudos Compartilhados - IntroduÃ§Ã£o</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-03T00:00:00-02:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2010</time>
-        
-         | <a href="/blog/2010/12/03/estudos-compartilhados-introducao/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Adotei com uma das minhas metas estudar mais sobre engenharia de software e zerar alguns débitos. Nessa cruzada, com ajuda de amigos como <a href="http://blog.m.artins.net/">Alexandre Martins</a>,  montei uma lista de livros. Alguns desses livros são: Clean Code, Pragmatic Programmer,  Agile Software Development, Refactoring, etc. Todos, se notarem, não são sobre uma linguagem específica e sim sobre melhores práticas, padrões, etc.
-
-Poucos pessoas sabem mas minha formação é de engenheiro eletrônico&#8230; Sou engenheiro. Com isso, sempre me  senti um pouco atrás de alguém que estudou informática pois nunca tive aquelas cadeiras de algorítmos, introduções, estrutura de dados, banco de dados, e etc.  Aos poucos fui suprimindo essa &#8220;fraqueza&#8221; com muita leitura, perguntas, ensaios, e por aí vai.  Assim, acabei com &#8220;gaps&#8221; de banco de dados, sistema operacionais (isso até que estudei em engenharia numa disciplina eletiva),  algorítmos (livros e muitos exercício - recomendo o projeto Euler).  Mas ainda ficou a questão dos conceitos, das melhores práticas, patterns, entre outras coisas semelhantes. A sorte, se é que isso possa ser chamado de sorte, é que as  faculdades nem ensinam este tipo de coisa, e quem quiser saber vai ter que correr atrás tanto quanto eu.
-
-Conversando com o pessoal que conheço, admiro e trabalho junto, tentei  através de suas experiências delinear um caminho seguir. <a href="http://blog.m.artins.net/">Alexandre Martins</a>, já estava preparando uma material parecido com isso para um &#8220;coaching&#8221; que está realizando com o nossa equipe.  Participando desse &#8220;treinamento&#8221; e conversando com ele, este me sugeriu alguns livros e pontos que deveria atacar.  Confesso que no início, os pontos citados me soaram estranhos, pois já estou na estrada - como diria um conhecido - não é de hoje.
-
-<a href="http://blog.m.artins.net/">Alexandre Martins</a> sugeriu que atacasse os seguintes temas :
-<ol>
-	<li>Orientação a Objeto</li>
-	<li>Design Patterns</li>
-	<li>TDD</li>
-	<li>BDD</li>
-	<li>Prática Agéis</li>
-	<li>etc</li>
-</ol>
-Se pegarmos um profissional com  mais de 6 anos de experiência e se perguntarmos se ele conhece bem orientação a objeto afirmo que na totalidade dos casos ele irá responder que domina.  Entretanto, se pegarmos o código de uma parte desses profissionais veremos que  muitos princípios não são aplicados, vários códigos com estruturas repetidas sem necessidade (monte de get e set para apenas passar e receber valor),  monte de if ao invés de usar polimorfismo, problemas de acoplamentos, e por aí a nossa lista pode seguir.
-<blockquote>O Paulo da Caelum, recentemente, um excelente artigo que foi publicado no blog da Celum em 2006 por ele muito bom que mostra um pouco do que estou querendo dizer.  Para ler <a href="http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/">clique aqui</a></blockquote>
-Muita coisa se tornou repetitivas: fazemos por que é assim que deve ser feito e nem paramos para pensar se faz sentido ou não.  Um bom exemplo, inclusive citado no artigo, é o caso do GET e SET. Quantos de nós, que programamos em Java principalmente, ao clicar uma classe e definir esses atributos não colocamos juntos( com a ajuda abençoada do Eclipse) os GET e SET ?  Alguém por acaso já parou para pensar se é preciso?  Para ilustrar melhor imaginem que temos uma classe de dados apenas, os famosos DTO ou VO. Algo como :
-
-class Aluno {
-
-String nome
-
-}
-
-Tenho certeza que tem um monte de gente achando que está faltando o get /set e o atributo deveria ser private. Se não existe nenhuma lógica além de definir valor a ser implementada, qual é o sentido do GET? Não é mais prático e elegante chamar  &#8221;usuarioAndre.nome = andre&#8221;?
-<h2>CLEAN CODE e AGILE SOFTWARE DEVELOPMENT</h2>
-Esse dois livros, irão ajudar e muito com esse primeira questão da Orientação Objeto e a melhor forma de colocar isso para trabalhar a nosso favor.  Inclusive, serão nesses dois livros que você irá encontrar o significa da sigla : S.O.L.I.D.
-<ul>
-	<li>S : Single Responsability</li>
-	<li>O: Open and close principle</li>
-	<li>L :  Liskov Substitution</li>
-	<li>I :  Interface Segregation</li>
-	<li>D: Dependency inversion</li>
-</ul>
-Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
-
-no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
 </div>
   
   

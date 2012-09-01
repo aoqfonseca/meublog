@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-08-25T21:16:47-03:00</updated>
+  <updated>2012-09-01T11:45:28-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Braziljs]]></title>
+    <link href="http://andrefonseca.net/blog/2012/09/01/braziljs/"/>
+    <updated>2012-09-01T11:43:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2012/09/01/braziljs</id>
+    <content type="html"><![CDATA[<p>Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a credenciais, que foi resolvido pelo pessoal da organização,  o evento entrou numa crescente de qualidade e excelência.</p>
+
+<p>Não quero fazer uma análise ou &#8220;crítica&#8221; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida de tratasse cada apresentação de forma isolada.</p>
+
+<p>Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.</p>
+
+<p>Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão - antes nem pensadas - de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome &#8220;científico&#8221; do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.</p>
+
+<p>Javascript não é mais &#8220;tecnologia&#8221; secundária. HTML e CSS não são mais maus necessários para entregarmos nossos webapps (que digo o JSF - trolei !!!!) .
+Javascript acencionou ao status de grande linguagem, se colocando lado a lado com JAVA, C#, Python, Ruby, entre outras. Busca a maturidade e resolver seus problemas. Busca o que há de melhor nas outras e dá seu &#8220;tempero&#8221;. Python me pareceu o grande irmão mais velho.</p>
+
+<p>Seu uso vai além e se mostra uma excelente opção para automatização de tarefas - GruntJS,  jogos, manipulação de imagens, tracking, testes, etc.</p>
+
+<p>O frontend não quer e nem se limita mais ao browser e computadores. Busca as fronteiras onde estão os telefones, smartphones e até TVs. Não falo da TV Digital, e sim da TV como meio de consumo de webapps.</p>
+
+<p>Enfim, o evento mostrou de existe um universo a ser explorado lá fora e muito trabalho a ser feito. Mostrou também que a comunidade está forte e capacitada para  desbravá-lo.</p>
+
+<p>Obrigado a todos.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Entregando sistemas robustos]]></title>
@@ -1205,52 +1231,6 @@ Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
 &nbsp;
 
 &nbsp;
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Estudos compartilhados - introduÃ§Ã£o]]></title>
-    <link href="http://andrefonseca.net/blog/2010/12/03/estudos-compartilhados-introducao/"/>
-    <updated>2010-12-03T00:00:00-02:00</updated>
-    <id>http://andrefonseca.net/blog/2010/12/03/estudos-compartilhados-introducao</id>
-    <content type="html"><![CDATA[Adotei com uma das minhas metas estudar mais sobre engenharia de software e zerar alguns débitos. Nessa cruzada, com ajuda de amigos como <a href="http://blog.m.artins.net/">Alexandre Martins</a>,  montei uma lista de livros. Alguns desses livros são: Clean Code, Pragmatic Programmer,  Agile Software Development, Refactoring, etc. Todos, se notarem, não são sobre uma linguagem específica e sim sobre melhores práticas, padrões, etc.
-
-Poucos pessoas sabem mas minha formação é de engenheiro eletrônico&#8230; Sou engenheiro. Com isso, sempre me  senti um pouco atrás de alguém que estudou informática pois nunca tive aquelas cadeiras de algorítmos, introduções, estrutura de dados, banco de dados, e etc.  Aos poucos fui suprimindo essa &#8220;fraqueza&#8221; com muita leitura, perguntas, ensaios, e por aí vai.  Assim, acabei com &#8220;gaps&#8221; de banco de dados, sistema operacionais (isso até que estudei em engenharia numa disciplina eletiva),  algorítmos (livros e muitos exercício - recomendo o projeto Euler).  Mas ainda ficou a questão dos conceitos, das melhores práticas, patterns, entre outras coisas semelhantes. A sorte, se é que isso possa ser chamado de sorte, é que as  faculdades nem ensinam este tipo de coisa, e quem quiser saber vai ter que correr atrás tanto quanto eu.
-
-Conversando com o pessoal que conheço, admiro e trabalho junto, tentei  através de suas experiências delinear um caminho seguir. <a href="http://blog.m.artins.net/">Alexandre Martins</a>, já estava preparando uma material parecido com isso para um &#8220;coaching&#8221; que está realizando com o nossa equipe.  Participando desse &#8220;treinamento&#8221; e conversando com ele, este me sugeriu alguns livros e pontos que deveria atacar.  Confesso que no início, os pontos citados me soaram estranhos, pois já estou na estrada - como diria um conhecido - não é de hoje.
-
-<a href="http://blog.m.artins.net/">Alexandre Martins</a> sugeriu que atacasse os seguintes temas :
-<ol>
-	<li>Orientação a Objeto</li>
-	<li>Design Patterns</li>
-	<li>TDD</li>
-	<li>BDD</li>
-	<li>Prática Agéis</li>
-	<li>etc</li>
-</ol>
-Se pegarmos um profissional com  mais de 6 anos de experiência e se perguntarmos se ele conhece bem orientação a objeto afirmo que na totalidade dos casos ele irá responder que domina.  Entretanto, se pegarmos o código de uma parte desses profissionais veremos que  muitos princípios não são aplicados, vários códigos com estruturas repetidas sem necessidade (monte de get e set para apenas passar e receber valor),  monte de if ao invés de usar polimorfismo, problemas de acoplamentos, e por aí a nossa lista pode seguir.
-<blockquote>O Paulo da Caelum, recentemente, um excelente artigo que foi publicado no blog da Celum em 2006 por ele muito bom que mostra um pouco do que estou querendo dizer.  Para ler <a href="http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/">clique aqui</a></blockquote>
-Muita coisa se tornou repetitivas: fazemos por que é assim que deve ser feito e nem paramos para pensar se faz sentido ou não.  Um bom exemplo, inclusive citado no artigo, é o caso do GET e SET. Quantos de nós, que programamos em Java principalmente, ao clicar uma classe e definir esses atributos não colocamos juntos( com a ajuda abençoada do Eclipse) os GET e SET ?  Alguém por acaso já parou para pensar se é preciso?  Para ilustrar melhor imaginem que temos uma classe de dados apenas, os famosos DTO ou VO. Algo como :
-
-class Aluno {
-
-String nome
-
-}
-
-Tenho certeza que tem um monte de gente achando que está faltando o get /set e o atributo deveria ser private. Se não existe nenhuma lógica além de definir valor a ser implementada, qual é o sentido do GET? Não é mais prático e elegante chamar  &#8221;usuarioAndre.nome = andre&#8221;?
-<h2>CLEAN CODE e AGILE SOFTWARE DEVELOPMENT</h2>
-Esse dois livros, irão ajudar e muito com esse primeira questão da Orientação Objeto e a melhor forma de colocar isso para trabalhar a nosso favor.  Inclusive, serão nesses dois livros que você irá encontrar o significa da sigla : S.O.L.I.D.
-<ul>
-	<li>S : Single Responsability</li>
-	<li>O: Open and close principle</li>
-	<li>L :  Liskov Substitution</li>
-	<li>I :  Interface Segregation</li>
-	<li>D: Dependency inversion</li>
-</ul>
-Nenhum desses principios serão grandes novidades para quem algum dia já folheou ao menos, as páginas do livro de Design Patterns.
-
-no próximos post irei me aprofundar em cada um desses princípios e explicar suas relações com OO e bom códigos. Até logo.
 ]]></content>
   </entry>
   
