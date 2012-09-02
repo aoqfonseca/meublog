@@ -4,7 +4,7 @@
   <title><![CDATA[Category: clean, | ]]></title>
   <link href="http://andrefonseca.net/blog/categories/clean-/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-09-02T18:44:03-03:00</updated>
+  <updated>2012-09-02T18:48:03-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -68,7 +68,7 @@
 
 <p>Um outro aspecto é a constante verificação da complexidade, qualidade e cobertura de seu código. A disciplina não será nada se não houver um objetivo à atingir.</p>
 
-<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - Leonardo Balter e Alexandre Martins - precisamos de trocar o "boné de programador" e fazer mais <em>"Testes de trollagem"</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
+<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - <a href="http://leobalter.net/">Leonardo Balter</a> e <a href="http://blog.m.artins.net/">Alexandre Martins</a> - precisamos de trocar o "boné de programador" e fazer mais <em>"Testes de trollagem"</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
 
 <p>Inclusive, existe um excelente artigo do pessoal da NetFlix, sobre uma ferramenta chamada de Caos Monkey. Essas ferramenta derruba os servidores e analisa como o sistema se comporta para verificar se tudo é robusto. Isso é um aspecto muito esquecido nas aplicações e cada vez mais determinante na entrega.</p>
 

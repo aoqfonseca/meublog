@@ -58,7 +58,7 @@ Saber tudo isso não significa e nem faz a mágica de tornar o seu código marav
 
 Um outro aspecto é a constante verificação da complexidade, qualidade e cobertura de seu código. A disciplina não será nada se não houver um objetivo à atingir.
 
-Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - Leonardo Balter e Alexandre Martins - precisamos de trocar o "boné de programador" e fazer mais *"Testes de trollagem"*. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, [Release It][5], diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.
+Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - [Leonardo Balter][6] e [Alexandre Martins][7] - precisamos de trocar o "boné de programador" e fazer mais *"Testes de trollagem"*. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, [Release It][5], diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.
 
 Inclusive, existe um excelente artigo do pessoal da NetFlix, sobre uma ferramenta chamada de Caos Monkey. Essas ferramenta derruba os servidores e analisa como o sistema se comporta para verificar se tudo é robusto. Isso é um aspecto muito esquecido nas aplicações e cada vez mais determinante na entrega.
 
@@ -83,3 +83,5 @@ Eu não sou um exemplo e nem desejo ser modelo, mas nem por isso devemos acredit
 [3]: http://www.amazon.com/Peopleware-Productive-Projects-Second-Edition/dp/0932633439
 [4]: http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052
 [5]: http://pragprog.com/book/mnee/release-it
+[6]: http://leobalter.net/
+[7]: http://blog.m.artins.net/
