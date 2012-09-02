@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox &hellip;">
+  <meta name="description" content="Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,140 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
+
+<p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste de algo&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;deve acontecer algo e o valor ser outro&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função.</p>
+
+<p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
+Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>        <span class="nx">waits</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">runs</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
+
+<p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -970,75 +1104,6 @@ Quando fazemos TDD e nos disciplinamos a fazer o teste passar (isso mesmo) a gen
 Testar depois é apenas automatizar. TDD é mais uma ferramenta de design.
 
 Até a próxima pessoal.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/">Estudos Compartilhados - Part II - OrientaÃ§Ã£o a Objeto</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-09T00:00:00-02:00" pubdate data-updated="true">Dec 9<span>th</span>, 2010</time>
-        
-         | <a href="/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Dando continuidade a série de artigos sobre meus estudos ( O estudo compartilhado),  gostaria de dividir algumas conclusões que tenho chego e lido sobre diversos assuntos.  Um desses assuntos é a Orientação a Objeto e seu uso efetivo e com qualidade.
-
-Dentro dos meus estudos, um livro que me foi recomendado e tem me ajudado muito nessa questão de código mais limpo, melhor uso de Orientação a Objeto, etc é o &#8220;Clean Code&#8221; do UncleBob (Robert Martin). Caso queira comprar tem no site (busque no google) do autor e na Amazon.  Fora o livro procurei por diversos artigos na internet( a maioria encontrei em blogs) para ter mais de um ponto de vista sobre o assunto.
-
-Uma coisa que ficou evidente para mim é que a forma dominante atual para o desenvolvimento é o paradigma OO (orientado a objeto). Nesse paradigma a lógica do negócio é implementado pela criação de objetos, suas relações e interações.  Quem não lembra dos famosos exemplos do Veículos e Carro, Avião e Asa, e um monte de outros exemplos.
-
-Acredito que mais de 90% dos produtos, pincipalmente na WEB, que estão sendo entregues foram feitos usando OO. Sendo assim é de se esperar que hoje já dominamos essa &#8220;ciência&#8221; e que somos extremamentes bons e eficientes em seu uso.
-
-Pasmem vocês, o que encontrei, foi exatamente o contrário.  Tem muito código por aí que ao invés de ficar mais legível, com arquiteturas fáceis de manutenciar, etc são de fato verdadeiros mostrinhos, empilhamentos de milhares de camadas sem necessidade, um monte de método com mil linhas e por aí as aberrações seguem.
-
-Na lista dessas coisas feias que fazemos dentro de OO, uma delas que me chamou muito atenção, pois foi citado em diversos artigos e por gente bastante competente, foi  usarmos padrões de soluções, padrões de código, onde, nem sempre, eles são necessários&#8230; Usamos por usar, por que todo mundo usa ou por que todo mundo faz assim. Isso me lembra muito a história do porco na floresta.
-<p style="text-align: left;"><a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png"><img class="size-full wp-image-511 aligncenter" style="margin-top: 11px; margin-bottom: 11px;" title="Screen shot 2010-12-09 at 12.26.15 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.26.15-PM1.png" alt="" width="493" height="332" /></a> A classe acima é bom exemplo. Eu tirei, essa idéia, de um artigo que o Paulo Caelum postou o link em twitter recentemente.  A gente deve usar get e set somente se ouver alguma lógica que deva ser feita antes de definir um valor. Faz sentido get e set quando temos algo como definir o saldo (recebe um valor e desconta ou adiciona).Fora isso, fica melhor e mais limpo, deixar os atributos públicos. Fica mais significativo.</p>
-<p style="text-align: left;">Com toda a certezas os dinossauros sagrados do Java vão querer me queimar pois estou comentando uma heresia tamanha. Mas faça o exercício de reescrever o código acima sem o get e set e veja se não fica melhor e muito menos verboso.</p>
-Voltando para o livro do Clean Code que  citei lá no início do texto,  um outro aspecto que aprendi que é bastante &#8220;ferido&#8221; é o princípio de Responsabilidade Única.  Uma entidade, ou classe, dev ter uma única personagem ou função na lógica do negócio. Imagine que temos a lógica de um banco por exemplo tivéssemos a super, mega, fodolesca, classe conta que faria tudo&#8230; Além de ficar pouco claro as coisas você teriam com toda a certeza um arquivo de bilhões de linhas impossível de dar manutenção.
-
-Essa regrinha de ouro também se aplica aos métodos.  Quanta vezes, em nome da encapsulação,  vimos colegas e nós mesmos escrevendo método enormes que fazem milhões de coisas?
-
-No livro Clean Code e também no livro de Refactoring do Martin Fowler, tem excelente exemplos disso que citei acima, fazendo até um antes e depois.
-
-<a href="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png"><img class="alignright size-full wp-image-512" title="Screen shot 2010-12-09 at 12.39.10 PM" src="http://metronus.com/blog/wp-content/uploads/2010/12/Screen-shot-2010-12-09-at-12.39.10-PM.png" alt="" width="426" height="249" /></a>No exemplo ao lado, vemos que num mesmo método, temos a responsabilidade de obtermos todas as matérias, e de cada matéria as provas, de cada prova as notas, somar, calcular a média, e depois verificar se o aluno está aprovado.
-
-É muita coisa para um só pobre método. Além disso - olha que não fiz tudo - fica extremamente confuso para entender a lógica. Imagine coisas parecidas quanto temos lógicas de negócio ainda mais complicadas.
-
-Uma boa ferramenta para ajudar nesse processo são os testes.  Se você for fazendo passos pequenos,  e se deixar levar pelos testes ( crie os testes a medida das necessidades) você verá que o design tenderá a ficar melhor e as classes e/ou metódos seguirão naturalmente  a idéia de uma responsabilidade única.
-
-Bom aguarde o próximo artigo da série. E aguardo o feedback de vocês.
-
-&nbsp;
-
-&nbsp;
 
 &nbsp;
 </div>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: qualidade, | ]]></title>
+  <link href="http://andrefonseca.net/blog/categories/qualidade-/atom.xml" rel="self"/>
+  <link href="http://andrefonseca.net/"/>
+  <updated>2012-09-02T18:44:03-03:00</updated>
+  <id>http://andrefonseca.net/</id>
+  <author>
+    <name><![CDATA[Andre Fonseca]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Escrevendo código limpo]]></title>
+    <link href="http://andrefonseca.net/blog/2012/09/02/qualidade-de-codigo/"/>
+    <updated>2012-09-02T16:00:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2012/09/02/qualidade-de-codigo</id>
+    <content type="html"><![CDATA[<p>Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">CleanCode</a> do <a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">UncleBob</a>: <em>"You are reading this book for two reasons. First, you are a programmer. Second, you want to be a better programmer. Good, we need better programmers."</em></p>
+
+<p>Vivemos num momento interessante dentro da profissão de desenvolver sistemas: temos as metodologias ágeis, direcionamentos onde o foco é o ser humano (<a href="http://www.amazon.com/Peopleware-Productive-Projects-Second-Edition/dp/0932633439">Peopleware</a>), a busca pela qualidade e pelo desempenho ganham forma e embaseamento, a maturidade nos leva a uma busca constante de excelência, e outras coisas.</p>
+
+<p>Um exemplo disso são os diversos processos e práticas que tem surgido - e solidificado -  nos últimos tempos como TDD, BDD, SOLID (veja no livro do <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a> - Robert Martin aka "Uncle Bob"), etc. Apesar de pessoalmente acreditar que tais iniciativas sejam importantes e determinantes para entregarmos sistemas de qualidade, penso que ainda precisamos de um "algo mais".</p>
+
+<p>Escrever "código", ao contrário do que muitos pensam, não é uma atividade simples. Segundo Brian Kernigan - coautor de AWK programing language, <em>"é quase o mais complicado dos empreendimentos humanos"</em> . Todo sistema nasce simples e consciso. Todo sistema nasce bem feito, porém com o passar do tempo e de seu uso e constantes evoluções sua complexidade aumentam e sua "qualidade" provavelmente cai. Mesmo que ele tenha 100% de cobertura de testes (coisa que no mundo real é um grande feito) e seu time siga <em>a risca</em> todas as regras.</p>
+
+<h2>TDD e BDD importam</h2>
+
+<p>Antes de mais nada, gostaria de dizer que nada justifica um código sem testes. Testes são uma parte fundamental de um bom código. E eu disse testes. Não disse que fazer TDD ou BDD. Testes garantem um forma simples de manter a aderência as especificações e segurança para realizar futuras mudanças. Autores como Michael Feathers [<a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">Working Effectivily with Legacy Code</a>], chegam afirmar que sem testes não existe a possibilidade da melhora contínua, disciplina essencial para termos bons bases de código.</p>
+
+<p>TDD (<em>Test Driven Development</em>) e BDD(<em>Behave Driven Development</em>) são extrapolações de testes, onde os usamos para nos guiar na busca de uma melhor arquitetura. É possível termos testes automatizados sem seguir tais práticas, porém o contrário não.</p>
+
+<p>TDD e BDD são ótimas ajudantes para termos sistemas robustos e bem feitos, para termos "códigos limpos", mas como disse antes, não são o suficiente.</p>
+
+<h2>Design Patterns e princípios como SOLID importam</h2>
+
+<p>Acredito que a maioria das pessoas que leêm meu blog, são pessoas que se preocupam com a qualidade de seus sistemas. Isso deve se refletir em estudos e muita leitura. Sendo assim, creio que a maior parte já tiveram contato - ou até dominam - assuntos como padrões de projetos, <em>refactoring</em>, SOLID, etc.</p>
+
+<p>Vou além, e digo que muitos usam tais conhecimentos em seus dias a dias quando estão a trabalhar em seus projetos.</p>
+
+<p>Tais principio são a "pedra fundamental" sobre o qual o resto todo se apoia. São as tais regras de ouro. Por isso são de extrema importância. Conhecê-las faz um imenso diferencial no código que produzimos pois nos tornamos mais conscientes e preocupados.</p>
+
+<p>Entretanto, somente isso não significa termos um sistema robusto e de qualidade. Já trabalhei em muitos projetos cujos os colegas dominavam e sabiam de "coeur" cada palavra do Design Pattern, mas produziam código <em>sujos</em> e com pouca qualidade.</p>
+
+<h2>O que é qualidade? Como é um código de qualidade?</h2>
+
+<p>Responder essa pergunta não é algo simples e estou longe de ter as credencias necessárias para me atrever a tamanha responsabilidade. Por isso, recorri aos grandes autores já citados para buscar o que seria a tal qualidade almejada tanto em nossos código.</p>
+
+<p>Em sua grande maioria, os autores que li (Martin Fowler, Kent Beck, Michael Feather, Uncle Bob, Erich Gamma, Joshua Kerievsky, entre outros) concordam em alguns pontos que listo abaixo.</p>
+
+<ul>
+<li><p><strong>Código bom é aquele que sobrevive ao seu autor</strong>: código deve ser escrito não para compiladores e sim para pessoas. Código bom é aquele que é fácil de entender e compreender a sua forma. Comunica com clareza a sua função e razão de ser.</p></li>
+<li><p><strong>Código tem que ser simples</strong>: a complexidade se dá pela soma das partes. Código simples divide o problema em partes menores e as resolve. E no final chama essas pequenas partes para compor o todo da solução</p></li>
+<li><p><strong>Código bom é aquele "manutenciavel"</strong>: possui toda o ambiente necessário para que ele seja facil de evoluir: testes, documentação, etc.</p></li>
+<li><p><strong>Código que vai além da especificação funcional</strong>: um bom código vai além das especificações do cliente. Ele procura cobrir todos os cenários e estar preparado para as situações não previstas; ele é feito por "não otimistas" (explica mais a frente).</p></li>
+</ul>
+
+
+<h2>Com eu faço de qualidade? Além de TDD (BDD), Patterns, SOLID, o que mais precisa ser feito?</h2>
+
+<p>A resposta é mais simples do que você imagina:</p>
+
+<p><strong>DISCIPLINA</strong></p>
+
+<p>Saber tudo isso não significa e nem faz a mágica de tornar o seu código maravilhoso. Eu falo isso com propriedade. Por muitas vezes sou um feroz defensor de boas práticas e então, meus colegas acham código meu sem teste, mal escrito, com erros de implementação, etc.</p>
+
+<p>Um outro aspecto é a constante verificação da complexidade, qualidade e cobertura de seu código. A disciplina não será nada se não houver um objetivo à atingir.</p>
+
+<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - Leonardo Balter e Alexandre Martins - precisamos de trocar o "boné de programador" e fazer mais <em>"Testes de trollagem"</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
+
+<p>Inclusive, existe um excelente artigo do pessoal da NetFlix, sobre uma ferramenta chamada de Caos Monkey. Essas ferramenta derruba os servidores e analisa como o sistema se comporta para verificar se tudo é robusto. Isso é um aspecto muito esquecido nas aplicações e cada vez mais determinante na entrega.</p>
+
+<p>Tenho um caso de um sistema muito bem feito, com testes, boa arquitetura, etc, que falhou vergonhasamente quando foi para produção pois esqueceram de configurar o cache corretamente. Pensar nisso é ter a visão holística de que tanto falam diversos autores.</p>
+
+<h2>Ferramentas para ajudar</h2>
+
+<p>Uma grande ferramenta sem dúvida são os testes automatizados. Outra tão boa quanto são aquelas que "medem" diversos parametros, com frequencia de sua base de código, como: dependência ciclomática; duplicidade de código; aderência a convenções de código (Pep8 para python, JSLint, CodeStyle para Java, etc); analise de perfomance; tolerância a falhas; etc.</p>
+
+<p>Ter um servidor de CI (integração contínua) rodando essas ferramentas, testes, e outras coisas que sejam importantes para o time, é uma grande coisa a ser feita. Coloque alertas, encha a caixa de email do pessoal com mensagens de alerta e obriguem a todos terem carinho com o "build". No time agradeço a presença do meu amigo Vinícius que me lembra e nos cobra coisa como essas.</p>
+
+<h2>No final ...</h2>
+
+<p>No final o que mais importa é termos a disciplina e obstinação de sempre buscarmos a melhora contínua do que fazemos. Novas formas, padrões, teorias irão surgir, novas linguagens e ferramentas irão surgir. Porém sempre caberá a nós a busca por fazer nosso trabalhar melhor do que do dia anterior. Esse é o compromisso que quero assumir comigo e com meu trabalho.</p>
+
+<p>Eu não sou um exemplo e nem desejo ser modelo, mas nem por isso devemos acreditar que só os melhores e somente em projetos de "empresas legais" que isso será possível. Faça aos poucos, se comprometa em fazer diferente. Faça e conquiste seu espaço, os resultados irão te ajudar a provar o valor de tais práticas.</p>
+]]></content>
+  </entry>
+  
+</feed>

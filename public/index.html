@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a &hellip;">
+  <meta name="description" content="Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro CleanCode do UncleBob: &#8220;You are reading this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +70,110 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/09/02/qualidade-de-codigo/">Escrevendo Código Limpo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-02T16:00:00-03:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/02/qualidade-de-codigo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">CleanCode</a> do <a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">UncleBob</a>: <em>&#8220;You are reading this book for two reasons. First, you are a programmer. Second, you want to be a better programmer. Good, we need better programmers.&#8221;</em></p>
+
+<p>Vivemos num momento interessante dentro da profissão de desenvolver sistemas: temos as metodologias ágeis, direcionamentos onde o foco é o ser humano (<a href="http://www.amazon.com/Peopleware-Productive-Projects-Second-Edition/dp/0932633439">Peopleware</a>), a busca pela qualidade e pelo desempenho ganham forma e embaseamento, a maturidade nos leva a uma busca constante de excelência, e outras coisas.</p>
+
+<p>Um exemplo disso são os diversos processos e práticas que tem surgido - e solidificado -  nos últimos tempos como TDD, BDD, SOLID (veja no livro do <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a> - Robert Martin aka &#8220;Uncle Bob&#8221;), etc. Apesar de pessoalmente acreditar que tais iniciativas sejam importantes e determinantes para entregarmos sistemas de qualidade, penso que ainda precisamos de um &#8220;algo mais&#8221;.</p>
+
+<p>Escrever &#8220;código&#8221;, ao contrário do que muitos pensam, não é uma atividade simples. Segundo Brian Kernigan - coautor de AWK programing language, <em>&#8220;é quase o mais complicado dos empreendimentos humanos&#8221;</em> . Todo sistema nasce simples e consciso. Todo sistema nasce bem feito, porém com o passar do tempo e de seu uso e constantes evoluções sua complexidade aumentam e sua &#8220;qualidade&#8221; provavelmente cai. Mesmo que ele tenha 100% de cobertura de testes (coisa que no mundo real é um grande feito) e seu time siga <em>a risca</em> todas as regras.</p>
+
+<h2>TDD e BDD importam</h2>
+
+<p>Antes de mais nada, gostaria de dizer que nada justifica um código sem testes. Testes são uma parte fundamental de um bom código. E eu disse testes. Não disse que fazer TDD ou BDD. Testes garantem um forma simples de manter a aderência as especificações e segurança para realizar futuras mudanças. Autores como Michael Feathers [<a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">Working Effectivily with Legacy Code</a>], chegam afirmar que sem testes não existe a possibilidade da melhora contínua, disciplina essencial para termos bons bases de código.</p>
+
+<p>TDD (<em>Test Driven Development</em>) e BDD(<em>Behave Driven Development</em>) são extrapolações de testes, onde os usamos para nos guiar na busca de uma melhor arquitetura. É possível termos testes automatizados sem seguir tais práticas, porém o contrário não.</p>
+
+<p>TDD e BDD são ótimas ajudantes para termos sistemas robustos e bem feitos, para termos &#8220;códigos limpos&#8221;, mas como disse antes, não são o suficiente.</p>
+
+<h2>Design Patterns e princípios como SOLID importam</h2>
+
+<p>Acredito que a maioria das pessoas que leêm meu blog, são pessoas que se preocupam com a qualidade de seus sistemas. Isso deve se refletir em estudos e muita leitura. Sendo assim, creio que a maior parte já tiveram contato - ou até dominam - assuntos como padrões de projetos, <em>refactoring</em>, SOLID, etc.</p>
+
+<p>Vou além, e digo que muitos usam tais conhecimentos em seus dias a dias quando estão a trabalhar em seus projetos.</p>
+
+<p>Tais principio são a &#8220;pedra fundamental&#8221; sobre o qual o resto todo se apoia. São as tais regras de ouro. Por isso são de extrema importância. Conhecê-las faz um imenso diferencial no código que produzimos pois nos tornamos mais conscientes e preocupados.</p>
+
+<p>Entretanto, somente isso não significa termos um sistema robusto e de qualidade. Já trabalhei em muitos projetos cujos os colegas dominavam e sabiam de &#8220;coeur&#8221; cada palavra do Design Pattern, mas produziam código <em>sujos</em> e com pouca qualidade.</p>
+
+<h2>O que é qualidade? Como é um código de qualidade?</h2>
+
+<p>Responder essa pergunta não é algo simples e estou longe de ter as credencias necessárias para me atrever a tamanha responsabilidade. Por isso, recorri aos grandes autores já citados para buscar o que seria a tal qualidade almejada tanto em nossos código.</p>
+
+<p>Em sua grande maioria, os autores que li (Martin Fowler, Kent Beck, Michael Feather, Uncle Bob, Erich Gamma, Joshua Kerievsky, entre outros) concordam em alguns pontos que listo abaixo.</p>
+
+<ul>
+<li><p><strong>Código bom é aquele que sobrevive ao seu autor</strong>: código deve ser escrito não para compiladores e sim para pessoas. Código bom é aquele que é fácil de entender e compreender a sua forma. Comunica com clareza a sua função e razão de ser.</p></li>
+<li><p><strong>Código tem que ser simples</strong>: a complexidade se dá pela soma das partes. Código simples divide o problema em partes menores e as resolve. E no final chama essas pequenas partes para compor o todo da solução</p></li>
+<li><p><strong>Código bom é aquele &#8220;manutenciavel&#8221;</strong>: possui toda o ambiente necessário para que ele seja facil de evoluir: testes, documentação, etc.</p></li>
+<li><p><strong>Código que vai além da especificação funcional</strong>: um bom código vai além das especificações do cliente. Ele procura cobrir todos os cenários e estar preparado para as situações não previstas; ele é feito por &#8220;não otimistas&#8221; (explica mais a frente).</p></li>
+</ul>
+
+
+<h2>Com eu faço de qualidade? Além de TDD (BDD), Patterns, SOLID, o que mais precisa ser feito?</h2>
+
+<p>A resposta é mais simples do que você imagina:</p>
+
+<p><strong>DISCIPLINA</strong></p>
+
+<p>Saber tudo isso não significa e nem faz a mágica de tornar o seu código maravilhoso. Eu falo isso com propriedade. Por muitas vezes sou um feroz defensor de boas práticas e então, meus colegas acham código meu sem teste, mal escrito, com erros de implementação, etc.</p>
+
+<p>Um outro aspecto é a constante verificação da complexidade, qualidade e cobertura de seu código. A disciplina não será nada se não houver um objetivo à atingir.</p>
+
+<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - Leonardo Balter e Alexandre Martins - precisamos de trocar o &#8220;boné de programador&#8221; e fazer mais <em>&#8220;Testes de trollagem&#8221;</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
+
+<p>Inclusive, existe um excelente artigo do pessoal da NetFlix, sobre uma ferramenta chamada de Caos Monkey. Essas ferramenta derruba os servidores e analisa como o sistema se comporta para verificar se tudo é robusto. Isso é um aspecto muito esquecido nas aplicações e cada vez mais determinante na entrega.</p>
+
+<p>Tenho um caso de um sistema muito bem feito, com testes, boa arquitetura, etc, que falhou vergonhasamente quando foi para produção pois esqueceram de configurar o cache corretamente. Pensar nisso é ter a visão holística de que tanto falam diversos autores.</p>
+
+<h2>Ferramentas para ajudar</h2>
+
+<p>Uma grande ferramenta sem dúvida são os testes automatizados. Outra tão boa quanto são aquelas que &#8220;medem&#8221; diversos parametros, com frequencia de sua base de código, como: dependência ciclomática; duplicidade de código; aderência a convenções de código (Pep8 para python, JSLint, CodeStyle para Java, etc); analise de perfomance; tolerância a falhas; etc.</p>
+
+<p>Ter um servidor de CI (integração contínua) rodando essas ferramentas, testes, e outras coisas que sejam importantes para o time, é uma grande coisa a ser feita. Coloque alertas, encha a caixa de email do pessoal com mensagens de alerta e obriguem a todos terem carinho com o &#8220;build&#8221;. No time agradeço a presença do meu amigo Vinícius que me lembra e nos cobra coisa como essas.</p>
+
+<h2>No final &#8230;</h2>
+
+<p>No final o que mais importa é termos a disciplina e obstinação de sempre buscarmos a melhora contínua do que fazemos. Novas formas, padrões, teorias irão surgir, novas linguagens e ferramentas irão surgir. Porém sempre caberá a nós a busca por fazer nosso trabalhar melhor do que do dia anterior. Esse é o compromisso que quero assumir comigo e com meu trabalho.</p>
+
+<p>Eu não sou um exemplo e nem desejo ser modelo, mas nem por isso devemos acreditar que só os melhores e somente em projetos de &#8220;empresas legais&#8221; que isso será possível. Faça aos poucos, se comprometa em fazer diferente. Faça e conquiste seu espaço, os resultados irão te ajudar a provar o valor de tais práticas.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/09/01/braziljs/">Braziljs</a></h1>
     
     
@@ -97,9 +201,9 @@
 
   <div class="entry-content"><p>Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a credenciais, que foi resolvido pelo pessoal da organização,  o evento entrou numa crescente de qualidade e excelência.</p>
 
-<p>Não quero fazer uma análise ou &#8220;crítica&#8221; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida de tratasse cada apresentação de forma isolada.</p>
+<p>Não quero fazer uma análise ou &#8220;crítica&#8221; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida se tratasse cada apresentação de forma isolada.</p>
 
-<p>Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.</p>
+<p>Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum, onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.</p>
 
 <p>Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão - antes nem pensadas - de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome &#8220;científico&#8221; do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.</p>
 
@@ -742,140 +846,6 @@ Referência.
 <p>Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto!</p>
 
 <p>Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
-
-<p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste de algo&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;deve acontecer algo e o valor ser outro&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>No código acima criamos o contexto com a função describe, que recebe um texto com a descrição e uma função a ser executada. Dentro do corpo da função a gente tem a chamada do it que também recebe um texto com descrição e um função.</p>
-
-<p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
-Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;teste algo com before e after&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">variavel</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">variavel</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;teste&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class='line'>        <span class="nx">waits</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">runs</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">expect</span><span class="p">(</span><span class="nx">variavel</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
-</span><span class='line'>        <span class="p">});</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
-
-<p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
 </div>
   
   
