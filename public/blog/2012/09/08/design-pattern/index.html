@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Design Pattern e Linguagens dinamicas - </title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : &#8220; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andrefonseca.net/blog/2012/09/08/design-pattern">
+  <link href="/favicon.ico" rel="icon">
+  
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34644487-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header role="banner"><hgroup>
+  <h1><a href="/"></a></h1>
+  
+    <h2>AF</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/aoqfonseca">Twitter</a></li>
+  <li><a href="http://github.com/aoqfonseca">Github</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Design Pattern E Linguagens Dinamicas</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-08T21:16:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <strong>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</strong> .</p>
+
+<p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
+
+<p>Patterns foram uma verdade absoluta, uma lei escrita em pedra até a muito pouco tempo atrás. Ouso dizer que para muitos é quase um axioma onde se um dia for quebrado alterará o equilíbrio da <strong>&#8220;vida no universo&#8221;</strong>. Entretanto, com o crescimento do uso de linguagens dinamicas e com paradigmas de classe aberta, parece que a coisa tem mudado um tanto.</p>
+
+<p>Muitos fazem &#8220;piadas&#8221; com o livro do Gof (Gang of Four - Design Patterns, Eirc Gamma, Richard Helm,  Ralph Johson e John Vlissides),  dizendo que na verdade o título de livro deveria ser &#8220;Como tornar o C++/ Java menos ruim&#8221;, pois a maioria das soluções apresentadas giram em torno da deficiencias dessas linguagens (Tipagem estática, falta de closures, não ter funções como first class, não terem modelos de open class, etc) .  Sendo, assim, quando temos uma linguagem que não tem essas tais limitações, usar patterns é algo desnecessário.</p>
+
+<p>Concordo em parte com o parágrafo acima. Primeiro é preciso considerar que o livro foi escrito à mais de <strong>14 anos</strong> ( primeira edição saiu em 1996 ou 1997) e pouco se conhecia de linguagens como Python,  Ruby, Groovy, Scala, entre outras semelhantes (embora algumas já existissem).  As duas linguagens que vinham sendo usadas em larga escala eram exatamente o Java e o C++.</p>
+
+<p>Outro aspecto que devemos levar em consideração é que mesmo usando uma linguagem dita moderna, isso não invalida o uso ou conhecimento de padrões de arquitetura. Muito pelo contrário: é importante que conheçamos as motivações por trás de tudo, para que possamos adaptar a nova realidade as soluções catalogadas.</p>
+
+<p>É praticamente impossível pensarmos em escrever uma aplicação, ela ser entregue e jamais ser tocada novamente. Na maioria dos casos ela evoluirá com ou sem o nosso consentimento ou participação. Sendo assim, escrever usando ou baseando-se em padrões facilita em muito o entendimento dos futuros donos deste sistema e além do mais. Quando falamos de equipe, até a comunicação do &#8220;como deve ser feito&#8221; fica facilitada: &#8220;Vamos fazer com um pattern de DTO, por iso temos que fazer os Value Objects, etc&#8221;.</p>
+
+<h2>Linguagens Dinamicas tem melhores ferramentas:</h2>
+
+<p>Tomando como base Python, Ruby e Groovy, linguagens dinamicas possuem um leque maior de recursos que facilitam em muito criarmos sistemas que evoluam facilmente.  Recursos como closures, open class (classes abertas),  blocos, generadores, decorators, etc, num primeiro momento chegam a negar a necessidade de se criar modelos complexos .</p>
+
+<p>Para que criar um modelo complicado de interfaces, heranças, composições e etc quando podemos simplesmente passar um função como argumento, ou então, capturar e criarmos métodos que ainda nem existem ?</p>
+
+<p>Todos esses recurso facilitam em muito a criarmos sistemas que são simples de evoluir e reutilizar.</p>
+
+<h2>Uma coisa não exclui a outra</h2>
+
+<p>Diante de tudo que foi dito acima, poderia simplesmente, sem muito medo de errar, dizer que Designs Patterns são obsoletos e desnecessários frente a novas ferramentas que possuímos hoje.</p>
+
+<p>Como já disse, concordo em parte com tal afirmação.  Muitas limitações deixam de existir e com isso a necessidade de contorná-las, porém, outros problemas persistem ou tantos outros surgiram.</p>
+
+<p>Padrões não devem ser usados como verdades absolutas e sim como guias para a construção de um sistema bem feito.  Conhêce-los é como uma receita: enquanto estamos aprendendo seguimos-as sem alterar nada, entretanto, a medida que ganhamos experiência sentimos confiante a mudar um pouco e inovar.  Vale ressaltar que não saímos do nada. Não &#8220;reinventamos a roda&#8221;. Adaptamos algo que já se provou sucedido a nossa realidade e ferramentas.</p>
+
+<h2>Algumas referências sobre o assunto</h2>
+
+<p><em>Neal Ford</em> tem uma excelente apresentação que fez na Oscon de 2009, onde mostra que algum patterns não fazem mais sentido, porém outros ainda se mostram atuais.  Uncle Bob, em um vídeo e texto em seu blog faz uma afirmação parecida: Diz que design patterns ainda são tão atuais quanto antes e importantes. As bases que compões as soluções ainda são &#8220;sólidas&#8221; - preferir composição a herança.</p>
+
+<p>Convido a quem está lendo a pelo menos conhecer algumas soluções para até mesmo ter do que falar mal. Verá que mudará a forma como pensa a solução.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Andre Fonseca)" rel="author">Andre Fonseca</a></span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-08T21:16:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andrefonseca.net/blog/2012/09/08/design-pattern/" data-via="aoqfonseca" data-counturl="http://andrefonseca.net/blog/2012/09/08/design-pattern/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/02/qualidade-de-codigo/" title="Previous Post: Escrevendo código limpo">&laquo; Escrevendo código limpo</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogandrefonseca';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andrefonseca.net/blog/2012/09/08/design-pattern/';
+        var disqus_url = 'http://andrefonseca.net/blog/2012/09/08/design-pattern/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

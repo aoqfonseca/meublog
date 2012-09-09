@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro CleanCode do UncleBob: &#8220;You are reading this &hellip;">
+  <meta name="description" content="Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : &#8220; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/08/design-pattern/">Design Pattern E Linguagens Dinamicas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-08T21:16:00-03:00" pubdate data-updated="true">Sep 8<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/08/design-pattern/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <strong>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</strong> .</p>
+
+<p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
+
+<p>Patterns foram uma verdade absoluta, uma lei escrita em pedra até a muito pouco tempo atrás. Ouso dizer que para muitos é quase um axioma onde se um dia for quebrado alterará o equilíbrio da <strong>&#8220;vida no universo&#8221;</strong>. Entretanto, com o crescimento do uso de linguagens dinamicas e com paradigmas de classe aberta, parece que a coisa tem mudado um tanto.</p>
+
+<p>Muitos fazem &#8220;piadas&#8221; com o livro do Gof (Gang of Four - Design Patterns, Eirc Gamma, Richard Helm,  Ralph Johson e John Vlissides),  dizendo que na verdade o título de livro deveria ser &#8220;Como tornar o C++/ Java menos ruim&#8221;, pois a maioria das soluções apresentadas giram em torno da deficiencias dessas linguagens (Tipagem estática, falta de closures, não ter funções como first class, não terem modelos de open class, etc) .  Sendo, assim, quando temos uma linguagem que não tem essas tais limitações, usar patterns é algo desnecessário.</p>
+
+<p>Concordo em parte com o parágrafo acima. Primeiro é preciso considerar que o livro foi escrito à mais de <strong>14 anos</strong> ( primeira edição saiu em 1996 ou 1997) e pouco se conhecia de linguagens como Python,  Ruby, Groovy, Scala, entre outras semelhantes (embora algumas já existissem).  As duas linguagens que vinham sendo usadas em larga escala eram exatamente o Java e o C++.</p>
+
+<p>Outro aspecto que devemos levar em consideração é que mesmo usando uma linguagem dita moderna, isso não invalida o uso ou conhecimento de padrões de arquitetura. Muito pelo contrário: é importante que conheçamos as motivações por trás de tudo, para que possamos adaptar a nova realidade as soluções catalogadas.</p>
+
+<p>É praticamente impossível pensarmos em escrever uma aplicação, ela ser entregue e jamais ser tocada novamente. Na maioria dos casos ela evoluirá com ou sem o nosso consentimento ou participação. Sendo assim, escrever usando ou baseando-se em padrões facilita em muito o entendimento dos futuros donos deste sistema e além do mais. Quando falamos de equipe, até a comunicação do &#8220;como deve ser feito&#8221; fica facilitada: &#8220;Vamos fazer com um pattern de DTO, por iso temos que fazer os Value Objects, etc&#8221;.</p>
+
+<h2>Linguagens Dinamicas tem melhores ferramentas:</h2>
+
+<p>Tomando como base Python, Ruby e Groovy, linguagens dinamicas possuem um leque maior de recursos que facilitam em muito criarmos sistemas que evoluam facilmente.  Recursos como closures, open class (classes abertas),  blocos, generadores, decorators, etc, num primeiro momento chegam a negar a necessidade de se criar modelos complexos .</p>
+
+<p>Para que criar um modelo complicado de interfaces, heranças, composições e etc quando podemos simplesmente passar um função como argumento, ou então, capturar e criarmos métodos que ainda nem existem ?</p>
+
+<p>Todos esses recurso facilitam em muito a criarmos sistemas que são simples de evoluir e reutilizar.</p>
+
+<h2>Uma coisa não exclui a outra</h2>
+
+<p>Diante de tudo que foi dito acima, poderia simplesmente, sem muito medo de errar, dizer que Designs Patterns são obsoletos e desnecessários frente a novas ferramentas que possuímos hoje.</p>
+
+<p>Como já disse, concordo em parte com tal afirmação.  Muitas limitações deixam de existir e com isso a necessidade de contorná-las, porém, outros problemas persistem ou tantos outros surgiram.</p>
+
+<p>Padrões não devem ser usados como verdades absolutas e sim como guias para a construção de um sistema bem feito.  Conhêce-los é como uma receita: enquanto estamos aprendendo seguimos-as sem alterar nada, entretanto, a medida que ganhamos experiência sentimos confiante a mudar um pouco e inovar.  Vale ressaltar que não saímos do nada. Não &#8220;reinventamos a roda&#8221;. Adaptamos algo que já se provou sucedido a nossa realidade e ferramentas.</p>
+
+<h2>Algumas referências sobre o assunto</h2>
+
+<p><em>Neal Ford</em> tem uma excelente apresentação que fez na Oscon de 2009, onde mostra que algum patterns não fazem mais sentido, porém outros ainda se mostram atuais.  Uncle Bob, em um vídeo e texto em seu blog faz uma afirmação parecida: Diz que design patterns ainda são tão atuais quanto antes e importantes. As bases que compões as soluções ainda são &#8220;sólidas&#8221; - preferir composição a herança.</p>
+
+<p>Convido a quem está lendo a pelo menos conhecer algumas soluções para até mesmo ter do que falar mal. Verá que mudará a forma como pensa a solução.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -770,94 +842,6 @@ Referência.
 3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
 4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
 5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando Growl Com Python E Ferramenta De Autotest</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-20T00:00:00-02:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
-
-<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
-
-<p>Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação).</p>
-
-<p>Foi quando encontrei o Peon, desenvolvido pelo <a href="http://blog.heynemann.com.br" title="Blog do Bernardo Heynemann">Bernardo Heynemann</a>.  O Peon é uma ferramenta que é fácil de instalar (pip install ou baixa e executa make install) e fácil de usar basta:</p>
-
-<figure class='code'><figcaption><span>lang=&#8221;bash&#8221;</span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>peon make test -d tests</span></code></pre></td></tr></table></div></figure>
-
-
-<p>O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto.</p>
-
-<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
-
-<p>Pesquisando encontrei uma forma de fazer isso.</p>
-
-<p>Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">try</span><span class="p">:</span>
-</span><span class='line'>    <span class="kn">import</span> <span class="nn">Growl</span>
-</span><span class='line'><span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-</span><span class='line'>     <span class="k">return</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">path_image</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="n">image</span><span class="p">))</span>
-</span><span class='line'><span class="n">icon</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;applicationIcon&#39;</span><span class="p">:</span> <span class="n">Growl</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">imageFromPath</span><span class="p">(</span><span class="n">path_image</span><span class="p">)}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">growl</span> <span class="o">=</span> <span class="n">Growl</span><span class="o">.</span><span class="n">GrowlNotifier</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="p">[</span><span class="n">app_name</span><span class="p">],</span> <span class="o">**</span><span class="n">icon</span><span class="p">)</span>
-</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
-</span><span class='line'><span class="n">growl</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">app_name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Primeiro você cria um notifier, informando o nome da app (ela será usada para identificar quem está mandando algo para o Growl. Isso é importante), lista de tipos de mensagem que serão enviadas e um dicionário com ícones.</p>
-
-<p>Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto!</p>
-
-<p>Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro.</p>
 </div>
   
   

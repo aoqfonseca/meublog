@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-09-08T11:04:35-03:00</updated>
+  <updated>2012-09-08T21:18:52-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Design Pattern e Linguagens dinamicas]]></title>
+    <link href="http://andrefonseca.net/blog/2012/09/08/design-pattern/"/>
+    <updated>2012-09-08T21:16:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2012/09/08/design-pattern</id>
+    <content type="html"><![CDATA[<p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <strong>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</strong> .</p>
+
+<p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
+
+<p>Patterns foram uma verdade absoluta, uma lei escrita em pedra até a muito pouco tempo atrás. Ouso dizer que para muitos é quase um axioma onde se um dia for quebrado alterará o equilíbrio da <strong>&#8220;vida no universo&#8221;</strong>. Entretanto, com o crescimento do uso de linguagens dinamicas e com paradigmas de classe aberta, parece que a coisa tem mudado um tanto.</p>
+
+<p>Muitos fazem &#8220;piadas&#8221; com o livro do Gof (Gang of Four - Design Patterns, Eirc Gamma, Richard Helm,  Ralph Johson e John Vlissides),  dizendo que na verdade o título de livro deveria ser &#8220;Como tornar o C++/ Java menos ruim&#8221;, pois a maioria das soluções apresentadas giram em torno da deficiencias dessas linguagens (Tipagem estática, falta de closures, não ter funções como first class, não terem modelos de open class, etc) .  Sendo, assim, quando temos uma linguagem que não tem essas tais limitações, usar patterns é algo desnecessário.</p>
+
+<p>Concordo em parte com o parágrafo acima. Primeiro é preciso considerar que o livro foi escrito à mais de <strong>14 anos</strong> ( primeira edição saiu em 1996 ou 1997) e pouco se conhecia de linguagens como Python,  Ruby, Groovy, Scala, entre outras semelhantes (embora algumas já existissem).  As duas linguagens que vinham sendo usadas em larga escala eram exatamente o Java e o C++.</p>
+
+<p>Outro aspecto que devemos levar em consideração é que mesmo usando uma linguagem dita moderna, isso não invalida o uso ou conhecimento de padrões de arquitetura. Muito pelo contrário: é importante que conheçamos as motivações por trás de tudo, para que possamos adaptar a nova realidade as soluções catalogadas.</p>
+
+<p>É praticamente impossível pensarmos em escrever uma aplicação, ela ser entregue e jamais ser tocada novamente. Na maioria dos casos ela evoluirá com ou sem o nosso consentimento ou participação. Sendo assim, escrever usando ou baseando-se em padrões facilita em muito o entendimento dos futuros donos deste sistema e além do mais. Quando falamos de equipe, até a comunicação do &#8220;como deve ser feito&#8221; fica facilitada: &#8220;Vamos fazer com um pattern de DTO, por iso temos que fazer os Value Objects, etc&#8221;.</p>
+
+<h2>Linguagens Dinamicas tem melhores ferramentas:</h2>
+
+<p>Tomando como base Python, Ruby e Groovy, linguagens dinamicas possuem um leque maior de recursos que facilitam em muito criarmos sistemas que evoluam facilmente.  Recursos como closures, open class (classes abertas),  blocos, generadores, decorators, etc, num primeiro momento chegam a negar a necessidade de se criar modelos complexos .</p>
+
+<p>Para que criar um modelo complicado de interfaces, heranças, composições e etc quando podemos simplesmente passar um função como argumento, ou então, capturar e criarmos métodos que ainda nem existem ?</p>
+
+<p>Todos esses recurso facilitam em muito a criarmos sistemas que são simples de evoluir e reutilizar.</p>
+
+<h2>Uma coisa não exclui a outra</h2>
+
+<p>Diante de tudo que foi dito acima, poderia simplesmente, sem muito medo de errar, dizer que Designs Patterns são obsoletos e desnecessários frente a novas ferramentas que possuímos hoje.</p>
+
+<p>Como já disse, concordo em parte com tal afirmação.  Muitas limitações deixam de existir e com isso a necessidade de contorná-las, porém, outros problemas persistem ou tantos outros surgiram.</p>
+
+<p>Padrões não devem ser usados como verdades absolutas e sim como guias para a construção de um sistema bem feito.  Conhêce-los é como uma receita: enquanto estamos aprendendo seguimos-as sem alterar nada, entretanto, a medida que ganhamos experiência sentimos confiante a mudar um pouco e inovar.  Vale ressaltar que não saímos do nada. Não &#8220;reinventamos a roda&#8221;. Adaptamos algo que já se provou sucedido a nossa realidade e ferramentas.</p>
+
+<h2>Algumas referências sobre o assunto</h2>
+
+<p><em>Neal Ford</em> tem uma excelente apresentação que fez na Oscon de 2009, onde mostra que algum patterns não fazem mais sentido, porém outros ainda se mostram atuais.  Uncle Bob, em um vídeo e texto em seu blog faz uma afirmação parecida: Diz que design patterns ainda são tão atuais quanto antes e importantes. As bases que compões as soluções ainda são &#8220;sólidas&#8221; - preferir composição a herança.</p>
+
+<p>Convido a quem está lendo a pelo menos conhecer algumas soluções para até mesmo ter do que falar mal. Verá que mudará a forma como pensa a solução.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Escrevendo código limpo]]></title>
@@ -1227,43 +1270,6 @@ Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, 
 Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
 
 Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
-
-&nbsp;
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Estudos Compartilhados - parte III]]></title>
-    <link href="http://andrefonseca.net/blog/2010/12/17/estudos-compartilhados-parte-iii/"/>
-    <updated>2010-12-17T00:00:00-02:00</updated>
-    <id>http://andrefonseca.net/blog/2010/12/17/estudos-compartilhados-parte-iii</id>
-    <content type="html"><![CDATA[No artigo passado da série &#8220;Estudo compartilhados&#8221;, abordei mais a questão da Orientação a Objeto e como ainda não nos entendemos bem com ela.  No finalzinho do artigo, rapidamente, falei sobre os testes automatizados no famoso TDD.
-
-TDD virou um buzzword. Traduzindo: Uma palavrinha da moda.  Hoje as empresa já colocam nos seus anuncios de vagas que o candidato que conhece TDD é um diferencial, outras até exigem. A questão é: Você sabe realmente o que é TDD?
-
-<strong>TDD é a sigla em inglês para TEST DRIVEN DESIGN ou design dirigido por testes. </strong>
-
-Mais uma vez para me ajudar com essa questão, pedi a ajuda para meu amigo <a href="blog.mar.ti.ns">Alexandre Martins</a>, e ele me recomendou ( meio óbvio), o livro do Kent Beck , criador do TDD,  <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&amp;qid=1292588088&amp;sr=8-1">TEST-DRIVEN DEVELOPMENT</a> . Além desse, Nunes também me recomendou alguns artigos e outros livros como o <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1292588280&amp;sr=8-1">Growing Object-Oriented Software, Guide by Test</a>, que mostram o caminho das pedras e como o teste pode ser o melhor amigo do desenvolvedor.
-
-Numa conversa com outra pessoa, Rafael Martins (Cabra) da Globo.com,  concluímos que muita gente acaba por ter uma visão torta do que vem ser testar antes. Testar antes parte da premissa, na minha concepção, de que é preciso um problema para procurarmos a solução. Seria mais ou menos assim:  Você tem que comer quando sentir fome, pois do contrário, você está sendo guloso e indo além de suas capacidades.
-
-Quando você cria os seus teste antes, baseado em suas necessidades, está de certa forma, criando um problema a ser resolvido. Se for disciplinado e apenas resolver aquele problema e repetir esse ciclo até que todos os requisitos sejam atendidos, a solução literalmente emerge. Isso mesmo: EMERGE.
-
-Muitas das pessoas que me ouviram falar disso, respondem dizendo que é mentira ou exagero da minha parte que a solução EMERGE. Convido, os descrentes, a assistir e participar de uma sessão de dojo.
-
-No livro <a href="http://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445/ref=sr_1_3?s=books&amp;ie=UTF8&amp;qid=1292594363&amp;sr=1-3">Agile Software Development</a>, também do UncleBob,  existe um capítulo em que ele descreve o desenvolvimento de um sistema para pontuação de boliche em que faz um par (pair programming) com outra pessoa e segue  conceitos como TDD e baby steps. É simplesmente revelador. Sei que exagerado mas é isso mesmo: REVELADOR ; pois ele simplesmente vai fazendo o sistema &#8220;sem pensar&#8221;. Dando pequenos passos, e sempre mantendo um dialogo e trocas constante com seu amigo, o design vai surgindo diante deles e se mostrando diferente do que se imaginava de inicio.
-<h2>TDD evita desperdício</h2>
-Um outro livro que recomendo muito é o Pragmatic Programmer. Nesse livro ele procura mostrar que o pragmatismo é uma boa filosofia para nós que fazemos software. Dentro disso, uma das coisas é a questão de evitar o desperdício.
-
-Evitar desperdício é algo muito amplo e engloba diversas atitudes que devemos ter como: automatizar tarefas repetitivas,  tornar simples fazer o certo,  não fazer mais do que é preciso, etc.
-
-Muitos se perguntam o que fazer para ser um programador ou ter um time altamente eficiente. Eu acredito que a solução vem de evitar desperdício e fazer o &#8220;justo necessário&#8221;. Isso também é conhecido como evitar o OverDesign. Sabe aquela aplicação simples para enviar arquivo para um servidor que o pessoal quer fazer com um monte de camada, abstrações, etc, justificando que isso facilitará uma possível modificação futura&#8230;Isso é um excelente exemplo de gasto desnecessário.
-
-Quando fazemos TDD e nos disciplinamos a fazer o teste passar (isso mesmo) a gente fica focado; ao ficar focado evitamos desvios e perdas de tempos fazendo coisas para necessidades que não existem ainda.
-<blockquote><strong>ATENÇÃO: ISSO NÃO SIGNIFICA QUE VOCÊ DEVE FAZER ARQUITETURA PORCA. SEU CÓDIGO DEVE SER LIMPO.</strong></blockquote>
-Testar depois é apenas automatizar. TDD é mais uma ferramenta de design.
-
-Até a próxima pessoal.
 
 &nbsp;
 ]]></content>
