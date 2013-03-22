@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : &#8220; &hellip;">
+  <meta name="description" content="Introdução Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,128 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/">Sistemas Com Responsabilidades únicas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-21T21:09:00-03:00" pubdate data-updated="true">Mar 21<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Introdução</h2>
+
+<p>Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a>. Tais princípios ficaram eternizados com a sigla SOLID, que é acronimo e significa:</p>
+
+<blockquote><p>S: Single Responsability Principle ( Principio de Responsabilidade Única)</p>
+
+<p>O: Open Close Principle ( Principio do aberto para extensão e fechado para modificação)</p>
+
+<p>L: Liskov  Substitution Principle (A classe filha pode ser substituida pela classe pai)</p>
+
+<p>I: Interface Segregation Principle (expor interfaces não objetos)</p>
+
+<p>D: Dependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )</p>
+
+<p><em>leia mais clicando <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">aqui</a></em></p></blockquote>
+
+<p>Aplicando essa definições em nossos código, a idéia é ter um código mais limpo, sendo isso: código legível; fácil de entender por outros desenvolvedores; simples de evoluir; simples de manutenciar; etc. Esses são os benefícios mais diretos, outros, podemos citar, sistemas mais robustos, testáveis, entre tanta outras coisas que muitos desejam.</p>
+
+<p>A questão é que mesmo usando toda essa engenharia, todos nossos sistemas atuais tendem a crescer e ganhar complexidade. A grande maioria nasce simples e com responsabilidades únicas e bem definidas, mas a medida do uso e da evolução vamos ajuntando mais funcionalidades, acertos, melhorias , <em>robustez</em> (tolerância a falhas), etc&#8230; que o nosos aplicativos viram megazords amorfos e com prazo de validade estampados.</p>
+
+<p>Quem nunca se deparou com bases de códigos que começaram com algumas centenas de linhas e hoje tem milhares (até milhões) de linhas de código. Uma completa bagunça que vai se tornando um pesadelo na vida de qualquer desenvolver a cada mexida que ele tem dar. Entenda aqui que estou falando que isso pode acontecer mesmo com sistemas que usam de testes automatizados. Como já disse em outro post, testes nem sempre são garantia de qualidade - ajudam .</p>
+
+<p>uma das coisa que vejo e vivencio é que a medida que essas bases de código crescem fica impossível de manter principios de reutilização, <em>DRY</em>, padrões de nomes, <em>code style</em>, e diversas outras coisas importantes para a vida de seu software.</p>
+
+<h2>Nosso dilema atual</h2>
+
+<p>Como disse já na introdução, os sistemas crescem, e com eles suas bases de código. Podemos acrescentar a equação o fato de projetos que começam com poucos desenvolvedores e no final tem vários times mexendo e o resto por conta da imaginação e experiência de vocês.</p>
+
+<p>É claro que com o passar do tempo, isso tudo vira uma mega bagunça e cada vez mais difícil evoluir. Muitos poderiam dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">livro</a> sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final.</p>
+
+<p>Além disso todo desenvolvedor adora os projetos ditos &#8220;Green Field&#8221;, ou seja, projetos que começamos do <em>zero</em>. Nesses projetos temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias. A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO&#8230; vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)</p>
+
+<h2>Motivos para reescrever sistemas</h2>
+
+<ol>
+<li><strong>Tecnologias caducam, envelhecem:</strong></li>
+</ol>
+
+
+<p>Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema&#8230; enfim a tecnologia evoluir e traz novas soluções - e melhores - para os nosso problemas.</p>
+
+<ol>
+<li><strong>Nós aprendemos:</strong></li>
+</ol>
+
+
+<p>Com o passar do tempo e com a experiência vamos vendo que nem sempre o caminho que adotamos numa determinidade solução foi o melhor. Também vemos que existem jeitos melhores de implementar determinada lógica e por aí segue. Evoluímos como profissionais e com isso vemos que aquele sistema que fizemos a um tempo atrás poderia ter sido feito de um jeito diferente. O problema que mudar um sistema gigantesco não é simples e é arriscado.
+Infelizmente mudanças desse tipo não dá para fazer de forma gradual pois, geralmente, eles são mudanças radicais em nosso dominio.</p>
+
+<ol>
+<li><strong>todo sistema tem prazo de validade:</strong></li>
+</ol>
+
+
+<p>Um outro bom motivo para reescrevermos nosso sistema é ligado ao negócio. Muitas vezes vemos que a forma de nosso negócio mudou e que o sistema atual com sua base de código infinita não nos atende mais. Mesmo que façamos diversos apendices, o sistema não é mais capaz de nos atender com proficiencia. Se tornam aqueles sistemas cheios de jeitinhos para fazer coisas. O usuário tem que fazer um cursinho para saber todos os &#8220;pulos do gato&#8221; para ele conseguir concretizar uma operação. Sistemas ERPs são os melhores exemplos disso. Você acaba torcendo o seu problema para caber dentro daquele sistema que é impossível de mudar ou reescrever.</p>
+
+<h2>Vamos ao que interessa</h2>
+
+<p>Fica um bom tempo falando sobre a questão de engenharia de software e do problema de sistemas com muitas linhas de código. Falei também dos motivos que podemo nos levar a querer reescrever um sitemas. Mas para que?</p>
+
+<p>Escrevi sobre tudo isso para mostrar que precisamos dar o passo seguinte no desenvolvimentos de software. Precisamos pensar em sistemas como peças únicas de um conjunto para resolver problemas. Sendo assim, essas unidade deve ser responsavel por resolver um e somente um aspecto do problema e não todo ele. A solução se dá pela soma das partes que agindo em conjunto atendem ao nosso domínio.</p>
+
+<p>Precisamos aplicar os conceitos de SRP (veja acima) na concepção de nosso sistemas. Ao invés de fazermos uma peça única e monolítica que aborde todo o nosso dominio, fazmemos pequenas partes que cuidam de cada aspecto.</p>
+
+<p>Ganhamos com isso sistemas pequenos, e simples de manter.  Num caso que li recentemente, cada peça ficou com poucas centenas de linhas. Isso facilita manter pois bases pequenas são mais simples. Bases pequenas são mais fácil de entender e manter seu padrões; bases pequenas são mais fácil de jogar fora e fazer de novo. No mesmo case que citei acima, eles reescrevem uma parte em uma semana e foi imperceptível para o cliente.</p>
+
+<p>Outro aspecto é que se fizermos com pequenas partes e essas partes existirem independentes uma das outras, podemos ir além. Imagine que eu quebre o sistema em diversos serviços que se falem via REST: eu posso literalmente escrever cada serviço numa linguagem diferente que não vai causar nenhum problema. Com isso posso escolher a melhor tecnologia/linguagem para o meu problema. Além disso, mantendo as interfaces, eu posso refazer todo a parte interna sem afetar as outras peças do conjunto.</p>
+
+<p>Isso é simplesmente o céu de todo desenvolvedor.</p>
+
+<p>Em meu trabalho atual estamos caminhando para algo parecido. Ou seja, uma forma mais orientada a serviços, onde cada sistema tem uma responsabilidade e essa é simples. Manter essa coisa simples e com pouca coisa para resolver é a grande chave do sucesso.</p>
+
+<p>Se olhar arquitetura de grandes portais, produtos web (como twitter, basecamp, soundcloud, etc) verá um monte de pequenos sistemas conversando para atender a demanda do usuário.</p>
+
+<p>Se uma parte se tornar o gargalo, podemos melhorar só aquela parte: colocando mais servidores, reescrevendo, etc.</p>
+
+<p>Isso é aplicavel a qualquer contexto.</p>
+
+<p>A alguns anos atrás trabalhei numa empresa que tinha diversos sistemas que eram integrados através de troca de mensagens (queue e brokers). Claro que nem chega perto do que estou propondo mais foi uma semente e vi que dava muito certo.</p>
+
+<h2>Cenas do próximos capítulos &#8230;</h2>
+
+<p>Mais a frente - estou terminando de organizar tudo - pretendo publicar um  novo post explicando melhor como implementar essa questão de sistemas pequenos e com pouco responsabilidade.</p>
+
+<p>Só para deixar curioso, existem formas de fazer sem necessáriamente escrever um monte de sistemas; como existem formas de fazer de forma  bem desacoplada. Enfim fiquem ligados.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/09/08/design-pattern/">Design Pattern E Linguagens Dinamicas</a></h1>
     
     
@@ -107,7 +229,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <strong>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</strong> .</p>
+  <div class="entry-content"><p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <em>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</em> .</p>
 
 <p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
 
@@ -709,146 +831,6 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T00:00:00-02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-         | <a href="/blog/2011/10/25/python-decorators/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
-
-De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
-
-No wiki do Python, a definição de decorator, é de uma forma que temos para alterar um comportamento de um função ou métodos dentro de um código. Seria com  se pudéssemos adicionar ou até alterar a lógica sem sermos muitos intrusivos.
-
-Um bom exemplo seria o decorator classmethod. Veja abaixo:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
-</span><span class='line'><span class="n">olaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">()</span>
-</span><span class='line'><span class="n">OlaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">(</span><span class="n">olaMundo</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">metodo1</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">metodo1</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>    <span class="nd">@classmethod</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<h2>O que são os Decorators e como funciona:</h2>
-
-Os decorators do Python são como macros ( já disse isso) que quanto o interpretador os encontra os substitui por um estrutura que foi definida. No caso do classmethod ele &#8220;substitui&#8221; pela a chamada original. 
-
-Claro que a definição acima é simplista, mas ajuda a entender.
-
-Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MeuDecorador</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">function</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
-</span><span class='line'><span class="nd">@MeuDecorador</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">funcao</span><span class="p">():</span>
-</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;algo assim&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">funcao</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
-
-
-##Para que servem e por que usar:##
-
-Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
-
-Referência.
-1. [http://wiki.python.org/moin/PythonDecorators&#8221;>http://wiki.python.org/moin/PythonDecorators</a>
-2. [ http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html](http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html)
-3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
-4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
-5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -861,7 +843,7 @@ Referência.
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Andre Fonseca -
+  Copyright &copy; 2013 - Andre Fonseca -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

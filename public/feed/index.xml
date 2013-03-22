@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://andrefonseca.net/feed" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2012-09-08T21:18:52-03:00</updated>
+  <updated>2013-03-21T22:13:36-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -14,11 +14,104 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Sistemas com responsabilidades únicas]]></title>
+    <link href="http://andrefonseca.net/blog/2013/03/21/sitemas-com-responsabilidade-unica/"/>
+    <updated>2013-03-21T21:09:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2013/03/21/sitemas-com-responsabilidade-unica</id>
+    <content type="html"><![CDATA[<h2>Introdução</h2>
+
+<p>Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a>. Tais princípios ficaram eternizados com a sigla SOLID, que é acronimo e significa:</p>
+
+<blockquote><p>S: Single Responsability Principle ( Principio de Responsabilidade Única)</p>
+
+<p>O: Open Close Principle ( Principio do aberto para extensão e fechado para modificação)</p>
+
+<p>L: Liskov  Substitution Principle (A classe filha pode ser substituida pela classe pai)</p>
+
+<p>I: Interface Segregation Principle (expor interfaces não objetos)</p>
+
+<p>D: Dependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )</p>
+
+<p><em>leia mais clicando <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">aqui</a></em></p></blockquote>
+
+<p>Aplicando essa definições em nossos código, a idéia é ter um código mais limpo, sendo isso: código legível; fácil de entender por outros desenvolvedores; simples de evoluir; simples de manutenciar; etc. Esses são os benefícios mais diretos, outros, podemos citar, sistemas mais robustos, testáveis, entre tanta outras coisas que muitos desejam.</p>
+
+<p>A questão é que mesmo usando toda essa engenharia, todos nossos sistemas atuais tendem a crescer e ganhar complexidade. A grande maioria nasce simples e com responsabilidades únicas e bem definidas, mas a medida do uso e da evolução vamos ajuntando mais funcionalidades, acertos, melhorias , <em>robustez</em> (tolerância a falhas), etc&#8230; que o nosos aplicativos viram megazords amorfos e com prazo de validade estampados.</p>
+
+<p>Quem nunca se deparou com bases de códigos que começaram com algumas centenas de linhas e hoje tem milhares (até milhões) de linhas de código. Uma completa bagunça que vai se tornando um pesadelo na vida de qualquer desenvolver a cada mexida que ele tem dar. Entenda aqui que estou falando que isso pode acontecer mesmo com sistemas que usam de testes automatizados. Como já disse em outro post, testes nem sempre são garantia de qualidade - ajudam .</p>
+
+<p>uma das coisa que vejo e vivencio é que a medida que essas bases de código crescem fica impossível de manter principios de reutilização, <em>DRY</em>, padrões de nomes, <em>code style</em>, e diversas outras coisas importantes para a vida de seu software.</p>
+
+<h2>Nosso dilema atual</h2>
+
+<p>Como disse já na introdução, os sistemas crescem, e com eles suas bases de código. Podemos acrescentar a equação o fato de projetos que começam com poucos desenvolvedores e no final tem vários times mexendo e o resto por conta da imaginação e experiência de vocês.</p>
+
+<p>É claro que com o passar do tempo, isso tudo vira uma mega bagunça e cada vez mais difícil evoluir. Muitos poderiam dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">livro</a> sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final.</p>
+
+<p>Além disso todo desenvolvedor adora os projetos ditos &#8220;Green Field&#8221;, ou seja, projetos que começamos do <em>zero</em>. Nesses projetos temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias. A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO&#8230; vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)</p>
+
+<h2>Motivos para reescrever sistemas</h2>
+
+<ol>
+<li><strong>Tecnologias caducam, envelhecem:</strong></li>
+</ol>
+
+
+<p>Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema&#8230; enfim a tecnologia evoluir e traz novas soluções - e melhores - para os nosso problemas.</p>
+
+<ol>
+<li><strong>Nós aprendemos:</strong></li>
+</ol>
+
+
+<p>Com o passar do tempo e com a experiência vamos vendo que nem sempre o caminho que adotamos numa determinidade solução foi o melhor. Também vemos que existem jeitos melhores de implementar determinada lógica e por aí segue. Evoluímos como profissionais e com isso vemos que aquele sistema que fizemos a um tempo atrás poderia ter sido feito de um jeito diferente. O problema que mudar um sistema gigantesco não é simples e é arriscado.
+Infelizmente mudanças desse tipo não dá para fazer de forma gradual pois, geralmente, eles são mudanças radicais em nosso dominio.</p>
+
+<ol>
+<li><strong>todo sistema tem prazo de validade:</strong></li>
+</ol>
+
+
+<p>Um outro bom motivo para reescrevermos nosso sistema é ligado ao negócio. Muitas vezes vemos que a forma de nosso negócio mudou e que o sistema atual com sua base de código infinita não nos atende mais. Mesmo que façamos diversos apendices, o sistema não é mais capaz de nos atender com proficiencia. Se tornam aqueles sistemas cheios de jeitinhos para fazer coisas. O usuário tem que fazer um cursinho para saber todos os &#8220;pulos do gato&#8221; para ele conseguir concretizar uma operação. Sistemas ERPs são os melhores exemplos disso. Você acaba torcendo o seu problema para caber dentro daquele sistema que é impossível de mudar ou reescrever.</p>
+
+<h2>Vamos ao que interessa</h2>
+
+<p>Fica um bom tempo falando sobre a questão de engenharia de software e do problema de sistemas com muitas linhas de código. Falei também dos motivos que podemo nos levar a querer reescrever um sitemas. Mas para que?</p>
+
+<p>Escrevi sobre tudo isso para mostrar que precisamos dar o passo seguinte no desenvolvimentos de software. Precisamos pensar em sistemas como peças únicas de um conjunto para resolver problemas. Sendo assim, essas unidade deve ser responsavel por resolver um e somente um aspecto do problema e não todo ele. A solução se dá pela soma das partes que agindo em conjunto atendem ao nosso domínio.</p>
+
+<p>Precisamos aplicar os conceitos de SRP (veja acima) na concepção de nosso sistemas. Ao invés de fazermos uma peça única e monolítica que aborde todo o nosso dominio, fazmemos pequenas partes que cuidam de cada aspecto.</p>
+
+<p>Ganhamos com isso sistemas pequenos, e simples de manter.  Num caso que li recentemente, cada peça ficou com poucas centenas de linhas. Isso facilita manter pois bases pequenas são mais simples. Bases pequenas são mais fácil de entender e manter seu padrões; bases pequenas são mais fácil de jogar fora e fazer de novo. No mesmo case que citei acima, eles reescrevem uma parte em uma semana e foi imperceptível para o cliente.</p>
+
+<p>Outro aspecto é que se fizermos com pequenas partes e essas partes existirem independentes uma das outras, podemos ir além. Imagine que eu quebre o sistema em diversos serviços que se falem via REST: eu posso literalmente escrever cada serviço numa linguagem diferente que não vai causar nenhum problema. Com isso posso escolher a melhor tecnologia/linguagem para o meu problema. Além disso, mantendo as interfaces, eu posso refazer todo a parte interna sem afetar as outras peças do conjunto.</p>
+
+<p>Isso é simplesmente o céu de todo desenvolvedor.</p>
+
+<p>Em meu trabalho atual estamos caminhando para algo parecido. Ou seja, uma forma mais orientada a serviços, onde cada sistema tem uma responsabilidade e essa é simples. Manter essa coisa simples e com pouca coisa para resolver é a grande chave do sucesso.</p>
+
+<p>Se olhar arquitetura de grandes portais, produtos web (como twitter, basecamp, soundcloud, etc) verá um monte de pequenos sistemas conversando para atender a demanda do usuário.</p>
+
+<p>Se uma parte se tornar o gargalo, podemos melhorar só aquela parte: colocando mais servidores, reescrevendo, etc.</p>
+
+<p>Isso é aplicavel a qualquer contexto.</p>
+
+<p>A alguns anos atrás trabalhei numa empresa que tinha diversos sistemas que eram integrados através de troca de mensagens (queue e brokers). Claro que nem chega perto do que estou propondo mais foi uma semente e vi que dava muito certo.</p>
+
+<h2>Cenas do próximos capítulos &#8230;</h2>
+
+<p>Mais a frente - estou terminando de organizar tudo - pretendo publicar um  novo post explicando melhor como implementar essa questão de sistemas pequenos e com pouco responsabilidade.</p>
+
+<p>Só para deixar curioso, existem formas de fazer sem necessáriamente escrever um monte de sistemas; como existem formas de fazer de forma  bem desacoplada. Enfim fiquem ligados.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Design Pattern e Linguagens dinamicas]]></title>
     <link href="http://andrefonseca.net/blog/2012/09/08/design-pattern/"/>
     <updated>2012-09-08T21:16:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2012/09/08/design-pattern</id>
-    <content type="html"><![CDATA[<p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <strong>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</strong> .</p>
+    <content type="html"><![CDATA[<p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <em>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</em> .</p>
 
 <p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
 
@@ -1237,41 +1330,6 @@ Outra dica muito válida é que você provavelmente não vai querer ter um SOLR 
 
 Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
 Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Estudos Compartilhados IV - Arquitetura Emergente]]></title>
-    <link href="http://andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/"/>
-    <updated>2010-12-29T00:00:00-02:00</updated>
-    <id>http://andrefonseca.net/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente</id>
-    <content type="html"><![CDATA[No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
-
-Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
-<h2>Definir fazendo</h2>
-A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
-
-Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
-
-Nisso se encaixa o conceito de arquitetura emergente.
-<h2>Arquitetura emergente</h2>
-Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
-
-Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
-
-As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
-<h2>Refactoring</h2>
-Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
-
-Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
-
-Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
-
-Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
-
-Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
-
-&nbsp;
 ]]></content>
   </entry>
   

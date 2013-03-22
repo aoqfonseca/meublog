@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220 &hellip;">
+  <meta name="description" content="A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,146 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00-02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/10/25/python-decorators/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
+
+De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
+
+No wiki do Python, a definição de decorator, é de uma forma que temos para alterar um comportamento de um função ou métodos dentro de um código. Seria com  se pudéssemos adicionar ou até alterar a lógica sem sermos muitos intrusivos.
+
+Um bom exemplo seria o decorator classmethod. Veja abaixo:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
+</span><span class='line'><span class="n">olaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">()</span>
+</span><span class='line'><span class="n">OlaMundo</span><span class="o">.</span><span class="n">metodo1</span><span class="p">(</span><span class="n">olaMundo</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">metodo1</span> <span class="o">=</span> <span class="nb">classmethod</span><span class="p">(</span><span class="n">metodo1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">OlaMundo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="nd">@classmethod</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">metodo1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2>O que são os Decorators e como funciona:</h2>
+
+Os decorators do Python são como macros ( já disse isso) que quanto o interpretador os encontra os substitui por um estrutura que foi definida. No caso do classmethod ele &#8220;substitui&#8221; pela a chamada original. 
+
+Claro que a definição acima é simplista, mas ajuda a entender.
+
+Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MeuDecorador</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">function</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;Ola Mundo&quot;</span>
+</span><span class='line'><span class="nd">@MeuDecorador</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">funcao</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;algo assim&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">funcao</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+O código acima mostra bem (execute-o) como funciona um decorator. No meu caso, eu simplesmente coloquei um print. Mas no método eu posso abrir um conexão, colocar um log, medir tempo, colocar numa, fila, emitir um sinal, adicionar o método como callback numa evento, etc. 
+
+
+##Para que servem e por que usar:##
+
+Decorators não trazem nenhum grande novidade a linguagem (está desde a versão 2.2 se não me engano), mas alteram e melhoram a sintaxe de nossos códigos facilitando a compreensão do que está acontecendo ali.
+
+Referência.
+1. [http://wiki.python.org/moin/PythonDecorators&#8221;>http://wiki.python.org/moin/PythonDecorators</a>
+2. [ http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html](http://www.tocadoelfo.com.br/2009/10/python-decorators-uma-introducao.html)
+3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
+4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
+5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1083,70 +1223,6 @@ Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas q
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-29T00:00:00-02:00" pubdate data-updated="true">Dec 29<span>th</span>, 2010</time>
-        
-         | <a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a arquitetura deve emergir  de acordo com a necessidade é que o TDD era a ferramenta que ajudava nesse processo. Muitas pessoas que leram o texto me pediram para explicar melhor essa questão de arquitetura surgir ao invés de ser definida antes através de análises.
-
-Um dos grandes problemas que encontro em nosso mundo de TI é que, na maioria dos casos, baseamos nossos processos em processo de engenharia. Queremos trabalhar com software da mesma forma que construímos casas; queremos definir as coisas da mesma foram que fazemos para máquinas; e assim por diante. A questão é que, na minha opnião, desenvolver sistemas é algo que é único e tem uma vertente mais artística do que técnica.
-<h2>Definir fazendo</h2>
-A natureza abstrata de um código facilita para que  a gente possa experimentas as possíveis soluções fazendo. É como pintarmos um quadro (todo mundo usa esse exemplo, eu sei) : podemos experimentando as cores, posições dos elementos, os elementos, etc no curso da pintura &#8230; Se achamos que algo não ficou legal, apagamos e recomeçamos, mudamos, e vamos seguindo. Também como uma obra de arte, não existe um estado perfeito de um sistema - ele sempre poderá ser melhorado; existe um estado que a gente abandona e parte para a próxima.
-
-Sendo assim, querer prever, antever, definir, projetar, arquiteturas, elementos, antes de começar a fazer é uma tarefa muito difícil e que atrapalha muito mais do que ajuda. As necessidades mudam. No decorrer do projeto podemos achar uma solução mais simples, uma interação diferente, novos recursos, e por aí a lista cresce.
-
-Nisso se encaixa o conceito de arquitetura emergente.
-<h2>Arquitetura emergente</h2>
-Claro que a gente, principalmente quando falamos em Orientação a Objeto, a gente parte do nada. Quem participou de Dojos até que pode ter experimentado isso - literalmente fazer do zero.  A gente parte de uma premissa razoável. Por exemplo, num sistema para uma escola, a gente tem a idéia que provavelmente teremos uma classe Aluno, classe Professor, classe Disciplina, etc.  Mas saber exatamente como cada um vai interagir, se teremos outras classes além dessas, se vamos ter 20 camadas ou não.
-
-Admiro por demais as pessoas que são capazes em uma reunião com o cliente sair dela com todo o sistema pronto na cabeça com uma arquitetura perfeita. Eu não consigo. Posso ter uma idéia frente a alguns requisitos iniciais de tecnologias, possível carga, etc.
-
-As coisas vão tomando forma mesmo é na construção da funcionalidade. Ali, você vai sentindo as necessidades e conforme as atende a solução surge e com isso temos a arquitetura &#8220;ideal&#8221; para o caso.
-<h2>Refactoring</h2>
-Não dá para falar em TDD, Arquitetura emergente sem falar sobre a questão do Refactoring.  Entendo refatoring como o processo de melhoria onde depois de pronto (testes passando) a gente altera a solução afim de otimizá-la em relação a legibilidade, perfomance, manutenção, e coisas similares.
-
-Fazer refactoring é como fazer a faxina no código para tirar as poeiras, coisas a mais que foram colocadas durante o momento onde o foco era resolver e não fazer o código mais lindo ou melhor do mundo. É o momento de renomear as coisas, separar,  juntar, etc. A arquitetura emergente se alimenta do refactoring. Pois no primeiro momento, como já disse antes, quero resolver o problema.  Se para isso tiver que fazer 3 ou 4 ifs no código; se para isso tiver que escrever uma variável com uma nome bizarro, etc , eu faço. Pois depois de resolvido, de forma disciplinada, eu volto para o código escrito e tento melhorá-lo.
-
-Dois livros que tem me ajudado muito nessa questão é já tão falado por mim, Clean Code, e Refactoring do Martin Fowler.  O primeiro me dá a direção para qual quero caminhar com meu código: legibilidade, fácil manutenção,  fácil extensão, praticamente todos os princípios do SOLID. Já o segundo livro me ajuda no como fazer, no como dectetar os pontos onde devo atuar, etc.
-
-Quem quer fazer um sistema descente e com o mínimo de qualidade, na minha opinião, precisa saber bem OO, TDD, buscar uma arquitetura emergente e fazer Refactorings constantes.
-
-Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design patterns e como eu os uso para facilitar minha vida.
-
-&nbsp;
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1161,7 +1237,7 @@ Bem por hoje é só pessoal . No próximo pretendo falar um pouco sobre design p
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Andre Fonseca -
+  Copyright &copy; 2013 - Andre Fonseca -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
