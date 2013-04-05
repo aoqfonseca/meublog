@@ -10,11 +10,15 @@ categories: engenharia. software
 
 Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo livro [Clean Code ][1]. Tais princípios ficaram eternizados com a sigla SOLID, que é acronimo e significa:
 
->S: Single Responsability Principle ( Principio de Responsabilidade Única)
->O: Open Close Principle ( Principio do aberto para extensão e fechado para modificação)
->L: Liskov  Substitution Principle (A classe filha pode ser substituida pela classe pai)
->I: Interface Segregation Principle (expor interfaces não objetos)
->D: Dependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )
+ *S*ingle Responsability Principle ( Principio de Responsabilidade Única);
+
+ *O*pen Close Principle ( Principio do aberto para extensão e fechado para modificação);
+
+ *L*iskov  Substitution Principle (A classe filha pode ser substituida pela classe pai);
+
+ *I*nterface Segregation Principle (expor interfaces não objetos);
+ 
+ *D*ependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )
 
 Para saber um pouco mais, siga clicando [aqui][2]*
 
@@ -46,7 +50,7 @@ A questão é que fazer isso com sistemas de milhares de linhas de código é um
 
 1. __Tecnologias caducam, envelhecem:__
 
-Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema... enfim a tecnologia evoluir e traz novas soluções - e melhores - para os nosso problemas.
+Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema... enfim a tecnologia evolui e traz novas soluções - e melhores - para os nosso problemas.
 
 
 2. __Nós aprendemos:__
