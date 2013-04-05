@@ -11,33 +11,35 @@ categories: engenharia. software
 Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo livro [Clean Code ][1]. Tais princípios ficaram eternizados com a sigla SOLID, que é acronimo e significa:
 
 >S: Single Responsability Principle ( Principio de Responsabilidade Única)
->
 >O: Open Close Principle ( Principio do aberto para extensão e fechado para modificação)
->
 >L: Liskov  Substitution Principle (A classe filha pode ser substituida pela classe pai)
->
 >I: Interface Segregation Principle (expor interfaces não objetos)
->
 >D: Dependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )
->
->*leia mais clicando [aqui][2]*
+
+Para saber um pouco mais, siga clicando [aqui][2]*
 
 
-Aplicando essa definições em nossos código, a idéia é ter um código mais limpo, sendo isso: código legível; fácil de entender por outros desenvolvedores; simples de evoluir; simples de manutenciar; etc. Esses são os benefícios mais diretos, outros, podemos citar, sistemas mais robustos, testáveis, entre tanta outras coisas que muitos desejam.
+Aplicando essa definições em nossos código, a idéia é ter um código mais limpo: código legível; fácil de compreender por outros desenvolvedores; simples de evoluir; simples de manutenciar; etc. A questão é que, mesmo usando toda essa engenharia, todos nossos sistemas atuais tendem a crescer e ganhar complexidade.
 
-A questão é que mesmo usando toda essa engenharia, todos nossos sistemas atuais tendem a crescer e ganhar complexidade. A grande maioria nasce simples e com responsabilidades únicas e bem definidas, mas a medida do uso e da evolução vamos ajuntando mais funcionalidades, acertos, melhorias , *robustez* (tolerância a falhas), etc... que o nosos aplicativos viram megazords amorfos e com prazo de validade estampados.
+Todos os sistemas nascem simples: com responsabilidades únicas e bem definidas. Assim após a nossa primeira *release*, nosso sistemas evolui, ganhando novas funcionalidades, acertos, melhorias , ajustes para melhorar perfomance, refactorings, etc. Com o passar do tempo, nosso pequena e bem escrito aplicativo, torna-se um megazord de complexidade, duplicidade de código, e outras coisas que nenhum de nós gosta. Enfim, ele se torna um grande legado que ninguém quer mais mexer. 
 
-Quem nunca se deparou com bases de códigos que começaram com algumas centenas de linhas e hoje tem milhares (até milhões) de linhas de código. Uma completa bagunça que vai se tornando um pesadelo na vida de qualquer desenvolver a cada mexida que ele tem dar. Entenda aqui que estou falando que isso pode acontecer mesmo com sistemas que usam de testes automatizados. Como já disse em outro post, testes nem sempre são garantia de qualidade - ajudam .
+Tenho certeza que todos tem algum projeto que trabalhou que serve de exemplo para a situação descrita acima.  Lembra daquele sistema que tinha, lá no início, algumas centenas de linha de código apenas e já de milhares (até milhões); ou/e daquele projeto super bem arquitetado e hoje é uma bagunça sem fim que até mesmo que trabalhou desde início se perde para entender como as chamadas *trafegam* para completar uma requisição.
 
-uma das coisa que vejo e vivencio é que a medida que essas bases de código crescem fica impossível de manter principios de reutilização, *DRY*, padrões de nomes, *code style*, e diversas outras coisas importantes para a vida de seu software.
+Mesmo que esse ditos projetos estejam usando testes automatizados e tenha sidos feitos seguindo princípios como TDD. Mesmo que eles sofram refactorings constantes, o fato é que eles crescem e vão adquirindo novas responsabilidades antes não previstas. Com isso, vamos torcendo aquele modelo original e amontando código. 
+
+Diante disso, o que vejo e vivencio é que a medida que essas bases de código crescem, fica impossível de manter principios de reutilização, *DRY*, padrões de nomes, *code style*, e diversas outras coisas importantes. Enfm, acabamos um imenso legado que é caro demais de evoluir, muito caro de reescrever e muito importante para nosso cliente que não abra mão dele e tem novas necessidades a serem atendidas.
 
 ## Nosso dilema atual ##
 
-Como disse já na introdução, os sistemas crescem, e com eles suas bases de código. Podemos acrescentar a equação o fato de projetos que começam com poucos desenvolvedores e no final tem vários times mexendo e o resto por conta da imaginação e experiência de vocês.
+Como disse, os sistemas crescem. E com eles suas bases de código. 
 
-É claro que com o passar do tempo, isso tudo vira uma mega bagunça e cada vez mais difícil evoluir. Muitos poderiam dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu [livro][3] sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final.
+Poderíamos dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu [livro][3] sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final. Pdemos melhorar os métodos, encapsular melhor algumas, etc ... a questão que ainda temos um modelo que não foi feito para aqueles novos casos, ainda temos situações novas que não estavam previstas e poucas possibilidades de interface do nosso sistema.
 
-Além disso todo desenvolvedor adora os projetos ditos "Green Field", ou seja, projetos que começamos do *zero*. Nesses projetos temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias. A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO... vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)
+Se não existessem os problemas financeiros ou quaisquer outras _constraints_ tenho certeza que a maioria dos desenvolvedores, diriam que está na hora de reescrever todo o sistema.  Todos nós adoramos projetos *Green Field* (projetos que estão começando do zero).
+
+Em novos projetos, temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias.
+
+A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO... vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)
 
 
 ## Motivos para reescrever sistemas ##
@@ -49,8 +51,9 @@ Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre
 
 2. __Nós aprendemos:__
 
-Com o passar do tempo e com a experiência vamos vendo que nem sempre o caminho que adotamos numa determinidade solução foi o melhor. Também vemos que existem jeitos melhores de implementar determinada lógica e por aí segue. Evoluímos como profissionais e com isso vemos que aquele sistema que fizemos a um tempo atrás poderia ter sido feito de um jeito diferente. O problema que mudar um sistema gigantesco não é simples e é arriscado.
-Infelizmente mudanças desse tipo não dá para fazer de forma gradual pois, geralmente, eles são mudanças radicais em nosso dominio.
+Com o passar do tempo e com a experiência vemos que, nem sempre o caminho que adotamos foi o melhor. Também vemos que existem jeitos melhores de implementar determinada lógica.
+
+Existe o fato também, que evoluímos como profissionais: com isso vemos que aquele sistema que fizemos a um tempo atrás, poderia ter sido feito de um jeito diferente. Infelizmente mudanças desse tipo não dá para fazer de forma gradual. Geralmente, eles são mudanças radicais e temos que fazer tudo de uma vez só.
 
 3. __todo sistema tem prazo de validade:__
 
