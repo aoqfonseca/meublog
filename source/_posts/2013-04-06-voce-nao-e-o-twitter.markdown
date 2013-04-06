@@ -86,4 +86,4 @@ Esse era o recado que gostaria de deixar para vocês.
 [3]: http://www.google..com
 [4]: http://twitter.com
 [5]: http://facebook.com
-[6]: http://golang.com
+[6]: http://golang.org

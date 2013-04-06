@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jvm | ]]></title>
   <link href="http://andrefonseca.net/blog/categories/jvm/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2013-04-06T18:00:27-03:00</updated>
+  <updated>2013-04-06T20:01:16-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -84,7 +84,7 @@
 
 <p>Mais importante é saber das opções existente e a experiência de <em>missão crítica</em> desses grandes players e quem sabe, quando precisarmos, seguir por um caminho menos obscuro.</p>
 
-<p>Hoje na <a href="http://www.globo.com">Globo.com</a> já estamos discutindo usar outras coisa além de Python e Ruby. Não descatarmos por completo JVM e estamos já criando coisas com <a href="http://golang.com">Go</a>.</p>
+<p>Hoje na <a href="http://www.globo.com">Globo.com</a> já estamos discutindo usar outras coisa além de Python e Ruby. Não descatarmos por completo JVM e estamos já criando coisas com <a href="http://golang.org">Go</a>.</p>
 
 <p>Esse era o recado que gostaria de deixar para vocês.</p>
 ]]></content>
