@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>VOCÊ NÃO É O TWITTER - </title>
+  <meta name="author" content="Andre Fonseca">
+
+  
+  <meta name="description" content="TL;DR Surgiram atualmente diversos artigos onde grandes e famosos produtos (e players da internet) explicam como o time de engenharia mudou a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andrefonseca.net/blog/2013/04/06/voce-nao-e-o-twitter">
+  <link href="/favicon.ico" rel="icon">
+  
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34644487-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar"  >
+  <header role="banner"><hgroup>
+  <h1><a href="/"></a></h1>
+  
+    <h2>AF</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://twitter.com/aoqfonseca">Twitter</a></li>
+  <li><a href="http://github.com/aoqfonseca">Github</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">VOCÊ NÃO É O TWITTER</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T13:27:00-03:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><em>TL;DR</em></p>
+
+<p>Surgiram atualmente diversos artigos onde grandes e famosos produtos (e players da internet) explicam como o time de engenharia mudou a tecnologia/ linguagens e conseguiu maravilhas em redução de máquina e aumento de carga em seus sistemas.</p>
+
+<p>A grande maioria dos que li, usavam Ruby on Rails e passaram a usar Java (inclua aqui Scala, Groovy, Clojure) ou Go ou até Python em seu lugar, e com isso, reduziram drásticamente o custo de infra (energia, máquinas, resfriamente, etc) e/ou aumentaram sua capacidade carga (quantidade de requisições, conexões, etc). Enfim, foram além da simples troca de arquitetura.</p>
+
+<p>Entretanto, antes que todos comecem a demonizar Ruby e/ou as ditas linguagens modernas é preciso analisar o contexto desses artigos e entender que nem de longe somos um <a href="http://twitter.com">Twitter</a> para nos preocuparmos com esse tipo de coisa agora.</p>
+
+<h2>Um pouco sobre mim e porque posso falar sobre o assunto</h2>
+
+<p>Tenho em torno de 12 anos de profissão. Hoje, sou desenvolvedor senior da <a href="http://www.globo.com">Globo.com</a>, atuando no time de jornalismo - responsável por sites como G1, Ego, Cobertura de Eventos, etc.</p>
+
+<p>A <a href="http://www.globo.com">Globo.com</a> é uma empresa onde se desenvolve os maiores portais de jornalismos, esportes e entretenimento do Brasil . Fora isso, temos plataformas de vídeos, imagens, música, em milhares de outras coisa.</p>
+
+<p>Uma das coisas legais de se trabalhar lá é o fato de sempre procurarmos a melhor ferramenta para o trabalho. E com isso, sempre estamos experimentando  as tecnologias, linguagens, plataformas, e tudo mais que nos permite sermos mais produtivos e eficientes.</p>
+
+<p>Atualmente a grande maioria dos produtos que desenvolvemos são feitos usando Python e Ruby (e seus frameworks como Tornado, Django, Ruby on Rails, Sinatra, etc).</p>
+
+<p>Nossos produtos tem acessos bem grandes: Portais com milhões de vísitas únicas por dia; streaming de vídeos na faixa de gigabytes por dia, terabytes de arquivos (imagens, html, css, javascripts) e por aí vai.</p>
+
+<h2>Diferenciando um pouco &#8230;</h2>
+
+<p>Diante do relato acima muitos poderiam pensar que <a href="http://www.globo.com">Globo.com</a>, deva ter as mesmas preocupações que um Facebook, <a href="http://twitter.com">Twitter</a> ou <a href="http://soundcloud.com">SoundCloud</a>.</p>
+
+<p>Posso adiantar que, sobre determinados aspectos, sim: Nenhum de nossas aplicações e novas funcionalidades vão para &#8220;produção&#8221; (para uso do nossos usúarios) sem que antes façamos bons testes de carga, testes de segurança, entre outras coisas relacionadas. Ainda na fase de desenvolvimento, temos a preocupação de fazermos coisa que deverão aguentar milhões de acessos, milhares de conexões simultaneas, picos, etc, sem jamais deixar de atender uma requisição.</p>
+
+<p>Porém se compararmos nosso volume de acesso e nosso tipo de produto, não somos parecidos com o pessoal do <a href="http://twitter.com">Twitter</a>, <a href="http://www.google..com">Google</a>, <a href="http://soundcloud.com">SoundCloud</a>, entre outros.</p>
+
+<p>Nossos produtos são em sua maioria estáticos: Um vez que são produzidos, nos geramos uma cópia estática e a servimos para os clientes. O <a href="http://twitter.com">Twitter</a>, por exemplo, tem um natureza muito mais dinâmica: o conteúdo é servido por usuário (com toda certeza deve existir um cache no meio do caminho) a cada requisição.</p>
+
+<h2>Entendendo o problema e o contexto</h2>
+
+<p>Quando pensamos em <a href="http://www.google..com">Google</a>, <a href="http://soundcloud.com">SoundCloud</a>, logo pensamos em um datacenter gigantesco com milhares de máquinas. Tudo isso para atender a grande demanda de processamento que é gerada pelas milhões de requisições que os usuários fazem. São buscas, buscas por músicas, cadastros de novos usuários, posts, documentos, edição, envio de novo conteúdo, etc.</p>
+
+<p>Para esse tipo de acesso, um pouco que se possa ganhar em desempenho, seja por uma escolha de arquitetura, seja pela troca de linguagem é algo muito significativo.</p>
+
+<p><em>Lembre-se que estamos falando de parques com milhares máquinas.</em></p>
+
+<p>Isso porque se conseguirmos, num cenários desses, reduzir em 10% a quantidade de máquinas e processamento, imaginem o quanto de dinheiro que isso representa na conta no final do mês. Muito né.</p>
+
+<p>Por isso que empresas e aplicativos desse porte, precisam, constantemente, buscar por meios de reduzir processamento e atender mais requisições. Por que empresas como essas correm atrás de tecnologias, arquitetura, linguagens, etc que possam ajudá-las nessa missão, nem que sejam em 1%.</p>
+
+<h2>Onde eu entro nisso tudo? Porque eu não sou o twitter?</h2>
+
+<p>A grande maioria das pessoas, hoje em dia, está desenvolvendo sistemas que mal atenderão um milhar de pessoas. Existe uma infinidade de pessoas estão trabalhar em projetos de aplicações internas a empresas, os ditos corporativos.</p>
+
+<p>Pouquíssimos são aqueles que estão desenvolvendo algo para uma quantidade superior a centenas de milhares. Nem vou falar naqueles que estão desenvolvendo para milhões.</p>
+
+<p>Enfim, a grande maioria, está criando produtos para no máximo milhares de acessos.</p>
+
+<p>Alguns podem dizer: eu tenho a minha startup e estou desenvolvendo um produto . E quero muito que ele atinja milhões de usuários como um <a href="http://facebook.com">Facebook</a>. Entretando, novamente, a grande maioria em seu lançamento contará com centenas de acesso e terá um crescimento bem linear e vegetativo.</p>
+
+<p>Mesmo que ocorra um <em>boom</em> no acesso, isso é bem pouco provável, não é preciso pensar nisso quando nem o produto existe ainda.</p>
+
+<p>O que quero dizer é que antes que comecemos a fazer a guerra de dizer que agora todos nós devemos largar o Ruby on Rails, ou Django, ou PHP, etc e partir para desenvolver em Assembly, precisamos entender que isso ainda não é o nosso problema.</p>
+
+<p>Nosso problema é ainda entregar valor para o cliente o mais rápido possível. Para grande maioria de nossas aplicações o custo de infra é infimo - quase desprezível - frente ao custo de desenvolvimento. Por isso usar de tecnologias de nos dê produtividade ainda é a melhor escolha.</p>
+
+<p>Fazendo referência ao título do POST, não somos o <a href="http://twitter.com">Twitter</a>, e por isso não devemos ainda nos perder nessas dicussões.</p>
+
+<h2>Um grande porém &#8230;</h2>
+
+<p>Porém, mesmo que a gente não esteja na equipe de desenvolvimento da <em>engine de busca do Google</em>, precisamos estar <em>antenados</em> com que acontece a nosso redor. É legal saber que mudanças de arquitetura e tecnologia podem ter um impacto em nosso produtos.</p>
+
+<p>Mais importante é saber das opções existente e a experiência de <em>missão crítica</em> desses grandes players e quem sabe, quando precisarmos, seguir por um caminho menos obscuro.</p>
+
+<p>Hoje na <a href="http://www.globo.com">Globo.com</a> já estamos discutindo usar outras coisa além de Python e Ruby. Não descatarmos por completo JVM e estamos já criando coisas com <a href="http://golang.com">Go</a>.</p>
+
+<p>Esse era o recado que gostaria de deixar para vocês.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Andre Fonseca)" rel="author">Andre Fonseca</a></span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T13:27:00-03:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/engenharia-/'>engenharia,</a>, <a class='category' href='/blog/categories/infra-/'>infra,</a>, <a class='category' href='/blog/categories/jvm/'>jvm</a>, <a class='category' href='/blog/categories/ruby-/'>ruby,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://andrefonseca.net/blog/2013/04/06/voce-nao-e-o-twitter/" data-via="aoqfonseca" data-counturl="http://andrefonseca.net/blog/2013/04/06/voce-nao-e-o-twitter/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/" title="Previous Post: Sistemas com responsabilidades únicas">&laquo; Sistemas com responsabilidades únicas</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Andre Fonseca -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogandrefonseca';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://andrefonseca.net/blog/2013/04/06/voce-nao-e-o-twitter/';
+        var disqus_url = 'http://andrefonseca.net/blog/2013/04/06/voce-nao-e-o-twitter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

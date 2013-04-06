@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="No artigo anterior a este, da série Estudos Compartilhados,  eu falei um pouco do TDD e a minha compreensão sobre ele. Com isso acabei falando que a &hellip;">
+  <meta name="description" content="Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,154 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-30T00:00:00-03:00" pubdate data-updated="true">Mar 30<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Num projeto que estou trabalhando atualmente, dentro da parte de admin, existe uma funcionalidade de busca textual e filtrada que tivemos que implementar. A princípio tentamos fazer ela buscando dentro do próprio banco de dados, montando os filtros da query a partir dos parametros que o usuário vai definindo na tela. Isso até que funcionou bem por um tempo, porém, como, espero, todos devem saber, toda vez que a gente usa um &#8220;like&#8221;, o banco de dados ignora o fato de existir qualquer indice e faz um busca por todos os dados da tabela.  Imaginem que agora temos um banco de dados com 10 milhões de linhas&#8230; Agora pega essas 10Mi de linhas e multiplica por 100 mil usuários e você terá a dimensão do nosso problema atual.
+
+Nosso cliente diz que a funcionalidade  de busca é fundamental para o seu dia a dia. Logo criamos uma história de prioridade alta para resolver esse pepino. Antes de mais nada deixa eu contextualizar quando aos outros detalhes desse projeto. Esse projeto é uma aplicação Rails (versão 2.3.4), rodando em cima de um REE (Ruby Enterprise Edition), num servidor CentOS e nosso banco de dados o MySQL.
+
+A primeira conclusão que chegamos foi que precisamos tirar esse busca do banco de dados. Banco de dados são excelentes desde que mantenha sua busca navegando pelos indices das tabelas. Tente um fulltext search e verá o quanto será penoso, até mesmo em bases pequenas.  Para resolver isso pensamos em alguma solução de indexação e a melhor que vimos no momento foi o <a href="http://lucene.apache.org/solr/#intro">SOLR</a>.:
+<blockquote>Solr is the popular, blazing fast open source enterprise search platform from the Apache Lucene project. Its major features include powerful full-text search, hit highlighting, faceted search, dynamic clustering, database integration, and rich document (e.g., Word, PDF) handling. Solr is highly scalable, providing distributed search and index replication, and it powers the search and navigation features of many of the world&#8217;s largest internet sites.
+
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as <a href="http://tomcat.apache.org/">Tomcat</a>. Solr uses the <a href="http://lucene.apache.org/java/">Lucene Java</a> search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&#8217;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</blockquote>
+Traduzindo o SOLR é uma app WEB construída em cima do Lucene (ferramenta em  java para indexação e busca) que permite que a gente fale com ela via HTTP (busque e indexe).  Roda em cima de um container servlet. Aqui no nosso caso usamos o jetty ao invés do Tomcat.
+
+O seu funcionamento básico é bem simples. Você manda para ele um XML com os dados da sua entidade a ser indexada.  Ele internamente a partir de um schema.xml vai ler esse XML e montar os indices para que busque depois.  Claro que estou sendo bem simplório quanto ao seu funcionamento por isso recomendo muito uma leitura da documentação do produto.
+
+Escolhido a ferramenta falta implementarmos a integração entre o SOLR e nossa app Rails.  Para isso usamos a gem <a href="https://github.com/outoftime/sunspot_rails">Sunspot</a>. Ela é excelente e torna esse trabalho simples e elegante. Ela &#8220;cria&#8221; uma DSL dentro de nossa classes que nos permite definir o XML a ser enviado para o SOLR indexar e sua busca posterior.  Ele serve tanto para app Rails quanto qualquer outra. Com rails a coisa fica &#8220;mágica&#8221;: a integração é total. Com outros tipos só muda as chamadas dos métodos. Veja o exemplo que está na própria documentação do projeto:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="k">class</span> <span class="nc">Post</span>
+</span><span class='line'>        <span class="c1">#...</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">text</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:stored</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:author_name</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:blog_id</span>
+</span><span class='line'>    <span class="n">integer</span> <span class="ss">:category_ids</span>
+</span><span class='line'>    <span class="n">float</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="ss">:using</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="ss">:ratings_average</span>
+</span><span class='line'>    <span class="n">time</span> <span class="ss">:published_at</span>
+</span><span class='line'>    <span class="n">string</span> <span class="ss">:sort_title</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">title</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^(an?|the)\W+/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">/</span><span class="p">)</span> <span class="k">if</span> <span class="n">title</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure> 
+
+No exemplo acima vocês podem ver um classe criada e logo em seguido sua definição de dados que serão indexados. Para buscar e tão simples quanto:
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">keyword</span> <span class="s2">&quot;teste&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:author_name</span><span class="p">,</span> <span class="s2">&quot;andre fonseca&quot;</span>
+</span><span class='line'>    <span class="n">with</span> <span class="ss">:average_rating</span><span class="p">,</span> <span class="mi">10</span><span class="o">.</span><span class="mi">3</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>  
+
+Abaixo segue um exemplo de um ActiveRecord sendo preparado para a busca:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MinhaClass</span> <span class="o">&gt;&gt;</span> <span class="no">ActiveRecord</span>
+</span><span class='line'>    <span class="n">searchable</span> <span class="k">do</span>
+</span><span class='line'>        <span class="n">text</span> <span class="ss">:nome</span><span class="p">,</span> <span class="k">do</span> <span class="o">|</span><span class="n">minha_classe</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">minha_classe</span><span class="o">.</span><span class="n">outro</span><span class="o">.</span><span class="n">nome</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+A documentação (WIKI) do projeto é muito bem feito e tem bastante informação que irá ajudar, por isso, não vou perder tempo explicando os primeiros passos. Embora aqui cabe a primeira ressalva ou pulo do Gato:  Ao configurar a gem para instalar, caso esteja usando uma App Rails, no seu enviroments use as linhas abaixo ao invés da recomendada na documentação:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Sunspot</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">gem</span> <span class="s2">&quot;sunspot_rails&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Além disso, não esquecer que no arquivo Rakefile você irá fazer um require das taks do sunspot para poder ter os recursos disponíveis. Uma recurso bastante util é que ele vem com um solr embutido. Assim com o comando rake sunspot:solr:start e rake sunspot:solr:stop você poder iniciar e parar um solr para seus testes locais.
+Outra dica muito válida é que você provavelmente não vai querer ter um SOLR real rodando para rodar seus testes unitários ou rspec. Para isso, vá na pasta spec, e adicione as seguintes linhas ao spec_helper:
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatchers</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="ss">:each</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="n">type</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="o">::</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Com certeza isso dará um erro pois esqueci de avisar que você tem que instalar uma outra gem que te ajudará para caramba com os teste: sunspot_matchers. Ele te dará um monte de matcher no rspec para que teste tanto a busca quanto a indexação. Além disso com a configuração acima, ao rodar seus teste,  essa gem vai &#8220;interceptar&#8221; as chamadas ao solr e montar um spy/mock. 
+Bom chega por enquanto. Na segunda parte pretendo escrever sobre outras coisas que descobri implementando a funcionalidade. Até mesmo uma forma de chamada assincrona.
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>

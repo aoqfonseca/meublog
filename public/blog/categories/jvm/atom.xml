@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: engenharia, | ]]></title>
-  <link href="http://andrefonseca.net/blog/categories/engenharia-/atom.xml" rel="self"/>
+  <title><![CDATA[Category: jvm | ]]></title>
+  <link href="http://andrefonseca.net/blog/categories/jvm/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
   <updated>2013-04-06T18:00:27-03:00</updated>
   <id>http://andrefonseca.net/</id>
