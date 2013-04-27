@@ -102,6 +102,7 @@ article + article {
   }
   article header { background: none; }
   article h1 {
+      color: #ff9900;
     a { color: inherit; &:hover { color: $link-color-hover; } }
   }
   a[rel=full-article] {

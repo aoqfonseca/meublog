@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | ]]></title>
   <link href="http://andrefonseca.net/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2013-04-06T20:01:16-03:00</updated>
+  <updated>2013-04-27T12:04:03-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -97,7 +97,7 @@
 
 <p>Em meu trabalho atual estamos caminhando para algo parecido. Ou seja, uma forma mais orientada a serviços, onde cada sistema tem uma responsabilidade e essa é simples. Manter essa coisa simples e com pouca coisa para resolver é a grande chave do sucesso.</p>
 
-<p>Se olhar arquitetura de grandes portais, produtos web (como twitter, basecamp, soundcloud, etc) verá um monte de pequenos sistemas conversando para atender a demanda do usuário.</p>
+<p>Se olhar arquitetura de grandes portais, produtos web (como [Twitter][4], basecamp, <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">SoundCloud</a>, etc) verá um monte de pequenos sistemas conversando para atender a demanda do usuário.</p>
 
 <p>Se uma parte se tornar o gargalo, podemos melhorar só aquela parte: colocando mais servidores, reescrevendo, etc.</p>
 
