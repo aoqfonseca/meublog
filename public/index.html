@@ -10,7 +10,7 @@
 
 <meta name="author" content="Andre Fonseca"> 
 
-<meta name="description" content="TL;DR Surgiram atualmente diversos artigos onde grandes e famosos produtos (e players da internet) explicam como o time de engenharia mudou a &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="TL;DR; Nos projetos atuais nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &#8220; &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +96,112 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/09/22/criando-wdigets-javascript/">
+		
+			Criando Widgets Javascript</a>
+	</h2>
+	<div class="entry-content">
+		<p>TL;DR;</p>
+
+<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &#8220;inseridos&#8221; e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
+
+<p>O <a href="http://leobalter.net">Leonardo Balter</a> numa <a href="http://www.slideshare.net/leobalter/guia-de-sobrevivncia-js-no-mundo-open-source">palestra</a> que ele deu no Front in Rio 2012, abordou bem o assunto sobre como podemos escrever frontend apps sem inteferir no contexto da página onde está posta. Por isso pretendo apenas extender o conceito.</p>
+
+<h2>Contextualizando</h2>
+
+<p>Vamos lá, a grande maioria das pessoas, atualmente, que dizem conhecer e saber programar, apps front, faz uso de alguma biblioteca. Sem grandes pesquisas, creio que a maioria delas deva usar algo como JQuery, Mootools, BackBoneJs, AngularJS, ou similares.</p>
+
+<p>Tais libs são &#8220;uma mão na roda&#8221; e realmente facilitam a codificar, testar, etc.</p>
+
+<p>A pergunta que faço é:  Precisamos de todos os recursos disponíveis nesses frameworks/bibliotecas? Acredito que na maioria dos casos, se escrevessemos somente em Javascript puro, usando HTML e CSS, e não mais do que isso, conseguiríamos entregar o desejado.</p>
+
+<h2>Entendendo o &#8220;Problema&#8221;</h2>
+
+<p>Ao analisar mais detalhadamente a situação, conversando com alguns colegas especialistas em front end e com outros nem tão especialista assim. Uma das coisas que notei é que muito deles não conhecia de fato Javascript: Sabiam detalhes de cada elemento HTML, funções e motivos de cada linha de CSS; entretando desconheciam recursos básicos da linguagem Javascript, como por exemplo, fazer um laço de <em>for</em> (muito usavam a, por exemplo, a função each do jquery).</p>
+
+<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb&#8230; Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
+
+<p> Outro ponto interessante foi uma pesquisa recente (não consegui achar o link) onde afirma que, sites que são lentos para carregar tem menor taxa de conversão. Isso mesmo, tempo é dinheiro, literalmente. Se o seu site leva mais de  5 segundos  para mostrar algo, já se foram quase 50% das pessoas aí (CHUTE!!!!).</p>
+
+<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência - menos ainda no mobile, pode cre - para esperar seu site gigante carregar todas as libs e processá-las.</p>
+
+<p>Mais aí você pode dizer, que usa a técnica de deixar o  carregamento no final de página. Desculpa meu amigo, mas o seu site ainda é pesado de carregar, vai consumir bando e bateria no mobile e pode gerar alguma perda na entrega de conteúdo.</p>
+
+<p>Ok. Dito isso, voltemos paras os widgets.</p>
+
+<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código - as vezes sem saber da  âncora que você é no site deles.</p>
+
+<p>Outro aspecto de widget gordos (vou chamá-los assim para facilitar), é que eles também podem gerar conflitos com outras coisa na páginas dos outros: imagine a questão das versões como podem gerar um verdadeiro inferno.</p>
+
+<h2>Os conflitos</h2>
+
+<p>Para seguir adiante com a discussão é importante que fique claro que menos é mais: ou seja, quão menor for sua app/widget, melhor. Não se iluda, isso dá trabalho. Abrir mão de libs, significa você cuidar de vários detalhes antes abstraídos, porém, posso garantir que o resultado compensa.</p>
+
+<p>Gosto sempre de usar exemplos. Acredito que eles sejam a melhor forma de mostrar um ponto de vista.  No meu trabalho fizemos um widget. Esse widget vai em quase todos os produtos e portais e portanto é bem usado.  Esse widget, no momento que foi feito, fizeram a escolha de implementá-lo usando libs. Pois bem.</p>
+
+<p>Até aí foi uma escolha simples e até bem intencionada. Com o uso de libs e seus recursos muita complexidade seria resolvida e os desenvolvedores ganhariam tempo para lidar com os desafios do produto e não dos navegadores, etc.</p>
+
+<p>O problema é que com isso, prendemos nossa solução a uma lib e sua versão. Obrigamos os produtos que queriam usar esse widget e ter essa versão, essa lib.</p>
+
+<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou&#8230; Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
+
+<p>Nesse caso em específico, além do uso de libs, houve um sério problema de engenharia de software. Poderíamos ter componentizado melhor, separado melhor e essa mudança para versão mais nova seria mais simples.  Entretanto, nos amarramos demais a biblioteca e agora teremos que reescrever tudo.</p>
+
+<p>Para coroar nossa análise, se tivessemos usado simples JS puro - isso daria trabalho mais é totalmente possível - agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
+
+<p>No mesmo tempo que essa app foi feita, uma outra app foi feita por outro time. Também é usada por todos os portais. A diferença é que eles optaram por fazer com VanillaJS. Deu muito trabalho, problemas de cross-browser para resolver, ajax, etc. Mas no final eles conseguiram e tem sido um benchmark para nós todos. Eles provaram que a entrega foi bem melhor  e  com usuários felizes.</p>
+
+<h2>A conclusão</h2>
+
+<p>Vamos lá a formula de bolo para ajudar a:</p>
+
+<ol>
+<li>Tentar sempre usar somente javascript. Mais nada</li>
+<li>Lembre  de isolar bem o seu contexto de váriaveis.</li>
+<li>Sempre que possível use de namespaces/</li>
+<li>Se não der para usar só js, procure por um micro framework para resolver o seu problema de forma bem específica. Embede o código dessa lib na sua.</li>
+<li>Menos código, menos bugs.</li>
+<li>Seja cuidadoso e sempre se coloque no lugar da pessoar que irá usar.</li>
+</ol>
+
+
+<p><em>&#8220;Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora&#8221;</em></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-22T10:35:00-03:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/app-/'>app,</a>, <a class='category' href='/blog/categories/engenharia/'>engenharia</a>, <a class='category' href='/blog/categories/javascript-/'>javascript,</a>
+
+
+</div>
+	
+		<span class="comments"><a href="/blog/2013/09/22/criando-wdigets-javascript//index.html#disqus_thread">Comments</a></span>
+	
+</div></article>
 
 
     <article class="post">
@@ -836,64 +942,6 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
 </div>
 	
 		<span class="comments"><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git//index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">
-		
-			Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a>
-	</h2>
-	<div class="entry-content">
-		<p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
-
-<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
-
-<p>Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.</p>
-
-<p>O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.</p>
-
-<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
-
-<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
-
-<p>Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.</p>
-
-<p>PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.</p>
-
-<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
-
-<p>Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.</p>
-
-<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-22T00:00:00-02:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2012</time></div>
-	<div class="tags">
-
-</div>
-	
-		<span class="comments"><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade//index.html#disqus_thread">Comments</a></span>
 	
 </div></article>
 

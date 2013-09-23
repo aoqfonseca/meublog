@@ -4,7 +4,7 @@
   <title><![CDATA[Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2013-05-30T22:30:49-03:00</updated>
+  <updated>2013-09-22T23:35:48-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[criando widgets javascript]]></title>
+    <link href="http://andrefonseca.net/blog/2013/09/22/criando-wdigets-javascript/"/>
+    <updated>2013-09-22T10:35:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2013/09/22/criando-wdigets-javascript</id>
+    <content type="html"><![CDATA[<p>TL;DR;</p>
+
+<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &#8220;inseridos&#8221; e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
+
+<p>O <a href="http://leobalter.net">Leonardo Balter</a> numa <a href="http://www.slideshare.net/leobalter/guia-de-sobrevivncia-js-no-mundo-open-source">palestra</a> que ele deu no Front in Rio 2012, abordou bem o assunto sobre como podemos escrever frontend apps sem inteferir no contexto da página onde está posta. Por isso pretendo apenas extender o conceito.</p>
+
+<h2>Contextualizando</h2>
+
+<p>Vamos lá, a grande maioria das pessoas, atualmente, que dizem conhecer e saber programar, apps front, faz uso de alguma biblioteca. Sem grandes pesquisas, creio que a maioria delas deva usar algo como JQuery, Mootools, BackBoneJs, AngularJS, ou similares.</p>
+
+<p>Tais libs são &#8220;uma mão na roda&#8221; e realmente facilitam a codificar, testar, etc.</p>
+
+<p>A pergunta que faço é:  Precisamos de todos os recursos disponíveis nesses frameworks/bibliotecas? Acredito que na maioria dos casos, se escrevessemos somente em Javascript puro, usando HTML e CSS, e não mais do que isso, conseguiríamos entregar o desejado.</p>
+
+<h2>Entendendo o &#8220;Problema&#8221;</h2>
+
+<p>Ao analisar mais detalhadamente a situação, conversando com alguns colegas especialistas em front end e com outros nem tão especialista assim. Uma das coisas que notei é que muito deles não conhecia de fato Javascript: Sabiam detalhes de cada elemento HTML, funções e motivos de cada linha de CSS; entretando desconheciam recursos básicos da linguagem Javascript, como por exemplo, fazer um laço de <em>for</em> (muito usavam a, por exemplo, a função each do jquery).</p>
+
+<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb&#8230; Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
+
+<p> Outro ponto interessante foi uma pesquisa recente (não consegui achar o link) onde afirma que, sites que são lentos para carregar tem menor taxa de conversão. Isso mesmo, tempo é dinheiro, literalmente. Se o seu site leva mais de  5 segundos  para mostrar algo, já se foram quase 50% das pessoas aí (CHUTE!!!!).</p>
+
+<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência - menos ainda no mobile, pode cre - para esperar seu site gigante carregar todas as libs e processá-las.</p>
+
+<p>Mais aí você pode dizer, que usa a técnica de deixar o  carregamento no final de página. Desculpa meu amigo, mas o seu site ainda é pesado de carregar, vai consumir bando e bateria no mobile e pode gerar alguma perda na entrega de conteúdo.</p>
+
+<p>Ok. Dito isso, voltemos paras os widgets.</p>
+
+<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código - as vezes sem saber da  âncora que você é no site deles.</p>
+
+<p>Outro aspecto de widget gordos (vou chamá-los assim para facilitar), é que eles também podem gerar conflitos com outras coisa na páginas dos outros: imagine a questão das versões como podem gerar um verdadeiro inferno.</p>
+
+<h2>Os conflitos</h2>
+
+<p>Para seguir adiante com a discussão é importante que fique claro que menos é mais: ou seja, quão menor for sua app/widget, melhor. Não se iluda, isso dá trabalho. Abrir mão de libs, significa você cuidar de vários detalhes antes abstraídos, porém, posso garantir que o resultado compensa.</p>
+
+<p>Gosto sempre de usar exemplos. Acredito que eles sejam a melhor forma de mostrar um ponto de vista.  No meu trabalho fizemos um widget. Esse widget vai em quase todos os produtos e portais e portanto é bem usado.  Esse widget, no momento que foi feito, fizeram a escolha de implementá-lo usando libs. Pois bem.</p>
+
+<p>Até aí foi uma escolha simples e até bem intencionada. Com o uso de libs e seus recursos muita complexidade seria resolvida e os desenvolvedores ganhariam tempo para lidar com os desafios do produto e não dos navegadores, etc.</p>
+
+<p>O problema é que com isso, prendemos nossa solução a uma lib e sua versão. Obrigamos os produtos que queriam usar esse widget e ter essa versão, essa lib.</p>
+
+<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou&#8230; Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
+
+<p>Nesse caso em específico, além do uso de libs, houve um sério problema de engenharia de software. Poderíamos ter componentizado melhor, separado melhor e essa mudança para versão mais nova seria mais simples.  Entretanto, nos amarramos demais a biblioteca e agora teremos que reescrever tudo.</p>
+
+<p>Para coroar nossa análise, se tivessemos usado simples JS puro - isso daria trabalho mais é totalmente possível - agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
+
+<p>No mesmo tempo que essa app foi feita, uma outra app foi feita por outro time. Também é usada por todos os portais. A diferença é que eles optaram por fazer com VanillaJS. Deu muito trabalho, problemas de cross-browser para resolver, ajax, etc. Mas no final eles conseguiram e tem sido um benchmark para nós todos. Eles provaram que a entrega foi bem melhor  e  com usuários felizes.</p>
+
+<h2>A conclusão</h2>
+
+<p>Vamos lá a formula de bolo para ajudar a:</p>
+
+<ol>
+<li>Tentar sempre usar somente javascript. Mais nada</li>
+<li>Lembre  de isolar bem o seu contexto de váriaveis.</li>
+<li>Sempre que possível use de namespaces/</li>
+<li>Se não der para usar só js, procure por um micro framework para resolver o seu problema de forma bem específica. Embede o código dessa lib na sua.</li>
+<li>Menos código, menos bugs.</li>
+<li>Seja cuidadoso e sempre se coloque no lugar da pessoar que irá usar.</li>
+</ol>
+
+
+<p><em>&#8220;Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora&#8221;</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VOCÊ NÃO É O TWITTER]]></title>
@@ -1128,173 +1201,6 @@ Com isso acima, fica pronto a configuração. Para busca fica assim:
 
 Assim estou buscando por Inscrições cujo a resposta a pergunta 1 foi teste. E pronto. A mágica foi feita.
 Espero sinceramente que isso ajuda alguém como outros blogs que consultei me ajudaram. Fiquem em paz e até a próximo.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Usando SOLR parte 2 - Testes e Cucumber]]></title>
-    <link href="http://andrefonseca.net/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/"/>
-    <updated>2011-03-31T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber</id>
-    <content type="html"><![CDATA[Se você já leu a primeira parte dessa série, você até o momento tem as gems necessárias instaladas e parte do seu ambiente resolvido.  Uma coisa acabou ficando esquecida, e quem tentou implementar algo seguindo os passos que falei e fez algum teste deve ter enfrentado bastantes erros, dentre eles o de que não foi possivel encontrar constantes e o método searching.
-
-Isso tudo acontece pois esquecemos de fazer o require das libs dentro das nossas classes. Isso porque, como não fizemos dentro do enviroments(isso só vale para apps Rails) as chamadas das libs, o Rails ainda não sabe como achar as coisas.
-
-Bem vamos lá. Imaginemos que você quer que a classe Minha seja indexa e posteriormente busca pelo SOLR, basta colocar no top o require:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_rails&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Feito isso e mais os passos já descritos, creio que agora já temos algo funcional.
-
-Bem vamos para a parte de testar a coisa. Claro que todos nós somos adeptos do TDD (Test Driven Development - Desenvolvimento Orientado a Testes) e por isso vamos sempre querer escrever nossas especificações antes. Falei especificações pois considero que você seja uma pessoa experta e esteja usando o RSPEC.
-
-Para isso, como disse na parte 1, é preciso que você use alguns matchers que irão facilitar em muito a sua vida. Eles estão dentro da gem sunspot_matchers. Dentro do seu spec_helper (isso já vale para todo projeto ruby que esteja usando o Rspec), coloque as linhas:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sunspot_matchers&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">include</span> <span class="no">SunspotMatcher</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">before</span> <span class="k">do</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">SunspotMatchers</span><span class="o">::</span><span class="no">SunspotSessionSpy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">after</span> <span class="k">do</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">original_session</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Estamos fazendo aqui (acredito que já tenho dito isso) é colocando uma interceptador das chamadas da DSL a sessão com o SOLR para ver se tudo está ocorrendo do jeito que queremos. Seria algo como o nosso mocka, para quem conhcece.
-
-Segue abaixo um exemplo de um código de teste. Veja como fica bem simples testar se a busca, no caso, está incluindo os itens que preciso para fazer a filtragem:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de finalizacao maior que&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:start_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
-</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data finalizacao menor que&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%d/%m/%Y&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:end_date</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">data</span><span class="p">})</span>
-</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;%d/%m/%Y&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:finalizada_em</span><span class="p">)</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">it</span> <span class="s2">&quot;Deve filtrar pela data de nascimento maior que&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="o">.</span><span class="n">years_ago</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">encontrados</span> <span class="o">=</span> <span class="no">Inscricao</span><span class="o">.</span><span class="n">busca</span><span class="p">({</span><span class="ss">:campanha_id</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="ss">:idade_final</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;20&quot;</span><span class="p">})</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">be_a_search_for</span><span class="p">(</span><span class="no">Inscricao</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Sunspot</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">should</span> <span class="n">have_search_params</span><span class="p">(</span><span class="ss">:with</span><span class="p">,</span> <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">with</span><span class="p">(</span><span class="ss">:data_nascimento</span><span class="p">)</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">data</span><span class="p">)})</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-A coisa fica bem próxima as expectations que estamos acostumados a usar.  Com isso temos nossos testes de especificação prontos e podemos então passar para os teste de aceitação.
-
-Antes que alguém comece a dizer que estou &#8220;roubando&#8221; pois estou fazendos os testes de aceitação depois de já ter algo implementado, quero dizer que sou adepto da abordagem emergente. Vou implementado os testes a medida da necessidade - isso é o que chamam de inside out.
-
-Imagino que você que esteja lendo e desenvolvendo junto comigo deva usar o Cucumber para fazer os seus testes de aceitação. Também imagino que, ao contrário dos testes de especificação ou microtestes, você agora queira que as coisas estejam rodando a vera.
-
-Para ter um SOLR funcionando para você executar os seus testes de Cucumber, vá no arquivo, features/support/env.rb e coloque as seguintes linhas:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">start</span>
-</span><span class='line'><span class="no">Before</span> <span class="k">do</span>
-</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">reindex</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">After</span> <span class="k">do</span>
-</span><span class='line'>    <span class="no">Inscricao</span><span class="o">.</span><span class="n">remove_all_from_index!</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">at_exit</span> <span class="k">do</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Saindo do solr&quot;</span>
-</span><span class='line'>    <span class="o">::</span><span class="no">Sunspot</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Server</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">stop</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Essas linhas irão iniciar um SOLR; a cada teste pedir para reindexar os dados neles e por fim, quando tudo terminar, ele irá parar o solr que você iniciou.  Uma breve ressalva:  tive um mega problema&#8230; quando fiz isso, meus teste de jeito algum passavam. Isso porque, por motivos que ainda não sei, quando criamos na mão nossos arquivos, precisamos pedir que sejam indexados, ou seja,  ele não indexa automaticamente. Pelo oque li a gem faz isso pelos controllers. Assim que tiver certeza sobre isso escrevo algo. A questão é que tive que escrever um maldito passo para indexar e chamá-lo toda vez que algo era criado. Algo como abaixo:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dado</span><span class="sr"> /ˆque preciso reindexar minhas coisas$/</span> <span class="k">do</span>
-</span><span class='line'>    <span class="no">Minhas</span><span class="o">.</span><span class="n">reindex</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-&#8230; Em um features da vida
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="no">Dado</span> <span class="n">que</span> <span class="n">crio</span> <span class="n">uma</span> <span class="n">coisa</span> <span class="n">minha</span>
-</span><span class='line'>    <span class="n">E</span> <span class="n">que</span> <span class="n">preciso</span> <span class="n">reindexar</span> <span class="n">minhas</span> <span class="n">coisa</span>
-</span><span class='line'>    <span class="no">Eu</span> <span class="n">vejo</span> <span class="n">essa</span> <span class="n">coisa</span> <span class="n">na</span> <span class="n">busca</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Bem pessoal por hoje é só. Em outras oportunidades pretendo escrever sobre como você pode colocar tudo isso de forma assíncrona e outros truques bem legais, bem como buscas complexas e montagens de indices.
-
-
 ]]></content>
   </entry>
   
