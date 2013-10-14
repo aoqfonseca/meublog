@@ -10,7 +10,7 @@
 
 <meta name="author" content="Andre Fonseca"> 
 
-<meta name="description" content="TL; DR; Embora toda experiência, conhecimento de processos e boas práticas, ninguém está imune a cometer erros, escrever código com BUG e/ou ruim. &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="Esse é um post para ajudar a me lembrar de uma procedimento e quem sabe ajudar alguém com o mesmo problema. Eu uso como editor padrão o VIM (algumas &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +96,61 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/10/14/reinstalando-vim-com-python/">
+		
+			Reinstalando O Vim Na Sua Máquina Com Suporte a Python E Ruby</a>
+	</h2>
+	<div class="entry-content">
+		<p>Esse é um post para ajudar a me lembrar de uma procedimento e quem sabe ajudar alguém com o mesmo problema.</p>
+
+<p>Eu uso como editor padrão o VIM (algumas vezes o MACVim). Além disso uso muito Python e Ruby como linguagens para desenvolver meus projetos. Para facilitar esse meu dia a dia, uso alguns plugins que me ajudam como por exemplo o python-mode e o jedi. O python-mode ajuda com as validações de pep8, pyflakes, etc. Já o jedi ajuda nos imports do python. Para ruby eu tenho o sintaxe highlight mesmo.</p>
+
+<p>Tudo isso funciona perfeitamente no meu MACVim, porém no vim não estava funcionando. Ambos tinham sido instalados via homebrew. Buscando pelo Google, achei que a solução era compilar o vim manualmente. Isso realmente resolveu meu problema, e segue abaixo os passos que fiz. Primeiro certifique-se  tem instalado o mercury no seu computador (hg).</p>
+
+<p>hg clone https://vim.googlecode.com/hg/ vim_source
+cd vim_source
+./configure &#8211;disable-nls &#8211;enable-multibyte &#8211;with-tlib=ncurses &#8211;enable-pythoninterp &#8211;enable-rubyinterp &#8211;with-features=huge
+make -j 3 &amp;&amp; sudo make install</p>
+
+<p>Com isso o sistema irá reinstalar todo o vim com os suportes e links corretos.</p>
+
+<p>Espero que ajuda alguém.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-14T17:44:00-03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/python-/'>python,</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/vim-/'>vim,</a>
+
+
+</div>
+	
+		<span class="comments"><a href="/blog/2013/10/14/reinstalando-vim-com-python//blog/index.html#disqus_thread">Comments</a></span>
+	
+</div></article>
 
 
     <article class="post">
@@ -932,68 +987,6 @@ Recomendo muito essa leitura.</p>
 </div>
 	
 		<span class="comments"><a href="/blog/2012/04/13/bibliotecas-javascript//blog/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/04/onde-buscar/">
-		
-			Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a>
-	</h2>
-	<div class="entry-content">
-		<p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
-Acontece que com a internet e seus poderosos buscadores, buscar alguma coisa, ou melhor, pesquisar sobre um determinado assunto não é algo tão demorado e custoso.
-Quem tem mais de 30 anos deve se lembrar de quando tinhámos que ir a bibliotecas e pegar uns 10 livros e ficar ali escrevendo os textos e resumindo-os para fazer um trabalho da escola. Hoje, qualquer criança acessa a internet e tem um acervo muito maior e indexado, tornado-os, inclusive, muitos preguiçosos. Mas não quero discutir isso e sim o quanto isso nos impacta.</p>
-
-<h3>O antigo profissional</h3>
-
-<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &#8220;armazenamento&#8221; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
-Eram pessoas que tinha uma memória invejável. Nem sempre o racicionio era valorizado. Saber algo era um diferencial. Saber oque fazer com a informação era outro ponto que não vinha ao caso naquele momento.</p>
-
-<h3>A internet e seu impacto</h3>
-
-<p>Com a vinda a internet o conhecimento começou a migrar dos livros para os grande sistemas on line. Vários impactos aconteceram por isso, um deles foi a democratização dessas informações e uma maior facilidade de acesso.
-Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&#8230; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
-Não precisamos mais de memórias maravilhosas. Os computadores fazem isso melhor do que a gente.
-O importante agora é o raciocínio analítico. É capacidade de extrapolar a informação e dar um fim útil dentro dos nossos objetivos.
-O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&#8230; Delegamos isso para os sistemas.</p>
-
-<h3>Conclusão</h3>
-
-<p>Como disse lá no início, para mim, valorizo mais quem saber buscar do que aquele que apenas sabe. Isso mostra a sua capacidade de lidar com o desconhecido. Aprender é a habilidade do momento.
-E você está preparado para isso?</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-04T15:29:00-03:00" pubdate data-updated="true">Mar 4<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/atualidade/'>atualidade</a>, <a class='category' href='/blog/categories/conhecimento/'>conhecimento</a>
-
-
-</div>
-	
-		<span class="comments"><a href="/blog/2012/03/04/onde-buscar//blog/index.html#disqus_thread">Comments</a></span>
 	
 </div></article>
 

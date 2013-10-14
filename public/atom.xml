@@ -4,7 +4,7 @@
   <title><![CDATA[Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2013-09-28T22:09:28-03:00</updated>
+  <updated>2013-10-14T17:58:27-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reinstalando o vim na sua máquina com suporte a python e Ruby]]></title>
+    <link href="http://andrefonseca.net/blog/2013/10/14/reinstalando-vim-com-python/"/>
+    <updated>2013-10-14T17:44:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2013/10/14/reinstalando-vim-com-python</id>
+    <content type="html"><![CDATA[<p>Esse é um post para ajudar a me lembrar de uma procedimento e quem sabe ajudar alguém com o mesmo problema.</p>
+
+<p>Eu uso como editor padrão o VIM (algumas vezes o MACVim). Além disso uso muito Python e Ruby como linguagens para desenvolver meus projetos. Para facilitar esse meu dia a dia, uso alguns plugins que me ajudam como por exemplo o python-mode e o jedi. O python-mode ajuda com as validações de pep8, pyflakes, etc. Já o jedi ajuda nos imports do python. Para ruby eu tenho o sintaxe highlight mesmo.</p>
+
+<p>Tudo isso funciona perfeitamente no meu MACVim, porém no vim não estava funcionando. Ambos tinham sido instalados via homebrew. Buscando pelo Google, achei que a solução era compilar o vim manualmente. Isso realmente resolveu meu problema, e segue abaixo os passos que fiz. Primeiro certifique-se  tem instalado o mercury no seu computador (hg).</p>
+
+<p>hg clone https://vim.googlecode.com/hg/ vim_source
+cd vim_source
+./configure &#8211;disable-nls &#8211;enable-multibyte &#8211;with-tlib=ncurses &#8211;enable-pythoninterp &#8211;enable-rubyinterp &#8211;with-features=huge
+make -j 3 &amp;&amp; sudo make install</p>
+
+<p>Com isso o sistema irá reinstalar todo o vim com os suportes e links corretos.</p>
+
+<p>Espero que ajuda alguém.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code Review]]></title>
@@ -1148,66 +1170,6 @@ Agora com o editor aberto é só copiar e colar o código abaixo:
 Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde ele buscará as fotos; a segunda qual será o caminho base para onde as fotos organizadas serão copiadas.
 
 Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Postando fotos no picasa pela linha de comando]]></title>
-    <link href="http://andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/"/>
-    <updated>2011-05-06T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando</id>
-    <content type="html"><![CDATA[Creio que depois de ler o meu último post, todo mundo já está com suas fotos arrumadinhas. Sendo assim é hora de compartilhá-las com seus amigos. Eu uso o Picasa para isso pois gosto dele e sempre me atendeu bem. Muitos amigos dizem que o Flickr é melhor mas prefiro meu bom e satisfatório picasa. Muitos fariam é baixar o picasa desktop (nem sei se tem para o Ubuntu) e a partir dele iriam organizar suas fotos e montar seus albuns e por fim, publicá-los na grande rede.
-
-Como, se lembrarem bem do último post,  eu estou afim de me aprimorar no uso do console, principalmente, em Bash, resolvi pedir novamente &#8220;ajuda&#8221; ao google e busquei por envio por linha de comando. Para minha grata surpresa, o pessoal da própria google disponibiliza um<a title="googlecl" href="http://code.google.com/p/googlecl/"> google command line</a> para diversos de seus produtos incluido o picasa.  Por enquanto só funciona para os que tem gdata (disclamer traduzido do próprio site do googlecl)
-
-Para instalá-lo, no Ubuntu, é bem simples:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install googlecl
-</span></code></pre></td></tr></table></div></figure>
-
-Pelo que eu entendi ele na verdade é uma biblioteca python por isso nos outros sistemas operacionais deve bastar instalar via pip
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install googlecl
-</span></code></pre></td></tr></table></div></figure>
-
-Não sei dizer se com isso, instalando via pip, você perder o binário - comando - para usar.
-Uma vez instalado é só alegria e usar:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre@vermelhinho:~<span class="nv">$ </span>google <span class="nb">help</span>
-</span><span class='line'>Welcome to the Google CL tool!
-</span><span class='line'>Commands are broken into several parts:
-</span><span class='line'>service, task, options, and arguments.
-</span><span class='line'>For example, in the <span class="nb">command</span>
-</span><span class='line'><span class="s2">&quot;&amp;gt; picasa post --title &quot;</span>My Cat Photos<span class="s2">&quot; photos/cats/*&quot;</span>
-</span><span class='line'>the service is <span class="s2">&quot;picasa&quot;</span>, the task is <span class="s2">&quot;post&quot;</span>, the single
-</span><span class='line'>option is a title of <span class="s2">&quot;My Cat Photos&quot;</span>, and the argument is the
-</span><span class='line'>path to the photos.
-</span><span class='line'>
-</span><span class='line'>The available services are
-</span><span class='line'><span class="s1">&#39;picasa&#39;</span>, <span class="s1">&#39;blogger&#39;</span>, <span class="s1">&#39;youtube&#39;</span>, <span class="s1">&#39;docs&#39;</span>, <span class="s1">&#39;contacts&#39;</span>, <span class="s1">&#39;calendar&#39;</span>, <span class="s1">&#39;finance&#39;</span>
-</span><span class='line'>Enter <span class="s2">&quot;&amp;gt; help &quot;</span> <span class="k">for </span>more information on a service.
-</span><span class='line'>Or, just <span class="s2">&quot;quit&quot;</span> to quit.
-</span><span class='line'>andre@vermelhinho:~<span class="err">$</span>
-</span></code></pre></td></tr></table></div></figure>
-
-E para enviar suas foto fica mais ou menos assim:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>google picasa create <span class="s2">&quot;Cat Photos&quot;</span> ~/photos/cats/*.jpg
-</span></code></pre></td></tr></table></div></figure> 
 ]]></content>
   </entry>
   
