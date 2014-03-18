@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: software | Andre Fonseca]]></title>
+  <title><![CDATA[Category: software, | Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2014-01-25T12:04:55-02:00</updated>
+  <updated>2014-03-18T15:34:07-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -14,102 +14,67 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Sistemas com responsabilidades únicas]]></title>
-    <link href="http://andrefonseca.net/blog/2013/03/21/sitemas-com-responsabilidade-unica/"/>
-    <updated>2013-03-21T21:09:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2013/03/21/sitemas-com-responsabilidade-unica</id>
-    <content type="html"><![CDATA[<h2>Introdução</h2>
+    <title type="html"><![CDATA[Code Review]]></title>
+    <link href="http://andrefonseca.net/blog/2013/09/28/code-review/"/>
+    <updated>2013-09-28T20:48:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2013/09/28/code-review</id>
+    <content type="html"><![CDATA[<p>TL; DR;</p>
 
-<p>Muitos desenvolvedores já estão familiarizados com diversos princípios de engenharia de software, como por exemplo alguns enunciados pelo livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a>. Tais princípios ficaram eternizados com a sigla SOLID, que é acronimo e significa:</p>
+<p>Embora toda experiência, conhecimento de processos e boas práticas, ninguém está imune a cometer erros, escrever código com BUG e/ou ruim. Todo ser humano é imperfeito e está fadado a cometer erros mesmo que sendo um gênio e tendo um profundo conhecimento. BUGS e códigos mal escritos não são somente fruto de desconhecimento e despreparo mas também, de condições e contextos no qual o desenvolvedor está inserido. Sendo assim, a questão não está em não cometer o erro (bugs, código mal <em>escrito</em>, etc) e sim procurar formas de detectá-lo o mas breve possível evitando assim que esse tenha um ciclo de vida longo.</p>
 
-<p> <em>S</em>ingle Responsability Principle ( Principio de Responsabilidade Única);</p>
+<h2>O problema do código <em>feio</em></h2>
 
-<p> <em>O</em>pen Close Principle ( Principio do aberto para extensão e fechado para modificação);</p>
+<p><em>&ldquo;Escrever código para máquina é fácil.&rdquo;</em></p>
 
-<p> <em>L</em>iskov  Substitution Principle (A classe filha pode ser substituida pela classe pai);</p>
+<p>Nem sempre os problemas de um sistema estão em BUGs ou aderência aos requisitos. Muitas vezes, para não dizer a maioria, os maiores problema estão em códigos mal escritos, difícies de manter, duplicados, sem padrão, etc. Isso se agrava quando falamos em projetos onde temos mais  de uma pessoa envolvida e com  mudanças na equipes (entrada de pessoas novas por exemplo). Logo, é preciso buscar formas para que esse tipo de coisas não aconteça.</p>
 
-<p> <em>I</em>nterface Segregation Principle (expor interfaces não objetos);</p>
+<p>Escrever código também é uma forma de comunicação e é necessário dar a essa prática a mesma atenção de um texto. Embora, códigos sejam instruções para computadores realizar, é preciso pensar em quem irá ler esse código e ter em mente que essa pessoa tem que ser capaz de entender corretamente a mensagem e propósito da arquitetura e forma deste sitema. Outros além dos autores iniciais, muito provávelmente, irão dar manutenção, e com isso precisarão entender bem como as peças se encaixam para resolver o domínio.</p>
 
-<p> <em>D</em>ependency Inversion  Principle ( Dependencias baseadas na abstração e não nas implementações concretas )</p>
+<p>Falhar em escrever um código legível, compreensível, com padrões perceptivos, é escrever código legado e fadado a morte.</p>
 
-<p>Para saber um pouco mais, siga clicando <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">aqui</a>*</p>
+<p>Código bem feito leva a todos futuros autores a seguir um padrão e a entender sem grandes esforços como as relações se desenrolam. No oposto, código mal escrito, o efeito é inverso: têm-se um empilhamento de funcionalidades, duplicações, diversos padrões, formas, código <em>obscuro</em>, etc.</p>
 
-<p>Aplicando essa definições em nossos código, a idéia é ter um código mais limpo: código legível; fácil de compreender por outros desenvolvedores; simples de evoluir; simples de manutenciar; etc. A questão é que, mesmo usando toda essa engenharia, todos nossos sistemas atuais tendem a crescer e ganhar complexidade.</p>
+<h2>Estudos e estudiosos do assunto</h2>
 
-<p>Todos os sistemas nascem simples: com responsabilidades únicas e bem definidas. Assim após a nossa primeira <em>release</em>, nosso sistemas evolui, ganhando novas funcionalidades, acertos, melhorias , ajustes para melhorar perfomance, refactorings, etc. Com o passar do tempo, nosso pequena e bem escrito aplicativo, torna-se um megazord de complexidade, duplicidade de código, e outras coisas que nenhum de nós gosta. Enfim, ele se torna um grande legado que ninguém quer mais mexer.</p>
+<p>Tendo como ponto de partida o fato de que código é uma forma de comunicação semelhante as demais e que é preciso buscar a excelência nisso, muitos estudiosos do assunto buscam formas, processos, ferramentas, para evitar que se produza código ruins (mal escritos). Linguagens como Python, Java, etc criam convensões de boas práticas, <em>code styles</em> (estilo de escrita de software). IDE&rsquo;s criam validadores de sintaxe. Estudiosos de processo, procuram por práticas para ajudar o desenvolver a não escrever ou achar os defeitos o mais breve possível.</p>
 
-<p>Tenho certeza que todos tem algum projeto que trabalhou que serve de exemplo para a situação descrita acima.  Lembra daquele sistema que tinha, lá no início, algumas centenas de linha de código apenas e já de milhares (até milhões); ou/e daquele projeto super bem arquitetado e hoje é uma bagunça sem fim que até mesmo que trabalhou desde início se perde para entender como as chamadas <em>trafegam</em> para completar uma requisição.</p>
+<p>Existe um artigo interessante no site de developer da IBM que lista as 11 praticas provadas que realmente ajudam na revisão de código <a href="http://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/">Leia o artigo</a>.</p>
 
-<p>Mesmo que esse ditos projetos estejam usando testes automatizados e tenha sidos feitos seguindo princípios como TDD. Mesmo que eles sofram refactorings constantes, o fato é que eles crescem e vão adquirindo novas responsabilidades antes não previstas. Com isso, vamos torcendo aquele modelo original e amontando código.</p>
+<p>A revisão de código é uma das práticas, juntamente com o <em>Pair Programming</em> (programação em pares) que vêem de encontro a resolver o problema de código <em>ruim</em>. A programação em par é a prática onde duas pessoas trabalham juntas na concepção e escrita da funcionalidade. Ela resolve em parte o problema pois são dois pares de olhos vendo. Porém, ainda é possível escrever coisas que não sejam <em>&ldquo;legíveis&rdquo;</em> a futuros programadores daquele sistema.</p>
 
-<p>Diante disso, o que vejo e vivencio é que a medida que essas bases de código crescem, fica impossível de manter principios de reutilização, <em>DRY</em>, padrões de nomes, <em>code style</em>, e diversas outras coisas importantes. Enfm, acabamos um imenso legado que é caro demais de evoluir, muito caro de reescrever e muito importante para nosso cliente que não abra mão dele e tem novas necessidades a serem atendidas.</p>
+<p>A revisão de código tem sido mais eficiente nesse sentido. Revisar um código não consiste apenas em outras pessoas lerem o código escrito antes de alguma determinada etapa. Consiste no uso de ferramentas e analisadores também. Inclusive uma boa prática é se algo pode ser analisado pelo computador é melhor que ele que faça e não outro, como por exemplo, complexidade ciclomática, code styles, duplicação, etc.</p>
 
-<h2>Nosso dilema atual</h2>
+<h2>Como resolver, como fazer para implementar essa prática</h2>
 
-<p>Como disse, os sistemas crescem. E com eles suas bases de código.</p>
+<p>Uma vez que se tenha optador pela revisão de código, o primeiro passo consiste em simplesmente fazer. Começar da forma que o time desejar. Os ajustes, como toda boa prática, vem com  tempo, e na medida da maturidade e domínio do processo, vai se mudando e adaptando.</p>
 
-<p>Poderíamos dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">livro</a> sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final. Pdemos melhorar os métodos, encapsular melhor algumas, etc ... a questão que ainda temos um modelo que não foi feito para aqueles novos casos, ainda temos situações novas que não estavam previstas e poucas possibilidades de interface do nosso sistema.</p>
+<p>. Como já foi abordado acima, devem buscar ferramentas para analisar a base de código nos mais diversos aspectos. Linguagens como python tem analisadores de pep8(conjunto de boas práticas de escrita de código), analisadores estáticos (analisam variaveis, duplicidade, e outra coisas); já Java tem IDE&rsquo;s que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.</p>
 
-<p>Se não existessem os problemas financeiros ou quaisquer outras <em>constraints</em> tenho certeza que a maioria dos desenvolvedores, diriam que está na hora de reescrever todo o sistema.  Todos nós adoramos projetos <em>Green Field</em> (projetos que estão começando do zero).</p>
+<p>. todos tem seu código revisto.  Não é só responsabilidade os engenheiros senior revisar. É de todos.</p>
 
-<p>Em novos projetos, temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias.</p>
+<p>. Uma boa forma é que o código só seja enviado para o repositório (git, svn, etc) se foi revisado. Por isso, o desenvolvedor antes de <em>comitar</em>  ou dar <em>push</em> chama outra pessoa e faz.</p>
 
-<p>A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO... vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)</p>
+<p>. Projetos com times grandes podem trabalhar, caso seja usem coisas semelhantes a git, usar patches. Assim, cada um tem seu &ldquo;repositorio&rdquo; e na hora de integrar criam e enviam um patch. Esse patch irá ser revisto por algum outro membro.</p>
 
-<h2>Motivos para reescrever sistemas</h2>
+<p>. Evite fazer com muito código. O ideal, segundo o  artigo citado, é não passar de 200 a 400 linhas de código. Isso reforçar o conceito de fazer pequenos passos e ir enviando para o repositorio.</p>
 
-<ol>
-<li><strong>Tecnologias caducam, envelhecem:</strong></li>
-</ol>
+<p>. Evite o efeito Big Brother&hellip; Faça reviews abertos e de forma clara. Deixe tudo muito aberto e simples.</p>
 
+<p>. Torne a prática uma cultura do time e não mais um processo a seguir. A revisão de código deve ser desejada por todos e seguida. Pedida.</p>
 
-<p>Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema... enfim a tecnologia evolui e traz novas soluções - e melhores - para os nosso problemas.</p>
+<h2>Concluindo</h2>
 
-<ol>
-<li><strong>Nós aprendemos:</strong></li>
-</ol>
+<p>Independente da forma e de como irá realizar, é importante entender que código deve ser legível. Código deve ser compreensível a outros humanos também, não somente a máquina. Isso irá aumentar a vida do sistema, facilitar novos colaboradores (para os casos de open source), etc.</p>
 
+<p>Code Review é uma boa forma de garantir isso.</p>
 
-<p>Com o passar do tempo e com a experiência vemos que, nem sempre o caminho que adotamos foi o melhor. Também vemos que existem jeitos melhores de implementar determinada lógica.</p>
+<h2>Leia mais</h2>
 
-<p>Existe o fato também, que evoluímos como profissionais: com isso vemos que aquele sistema que fizemos a um tempo atrás, poderia ter sido feito de um jeito diferente. Infelizmente mudanças desse tipo não dá para fazer de forma gradual. Geralmente, eles são mudanças radicais e temos que fazer tudo de uma vez só.</p>
+<p><a href="http://alexgaynor.net/2013/sep/26/effective-code-review/">Effective Code Review &ndash; Alex  Gaynor</a></p>
 
-<ol>
-<li><strong>todo sistema tem prazo de validade:</strong></li>
-</ol>
+<p><a href="http://agile.dzone.com/articles/what-makes-peer-code-review-agile">What Makes Peer Code Review an Agile Process? &ndash; Lyndsey Clevessy</a></p>
 
-
-<p>Um outro bom motivo para reescrevermos nosso sistema é ligado ao negócio. Muitas vezes vemos que a forma de nosso negócio mudou e que o sistema atual com sua base de código infinita não nos atende mais. Mesmo que façamos diversos apendices, o sistema não é mais capaz de nos atender com proficiencia. Se tornam aqueles sistemas cheios de jeitinhos para fazer coisas. O usuário tem que fazer um cursinho para saber todos os "pulos do gato" para ele conseguir concretizar uma operação. Sistemas ERPs são os melhores exemplos disso. Você acaba torcendo o seu problema para caber dentro daquele sistema que é impossível de mudar ou reescrever.</p>
-
-<h2>Vamos ao que interessa</h2>
-
-<p>Fica um bom tempo falando sobre a questão de engenharia de software e do problema de sistemas com muitas linhas de código. Falei também dos motivos que podemo nos levar a querer reescrever um sitemas. Mas para que?</p>
-
-<p>Escrevi sobre tudo isso para mostrar que precisamos dar o passo seguinte no desenvolvimentos de software. Precisamos pensar em sistemas como peças únicas de um conjunto para resolver problemas. Sendo assim, essas unidade deve ser responsavel por resolver um e somente um aspecto do problema e não todo ele. A solução se dá pela soma das partes que agindo em conjunto atendem ao nosso domínio.</p>
-
-<p>Precisamos aplicar os conceitos de SRP (veja acima) na concepção de nosso sistemas. Ao invés de fazermos uma peça única e monolítica que aborde todo o nosso dominio, fazmemos pequenas partes que cuidam de cada aspecto.</p>
-
-<p>Ganhamos com isso sistemas pequenos, e simples de manter.  Num caso que li recentemente, cada peça ficou com poucas centenas de linhas. Isso facilita manter pois bases pequenas são mais simples. Bases pequenas são mais fácil de entender e manter seu padrões; bases pequenas são mais fácil de jogar fora e fazer de novo. No mesmo case que citei acima, eles reescrevem uma parte em uma semana e foi imperceptível para o cliente.</p>
-
-<p>Outro aspecto é que se fizermos com pequenas partes e essas partes existirem independentes uma das outras, podemos ir além. Imagine que eu quebre o sistema em diversos serviços que se falem via REST: eu posso literalmente escrever cada serviço numa linguagem diferente que não vai causar nenhum problema. Com isso posso escolher a melhor tecnologia/linguagem para o meu problema. Além disso, mantendo as interfaces, eu posso refazer todo a parte interna sem afetar as outras peças do conjunto.</p>
-
-<p>Isso é simplesmente o céu de todo desenvolvedor.</p>
-
-<p>Em meu trabalho atual estamos caminhando para algo parecido. Ou seja, uma forma mais orientada a serviços, onde cada sistema tem uma responsabilidade e essa é simples. Manter essa coisa simples e com pouca coisa para resolver é a grande chave do sucesso.</p>
-
-<p>Se olhar arquitetura de grandes portais, produtos web (como [Twitter][4], basecamp, <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">SoundCloud</a>, etc) verá um monte de pequenos sistemas conversando para atender a demanda do usuário.</p>
-
-<p>Se uma parte se tornar o gargalo, podemos melhorar só aquela parte: colocando mais servidores, reescrevendo, etc.</p>
-
-<p>Isso é aplicavel a qualquer contexto.</p>
-
-<p>A alguns anos atrás trabalhei numa empresa que tinha diversos sistemas que eram integrados através de troca de mensagens (queue e brokers). Claro que nem chega perto do que estou propondo mais foi uma semente e vi que dava muito certo.</p>
-
-<h2>Cenas do próximos capítulos ...</h2>
-
-<p>Mais a frente - estou terminando de organizar tudo - pretendo publicar um  novo post explicando melhor como implementar essa questão de sistemas pequenos e com pouco responsabilidade.</p>
-
-<p>Só para deixar curioso, existem formas de fazer sem necessáriamente escrever um monte de sistemas; como existem formas de fazer de forma  bem desacoplada. Enfim fiquem ligados.</p>
+<p><a href="http://www.cio.com/article/472372/Running_an_Effective_Code_Review">Running an Effective Code Review &ndash; Esther Schindler</a></p>
 ]]></content>
   </entry>
   

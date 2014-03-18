@@ -1,21 +1,21 @@
-<p>&#8211;
+<p>&mdash;
 layout: post
-title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+title: &ldquo;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&rdquo;
 tags:
-- django
-- form
-- template
+&ndash; django
+&ndash; form
+&ndash; template
 status: publish
 type: post
 published: true
 meta:</p>
 
-<h2>  _edit_last: &#8220;1&#8221;</h2>
+<h2>  _edit_last: &ldquo;1&rdquo;</h2>
 
 <p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
 <p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
-Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &ldquo;piscar de olhos&rdquo;.</p>
 
 <p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
@@ -25,14 +25,14 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
 
 <p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Depois coloque um arquivo dentro para substituir:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
 </span></code></pre></td></tr></table></div></figure>
 

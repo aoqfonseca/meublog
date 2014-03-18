@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jvm | Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/blog/categories/jvm/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2014-01-25T12:04:55-02:00</updated>
+  <updated>2014-03-18T15:34:07-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -28,7 +28,7 @@
 
 <h2>Um pouco sobre mim e porque posso falar sobre o assunto</h2>
 
-<p>Tenho em torno de 12 anos de profissão. Hoje, sou desenvolvedor senior da <a href="http://www.globo.com">Globo.com</a>, atuando no time de jornalismo - responsável por sites como G1, Ego, Cobertura de Eventos, etc.</p>
+<p>Tenho em torno de 12 anos de profissão. Hoje, sou desenvolvedor senior da <a href="http://www.globo.com">Globo.com</a>, atuando no time de jornalismo &ndash; responsável por sites como G1, Ego, Cobertura de Eventos, etc.</p>
 
 <p>A <a href="http://www.globo.com">Globo.com</a> é uma empresa onde se desenvolve os maiores portais de jornalismos, esportes e entretenimento do Brasil . Fora isso, temos plataformas de vídeos, imagens, música, em milhares de outras coisa.</p>
 
@@ -38,11 +38,11 @@
 
 <p>Nossos produtos tem acessos bem grandes: Portais com milhões de vísitas únicas por dia; streaming de vídeos na faixa de gigabytes por dia, terabytes de arquivos (imagens, html, css, javascripts) e por aí vai.</p>
 
-<h2>Diferenciando um pouco ...</h2>
+<h2>Diferenciando um pouco &hellip;</h2>
 
 <p>Diante do relato acima muitos poderiam pensar que <a href="http://www.globo.com">Globo.com</a>, deva ter as mesmas preocupações que um Facebook, <a href="http://twitter.com">Twitter</a> ou <a href="http://soundcloud.com">SoundCloud</a>.</p>
 
-<p>Posso adiantar que, sobre determinados aspectos, sim: Nenhum de nossas aplicações e novas funcionalidades vão para "produção" (para uso do nossos usúarios) sem que antes façamos bons testes de carga, testes de segurança, entre outras coisas relacionadas. Ainda na fase de desenvolvimento, temos a preocupação de fazermos coisa que deverão aguentar milhões de acessos, milhares de conexões simultaneas, picos, etc, sem jamais deixar de atender uma requisição.</p>
+<p>Posso adiantar que, sobre determinados aspectos, sim: Nenhum de nossas aplicações e novas funcionalidades vão para &ldquo;produção&rdquo; (para uso do nossos usúarios) sem que antes façamos bons testes de carga, testes de segurança, entre outras coisas relacionadas. Ainda na fase de desenvolvimento, temos a preocupação de fazermos coisa que deverão aguentar milhões de acessos, milhares de conexões simultaneas, picos, etc, sem jamais deixar de atender uma requisição.</p>
 
 <p>Porém se compararmos nosso volume de acesso e nosso tipo de produto, não somos parecidos com o pessoal do <a href="http://twitter.com">Twitter</a>, <a href="http://www.google..com">Google</a>, <a href="http://soundcloud.com">SoundCloud</a>, entre outros.</p>
 
@@ -74,11 +74,11 @@
 
 <p>O que quero dizer é que antes que comecemos a fazer a guerra de dizer que agora todos nós devemos largar o Ruby on Rails, ou Django, ou PHP, etc e partir para desenvolver em Assembly, precisamos entender que isso ainda não é o nosso problema.</p>
 
-<p>Nosso problema é ainda entregar valor para o cliente o mais rápido possível. Para grande maioria de nossas aplicações o custo de infra é infimo - quase desprezível - frente ao custo de desenvolvimento. Por isso usar de tecnologias de nos dê produtividade ainda é a melhor escolha.</p>
+<p>Nosso problema é ainda entregar valor para o cliente o mais rápido possível. Para grande maioria de nossas aplicações o custo de infra é infimo &ndash; quase desprezível &ndash; frente ao custo de desenvolvimento. Por isso usar de tecnologias de nos dê produtividade ainda é a melhor escolha.</p>
 
 <p>Fazendo referência ao título do POST, não somos o <a href="http://twitter.com">Twitter</a>, e por isso não devemos ainda nos perder nessas dicussões.</p>
 
-<h2>Um grande porém ...</h2>
+<h2>Um grande porém &hellip;</h2>
 
 <p>Porém, mesmo que a gente não esteja na equipe de desenvolvimento da <em>engine de busca do Google</em>, precisamos estar <em>antenados</em> com que acontece a nosso redor. É legal saber que mudanças de arquitetura e tecnologia podem ter um impacto em nosso produtos.</p>
 

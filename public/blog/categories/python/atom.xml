@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python, | Andre Fonseca]]></title>
+  <link href="http://andrefonseca.net/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://andrefonseca.net/"/>
+  <updated>2014-03-18T15:34:07-03:00</updated>
+  <id>http://andrefonseca.net/</id>
+  <author>
+    <name><![CDATA[Andre Fonseca]]></name>
+    <email><![CDATA[aoqfonseca@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Reinstalando o vim na sua máquina com suporte a python e Ruby]]></title>
+    <link href="http://andrefonseca.net/blog/2013/10/14/reinstalando-vim-com-python/"/>
+    <updated>2013-10-14T17:44:00-03:00</updated>
+    <id>http://andrefonseca.net/blog/2013/10/14/reinstalando-vim-com-python</id>
+    <content type="html"><![CDATA[<p>Esse é um post para ajudar a me lembrar de uma procedimento e quem sabe ajudar alguém com o mesmo problema.</p>
+
+<p>Eu uso como editor padrão o VIM (algumas vezes o MACVim). Além disso uso muito Python e Ruby como linguagens para desenvolver meus projetos. Para facilitar esse meu dia a dia, uso alguns plugins que me ajudam como por exemplo o python-mode e o jedi. O python-mode ajuda com as validações de pep8, pyflakes, etc. Já o jedi ajuda nos imports do python. Para ruby eu tenho o sintaxe highlight mesmo.</p>
+
+<p>Tudo isso funciona perfeitamente no meu MACVim, porém no vim não estava funcionando. Ambos tinham sido instalados via homebrew. Buscando pelo Google, achei que a solução era compilar o vim manualmente. Isso realmente resolveu meu problema, e segue abaixo os passos que fiz. Primeiro certifique-se  tem instalado o mercury no seu computador (hg).</p>
+
+<p>hg clone <a href="https://vim.googlecode.com/hg/">https://vim.googlecode.com/hg/</a> vim_source
+cd vim_source
+./configure &mdash;disable-nls &mdash;enable-multibyte &mdash;with-tlib=ncurses &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;with-features=huge
+make -j 3 &amp;&amp; sudo make install</p>
+
+<p>Com isso o sistema irá reinstalar todo o vim com os suportes e links corretos.</p>
+
+<p>Espero que ajuda alguém.</p>
+]]></content>
+  </entry>
+  
+</feed>

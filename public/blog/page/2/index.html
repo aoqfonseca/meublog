@@ -1,140 +1,222 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta name="google-site-verification" content="f1OtvP7JCHm6M9Ca7vMcFg3q-1NEOvDMcSKfKlVW_pA" />
-	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
-	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<meta charset="utf-8">
-	<title>artigos, pensamentos e opiniões  | Andre Fonseca</title>
+  <meta charset="utf-8">
+  <title>Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
 
-<meta name="author" content="Andre Fonseca"> 
+  
+  <meta name="description" content="Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas &hellip;">
+  
 
-<meta name="description" content="A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar &hellip;"> <meta name="keywords" content="">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="canonical" href="http://andrefonseca.net/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34644487-1']);
+    _gaq.push(['_trackPageview']);
 
-	<link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-<script language="Javascript" type="text/javascript">
-$(document).ready(
-  function() {
-    (function($) {
-      $(".fancybox[data-content-id]").each(function() {
-        this.href = $(this).data('content-id');
-      });
-      $(".fancybox").fancybox({
-        beforeLoad: function() {
-          var el, 
-              id = $(this.element).data('title-id');
 
-          if (id) {
-            el = $('#' + id);
-
-            if (el.length) {
-              this.title = el.html();
-            }
-          }
-          if ($(this).data('content')) {
-            this.content = $(this).data('content');
-          }
-        },
-        helpers: {
-          title: {
-            type: 'inside'
-          }
-        }
-      });
-    })(jQuery);
-  }
-);
-</script>
-	
 </head>
 
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">Andre Fonseca</a></h1>
-<h4>artigos, pensamentos e opiniões</h4>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:andrefonseca.net">
-			</form>
-		</div>
-	</div>
-</nav>
-
-
+<body   >
+  <header role="banner">
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas Para Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/03/04/onde-buscar/">
-		
-			Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a>
-	</h2>
-	<div class="entry-content">
-		<p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-13T00:02:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+        
+           | <a href="/blog/2012/04/13/bibliotecas-javascript/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2012/04/13/bibliotecas-javascript/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas páginas praticamente se limitava, na maioria dos casos, a algumas linhas que vinham aninhadas ali mesmo dentro do html e faziam o básicão: algum menu, esconder mostrar um elemento, etc. Hoje, temos elementos como carrocéis, galerias de fotos, popins, modais, animações das mais variadas e não é mais três linhas e sim arquivos que chegam até a casa dos megasbytes. Existem casos onde a página enviada no request chega a ser apenas um esqueleto e toda inteligência fica por conta de milhares de linhas de javacript.</p>
+
+<p>Com isso fica evidente que precisamos cada vez ter mais cuidado com essas peças de código que colocamos em nossas páginas, como melhorar nossa modelagem (usando conceitos de Orientaçção a Objeto para aumentar reutilização), melhor distribuição por arquivos, namespaces, módulos, e muitas outras que iremos aborda aqui ou em outros artigos.</p>
+
+<h3>Orientação a objeto e um monte de lib de terceiros</h3>
+
+<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço &ndash; de javascript (alguns só de jquery) &ndash; parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
+
+<p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
+
+<p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
+
+<p>Por essas que acredito que uma forma melhor é quebrar as libs em &ldquo;pedaços menores&rdquo; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
+
+<h3>Patterns</h3>
+
+<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno &ndash; mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
+
+<h3>MVC &ndash; Model View Controller</h3>
+
+<p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
+
+<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &ldquo; negócio&rdquo; (o domain).</p>
+
+<p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
+
+<p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
+
+<h3>Referencias</h3>
+
+<ol>
+<li><a href="http://pt.wikipedia.org/wiki/MVC">http://pt.wikipedia.org/wiki/MVC</a> &ndash; Model-view-controller (MVC)</li>
+<li><a href="http://microjs.com/">http://microjs.com/</a> &ndash; Catálogo de MicroJS.</li>
+<li><a href="http://mootools.net/">http://mootools.net/</a> &ndash; Página do Mootools</li>
+<li><a href="http://www.prototypejs.org/">http://www.prototypejs.org/</a> &ndash; Biblioteca Prototype</li>
+<li><a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone</a> &ndash; Apresentação do BackBone.js</li>
+<li><a href="http://documentcloud.github.com/backbone/">http://documentcloud.github.com/backbone/</a> &ndash; Pagina do BackBone.js</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/04/onde-buscar/">Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-04T15:29:00-03:00" pubdate data-updated="true">Mar 4<span>th</span>, 2012</time>
+        
+           | <a href="/blog/2012/03/04/onde-buscar/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2012/03/04/onde-buscar/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A um bom tempo atrás buscar informação era uma tarefa bastante difícil. Por isso nosso colégios nos ensinavam de forma que aprendessemos a pesquisar em diversos livros, montar resumos e guardar aquele conhecimento em nossa memória, pois assim quando precisassemos bastaria lembrar.
 Acontece que com a internet e seus poderosos buscadores, buscar alguma coisa, ou melhor, pesquisar sobre um determinado assunto não é algo tão demorado e custoso.
 Quem tem mais de 30 anos deve se lembrar de quando tinhámos que ir a bibliotecas e pegar uns 10 livros e ficar ali escrevendo os textos e resumindo-os para fazer um trabalho da escola. Hoje, qualquer criança acessa a internet e tem um acervo muito maior e indexado, tornado-os, inclusive, muitos preguiçosos. Mas não quero discutir isso e sim o quanto isso nos impacta.</p>
 
 <h3>O antigo profissional</h3>
 
-<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &#8220;armazenamento&#8221; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
+<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &ldquo;armazenamento&rdquo; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
 Eram pessoas que tinha uma memória invejável. Nem sempre o racicionio era valorizado. Saber algo era um diferencial. Saber oque fazer com a informação era outro ponto que não vinha ao caso naquele momento.</p>
 
 <h3>A internet e seu impacto</h3>
 
 <p>Com a vinda a internet o conhecimento começou a migrar dos livros para os grande sistemas on line. Vários impactos aconteceram por isso, um deles foi a democratização dessas informações e uma maior facilidade de acesso.
-Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&#8230; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
+Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&hellip; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
 Não precisamos mais de memórias maravilhosas. Os computadores fazem isso melhor do que a gente.
 O importante agora é o raciocínio analítico. É capacidade de extrapolar a informação e dar um fim útil dentro dos nossos objetivos.
-O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&#8230; Delegamos isso para os sistemas.</p>
+O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&hellip; Delegamos isso para os sistemas.</p>
 
 <h3>Conclusão</h3>
 
 <p>Como disse lá no início, para mim, valorizo mais quem saber buscar do que aquele que apenas sabe. Isso mostra a sua capacidade de lidar com o desconhecido. Aprender é a habilidade do momento.
 E você está preparado para isso?</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como Ver a última Tag Que Foi Criada No Git</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -146,45 +228,42 @@ E você está preparado para isso?</p>
   
 
 
-<time datetime="2012-03-04T15:29:00-03:00" pubdate data-updated="true">Mar 4<span>th</span>, 2012</time></div>
-	<div class="tags">
+<time datetime="2012-02-29T00:00:00-03:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-	<a class='category' href='/blog/categories/atualidade/'>atualidade</a>, <a class='category' href='/blog/categories/conhecimento/'>conhecimento</a>
-
-
-</div>
-	
-		<span class="comments"><a href="/blog/2012/03/04/onde-buscar//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">
-		
-			Como Ver a última Tag Que Foi Criada No Git</a>
-	</h2>
-	<div class="entry-content">
-		<p>O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
+  <div class="entry-content"><p>O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
 Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git describe --tags <span class="k">$(</span>git rev-list --tags --max-count<span class="o">=</span>1<span class="k">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Esse comando busca na lista de revisões pelas tags e com isso você consegue ver qual foi a última.  Usei isso para colocar esse dados no meu projeto toda vez que fizer um deploy em produção. Assim sempre terei em algum lugar a última tag que foi subida.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -196,53 +275,54 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
   
 
 
-<time datetime="2012-02-29T00:00:00-03:00" pubdate data-updated="true">Feb 29<span>th</span>, 2012</time></div>
-	<div class="tags">
+<time datetime="2012-02-22T00:00:00-02:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
+  <div class="entry-content"><p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &ldquo;extreme go horse&rdquo; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">
-		
-			Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a>
-	</h2>
-	<div class="entry-content">
-		<p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
-
-<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
+<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &ldquo;prato cheio&rdquo; para os desentendimentos.  Os bugs vem da &ldquo;falta de tempo&rdquo; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
 
 <p>Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.</p>
 
 <p>O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.</p>
 
-<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
+<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &ldquo;vendedor&rdquo; ou &ldquo;gerente&rdquo;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
 
-<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
+<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&hellip; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
 
 <p>Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.</p>
 
 <p>PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.</p>
 
-<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
+<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master &ndash; facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
 
 <p>Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.</p>
 
-<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
+<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &ldquo;escute&rdquo; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a Renderizacao Do Template De Form Do Admin Do Django</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -254,42 +334,34 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
   
 
 
-<time datetime="2012-02-22T00:00:00-02:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2012</time></div>
-	<div class="tags">
+<time datetime="2011-11-25T00:00:00-02:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">
-		
-			Customizando a Renderizacao Do Template De Form Do Admin Do Django</a>
-	</h2>
-	<div class="entry-content">
-		<p>&#8211;
+  <div class="entry-content"><p>&mdash;
 layout: post
-title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+title: &ldquo;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&rdquo;
 tags:
-- django
-- form
-- template
+&ndash; django
+&ndash; form
+&ndash; template
 status: publish
 type: post
 published: true
 meta:</p>
 
-<h2>  _edit_last: &#8220;1&#8221;</h2>
+<h2>  _edit_last: &ldquo;1&rdquo;</h2>
 
 <p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
 <p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
-Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &ldquo;piscar de olhos&rdquo;.</p>
 
 <p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
@@ -299,14 +371,14 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
 
 <p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Depois coloque um arquivo dentro para substituir:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
 </span></code></pre></td></tr></table></div></figure>
 
@@ -322,14 +394,23 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
 
 
 <p>Bem é isso e espero que ajude alguém pois bati bastante cabeça para resolver essa, por incrivel e simples que pareça.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -341,25 +422,17 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
   
 
 
-<time datetime="2011-11-25T00:00:00-02:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time></div>
-	<div class="tags">
+<time datetime="2011-10-25T00:00:00-02:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/10/25/python-decorators/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/10/25/python-decorators/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/10/25/python-decorators/">
-		
-			Python Decorators</a>
-	</h2>
-	<div class="entry-content">
-		A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
+  <div class="entry-content">A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
 
 De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
 
@@ -367,7 +440,7 @@ No wiki do Python, a definição de decorator, é de uma forma que temos para al
 
 Um bom exemplo seria o decorator classmethod. Veja abaixo:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -379,7 +452,7 @@ Um bom exemplo seria o decorator classmethod. Veja abaixo:
 
 Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
@@ -389,7 +462,7 @@ Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma
 
 Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -405,7 +478,7 @@ Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não 
 
 Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -423,7 +496,7 @@ Claro que a definição acima é simplista, mas ajuda a entender.
 
 Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -462,14 +535,23 @@ Referência.
 3. [http://devlog.waltercruz.com/python_decorators](http://devlog.waltercruz.com/python_decorators)
 4. [http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html](http://www.ibm.com/developerworks/linux/library/l-cpdecor/index.html)
 5. [http://wiki.python.org/moin/PythonDecoratorLibrary]http://wiki.python.org/moin/PythonDecoratorLibrary</a>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando Growl Com Python E Ferramenta De Autotest</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -481,27 +563,19 @@ Referência.
   
 
 
-<time datetime="2011-10-25T00:00:00-02:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time></div>
-	<div class="tags">
+<time datetime="2011-10-20T00:00:00-02:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2011/10/25/python-decorators//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
+  <div class="entry-content"><p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &ldquo;ferramenta&rdquo; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">
-		
-			Usando Growl Com Python E Ferramenta De Autotest</a>
-	</h2>
-	<div class="entry-content">
-		<p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
-
-<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
+<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &ldquo;mão na roda&rdquo; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
 
 <p>Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação).</p>
 
@@ -514,13 +588,13 @@ Referência.
 
 <p>O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto.</p>
 
-<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
+<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste &ndash; por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
 
 <p>Pesquisando encontrei uma forma de fazer isso.</p>
 
 <p>Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -550,14 +624,23 @@ Referência.
 <p>Depois você registra seu notifier e usa o método notify, passando o nome da app que você informou na criação do objeto, um título (um dos tipos que você informou) e a mensagem. E pronto!</p>
 
 <p>Esse código já está no fork que eu fiz do Peon e vou fazer um pull request em breve. Fica a dica de usar o Peon e o Growl. Fica muito maneiro.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -569,29 +652,21 @@ Referência.
   
 
 
-<time datetime="2011-10-20T00:00:00-02:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time></div>
-	<div class="tags">
+<time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">
-		
-			Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a>
-	</h2>
-	<div class="entry-content">
-		<p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
+  <div class="entry-content"><p>Um dos pontos fortes que considero no Jasmine é seu &ldquo;suporte&rdquo; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
 
 <p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -609,7 +684,7 @@ Referência.
 <p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
 Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -642,7 +717,7 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
 
 <p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -684,14 +759,23 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
 <p>O método de waits que usamos acima, gerar uma espera para a execução de 200 milisegundos. Depois ele irá executar na ordem, o contéudo das funções runs que vierem em seguida. Com isso podemos ter testes para nossas animações ou até chamadas com callback. Para callback, ao invés de usarmos a função waits, devemos usar a a função waitFor que recebe uma função que retornará true ou false.</p>
 
 <p>Bem ficamos por aqui. Leia a documentação do projeto e aguarde nosso próximo posts. Aguardo os comentários.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -703,25 +787,17 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
   
 
 
-<time datetime="2011-10-06T00:00:00-03:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time></div>
-	<div class="tags">
+<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">
-		
-			Alterando a VersÃ£o Firefox Do selenium-server.jar</a>
-	</h2>
-	<div class="entry-content">
-		Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
+  <div class="entry-content">Para nunca mais esquecer. Segue abaixo um passo a passo de como &#8220;modificar&#8221; dentro do jar do selenium a versão que ele suporta do firefox. 
 Primeiro baixe o selenium-remote-server (o zip) e o expanda dentro de um diretório qualquer.
 Navegue para achar o jar : selenium-server
 Renomeie esse jar para um arquivo zip: 
@@ -751,14 +827,23 @@ mv selenium-server.zip selenium-server.jar
 jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
 [/cc]
 Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -770,34 +855,26 @@ Pronto agora você tem um jar do selenium server com suporte a versão que quer 
   
 
 
-<time datetime="2011-06-28T00:00:00-03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time></div>
-	<div class="tags">
+<time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Comments</a>
+        
+      </p>
+    
+  </header>
 
-</div>
-	
-		<span class="comments"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
 
+  <div class="entry-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">
-		
-			Setup Ambiente Ruby - Instalando Homebrew E Git</a>
-	</h2>
-	<div class="entry-content">
-		Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
 Existem caminhos alternativos para instalá-lo. Mas não recomendo.
 Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -833,12 +910,12 @@ Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo
 
 Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
 Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
 </span></code></pre></td></tr></table></div></figure>
 Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -851,155 +928,40 @@ Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu tam
 </span></code></pre></td></tr></table></div></figure>
 
 Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
-<time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true">May 12<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-</div>
-	
-		<span class="comments"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/">
-		
-			Script Para OrganizaÃ§Ã£o Das Minhas Fotos</a>
-	</h2>
-	<div class="entry-content">
-		A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da morte&#8221;.  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
-
-Após a chegada do novo computador, montado  e o Ubuntu 11.04 instalado no novo computador (o pessoal insiste em mandar coisas com o SO Windows já instalado mas isso é papo para outro post), resolvi dar uma olhada no backup e organizar principalmente minhas fotos que estavam uma verdadeira zona: fotos de assuntos diferentes na mesma pasta, tudo misturada, etc.
-
-Como programador que sou decidi que iria arrumar algo que pudesse fazer isso de forma automatizada. A primeira tentativa foi buscar no google por alguma ferramenta gratuita que já fizesse isso porém logo desisti. Já venho um tempo estudando Shell Script e Bash e depois de um twitter do conhecido Marcos Tapajós, resolvi que iria fazer isso por script.. até porque não achei ferramentas para fazer do jeito que eu queria.
-
-Passei a buscar como faria esse script, pois a minha idéia era de pegar todos as minhas fotos que estavam espalhadas por várias pastas e arrumá-las agrupando-as por ano, mês e dia.  Confesso que pensei em fazer algo programa em Python ou Ruby ou Groovy para resolver meu problema, entretanto, cismei que deveria fazer isso em shell script pelo aprendizado e por acreditar que seria mais rápido e simples.
-
-Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra da Globo.com (Magno) e ele me deu a dica de alguns sites que tinham exatamente o que eu queria. Sendo bem sincero bastou ir no google e digitar : organize photo shell script, que apareceu vários que faziam oque eu queria. Assim, resolvi escrever esse post para passar adiante (em português)  o script que fiz baseado no que eu encontrei e com o passo a passo (não encontrei nada em português - provavelmente erro meu).
-
-Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install libimage-exiftool-perl
-</span></code></pre></td></tr></table></div></figure>
-
-Uma vez que eles esteja instalado, crie um arquivo para o seu script:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch organiza_fotos.sh
-</span><span class='line'>vim organiza_fotos.sh
-</span></code></pre></td></tr></table></div></figure>
-
-Agora com o editor aberto é só copiar e colar o código abaixo:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">from</span><span class="o">=</span>/media/Externo/minhas_imagens
-</span><span class='line'><span class="nv">to</span><span class="o">=</span>/media/Externo/fotos_organizadas
-</span><span class='line'>find <span class="nv">$from</span> -iname <span class="s1">&#39;*jpg&#39;</span> | <span class="k">while </span><span class="nb">read </span>FILENAME
-</span><span class='line'><span class="k">do</span>
-</span><span class='line'><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f1 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">month</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f2 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">day</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f3 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">target</span><span class="o">=</span><span class="nv">$to</span>/<span class="nv">$year</span>/<span class="nv">$month</span>/<span class="nv">$day</span>
-</span><span class='line'>mkdir -p <span class="nv">$target</span>
-</span><span class='line'>cp <span class="s2">&quot;$FILENAME&quot;</span> <span class="nv">$target</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Moved $FILENAME to $target&quot;</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure>
-
-&nbsp;
-
-Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde ele buscará as fotos; a segunda qual será o caminho base para onde as fotos organizadas serão copiadas.
-
-Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+    </article>
   
-
-
-<time datetime="2011-05-06T00:00:00-03:00" pubdate data-updated="true">May 6<span>th</span>, 2011</time></div>
-	<div class="tags">
-
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
 </div>
-	
-		<span class="comments"><a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos//blog/page/2/index.html#disqus_thread">Comments</a></span>
-	
-</div></article>
+<aside class="sidebar">
+  
+    
+  
+</aside>
 
-<nav id="pagenavi">
-    
-        <a href="/" class="prev">Prev</a>
-    
-    
-        <a href="/blog/page/3/" class="next">Next</a>
-    
-    <div class="center"><a href="/archives">Blog Archives</a></div>
-</nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+    </div>
+  </div>
+  <footer role="contentinfo">Copyright &copy; 2014
 
     Andre Fonseca
 
 <br>
 Powered by Octopress.
-</footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
 
+</footer>
+  
 
 <script type="text/javascript">
       var disqus_shortname = 'blogandrefonseca';
@@ -1009,24 +971,36 @@ Powered by Octopress.
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
 
 
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-34644487-1']);
-		_gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
 
 
 

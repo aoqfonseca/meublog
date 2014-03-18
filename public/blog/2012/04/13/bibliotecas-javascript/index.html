@@ -1,146 +1,83 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta name="google-site-verification" content="f1OtvP7JCHm6M9Ca7vMcFg3q-1NEOvDMcSKfKlVW_pA" />
-	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
-	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<meta charset="utf-8">
-	<title>Bibliotecas para Javascript  | Andre Fonseca</title>
+  <meta charset="utf-8">
+  <title>Bibliotecas Para Javascript - Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
 
-<meta name="author" content="Andre Fonseca"> 
+  
+  <meta name="description" content="Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas &hellip;">
+  
 
-<meta name="description" content="Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas &hellip;"> <meta name="keywords" content="">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="canonical" href="http://andrefonseca.net/blog/2012/04/13/bibliotecas-javascript">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34644487-1']);
+    _gaq.push(['_trackPageview']);
 
-	<link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-<script language="Javascript" type="text/javascript">
-$(document).ready(
-  function() {
-    (function($) {
-      $(".fancybox[data-content-id]").each(function() {
-        this.href = $(this).data('content-id');
-      });
-      $(".fancybox").fancybox({
-        beforeLoad: function() {
-          var el, 
-              id = $(this.element).data('title-id');
 
-          if (id) {
-            el = $('#' + id);
-
-            if (el.length) {
-              this.title = el.html();
-            }
-          }
-          if ($(this).data('content')) {
-            this.content = $(this).data('content');
-          }
-        },
-        helpers: {
-          title: {
-            type: 'inside'
-          }
-        }
-      });
-    })(jQuery);
-  }
-);
-</script>
-	
 </head>
 
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">Andre Fonseca</a></h1>
-<h4>artigos, pensamentos e opiniões</h4>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:andrefonseca.net">
-			</form>
-		</div>
-	</div>
-</nav>
-
-
+<body   >
+  <header role="banner">
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
 
-	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Bibliotecas Para Javascript</h2>
-	<div class="entry-content"><p>Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas páginas praticamente se limitava, na maioria dos casos, a algumas linhas que vinham aninhadas ali mesmo dentro do html e faziam o básicão: algum menu, esconder mostrar um elemento, etc. Hoje, temos elementos como carrocéis, galerias de fotos, popins, modais, animações das mais variadas e não é mais três linhas e sim arquivos que chegam até a casa dos megasbytes. Existem casos onde a página enviada no request chega a ser apenas um esqueleto e toda inteligência fica por conta de milhares de linhas de javacript.</p>
-
-<p>Com isso fica evidente que precisamos cada vez ter mais cuidado com essas peças de código que colocamos em nossas páginas, como melhorar nossa modelagem (usando conceitos de Orientaçção a Objeto para aumentar reutilização), melhor distribuição por arquivos, namespaces, módulos, e muitas outras que iremos aborda aqui ou em outros artigos.</p>
-
-<h3>Orientação a objeto e um monte de lib de terceiros</h3>
-
-<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
-
-<p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
-
-<p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
-
-<p>Por essas que acredito que uma forma melhor é quebrar as libs em &#8220;pedaços menores&#8221; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
-
-<h3>Patterns</h3>
-
-<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
-
-<h3>MVC - Model View Controller</h3>
-
-<p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
-
-<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &#8221; negócio&#8221; (o domain).</p>
-
-<p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
-
-<p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
-
-<h3>Referencias</h3>
-
-<ol>
-<li>http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</li>
-<li>http://microjs.com/ - Catálogo de MicroJS.</li>
-<li>http://mootools.net/ - Página do Mootools</li>
-<li>http://www.prototypejs.org/ - Biblioteca Prototype</li>
-<li>http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</li>
-<li>http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</li>
-</ol>
-
-</div>
-
-
-<div class="meta">
-	<div class="date">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Bibliotecas Para Javascript</h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -152,56 +89,137 @@ $(document).ready(
   
 
 
-<time datetime="2012-04-13T00:02:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time></div>
-	<div class="tags">
+<time datetime="2012-04-13T00:02:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-	<a class='category' href='/blog/categories/javascript-/'>javascript,</a>, <a class='category' href='/blog/categories/teste/'>teste</a>
+<div class="entry-content"><p>Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas páginas praticamente se limitava, na maioria dos casos, a algumas linhas que vinham aninhadas ali mesmo dentro do html e faziam o básicão: algum menu, esconder mostrar um elemento, etc. Hoje, temos elementos como carrocéis, galerias de fotos, popins, modais, animações das mais variadas e não é mais três linhas e sim arquivos que chegam até a casa dos megasbytes. Existem casos onde a página enviada no request chega a ser apenas um esqueleto e toda inteligência fica por conta de milhares de linhas de javacript.</p>
 
+<p>Com isso fica evidente que precisamos cada vez ter mais cuidado com essas peças de código que colocamos em nossas páginas, como melhorar nossa modelagem (usando conceitos de Orientaçção a Objeto para aumentar reutilização), melhor distribuição por arquivos, namespaces, módulos, e muitas outras que iremos aborda aqui ou em outros artigos.</p>
+
+<h3>Orientação a objeto e um monte de lib de terceiros</h3>
+
+<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço &ndash; de javascript (alguns só de jquery) &ndash; parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
+
+<p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
+
+<p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
+
+<p>Por essas que acredito que uma forma melhor é quebrar as libs em &ldquo;pedaços menores&rdquo; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
+
+<h3>Patterns</h3>
+
+<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno &ndash; mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
+
+<h3>MVC &ndash; Model View Controller</h3>
+
+<p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
+
+<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &ldquo; negócio&rdquo; (o domain).</p>
+
+<p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
+
+<p>Existe uma biblioteca que faz esse meio de campo e nos deixa livre para focar na parte da implementação que nos interessa. Ela é o BackBoneJS. Ele monta um conceito de rotas que apontam para controller que por usa vez fazem uso de modelos e visões. Isso tudo de uma forma bem simples e sem complexidades ocultas.</p>
+
+<h3>Referencias</h3>
+
+<ol>
+<li><a href="http://pt.wikipedia.org/wiki/MVC">http://pt.wikipedia.org/wiki/MVC</a> &ndash; Model-view-controller (MVC)</li>
+<li><a href="http://microjs.com/">http://microjs.com/</a> &ndash; Catálogo de MicroJS.</li>
+<li><a href="http://mootools.net/">http://mootools.net/</a> &ndash; Página do Mootools</li>
+<li><a href="http://www.prototypejs.org/">http://www.prototypejs.org/</a> &ndash; Biblioteca Prototype</li>
+<li><a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone</a> &ndash; Apresentação do BackBone.js</li>
+<li><a href="http://documentcloud.github.com/backbone/">http://documentcloud.github.com/backbone/</a> &ndash; Pagina do BackBone.js</li>
+</ol>
 
 </div>
-	
-		<span class="comments"><a href="/blog/2012/04/13/bibliotecas-javascript/#disqus_thread">Comments</a></span>
-	
-</div></article>
 
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-<!---	<a class="addthis_counter addthis_pill_style"></a> --->
-	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andre Fonseca</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-13T00:02:00-03:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript,</a>, <a class='category' href='/blog/categories/teste/'>teste</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andrefonseca.net/blog/2012/04/13/bibliotecas-javascript/" data-via="aoqfonseca" data-counturl="http://andrefonseca.net/blog/2012/04/13/bibliotecas-javascript/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/04/onde-buscar/" title="Previous Post: Não precisa saber tudo mas o onde buscar sim.">&laquo; Não precisa saber tudo mas o onde buscar sim.</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/08/25/entregando-software-robusto/" title="Next Post: Entregando sistemas robustos">Entregando sistemas robustos &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-
-<section id="comment">
-    <h2 class="title">Comments</h2>
+  <section>
+    <h1>Comments</h1>
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-</section>
+  </section>
+
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo">Copyright &copy; 2014
 
     Andre Fonseca
 
 <br>
 Powered by Octopress.
-</footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
 
+</footer>
+  
 
 <script type="text/javascript">
       var disqus_shortname = 'blogandrefonseca';
@@ -214,24 +232,36 @@ Powered by Octopress.
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
 
 
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-34644487-1']);
-		_gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
 
 
 

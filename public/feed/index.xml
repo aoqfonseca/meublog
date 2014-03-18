@@ -4,7 +4,7 @@
   <title><![CDATA[Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/feed" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2014-01-25T12:04:55-02:00</updated>
+  <updated>2014-03-18T15:34:07-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Quando fazer Refactoring]]></title>
+    <link href="http://andrefonseca.net/blog/2014/02/04/quando-fazer-refactoring/"/>
+    <updated>2014-02-04T16:59:00-02:00</updated>
+    <id>http://andrefonseca.net/blog/2014/02/04/quando-fazer-refactoring</id>
+    <content type="html"><![CDATA[<p>TL; DR;
+Sempre que falo sobre refactoring, sempre ouço a pergunta de quando fazer e como alocar tempo para realizá-lo.</p>
+
+<p>Para mim não existe um quando e nem quantidade de tempo para refactoring: sempre é momento de fazê-lo. Se simplesmente o refactoring não for considerado, mesmo que tenha a melhor estrutura e arquitetura, seu sistema irá ficar obsoleto e se tornará um grande legado. Fazer refactoring é um dos pilares para mantermos a qualidade da base de código.</p>
+
+<h2>REFACTORING</h2>
+
+<p><a href="http://martinfowler.com/">Martin Fowler</a> em seu livro <a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672">Refactoring</a>, define como sendo a prática de melhorar o código em busca de maior clareza, melhor estrutura para extensão, maior comunicação, etc &hellip; sem alterar o comportamento.</p>
+
+<p>Refactoring é a técnica para manter o seu código atual, sem duplcidades (DRY), seguindo boas práticas e princípios como o <a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design">SOLID</a>).</p>
+
+<p>Uma boa analogia é de sempre buscarmos a melhor forma de resolver o mesmo problema, tendo em vista a clareza, a boa comunicação, facilidade de extensão. Note aqui que não falei de perfomance.</p>
+
+<h2>PORQUE REFACTORING</h2>
+
+<p><a href="http://pt.wikipedia.org/wiki/Kent_Beck">Kent Back</a>, possui uma citação interessante que explica bem o porque:</p>
+
+<p><em>Programs have two kinds of value: what they can do for you today and what they can do for you tomorrow. Most times when we are programming, we are focused on what we want the program to do today. Whether we are fixing a bug or adding a feature, we are making today&rsquo;s program more valuable by making it more capable.
+You can&rsquo;t program long without realizing that what the system does today is only a part of the story. If you can get today&rsquo;s work done today, but you do it in such a way that you can&rsquo;t possibly get tomorrow&rsquo;s work done tomorrow, then you lose. Notice, though, that you know what you need to do today, but you&rsquo;re not quite sure about tomorrow. Maybe you&rsquo;ll do this, maybe that, maybe something you haven&rsquo;t imagined yet.
+I know enough to do today&rsquo;s work. I don&rsquo;t know enough to do tomorrow&rsquo;s. But if I only work for today, I won&rsquo;t be able to work tomorrow at all.
+Refactoring is one way out of the bind. When you find that yesterday&rsquo;s decision doesn&rsquo;t make sense today, you change the decision. Now you can do today&rsquo;s work. Tomorrow, some of your understanding as of today will seem naive, so you&rsquo;ll change that, too.
+What is it that makes programs hard to work with? Four things I can think of as I am typing this are as follows:</em></p>
+
+<p><em>1. Programs that are hard to read are hard to modify.</em></p>
+
+<p><em>2. Programs that have duplicated logic are hard to modify.</em></p>
+
+<p><em>3. Programs that require additional behavior that requires you to change running code are hard to modify.</em></p>
+
+<p><em>4. Programs with complex conditional logic are hard to modify.</em></p>
+
+<p><em>So, we want programs that are easy to read, that have all logic specified in one and only one place, that do not allow changes to endanger existing behavior, and that allow conditional logic to be expressed as simply as possible.</em>
+<em>Refactoring is the process of taking a running program and adding to its value, not by changing its behavior but by giving it more of these qualities that enable us to continue developing at speed.</em></p>
+
+<p>Transcrevendo, seria dizer que todos os sistemas possuem 2 valores: o que pode ser feito hoje e que pode ser feito amanhã.  Na maioria dos casos, sempre pensamos no presente. Porém, sistemas evoluem e novas funcionalidades, correções de bugs, vão ocorrendo e o código sendo alterado.  Nesses ciclos, acabamos duplicando código, adicionando responsabilidades a métodos, alterando as lógicas, etc. Com isso o código vai ficando confuso e complexo.</p>
+
+<p>A técnica de Refactoring, é justamente olhar para esse sistema e buscar sempre um jeito melhor te atender os requisitos. Jeito esse que leva em conta coisas como comunicação, clareza, facilidade de extensão, e coisas simmilares.</p>
+
+<p>Por isso, se quisermos manter um sistema com uma boa qualidade e simples de ser entendido e extendido, é muito importante sempre realizarmos refactorings.</p>
+
+<h2>REFACTORING, TESTES AUTOMATIZADOS e TDD</h2>
+
+<p>Não é meu objetivo entrar muito a fundo no assunto, entretanto, é importante dizer que é muito díficil fazer Refactoring em sistemas sem testes automatizados. Não é impossível. Mas extremamente difícil. Isso porque, ao final de um ciclo, você terá que testar se nenhum comportamento esperado foi alterado.</p>
+
+<p>Por isso, de forma a simplificar, não fazemos refactoring sem testes. Caso o seu sistema não tenha testes, primeiro, faça o teste. Depois faça o Refactoring. Nisso podemos encaixar o TDD. O próprio trabalho de escrever os testes te ajudará a decidir o que mudar, a melhor forma, etc.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Reinstalando o vim na sua máquina com suporte a python e Ruby]]></title>
@@ -24,9 +77,9 @@
 
 <p>Tudo isso funciona perfeitamente no meu MACVim, porém no vim não estava funcionando. Ambos tinham sido instalados via homebrew. Buscando pelo Google, achei que a solução era compilar o vim manualmente. Isso realmente resolveu meu problema, e segue abaixo os passos que fiz. Primeiro certifique-se  tem instalado o mercury no seu computador (hg).</p>
 
-<p>hg clone https://vim.googlecode.com/hg/ vim_source
+<p>hg clone <a href="https://vim.googlecode.com/hg/">https://vim.googlecode.com/hg/</a> vim_source
 cd vim_source
-./configure &#8211;disable-nls &#8211;enable-multibyte &#8211;with-tlib=ncurses &#8211;enable-pythoninterp &#8211;enable-rubyinterp &#8211;with-features=huge
+./configure &mdash;disable-nls &mdash;enable-multibyte &mdash;with-tlib=ncurses &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;with-features=huge
 make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Com isso o sistema irá reinstalar todo o vim com os suportes e links corretos.</p>
@@ -46,7 +99,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <h2>O problema do código <em>feio</em></h2>
 
-<p><em>&#8220;Escrever código para máquina é fácil.&#8221;</em></p>
+<p><em>&ldquo;Escrever código para máquina é fácil.&rdquo;</em></p>
 
 <p>Nem sempre os problemas de um sistema estão em BUGs ou aderência aos requisitos. Muitas vezes, para não dizer a maioria, os maiores problema estão em códigos mal escritos, difícies de manter, duplicados, sem padrão, etc. Isso se agrava quando falamos em projetos onde temos mais  de uma pessoa envolvida e com  mudanças na equipes (entrada de pessoas novas por exemplo). Logo, é preciso buscar formas para que esse tipo de coisas não aconteça.</p>
 
@@ -58,11 +111,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <h2>Estudos e estudiosos do assunto</h2>
 
-<p>Tendo como ponto de partida o fato de que código é uma forma de comunicação semelhante as demais e que é preciso buscar a excelência nisso, muitos estudiosos do assunto buscam formas, processos, ferramentas, para evitar que se produza código ruins (mal escritos). Linguagens como Python, Java, etc criam convensões de boas práticas, <em>code styles</em> (estilo de escrita de software). IDE&#8217;s criam validadores de sintaxe. Estudiosos de processo, procuram por práticas para ajudar o desenvolver a não escrever ou achar os defeitos o mais breve possível.</p>
+<p>Tendo como ponto de partida o fato de que código é uma forma de comunicação semelhante as demais e que é preciso buscar a excelência nisso, muitos estudiosos do assunto buscam formas, processos, ferramentas, para evitar que se produza código ruins (mal escritos). Linguagens como Python, Java, etc criam convensões de boas práticas, <em>code styles</em> (estilo de escrita de software). IDE&rsquo;s criam validadores de sintaxe. Estudiosos de processo, procuram por práticas para ajudar o desenvolver a não escrever ou achar os defeitos o mais breve possível.</p>
 
 <p>Existe um artigo interessante no site de developer da IBM que lista as 11 praticas provadas que realmente ajudam na revisão de código <a href="http://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/">Leia o artigo</a>.</p>
 
-<p>A revisão de código é uma das práticas, juntamente com o <em>Pair Programming</em> (programação em pares) que vêem de encontro a resolver o problema de código <em>ruim</em>. A programação em par é a prática onde duas pessoas trabalham juntas na concepção e escrita da funcionalidade. Ela resolve em parte o problema pois são dois pares de olhos vendo. Porém, ainda é possível escrever coisas que não sejam <em>&#8220;legíveis&#8221;</em> a futuros programadores daquele sistema.</p>
+<p>A revisão de código é uma das práticas, juntamente com o <em>Pair Programming</em> (programação em pares) que vêem de encontro a resolver o problema de código <em>ruim</em>. A programação em par é a prática onde duas pessoas trabalham juntas na concepção e escrita da funcionalidade. Ela resolve em parte o problema pois são dois pares de olhos vendo. Porém, ainda é possível escrever coisas que não sejam <em>&ldquo;legíveis&rdquo;</em> a futuros programadores daquele sistema.</p>
 
 <p>A revisão de código tem sido mais eficiente nesse sentido. Revisar um código não consiste apenas em outras pessoas lerem o código escrito antes de alguma determinada etapa. Consiste no uso de ferramentas e analisadores também. Inclusive uma boa prática é se algo pode ser analisado pelo computador é melhor que ele que faça e não outro, como por exemplo, complexidade ciclomática, code styles, duplicação, etc.</p>
 
@@ -70,17 +123,17 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Uma vez que se tenha optador pela revisão de código, o primeiro passo consiste em simplesmente fazer. Começar da forma que o time desejar. Os ajustes, como toda boa prática, vem com  tempo, e na medida da maturidade e domínio do processo, vai se mudando e adaptando.</p>
 
-<p>. Como já foi abordado acima, devem buscar ferramentas para analisar a base de código nos mais diversos aspectos. Linguagens como python tem analisadores de pep8(conjunto de boas práticas de escrita de código), analisadores estáticos (analisam variaveis, duplicidade, e outra coisas); já Java tem IDE&#8217;s que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.</p>
+<p>. Como já foi abordado acima, devem buscar ferramentas para analisar a base de código nos mais diversos aspectos. Linguagens como python tem analisadores de pep8(conjunto de boas práticas de escrita de código), analisadores estáticos (analisam variaveis, duplicidade, e outra coisas); já Java tem IDE&rsquo;s que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.</p>
 
 <p>. todos tem seu código revisto.  Não é só responsabilidade os engenheiros senior revisar. É de todos.</p>
 
 <p>. Uma boa forma é que o código só seja enviado para o repositório (git, svn, etc) se foi revisado. Por isso, o desenvolvedor antes de <em>comitar</em>  ou dar <em>push</em> chama outra pessoa e faz.</p>
 
-<p>. Projetos com times grandes podem trabalhar, caso seja usem coisas semelhantes a git, usar patches. Assim, cada um tem seu &#8220;repositorio&#8221; e na hora de integrar criam e enviam um patch. Esse patch irá ser revisto por algum outro membro.</p>
+<p>. Projetos com times grandes podem trabalhar, caso seja usem coisas semelhantes a git, usar patches. Assim, cada um tem seu &ldquo;repositorio&rdquo; e na hora de integrar criam e enviam um patch. Esse patch irá ser revisto por algum outro membro.</p>
 
 <p>. Evite fazer com muito código. O ideal, segundo o  artigo citado, é não passar de 200 a 400 linhas de código. Isso reforçar o conceito de fazer pequenos passos e ir enviando para o repositorio.</p>
 
-<p>. Evite o efeito Big Brother&#8230; Faça reviews abertos e de forma clara. Deixe tudo muito aberto e simples.</p>
+<p>. Evite o efeito Big Brother&hellip; Faça reviews abertos e de forma clara. Deixe tudo muito aberto e simples.</p>
 
 <p>. Torne a prática uma cultura do time e não mais um processo a seguir. A revisão de código deve ser desejada por todos e seguida. Pedida.</p>
 
@@ -92,11 +145,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <h2>Leia mais</h2>
 
-<p><a href="http://alexgaynor.net/2013/sep/26/effective-code-review/">Effective Code Review - Alex  Gaynor</a></p>
+<p><a href="http://alexgaynor.net/2013/sep/26/effective-code-review/">Effective Code Review &ndash; Alex  Gaynor</a></p>
 
-<p><a href="http://agile.dzone.com/articles/what-makes-peer-code-review-agile">What Makes Peer Code Review an Agile Process? - Lyndsey Clevessy</a></p>
+<p><a href="http://agile.dzone.com/articles/what-makes-peer-code-review-agile">What Makes Peer Code Review an Agile Process? &ndash; Lyndsey Clevessy</a></p>
 
-<p><a href="http://www.cio.com/article/472372/Running_an_Effective_Code_Review">Running an Effective Code Review - Esther Schindler</a></p>
+<p><a href="http://www.cio.com/article/472372/Running_an_Effective_Code_Review">Running an Effective Code Review &ndash; Esther Schindler</a></p>
 ]]></content>
   </entry>
   
@@ -107,7 +160,7 @@ make -j 3 &amp;&amp; sudo make install</p>
     <id>http://andrefonseca.net/blog/2013/09/22/criando-wdigets-javascript</id>
     <content type="html"><![CDATA[<p>TL;DR;</p>
 
-<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &#8220;inseridos&#8221; e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
+<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &ldquo;inseridos&rdquo; e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
 
 <p>O <a href="http://leobalter.net">Leonardo Balter</a> numa <a href="http://www.slideshare.net/leobalter/guia-de-sobrevivncia-js-no-mundo-open-source">palestra</a> que ele deu no Front in Rio 2012, abordou bem o assunto sobre como podemos escrever frontend apps sem inteferir no contexto da página onde está posta. Por isso pretendo apenas extender o conceito.</p>
 
@@ -115,25 +168,25 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Vamos lá, a grande maioria das pessoas, atualmente, que dizem conhecer e saber programar, apps front, faz uso de alguma biblioteca. Sem grandes pesquisas, creio que a maioria delas deva usar algo como JQuery, Mootools, BackBoneJs, AngularJS, ou similares.</p>
 
-<p>Tais libs são &#8220;uma mão na roda&#8221; e realmente facilitam a codificar, testar, etc.</p>
+<p>Tais libs são &ldquo;uma mão na roda&rdquo; e realmente facilitam a codificar, testar, etc.</p>
 
 <p>A pergunta que faço é:  Precisamos de todos os recursos disponíveis nesses frameworks/bibliotecas? Acredito que na maioria dos casos, se escrevessemos somente em Javascript puro, usando HTML e CSS, e não mais do que isso, conseguiríamos entregar o desejado.</p>
 
-<h2>Entendendo o &#8220;Problema&#8221;</h2>
+<h2>Entendendo o &ldquo;Problema&rdquo;</h2>
 
 <p>Ao analisar mais detalhadamente a situação, conversando com alguns colegas especialistas em front end e com outros nem tão especialista assim. Uma das coisas que notei é que muito deles não conhecia de fato Javascript: Sabiam detalhes de cada elemento HTML, funções e motivos de cada linha de CSS; entretando desconheciam recursos básicos da linguagem Javascript, como por exemplo, fazer um laço de <em>for</em> (muito usavam a, por exemplo, a função each do jquery).</p>
 
-<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb&#8230; Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
+<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb&hellip; Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
 
 <p> Outro ponto interessante foi uma pesquisa recente (não consegui achar o link) onde afirma que, sites que são lentos para carregar tem menor taxa de conversão. Isso mesmo, tempo é dinheiro, literalmente. Se o seu site leva mais de  5 segundos  para mostrar algo, já se foram quase 50% das pessoas aí (CHUTE!!!!).</p>
 
-<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência - menos ainda no mobile, pode cre - para esperar seu site gigante carregar todas as libs e processá-las.</p>
+<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência &ndash; menos ainda no mobile, pode cre &ndash; para esperar seu site gigante carregar todas as libs e processá-las.</p>
 
 <p>Mais aí você pode dizer, que usa a técnica de deixar o  carregamento no final de página. Desculpa meu amigo, mas o seu site ainda é pesado de carregar, vai consumir bando e bateria no mobile e pode gerar alguma perda na entrega de conteúdo.</p>
 
 <p>Ok. Dito isso, voltemos paras os widgets.</p>
 
-<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código - as vezes sem saber da  âncora que você é no site deles.</p>
+<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código &ndash; as vezes sem saber da  âncora que você é no site deles.</p>
 
 <p>Outro aspecto de widget gordos (vou chamá-los assim para facilitar), é que eles também podem gerar conflitos com outras coisa na páginas dos outros: imagine a questão das versões como podem gerar um verdadeiro inferno.</p>
 
@@ -147,11 +200,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>O problema é que com isso, prendemos nossa solução a uma lib e sua versão. Obrigamos os produtos que queriam usar esse widget e ter essa versão, essa lib.</p>
 
-<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou&#8230; Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
+<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou&hellip; Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
 
 <p>Nesse caso em específico, além do uso de libs, houve um sério problema de engenharia de software. Poderíamos ter componentizado melhor, separado melhor e essa mudança para versão mais nova seria mais simples.  Entretanto, nos amarramos demais a biblioteca e agora teremos que reescrever tudo.</p>
 
-<p>Para coroar nossa análise, se tivessemos usado simples JS puro - isso daria trabalho mais é totalmente possível - agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
+<p>Para coroar nossa análise, se tivessemos usado simples JS puro &ndash; isso daria trabalho mais é totalmente possível &ndash; agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
 
 <p>No mesmo tempo que essa app foi feita, uma outra app foi feita por outro time. Também é usada por todos os portais. A diferença é que eles optaram por fazer com VanillaJS. Deu muito trabalho, problemas de cross-browser para resolver, ajax, etc. Mas no final eles conseguiram e tem sido um benchmark para nós todos. Eles provaram que a entrega foi bem melhor  e  com usuários felizes.</p>
 
@@ -169,7 +222,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 </ol>
 
 
-<p><em>&#8220;Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora&#8221;</em></p>
+<p><em>&ldquo;Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora&rdquo;</em></p>
 ]]></content>
   </entry>
   
@@ -188,7 +241,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <h2>Um pouco sobre mim e porque posso falar sobre o assunto</h2>
 
-<p>Tenho em torno de 12 anos de profissão. Hoje, sou desenvolvedor senior da <a href="http://www.globo.com">Globo.com</a>, atuando no time de jornalismo - responsável por sites como G1, Ego, Cobertura de Eventos, etc.</p>
+<p>Tenho em torno de 12 anos de profissão. Hoje, sou desenvolvedor senior da <a href="http://www.globo.com">Globo.com</a>, atuando no time de jornalismo &ndash; responsável por sites como G1, Ego, Cobertura de Eventos, etc.</p>
 
 <p>A <a href="http://www.globo.com">Globo.com</a> é uma empresa onde se desenvolve os maiores portais de jornalismos, esportes e entretenimento do Brasil . Fora isso, temos plataformas de vídeos, imagens, música, em milhares de outras coisa.</p>
 
@@ -198,11 +251,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Nossos produtos tem acessos bem grandes: Portais com milhões de vísitas únicas por dia; streaming de vídeos na faixa de gigabytes por dia, terabytes de arquivos (imagens, html, css, javascripts) e por aí vai.</p>
 
-<h2>Diferenciando um pouco &#8230;</h2>
+<h2>Diferenciando um pouco &hellip;</h2>
 
 <p>Diante do relato acima muitos poderiam pensar que <a href="http://www.globo.com">Globo.com</a>, deva ter as mesmas preocupações que um Facebook, <a href="http://twitter.com">Twitter</a> ou <a href="http://soundcloud.com">SoundCloud</a>.</p>
 
-<p>Posso adiantar que, sobre determinados aspectos, sim: Nenhum de nossas aplicações e novas funcionalidades vão para &#8220;produção&#8221; (para uso do nossos usúarios) sem que antes façamos bons testes de carga, testes de segurança, entre outras coisas relacionadas. Ainda na fase de desenvolvimento, temos a preocupação de fazermos coisa que deverão aguentar milhões de acessos, milhares de conexões simultaneas, picos, etc, sem jamais deixar de atender uma requisição.</p>
+<p>Posso adiantar que, sobre determinados aspectos, sim: Nenhum de nossas aplicações e novas funcionalidades vão para &ldquo;produção&rdquo; (para uso do nossos usúarios) sem que antes façamos bons testes de carga, testes de segurança, entre outras coisas relacionadas. Ainda na fase de desenvolvimento, temos a preocupação de fazermos coisa que deverão aguentar milhões de acessos, milhares de conexões simultaneas, picos, etc, sem jamais deixar de atender uma requisição.</p>
 
 <p>Porém se compararmos nosso volume de acesso e nosso tipo de produto, não somos parecidos com o pessoal do <a href="http://twitter.com">Twitter</a>, <a href="http://www.google..com">Google</a>, <a href="http://soundcloud.com">SoundCloud</a>, entre outros.</p>
 
@@ -234,11 +287,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>O que quero dizer é que antes que comecemos a fazer a guerra de dizer que agora todos nós devemos largar o Ruby on Rails, ou Django, ou PHP, etc e partir para desenvolver em Assembly, precisamos entender que isso ainda não é o nosso problema.</p>
 
-<p>Nosso problema é ainda entregar valor para o cliente o mais rápido possível. Para grande maioria de nossas aplicações o custo de infra é infimo - quase desprezível - frente ao custo de desenvolvimento. Por isso usar de tecnologias de nos dê produtividade ainda é a melhor escolha.</p>
+<p>Nosso problema é ainda entregar valor para o cliente o mais rápido possível. Para grande maioria de nossas aplicações o custo de infra é infimo &ndash; quase desprezível &ndash; frente ao custo de desenvolvimento. Por isso usar de tecnologias de nos dê produtividade ainda é a melhor escolha.</p>
 
 <p>Fazendo referência ao título do POST, não somos o <a href="http://twitter.com">Twitter</a>, e por isso não devemos ainda nos perder nessas dicussões.</p>
 
-<h2>Um grande porém &#8230;</h2>
+<h2>Um grande porém &hellip;</h2>
 
 <p>Porém, mesmo que a gente não esteja na equipe de desenvolvimento da <em>engine de busca do Google</em>, precisamos estar <em>antenados</em> com que acontece a nosso redor. É legal saber que mudanças de arquitetura e tecnologia podem ter um impacto em nosso produtos.</p>
 
@@ -285,13 +338,13 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Como disse, os sistemas crescem. E com eles suas bases de código.</p>
 
-<p>Poderíamos dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">livro</a> sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final. Pdemos melhorar os métodos, encapsular melhor algumas, etc &#8230; a questão que ainda temos um modelo que não foi feito para aqueles novos casos, ainda temos situações novas que não estavam previstas e poucas possibilidades de interface do nosso sistema.</p>
+<p>Poderíamos dizer que este problema já é conhecido e muito bem abordado pelo Michael Feathers em seu <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">livro</a> sobre código legado: podemos sim isolar e aplicar todas as técnicas sugeridas, mas bases de código grandes, são bases de código grandes e ponto final. Pdemos melhorar os métodos, encapsular melhor algumas, etc &hellip; a questão que ainda temos um modelo que não foi feito para aqueles novos casos, ainda temos situações novas que não estavam previstas e poucas possibilidades de interface do nosso sistema.</p>
 
 <p>Se não existessem os problemas financeiros ou quaisquer outras <em>constraints</em> tenho certeza que a maioria dos desenvolvedores, diriam que está na hora de reescrever todo o sistema.  Todos nós adoramos projetos <em>Green Field</em> (projetos que estão começando do zero).</p>
 
 <p>Em novos projetos, temos as oportunidade de desenhar bem a nossa arquitetura, aplicar novos conceitos e utilizar novas tecnologias.</p>
 
-<p>A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro - nenhum gerente, cliente, PO&#8230; vai querer pagar por isso - até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)</p>
+<p>A questão é que fazer isso com sistemas de milhares de linhas de código é uma tarefa árdua e que custa bastante caro &ndash; nenhum gerente, cliente, PO&hellip; vai querer pagar por isso &ndash; até porque você não estará entregando nenhum valor novo (estará sim se pensarmos em infra, mais request, e outras coisas parecidas, mas poucos clientes percebem isso logo de cara)</p>
 
 <h2>Motivos para reescrever sistemas</h2>
 
@@ -300,7 +353,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 </ol>
 
 
-<p>Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema&#8230; enfim a tecnologia evolui e traz novas soluções - e melhores - para os nosso problemas.</p>
+<p>Muitas tecnologias se tornam ao longo do tempo obsoletas e ultrapassadas. Sempre temos uma nova versão da linguagem, um novo servidor, um banco de dados mais moderno ou que utilize um outro paradigma que resolve melhor o seu problema&hellip; enfim a tecnologia evolui e traz novas soluções &ndash; e melhores &ndash; para os nosso problemas.</p>
 
 <ol>
 <li><strong>Nós aprendemos:</strong></li>
@@ -316,7 +369,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 </ol>
 
 
-<p>Um outro bom motivo para reescrevermos nosso sistema é ligado ao negócio. Muitas vezes vemos que a forma de nosso negócio mudou e que o sistema atual com sua base de código infinita não nos atende mais. Mesmo que façamos diversos apendices, o sistema não é mais capaz de nos atender com proficiencia. Se tornam aqueles sistemas cheios de jeitinhos para fazer coisas. O usuário tem que fazer um cursinho para saber todos os &#8220;pulos do gato&#8221; para ele conseguir concretizar uma operação. Sistemas ERPs são os melhores exemplos disso. Você acaba torcendo o seu problema para caber dentro daquele sistema que é impossível de mudar ou reescrever.</p>
+<p>Um outro bom motivo para reescrevermos nosso sistema é ligado ao negócio. Muitas vezes vemos que a forma de nosso negócio mudou e que o sistema atual com sua base de código infinita não nos atende mais. Mesmo que façamos diversos apendices, o sistema não é mais capaz de nos atender com proficiencia. Se tornam aqueles sistemas cheios de jeitinhos para fazer coisas. O usuário tem que fazer um cursinho para saber todos os &ldquo;pulos do gato&rdquo; para ele conseguir concretizar uma operação. Sistemas ERPs são os melhores exemplos disso. Você acaba torcendo o seu problema para caber dentro daquele sistema que é impossível de mudar ou reescrever.</p>
 
 <h2>Vamos ao que interessa</h2>
 
@@ -342,9 +395,9 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>A alguns anos atrás trabalhei numa empresa que tinha diversos sistemas que eram integrados através de troca de mensagens (queue e brokers). Claro que nem chega perto do que estou propondo mais foi uma semente e vi que dava muito certo.</p>
 
-<h2>Cenas do próximos capítulos &#8230;</h2>
+<h2>Cenas do próximos capítulos &hellip;</h2>
 
-<p>Mais a frente - estou terminando de organizar tudo - pretendo publicar um  novo post explicando melhor como implementar essa questão de sistemas pequenos e com pouco responsabilidade.</p>
+<p>Mais a frente &ndash; estou terminando de organizar tudo &ndash; pretendo publicar um  novo post explicando melhor como implementar essa questão de sistemas pequenos e com pouco responsabilidade.</p>
 
 <p>Só para deixar curioso, existem formas de fazer sem necessáriamente escrever um monte de sistemas; como existem formas de fazer de forma  bem desacoplada. Enfim fiquem ligados.</p>
 ]]></content>
@@ -355,19 +408,19 @@ make -j 3 &amp;&amp; sudo make install</p>
     <link href="http://andrefonseca.net/blog/2012/09/08/design-pattern/"/>
     <updated>2012-09-08T21:16:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2012/09/08/design-pattern</id>
-    <content type="html"><![CDATA[<p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <em>&#8220;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&#8221;</em> .</p>
+    <content type="html"><![CDATA[<p>Logo na introdução do livro do GoF, na primeira frase que acredita ser da maior importância para quem deseja ser um desenvolvedor. É ela : <em>&ldquo;Projetar software orientado a objetos é difícil, mas projetar software reutilizável  orientado a objetos é ainda mais complicado&rdquo;</em> .</p>
 
 <p>Fazendo a ponte com um post anterior, escrever código de qualidade, sem saber algo sobre Padrões de Arquitetura (design patterns) é quase impossível. Brinco até que está difícil de estar trabalhando sem saber isso, pois quase toda entrevista o pessoal adora perguntar algo do assunto.  Fora esse aspecto de seleção, saber patterns é uma boa forma de começar a escrever bons sistemas.</p>
 
-<p>Patterns foram uma verdade absoluta, uma lei escrita em pedra até a muito pouco tempo atrás. Ouso dizer que para muitos é quase um axioma onde se um dia for quebrado alterará o equilíbrio da <strong>&#8220;vida no universo&#8221;</strong>. Entretanto, com o crescimento do uso de linguagens dinamicas e com paradigmas de classe aberta, parece que a coisa tem mudado um tanto.</p>
+<p>Patterns foram uma verdade absoluta, uma lei escrita em pedra até a muito pouco tempo atrás. Ouso dizer que para muitos é quase um axioma onde se um dia for quebrado alterará o equilíbrio da <strong>&ldquo;vida no universo&rdquo;</strong>. Entretanto, com o crescimento do uso de linguagens dinamicas e com paradigmas de classe aberta, parece que a coisa tem mudado um tanto.</p>
 
-<p>Muitos fazem &#8220;piadas&#8221; com o livro do Gof (Gang of Four - Design Patterns, Eirc Gamma, Richard Helm,  Ralph Johson e John Vlissides),  dizendo que na verdade o título de livro deveria ser &#8220;Como tornar o C++/ Java menos ruim&#8221;, pois a maioria das soluções apresentadas giram em torno da deficiencias dessas linguagens (Tipagem estática, falta de closures, não ter funções como first class, não terem modelos de open class, etc) .  Sendo, assim, quando temos uma linguagem que não tem essas tais limitações, usar patterns é algo desnecessário.</p>
+<p>Muitos fazem &ldquo;piadas&rdquo; com o livro do Gof (Gang of Four &ndash; Design Patterns, Eirc Gamma, Richard Helm,  Ralph Johson e John Vlissides),  dizendo que na verdade o título de livro deveria ser &ldquo;Como tornar o C++/ Java menos ruim&rdquo;, pois a maioria das soluções apresentadas giram em torno da deficiencias dessas linguagens (Tipagem estática, falta de closures, não ter funções como first class, não terem modelos de open class, etc) .  Sendo, assim, quando temos uma linguagem que não tem essas tais limitações, usar patterns é algo desnecessário.</p>
 
 <p>Concordo em parte com o parágrafo acima. Primeiro é preciso considerar que o livro foi escrito à mais de <strong>14 anos</strong> ( primeira edição saiu em 1996 ou 1997) e pouco se conhecia de linguagens como Python,  Ruby, Groovy, Scala, entre outras semelhantes (embora algumas já existissem).  As duas linguagens que vinham sendo usadas em larga escala eram exatamente o Java e o C++.</p>
 
 <p>Outro aspecto que devemos levar em consideração é que mesmo usando uma linguagem dita moderna, isso não invalida o uso ou conhecimento de padrões de arquitetura. Muito pelo contrário: é importante que conheçamos as motivações por trás de tudo, para que possamos adaptar a nova realidade as soluções catalogadas.</p>
 
-<p>É praticamente impossível pensarmos em escrever uma aplicação, ela ser entregue e jamais ser tocada novamente. Na maioria dos casos ela evoluirá com ou sem o nosso consentimento ou participação. Sendo assim, escrever usando ou baseando-se em padrões facilita em muito o entendimento dos futuros donos deste sistema e além do mais. Quando falamos de equipe, até a comunicação do &#8220;como deve ser feito&#8221; fica facilitada: &#8220;Vamos fazer com um pattern de DTO, por iso temos que fazer os Value Objects, etc&#8221;.</p>
+<p>É praticamente impossível pensarmos em escrever uma aplicação, ela ser entregue e jamais ser tocada novamente. Na maioria dos casos ela evoluirá com ou sem o nosso consentimento ou participação. Sendo assim, escrever usando ou baseando-se em padrões facilita em muito o entendimento dos futuros donos deste sistema e além do mais. Quando falamos de equipe, até a comunicação do &ldquo;como deve ser feito&rdquo; fica facilitada: &ldquo;Vamos fazer com um pattern de DTO, por iso temos que fazer os Value Objects, etc&rdquo;.</p>
 
 <h2>Linguagens Dinamicas tem melhores ferramentas:</h2>
 
@@ -383,11 +436,11 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Como já disse, concordo em parte com tal afirmação.  Muitas limitações deixam de existir e com isso a necessidade de contorná-las, porém, outros problemas persistem ou tantos outros surgiram.</p>
 
-<p>Padrões não devem ser usados como verdades absolutas e sim como guias para a construção de um sistema bem feito.  Conhêce-los é como uma receita: enquanto estamos aprendendo seguimos-as sem alterar nada, entretanto, a medida que ganhamos experiência sentimos confiante a mudar um pouco e inovar.  Vale ressaltar que não saímos do nada. Não &#8220;reinventamos a roda&#8221;. Adaptamos algo que já se provou sucedido a nossa realidade e ferramentas.</p>
+<p>Padrões não devem ser usados como verdades absolutas e sim como guias para a construção de um sistema bem feito.  Conhêce-los é como uma receita: enquanto estamos aprendendo seguimos-as sem alterar nada, entretanto, a medida que ganhamos experiência sentimos confiante a mudar um pouco e inovar.  Vale ressaltar que não saímos do nada. Não &ldquo;reinventamos a roda&rdquo;. Adaptamos algo que já se provou sucedido a nossa realidade e ferramentas.</p>
 
 <h2>Algumas referências sobre o assunto</h2>
 
-<p><em>Neal Ford</em> tem uma excelente apresentação que fez na Oscon de 2009, onde mostra que algum patterns não fazem mais sentido, porém outros ainda se mostram atuais.  Uncle Bob, em um vídeo e texto em seu blog faz uma afirmação parecida: Diz que design patterns ainda são tão atuais quanto antes e importantes. As bases que compões as soluções ainda são &#8220;sólidas&#8221; - preferir composição a herança.</p>
+<p><em>Neal Ford</em> tem uma excelente apresentação que fez na Oscon de 2009, onde mostra que algum patterns não fazem mais sentido, porém outros ainda se mostram atuais.  Uncle Bob, em um vídeo e texto em seu blog faz uma afirmação parecida: Diz que design patterns ainda são tão atuais quanto antes e importantes. As bases que compões as soluções ainda são &ldquo;sólidas&rdquo; &ndash; preferir composição a herança.</p>
 
 <p>Convido a quem está lendo a pelo menos conhecer algumas soluções para até mesmo ter do que falar mal. Verá que mudará a forma como pensa a solução.</p>
 ]]></content>
@@ -398,13 +451,13 @@ make -j 3 &amp;&amp; sudo make install</p>
     <link href="http://andrefonseca.net/blog/2012/09/02/qualidade-de-codigo/"/>
     <updated>2012-09-02T16:00:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2012/09/02/qualidade-de-codigo</id>
-    <content type="html"><![CDATA[<p>Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">CleanCode</a> do <a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">UncleBob</a>: <em>&#8220;You are reading this book for two reasons. First, you are a programmer. Second, you want to be a better programmer. Good, we need better programmers.&#8221;</em></p>
+    <content type="html"><![CDATA[<p>Gostaria de começar este artigo com uma frase que está no início do primeiro capítulo do livro <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">CleanCode</a> do <a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">UncleBob</a>: <em>&ldquo;You are reading this book for two reasons. First, you are a programmer. Second, you want to be a better programmer. Good, we need better programmers.&rdquo;</em></p>
 
 <p>Vivemos num momento interessante dentro da profissão de desenvolver sistemas: temos as metodologias ágeis, direcionamentos onde o foco é o ser humano (<a href="http://www.amazon.com/Peopleware-Productive-Projects-Second-Edition/dp/0932633439">Peopleware</a>), a busca pela qualidade e pelo desempenho ganham forma e embaseamento, a maturidade nos leva a uma busca constante de excelência, e outras coisas.</p>
 
-<p>Um exemplo disso são os diversos processos e práticas que tem surgido - e solidificado -  nos últimos tempos como TDD, BDD, SOLID (veja no livro do <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a> - Robert Martin aka &#8220;Uncle Bob&#8221;), etc. Apesar de pessoalmente acreditar que tais iniciativas sejam importantes e determinantes para entregarmos sistemas de qualidade, penso que ainda precisamos de um &#8220;algo mais&#8221;.</p>
+<p>Um exemplo disso são os diversos processos e práticas que tem surgido &ndash; e solidificado &ndash;  nos últimos tempos como TDD, BDD, SOLID (veja no livro do <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code </a> &ndash; Robert Martin aka &ldquo;Uncle Bob&rdquo;), etc. Apesar de pessoalmente acreditar que tais iniciativas sejam importantes e determinantes para entregarmos sistemas de qualidade, penso que ainda precisamos de um &ldquo;algo mais&rdquo;.</p>
 
-<p>Escrever &#8220;código&#8221;, ao contrário do que muitos pensam, não é uma atividade simples. Segundo Brian Kernigan - coautor de AWK programing language, <em>&#8220;é quase o mais complicado dos empreendimentos humanos&#8221;</em> . Todo sistema nasce simples e consciso. Todo sistema nasce bem feito, porém com o passar do tempo e de seu uso e constantes evoluções sua complexidade aumentam e sua &#8220;qualidade&#8221; provavelmente cai. Mesmo que ele tenha 100% de cobertura de testes (coisa que no mundo real é um grande feito) e seu time siga <em>a risca</em> todas as regras.</p>
+<p>Escrever &ldquo;código&rdquo;, ao contrário do que muitos pensam, não é uma atividade simples. Segundo Brian Kernigan &ndash; coautor de AWK programing language, <em>&ldquo;é quase o mais complicado dos empreendimentos humanos&rdquo;</em> . Todo sistema nasce simples e consciso. Todo sistema nasce bem feito, porém com o passar do tempo e de seu uso e constantes evoluções sua complexidade aumentam e sua &ldquo;qualidade&rdquo; provavelmente cai. Mesmo que ele tenha 100% de cobertura de testes (coisa que no mundo real é um grande feito) e seu time siga <em>a risca</em> todas as regras.</p>
 
 <h2>TDD e BDD importam</h2>
 
@@ -412,17 +465,17 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>TDD (<em>Test Driven Development</em>) e BDD(<em>Behave Driven Development</em>) são extrapolações de testes, onde os usamos para nos guiar na busca de uma melhor arquitetura. É possível termos testes automatizados sem seguir tais práticas, porém o contrário não.</p>
 
-<p>TDD e BDD são ótimas ajudantes para termos sistemas robustos e bem feitos, para termos &#8220;códigos limpos&#8221;, mas como disse antes, não são o suficiente.</p>
+<p>TDD e BDD são ótimas ajudantes para termos sistemas robustos e bem feitos, para termos &ldquo;códigos limpos&rdquo;, mas como disse antes, não são o suficiente.</p>
 
 <h2>Design Patterns e princípios como SOLID importam</h2>
 
-<p>Acredito que a maioria das pessoas que leêm meu blog, são pessoas que se preocupam com a qualidade de seus sistemas. Isso deve se refletir em estudos e muita leitura. Sendo assim, creio que a maior parte já tiveram contato - ou até dominam - assuntos como padrões de projetos, <em>refactoring</em>, SOLID, etc.</p>
+<p>Acredito que a maioria das pessoas que leêm meu blog, são pessoas que se preocupam com a qualidade de seus sistemas. Isso deve se refletir em estudos e muita leitura. Sendo assim, creio que a maior parte já tiveram contato &ndash; ou até dominam &ndash; assuntos como padrões de projetos, <em>refactoring</em>, SOLID, etc.</p>
 
 <p>Vou além, e digo que muitos usam tais conhecimentos em seus dias a dias quando estão a trabalhar em seus projetos.</p>
 
-<p>Tais principio são a &#8220;pedra fundamental&#8221; sobre o qual o resto todo se apoia. São as tais regras de ouro. Por isso são de extrema importância. Conhecê-las faz um imenso diferencial no código que produzimos pois nos tornamos mais conscientes e preocupados.</p>
+<p>Tais principio são a &ldquo;pedra fundamental&rdquo; sobre o qual o resto todo se apoia. São as tais regras de ouro. Por isso são de extrema importância. Conhecê-las faz um imenso diferencial no código que produzimos pois nos tornamos mais conscientes e preocupados.</p>
 
-<p>Entretanto, somente isso não significa termos um sistema robusto e de qualidade. Já trabalhei em muitos projetos cujos os colegas dominavam e sabiam de &#8220;coeur&#8221; cada palavra do Design Pattern, mas produziam código <em>sujos</em> e com pouca qualidade.</p>
+<p>Entretanto, somente isso não significa termos um sistema robusto e de qualidade. Já trabalhei em muitos projetos cujos os colegas dominavam e sabiam de &ldquo;coeur&rdquo; cada palavra do Design Pattern, mas produziam código <em>sujos</em> e com pouca qualidade.</p>
 
 <h2>O que é qualidade? Como é um código de qualidade?</h2>
 
@@ -433,8 +486,8 @@ make -j 3 &amp;&amp; sudo make install</p>
 <ul>
 <li><p><strong>Código bom é aquele que sobrevive ao seu autor</strong>: código deve ser escrito não para compiladores e sim para pessoas. Código bom é aquele que é fácil de entender e compreender a sua forma. Comunica com clareza a sua função e razão de ser.</p></li>
 <li><p><strong>Código tem que ser simples</strong>: a complexidade se dá pela soma das partes. Código simples divide o problema em partes menores e as resolve. E no final chama essas pequenas partes para compor o todo da solução</p></li>
-<li><p><strong>Código bom é aquele &#8220;manutenciavel&#8221;</strong>: possui toda o ambiente necessário para que ele seja facil de evoluir: testes, documentação, etc.</p></li>
-<li><p><strong>Código que vai além da especificação funcional</strong>: um bom código vai além das especificações do cliente. Ele procura cobrir todos os cenários e estar preparado para as situações não previstas; ele é feito por &#8220;não otimistas&#8221; (explica mais a frente).</p></li>
+<li><p><strong>Código bom é aquele &ldquo;manutenciavel&rdquo;</strong>: possui toda o ambiente necessário para que ele seja facil de evoluir: testes, documentação, etc.</p></li>
+<li><p><strong>Código que vai além da especificação funcional</strong>: um bom código vai além das especificações do cliente. Ele procura cobrir todos os cenários e estar preparado para as situações não previstas; ele é feito por &ldquo;não otimistas&rdquo; (explica mais a frente).</p></li>
 </ul>
 
 
@@ -448,7 +501,7 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <p>Um outro aspecto é a constante verificação da complexidade, qualidade e cobertura de seu código. A disciplina não será nada se não houver um objetivo à atingir.</p>
 
-<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos - <a href="http://leobalter.net/">Leonardo Balter</a> e <a href="http://blog.m.artins.net/">Alexandre Martins</a> - precisamos de trocar o &#8220;boné de programador&#8221; e fazer mais <em>&#8220;Testes de trollagem&#8221;</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
+<p>Outra coisa na qual acredito é que devemos ser menos otimistas ao escrever nossos sistemas. Citando dois amigos &ndash; <a href="http://leobalter.net/">Leonardo Balter</a> e <a href="http://blog.m.artins.net/">Alexandre Martins</a> &ndash; precisamos de trocar o &ldquo;boné de programador&rdquo; e fazer mais <em>&ldquo;Testes de trollagem&rdquo;</em>. Precisamos tentar a todo custo testar os limites do que estamos fazendo. Precisamos ir além da especificação. Michael T. Nygard em seu livro, <a href="http://pragprog.com/book/mnee/release-it">Release It</a>, diz que sistemas que precisam pensar em suas possíveis falhas e serem capazes de suportar os cenários não previstos.</p>
 
 <p>Inclusive, existe um excelente artigo do pessoal da NetFlix, sobre uma ferramenta chamada de Caos Monkey. Essas ferramenta derruba os servidores e analisa como o sistema se comporta para verificar se tudo é robusto. Isso é um aspecto muito esquecido nas aplicações e cada vez mais determinante na entrega.</p>
 
@@ -456,15 +509,15 @@ make -j 3 &amp;&amp; sudo make install</p>
 
 <h2>Ferramentas para ajudar</h2>
 
-<p>Uma grande ferramenta sem dúvida são os testes automatizados. Outra tão boa quanto são aquelas que &#8220;medem&#8221; diversos parametros, com frequencia de sua base de código, como: dependência ciclomática; duplicidade de código; aderência a convenções de código (Pep8 para python, JSLint, CodeStyle para Java, etc); analise de perfomance; tolerância a falhas; etc.</p>
+<p>Uma grande ferramenta sem dúvida são os testes automatizados. Outra tão boa quanto são aquelas que &ldquo;medem&rdquo; diversos parametros, com frequencia de sua base de código, como: dependência ciclomática; duplicidade de código; aderência a convenções de código (Pep8 para python, JSLint, CodeStyle para Java, etc); analise de perfomance; tolerância a falhas; etc.</p>
 
-<p>Ter um servidor de CI (integração contínua) rodando essas ferramentas, testes, e outras coisas que sejam importantes para o time, é uma grande coisa a ser feita. Coloque alertas, encha a caixa de email do pessoal com mensagens de alerta e obriguem a todos terem carinho com o &#8220;build&#8221;. No time agradeço a presença do meu amigo Vinícius que me lembra e nos cobra coisa como essas.</p>
+<p>Ter um servidor de CI (integração contínua) rodando essas ferramentas, testes, e outras coisas que sejam importantes para o time, é uma grande coisa a ser feita. Coloque alertas, encha a caixa de email do pessoal com mensagens de alerta e obriguem a todos terem carinho com o &ldquo;build&rdquo;. No time agradeço a presença do meu amigo Vinícius que me lembra e nos cobra coisa como essas.</p>
 
-<h2>No final &#8230;</h2>
+<h2>No final &hellip;</h2>
 
 <p>No final o que mais importa é termos a disciplina e obstinação de sempre buscarmos a melhora contínua do que fazemos. Novas formas, padrões, teorias irão surgir, novas linguagens e ferramentas irão surgir. Porém sempre caberá a nós a busca por fazer nosso trabalhar melhor do que do dia anterior. Esse é o compromisso que quero assumir comigo e com meu trabalho.</p>
 
-<p>Eu não sou um exemplo e nem desejo ser modelo, mas nem por isso devemos acreditar que só os melhores e somente em projetos de &#8220;empresas legais&#8221; que isso será possível. Faça aos poucos, se comprometa em fazer diferente. Faça e conquiste seu espaço, os resultados irão te ajudar a provar o valor de tais práticas.</p>
+<p>Eu não sou um exemplo e nem desejo ser modelo, mas nem por isso devemos acreditar que só os melhores e somente em projetos de &ldquo;empresas legais&rdquo; que isso será possível. Faça aos poucos, se comprometa em fazer diferente. Faça e conquiste seu espaço, os resultados irão te ajudar a provar o valor de tais práticas.</p>
 ]]></content>
   </entry>
   
@@ -475,16 +528,16 @@ make -j 3 &amp;&amp; sudo make install</p>
     <id>http://andrefonseca.net/blog/2012/09/01/braziljs</id>
     <content type="html"><![CDATA[<p>Gostaria de começar esse review do evento BrazilJS dizendo que ele superou em muito a minhas expectativas. Passado o tumulto inicial para a credenciais, que foi resolvido pelo pessoal da organização,  o evento entrou numa crescente de qualidade e excelência.</p>
 
-<p>Não quero fazer uma análise ou &#8220;crítica&#8221; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida se tratasse cada apresentação de forma isolada.</p>
+<p>Não quero fazer uma análise ou &ldquo;crítica&rdquo; ou resumo sobre cada palestra: isso seria injusto com quem está lendo e com o evento. Acredito, verdadeiramente, que houve uma mensagem maior trazida pela soma do todo e essa mensagem seria perdida se tratasse cada apresentação de forma isolada.</p>
 
 <p>Por mais que, já claro até no nome, o evento fosse focado em Javascript, todo o conteúdo de frontend foi abordado e tratado de forma brilhante e, coroada, com a palestra do Bernard de Luna sobre performance no uso de CSS. Além disso, conseguiu, novamente com maestria na escolha dos temas, fugir do lugar comum, onde falar de frontend se limita a falar de páginas e portais. Falamos até de jogos e processamento de imagens.</p>
 
-<p>Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão - antes nem pensadas - de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome &#8220;científico&#8221; do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.</p>
+<p>Como citei acima, a grande linha guia, em minha opinião, foi sem dúvida a evolução e maturidade. É um fato, comprovado pelos participantes e palestrantes, que a comunidade evolui e amadureceu. Estamos mais conscientes de nosso papel na qualidade do que se tem feito nos projetos, estamos mais maduros quanto ao uso de boas práticas, estamos mais alertas quanto a questão &ndash; antes nem pensadas &ndash; de performance, estamos enxergando seu uso além de simples manipulações de DOM, etc. E a linguagem Ecmascript (nome &ldquo;científico&rdquo; do Javascript) parece refletir tudo isso, conforme apresentado brilhantemente pela seu criador.</p>
 
-<p>Javascript não é mais &#8220;tecnologia&#8221; secundária. HTML e CSS não são mais maus necessários para entregarmos nossos webapps (que digo o JSF - trolei !!!!) .
-Javascript acencionou ao status de grande linguagem, se colocando lado a lado com JAVA, C#, Python, Ruby, entre outras. Busca a maturidade e resolver seus problemas. Busca o que há de melhor nas outras e dá seu &#8220;tempero&#8221;. Python me pareceu o grande irmão mais velho.</p>
+<p>Javascript não é mais &ldquo;tecnologia&rdquo; secundária. HTML e CSS não são mais maus necessários para entregarmos nossos webapps (que digo o JSF &ndash; trolei !!!!) .
+Javascript acencionou ao status de grande linguagem, se colocando lado a lado com JAVA, C#, Python, Ruby, entre outras. Busca a maturidade e resolver seus problemas. Busca o que há de melhor nas outras e dá seu &ldquo;tempero&rdquo;. Python me pareceu o grande irmão mais velho.</p>
 
-<p>Seu uso vai além e se mostra uma excelente opção para automatização de tarefas - GruntJS,  jogos, manipulação de imagens, tracking, testes, etc.</p>
+<p>Seu uso vai além e se mostra uma excelente opção para automatização de tarefas &ndash; GruntJS,  jogos, manipulação de imagens, tracking, testes, etc.</p>
 
 <p>O frontend não quer e nem se limita mais ao browser e computadores. Busca as fronteiras onde estão os telefones, smartphones e até TVs. Não falo da TV Digital, e sim da TV como meio de consumo de webapps.</p>
 
@@ -499,7 +552,7 @@ Javascript acencionou ao status de grande linguagem, se colocando lado a lado co
     <link href="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/"/>
     <updated>2012-08-25T19:11:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto</id>
-    <content type="html"><![CDATA[<p>A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &#8220;programador otimista&#8221;.  O &#8220;programador otimista&#8221; é o tipo de profissional que só se preocupava em implementar o &#8220;caminho feliz do sistema&#8221;: implementa o caso de sucesso ou exatamente pedido pelo cliente. Por exemplo: se o cliente quisesse uma funcionalidade para criar novo usuário (cadastro), nosso programador otimista, só implementaria o necessário para ter um novo usuário - nem pensaria em validações de nome correto, email correto, etc.</p>
+    <content type="html"><![CDATA[<p>A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &ldquo;programador otimista&rdquo;.  O &ldquo;programador otimista&rdquo; é o tipo de profissional que só se preocupava em implementar o &ldquo;caminho feliz do sistema&rdquo;: implementa o caso de sucesso ou exatamente pedido pelo cliente. Por exemplo: se o cliente quisesse uma funcionalidade para criar novo usuário (cadastro), nosso programador otimista, só implementaria o necessário para ter um novo usuário &ndash; nem pensaria em validações de nome correto, email correto, etc.</p>
 
 <p>Para um cliente desavisado, esse profissional cumpre com sucesso e, de certa forma, velocidade suas tarefas. Porém, no final das contas, ele não entrega uma solução completa pois caso algo saia um pouco do cenário de sucesso, o sistema irá congelar e se comportar de forma bizarra.</p>
 
@@ -513,7 +566,7 @@ Javascript acencionou ao status de grande linguagem, se colocando lado a lado co
 
 <h2>Sistema não são ilhas</h2>
 
-<p>Nos sistema atuais é quase impossível que você não tenha que se conectar a um outro sistema. Isso mesmo sem considerar que um banco de dados é um sistema externo. Hoje, inclusive tem sido defendido, a maioria dos sistemas são grande mashups - mistura e conexão - de diversos sistemas.</p>
+<p>Nos sistema atuais é quase impossível que você não tenha que se conectar a um outro sistema. Isso mesmo sem considerar que um banco de dados é um sistema externo. Hoje, inclusive tem sido defendido, a maioria dos sistemas são grande mashups &ndash; mistura e conexão &ndash; de diversos sistemas.</p>
 
 <p>Se você fez um site de venda, terá que se conectar com uma api de cobrança. Outro, você terá que se conectar ao servidor de e-mail, ou então terá que avisar a um outro sistema sobre uma atividade sua. E por aí temos diversos exemplos.</p>
 
@@ -531,7 +584,7 @@ Se a gente não pensar em criar algo mais tolerante a falha, provavelmente o seu
 <p>Recentemente li um livro que fala exatamente sobre esse assunto. O livro é o <a href="http://pragprog.com/book/mnee/release-it">Release It</a> do Michael T. Nygard. Nele o autor explica de forma detalhada como a gente pode se precaver de sermos um programador otimista e quais são as armadilhas que devemos evitar se quisermos produtos mais robustos.
 Recomendo muito essa leitura.</p>
 
-<h2>Mão na massa - O que fazer</h2>
+<h2>Mão na massa &ndash; O que fazer</h2>
 
 <p>Determine o domínio de seu problema. Em seguinda, monte um esquema com todos os possíveis pontos de falhas e procure soluções e formas de implementar para que seu sistema seja robusto.</p>
 
@@ -552,23 +605,23 @@ Recomendo muito essa leitura.</p>
 
 <h3>Orientação a objeto e um monte de lib de terceiros</h3>
 
-<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço - de javascript (alguns só de jquery) - parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
+<p>Primeira coisa que gostaria de abordar é Orientação a Objeto. A maioria dos desenvolvedores que conheço &ndash; de javascript (alguns só de jquery) &ndash; parecem desconhecer que a linguagem tem esse recurso e quão ele é poderoso. Tudo bem que o mecanismo não é dos mais simples de entender e implementar (prototype) mas existe e funciona. Eu, pessoalmente, gosto muito de colocar a minhas lógicas em classes. Isso me ajuda muito a definir as relações e as interações entre as camadas, atores, modelos, etc. A primeira dica que fica, para a questão de classes em Javascript, e que existem algumas bibliotecas que facilitam (bastante) a tarefa de criar classes e definir seus métodos ( Prototype, Mootools, etc) mas acredito que elas tenham mais do que precisa.</p>
 
 <p>Tem gente baixando um monte de JS e só usando 10% que é a parte que realmente precisa.</p>
 
 <p>Quantas vezes vi colegas incluírem, por exemplo, o jquery inteiro e o jquery-ui somente para usar 2 ou 3 funcionalidades que ele poderia ter implementado ele mesmo com algunas dezenas de linhas de código e poupado alguns megas da banda dele.  Isso não só se aplica ao jquery, tem milhares de outras libs e situações que são incluídas para somente usarmos 10% do que eles nos oferecem.</p>
 
-<p>Por essas que acredito que uma forma melhor é quebrar as libs em &#8220;pedaços menores&#8221; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
+<p>Por essas que acredito que uma forma melhor é quebrar as libs em &ldquo;pedaços menores&rdquo; e com isso o usuário pode levar somente aquilo que ele realmente precisa. Um bom exemplo de como fazer isso é o projeto microjs. Nele existem diversos de pequenos js com finalidades bem específicas. Dê uma olhada.</p>
 
 <h3>Patterns</h3>
 
-<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno - mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
+<p> Agora imagina que você irá implementar uma interface toda estática, cuja o conteúdo será populado e gerenciado através do Javascript. Se acha que isso é só um exemplo, veja o tempo Real de futebol ou cobertura do Rock in Rio (cobertura de eventos da globo.com). Imagina como seria a complexidade do código para implementar tal cenário. Você tem diversos elementos e interações na página, ciclos de vida, paginações, animações, requisições, eventos, etc. Se você fizer isso, só com funções, sem separar nada, o código se tornará um inferno &ndash; mal escrito, e impossível de dar manutenção. Se resolver isso com classes, mesmo assim terá um monte de código que com o tempo se tornará inviável. Embora seja um caminho.</p>
 
-<h3>MVC - Model View Controller</h3>
+<h3>MVC &ndash; Model View Controller</h3>
 
 <p>Nesses momentos que temos que lançar mão de patterns para ver como podemos elaborar nosso domínio de forma que ele resolva nosso problema e seja fácil de extender ou adaptar. Um pattern excelente para situações como essas é o MVC. Escrevi um tempo atrás um artigo onde falava sobre MVC no javascript. Só para recapitular, MVC é um pattern que visa a separação da lógica de apresentação, controle e modelo de um sistema.</p>
 
-<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &#8221; negócio&#8221; (o domain).</p>
+<p>Antes que comece a torcer o nariz, o código da sua página pode sim ser separada em model, view e controller. O controller será a parte do código que irá gerenciar o fluxo: dada um requisição, pede que seja feito um processamento e retorna com uma resposta que será renderizada por outra parte que é o view. O view é a parte que irá montar, os dados vindo do controller, dentro da visão para o usuário. Por fim o model representar as fontes de informações e a parte que terá toda a lógica do &ldquo; negócio&rdquo; (o domain).</p>
 
 <p>Fazer isso não é das tarefas mais simples e novamente podemos ficar um amontoado de código.</p>
 
@@ -577,12 +630,12 @@ Recomendo muito essa leitura.</p>
 <h3>Referencias</h3>
 
 <ol>
-<li>http://pt.wikipedia.org/wiki/MVC - Model-view-controller (MVC)</li>
-<li>http://microjs.com/ - Catálogo de MicroJS.</li>
-<li>http://mootools.net/ - Página do Mootools</li>
-<li>http://www.prototypejs.org/ - Biblioteca Prototype</li>
-<li>http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone - Apresentação do BackBone.js</li>
-<li>http://documentcloud.github.com/backbone/ - Pagina do BackBone.js</li>
+<li><a href="http://pt.wikipedia.org/wiki/MVC">http://pt.wikipedia.org/wiki/MVC</a> &ndash; Model-view-controller (MVC)</li>
+<li><a href="http://microjs.com/">http://microjs.com/</a> &ndash; Catálogo de MicroJS.</li>
+<li><a href="http://mootools.net/">http://mootools.net/</a> &ndash; Página do Mootools</li>
+<li><a href="http://www.prototypejs.org/">http://www.prototypejs.org/</a> &ndash; Biblioteca Prototype</li>
+<li><a href="http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone">http://www.slideshare.net/leobalter/javascript-sexy-com-jquery-underscore-e-backbone</a> &ndash; Apresentação do BackBone.js</li>
+<li><a href="http://documentcloud.github.com/backbone/">http://documentcloud.github.com/backbone/</a> &ndash; Pagina do BackBone.js</li>
 </ol>
 
 ]]></content>
@@ -599,16 +652,16 @@ Quem tem mais de 30 anos deve se lembrar de quando tinhámos que ir a biblioteca
 
 <h3>O antigo profissional</h3>
 
-<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &#8220;armazenamento&#8221; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
+<p>Um profissional da época de nossos país e avós era valorizado pela sua capacidade de &ldquo;armazenamento&rdquo; de informação. Eram os famosos enciclopédias ambulantes. Todas as perguntas sempre tinham uma resposta pronta e rápida.
 Eram pessoas que tinha uma memória invejável. Nem sempre o racicionio era valorizado. Saber algo era um diferencial. Saber oque fazer com a informação era outro ponto que não vinha ao caso naquele momento.</p>
 
 <h3>A internet e seu impacto</h3>
 
 <p>Com a vinda a internet o conhecimento começou a migrar dos livros para os grande sistemas on line. Vários impactos aconteceram por isso, um deles foi a democratização dessas informações e uma maior facilidade de acesso.
-Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&#8230; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
+Antes era preciso ir a um determinado local, buscar algum livro, lê-lo, etc&hellip; Hoje basta acessar o site do google digitar uma frase com palavras chaves do que queremos e pronto! Em segundos uma lista de milhares e até milhões de links aparecem sobre os temas relacionados.
 Não precisamos mais de memórias maravilhosas. Os computadores fazem isso melhor do que a gente.
 O importante agora é o raciocínio analítico. É capacidade de extrapolar a informação e dar um fim útil dentro dos nossos objetivos.
-O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&#8230; Delegamos isso para os sistemas.</p>
+O interessante que nos dias de hoje que ninguém mais lembra de datas, fatos, nem de aniversários&hellip; Delegamos isso para os sistemas.</p>
 
 <h3>Conclusão</h3>
 
@@ -625,7 +678,7 @@ E você está preparado para isso?</p>
     <content type="html"><![CDATA[<p>O git tem um comando que retornar a descrição de algo. Ele é o git describe e com ele e mais alguns truques é possível detectar qual foi a última tag criada no seu repositório.
 Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atuais. E depois execute o comando abaixo:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git describe --tags <span class="k">$(</span>git rev-list --tags --max-count<span class="o">=</span>1<span class="k">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -639,27 +692,27 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
     <link href="http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/"/>
     <updated>2012-02-22T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade</id>
-    <content type="html"><![CDATA[<p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &#8220;extreme go horse&#8221; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
+    <content type="html"><![CDATA[<p>A mais de 3 meses meu time atual se encontra num ritmo muito acelerado e atropelando tudo pela frente, indo bem num &ldquo;extreme go horse&rdquo; por conta de um projeto que segundo meu P.O. (product owner ) está com sua entrega atrasada. Com isso ganhamos problemas como estresse, conflitos, bugs  e desmotivação.</p>
 
-<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &#8220;prato cheio&#8221; para os desentendimentos.  Os bugs vem da &#8220;falta de tempo&#8221; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
+<p>O estresse vem da constante correria onde não paramos nem para refletir sobre o que fizemos e realizar o processo de melhoria proposto pela grande maioria das filosofias ágeis.  Os conflitos são resultado do estresse: todos estão nos seus 110% e isso é um &ldquo;prato cheio&rdquo; para os desentendimentos.  Os bugs vem da &ldquo;falta de tempo&rdquo; . Por fim, a desmotivação vem de todo o contexto ruim que estamos inseridos e do sentimento de não entregar.</p>
 
 <p>Diante a este cenário, resolvi pensar o que está dando errado e quais seriam possíveis soluções. Como já listei acima, temos diversos problemas que estão atrapalhando um já conturbado dia a dia do time,  porém,  resolvi me distanciar para procurar a causa raiz.</p>
 
 <p>O time hoje não é dono do backlog. Mesmo sabendo que a nossa velocidade (quantidade de entrega de complexidade por sprint) não está definida a gente segue fazendo as coisas em cima de datas que foram passadas pelo PO, que se baseiou em cima de promessas feita em reuniões. O mais engraçado disso é que como a gente está correndo, a gente não consegue parar, avaliar, realimentar e até definir uma velocidade para poder planejar o próximo backlog-sprint.</p>
 
-<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &#8220;vendedor&#8221; ou &#8220;gerente&#8221;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
+<p>Indo mais fundo na análise, o primeiro grande problema a resolver é  ter claro qual é o papel do PO dentro do processo do time. Uma das coisa que mais me incomodam é o PO que se coloca dentro do time como sendo um &ldquo;vendedor&rdquo; ou &ldquo;gerente&rdquo;.  Essa confusão, para minha infelicidade, é mais comum do que gostaria. No meu entender, PO não é gerente, não é vendedor, não é chefe. PO é o dono do projeto, é alguém que está ali para representar o cliente no dia a dia do time.</p>
 
-<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&#8230; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
+<p>Por favor! PO não é alguém que vende backlog. Ele não pode é nenhum hipótese prometer nada. Ele é aquele que vai lá e coleta junto com outras pessoas quais são os desejos, pontos de melhoria, prioridades, etc.   No nosso caso, o meu PO foi um vendedor. Vendeu um monte de coisa para o cliente e com isso se comprometeu com diversas coisas sem que antes avaliasse junto com o time se aquilo seria ou não possível.  Esse é exatamente o tipo de atitude que vem sendo condenada&hellip; Quem se compromete é que irá fazer. PO não desenvolve por isso não se compromete.</p>
 
 <p>Outra coisa PO não é gerente. Não é chefe. Ele é dono do projeto. PO não preciso nem deve se envolver com a gestão do time.  Time maduro não enrola nem quer deixar de entregar.  Pelo contrário, na empresa vejo times que tem PO que realmente entende o seu papel e eles ainda sim entregam muito mais do que foi pedido.  Isso mostra que o comportamento de gerente e chefe é falho e não é algo ligado ao sucesso ou não do projeto.</p>
 
 <p>PO que fica mandando email. PO que fica montando apresentação para cliente com sugestão de evoluções é um sinal claro que está perdido e desconhece seu papel dentro do processo.  PO discute produto e prioriza backlog não o contrário.</p>
 
-<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master - facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
+<p>Voltando a minha situação o primeiro e principal problema é que meu PO resolveu prometer e assumir um backlog. Antes que todos pensem que ele é o grande vilão da história, é preciso entender que esse tipo de coisa pode acontecer e que existe um outro papel que não foi bem feito que poderia ter evitado isso que é o SM (scrum master &ndash; facilitator). Se o SM tivesse detectado esse problema antes ( todos os indícios estavam lá) ele poderia ter agido com apoio de uma ferramenta de coching para trazer a pessoal de volta para o contexto mais adequado.</p>
 
 <p>Outro ponto importante de nosso problema é que o time também se acomodou no momento que aceitou a situação e seguiu um caminho perigoso abrindo mão do processo e das formas que ele propõe para fazer a calibragem e a melhoria contínua.</p>
 
-<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &#8220;escute&#8221; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
+<p>Enfim, fica a dica: promova momentos que em os papéis sejam discutidos e esclarecidos; não abra mão dos marcos e por fim, &ldquo;escute&rdquo; os sinais que surgem e saiba agir o quanto antes possível. É melhor que tivéssemos um conflito e acertado do que chegar na situação que não existe outro caminho senão aquele de horas extras e correria para entregar.</p>
 ]]></content>
   </entry>
   
@@ -668,24 +721,24 @@ Antes de mais nada não se esqueça de fazer um git fetch para ter os dados atua
     <link href="http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/"/>
     <updated>2011-11-25T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django</id>
-    <content type="html"><![CDATA[<p>&#8211;
+    <content type="html"><![CDATA[<p>&mdash;
 layout: post
-title: &#8220;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&#8221;
+title: &ldquo;Customizando a renderiza\xC3\xA7\xC3\xA3o do template de form do admin do Django&rdquo;
 tags:
-- django
-- form
-- template
+&ndash; django
+&ndash; form
+&ndash; template
 status: publish
 type: post
 published: true
 meta:</p>
 
-<h2>  _edit_last: &#8220;1&#8221;</h2>
+<h2>  _edit_last: &ldquo;1&rdquo;</h2>
 
 <p>Esse post é daqueles que gosto de escrever para deixar registrado algo para lembrar daqui a um tempo.</p>
 
 <p>No projeto onde estou trabalhando, precisei <em>customizar</em> a uma página que foi feita com ajuda do Admin do Django. A questão, mais detalhadamente, era a foram que o formulário seria montado: ele deveria ficar bem diferente do que a saída padrão do framework.
-Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &#8220;piscar de olhos&#8221;.</p>
+Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é sua arquitetura plugável e nas várias apps que já trazem <em>prontas</em> algumas coisas. A questão é que quando preciso sair desse jeito comum de fazer as coisas, o que era simples se torna complexo numa &ldquo;piscar de olhos&rdquo;.</p>
 
 <p>Voltando a minha história,  nesse projeto tive que fazer um CRUD onde a tela fugia um pouco do padrão de formulários:  forma dos campos, layouts, etc.  Para resolver isso procurei pelo google como fazer para customizar o template do admin para usar um meu e não o default da app.  Para quem já trabalha com Django sabe, que nem precisava dessa busca do google, pois não existe melhor site de documentação do que do Django.</p>
 
@@ -695,14 +748,14 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
 
 <p>Primeiro você deve criar dentro da sua app uma pasta onde ficará o template do form que irá substituir do admin:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p minha_app/templates/admin/minha_app/meu_modelo/
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Depois coloque um arquivo dentro para substituir:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>touch minha_app/templates/admin/minha_app/meu_modelo/change_form.html
 </span></code></pre></td></tr></table></div></figure>
 
@@ -726,7 +779,7 @@ Uma coisa que adoro no <a href="https://www.djangoproject.com/">Django</a> é su
     <link href="http://andrefonseca.net/blog/2011/10/25/python-decorators/"/>
     <updated>2011-10-25T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2011/10/25/python-decorators</id>
-    <content type="html"><![CDATA[A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre &#8220;decorators&#8221; em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
+    <content type="html"><![CDATA[A um bom tempo atrás (dezembro de 2009 escrevi um artigo sobre "decorators" em Python. O texto foi inspirado num post no blog do pessoal da Artima( mais precisamente do Bruce Eckel) que falava sobre o assunto.
 
 De lá para cá, apareceram mais artigos e o uso de decorators ganhou bastante força em  bibliotecas, frameworks, etc. Diante disso, e de diversos pedidos que recebo, resolvi re-visitar o assunto.
 
@@ -734,7 +787,7 @@ No wiki do Python, a definição de decorator, é de uma forma que temos para al
 
 Um bom exemplo seria o decorator classmethod. Veja abaixo:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -746,7 +799,7 @@ Um bom exemplo seria o decorator classmethod. Veja abaixo:
 
 Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma instância de OlaMundo.
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">olaMundo</span> <span class="o">=</span> <span class="n">OlaMundo</span><span class="p">()</span>
@@ -756,7 +809,7 @@ Na classe acima, para usarmos o método &#8220;metodo1&#8221;, precisamos de uma
 
 Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não a uma instância, você tem que fazer:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -772,7 +825,7 @@ Para transformar o metodo1 ou escrever um metodo2 que pertença a classe e não 
 
 Já o decorator, como uma macro em C, tornar o código mais legível e faz essa &#8220;mágica&#8221; para a gente: 
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -790,7 +843,7 @@ Claro que a definição acima é simplista, mas ajuda a entender.
 
 Nos aprofundando mais, ele é semelhante ao with do Python. Ele é uma classe que no seu init recebe o objeto a qual foi associado e um método call (ele é um Callable). Esse método call é chamado e ai você pode fazer algo. 
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -837,9 +890,9 @@ Referência.
     <link href="http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/"/>
     <updated>2011-10-20T00:00:00-02:00</updated>
     <id>http://andrefonseca.net/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest</id>
-    <content type="html"><![CDATA[<p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &#8220;ferramenta&#8221; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
+    <content type="html"><![CDATA[<p>A um certo tempo atrás trabalhava com Ruby, mais precisamente, desenvolvia utilizando o framework Rails. Dentro desse eco-sistema, existia uma &ldquo;ferramenta&rdquo; que sou apaixonado: <a href="http://www.zenspider.com/ZSS/Products/ZenTest/%22">Autotest</a> (zentest).</p>
 
-<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &#8220;mão na roda&#8221; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
+<p>Essa ferramenta fica monitorando seus arquivos ruby e caso faça qualquer alteração ele executa os testes (spec) do projeto. Isso é realmente uma &ldquo;mão na roda&rdquo; pois, para quem curte TDD, você fica o tempo todo monitorando as alterações no seu código e vai evoluindo bem.</p>
 
 <p>Atualmente mudei de time e passei a trabalhar em projetos com django/python. Logo, comecei a procurar dentro desse novo ambiente, uma ferramenta similar que me permitisse fazer a mesma coisa. Vi que o pessoal do Dojo usa uma ferramente desenvolvido pelo <a href="http://flavioamieiro.com/">Flávio Amieiro</a>. O tempo foi passando e não encontrei nenhuma que me agradasse ao ponto do autotest (facilidade de uso e instalação).</p>
 
@@ -852,13 +905,13 @@ Referência.
 
 <p>O comando acima é para quando alguém alterar algum arquivo .py no diretório tests ele irá executar o comando make test. Se você apenas chamar o peon, ele irá executar o nosetests para toda mudança em qualquer arquivo python do projeto.</p>
 
-<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste - por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
+<p>Além disso, ele tem uma integração com a notificação do linux, permitindo em caso de falhar algum teste &ndash; por exemplo, ele te avisar. Entretanto, como eu uso o Mac OS, queria poder ter esse mesmos avisos com o Growl.</p>
 
 <p>Pesquisando encontrei uma forma de fazer isso.</p>
 
 <p>Existe uma biblioteca python (py-Growl) que faz essa integração ( semelhante ao pynotify da libnotify do linux). Abaixo um código mostrando como fazer. A explicação é bem simples:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -896,11 +949,11 @@ Referência.
     <link href="http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/"/>
     <updated>2011-10-06T00:00:00-03:00</updated>
     <id>http://andrefonseca.net/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos</id>
-    <content type="html"><![CDATA[<p>Um dos pontos fortes que considero no Jasmine é seu &#8220;suporte&#8221; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
+    <content type="html"><![CDATA[<p>Um dos pontos fortes que considero no Jasmine é seu &ldquo;suporte&rdquo; a execuções assíncronas para teste. Isso significa, que dado aquele seu código, que tem um chamada que tem duração de tempo, ocorre com callback, etc, você será capaz de testar isso com relativa facilidade com Jasmine.</p>
 
 <p>Somente para lembrar, todo arquivo de teste do Jasmine é composto de um contexto onde temos diversas asserts que irão validar o funcionamento do nosso código:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -918,7 +971,7 @@ Referência.
 <p>Uma coisa legal é que como qualquer framework de teste, ele tem métodos para executar código antes e depois de cada teste (acertiva). Esse métodos são o beforeEach (para executar algo antes) e o afterEach(para executar o depois).
 Essas funções recebem como argumento uma função cujo o corpo será executado. Veja o exemplo abaixo:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -951,7 +1004,7 @@ Essas funções recebem como argumento uma função cujo o corpo será executado
 
 <p>Mais isso não é o objetivo do artigo. O nosso objetivo é mostrar o quão é fácil colocar a rotina de espera para dentro do seu teste:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1041,14 +1094,14 @@ Pronto agora você tem um jar do selenium server com suporte a versão que quer 
     <id>http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git</id>
     <content type="html"><![CDATA[Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
 Existem caminhos alternativos para instalá-lo. Mas não recomendo.
 Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1084,12 +1137,12 @@ Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo
 
 Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
 Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
 </span></code></pre></td></tr></table></div></figure>
 Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1102,74 +1155,6 @@ Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu tam
 </span></code></pre></td></tr></table></div></figure>
 
 Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Script para organizaÃ§Ã£o das minhas fotos]]></title>
-    <link href="http://andrefonseca.net/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/"/>
-    <updated>2011-05-06T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/05/06/script-para-organizacao-das-minhas-fotos</id>
-    <content type="html"><![CDATA[A pouco tempo atrás comprei um novo computador pois meu antigo estava a &#8220;beira da morte&#8221;.  Antes, como bom geek que sou, resolvi fazer um backup de todos os meus arquivos pessoais para garantir, principalmente minhas fotos - o risco de vida é grande pois a esposa é bem brava.  Confesso que não elaborei muito para fazer o backup: fiz uma cópia simples de todos meus arquivos da pasta para um HD externo que tenho.  Não organizei. Nada. Só copiei e ponto final.
-
-Após a chegada do novo computador, montado  e o Ubuntu 11.04 instalado no novo computador (o pessoal insiste em mandar coisas com o SO Windows já instalado mas isso é papo para outro post), resolvi dar uma olhada no backup e organizar principalmente minhas fotos que estavam uma verdadeira zona: fotos de assuntos diferentes na mesma pasta, tudo misturada, etc.
-
-Como programador que sou decidi que iria arrumar algo que pudesse fazer isso de forma automatizada. A primeira tentativa foi buscar no google por alguma ferramenta gratuita que já fizesse isso porém logo desisti. Já venho um tempo estudando Shell Script e Bash e depois de um twitter do conhecido Marcos Tapajós, resolvi que iria fazer isso por script.. até porque não achei ferramentas para fazer do jeito que eu queria.
-
-Passei a buscar como faria esse script, pois a minha idéia era de pegar todos as minhas fotos que estavam espalhadas por várias pastas e arrumá-las agrupando-as por ano, mês e dia.  Confesso que pensei em fazer algo programa em Python ou Ruby ou Groovy para resolver meu problema, entretanto, cismei que deveria fazer isso em shell script pelo aprendizado e por acreditar que seria mais rápido e simples.
-
-Pedi ajuda a uma pessoa do meu trabalho que está na equipe que cuida da infra da Globo.com (Magno) e ele me deu a dica de alguns sites que tinham exatamente o que eu queria. Sendo bem sincero bastou ir no google e digitar : organize photo shell script, que apareceu vários que faziam oque eu queria. Assim, resolvi escrever esse post para passar adiante (em português)  o script que fiz baseado no que eu encontrei e com o passo a passo (não encontrei nada em português - provavelmente erro meu).
-
-Vamos lá. Primeiro você tem que instalar a biblioteca que nos ajudará nessa tarefa. Estou usando o ExifTools.  Busque por isso no google e verá bons tutoriais para instalar. Como eu uso Ubuntu foi bem fácil, bastou usar o comando:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install libimage-exiftool-perl
-</span></code></pre></td></tr></table></div></figure>
-
-Uma vez que eles esteja instalado, crie um arquivo para o seu script:
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch organiza_fotos.sh
-</span><span class='line'>vim organiza_fotos.sh
-</span></code></pre></td></tr></table></div></figure>
-
-Agora com o editor aberto é só copiar e colar o código abaixo:
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">from</span><span class="o">=</span>/media/Externo/minhas_imagens
-</span><span class='line'><span class="nv">to</span><span class="o">=</span>/media/Externo/fotos_organizadas
-</span><span class='line'>find <span class="nv">$from</span> -iname <span class="s1">&#39;*jpg&#39;</span> | <span class="k">while </span><span class="nb">read </span>FILENAME
-</span><span class='line'><span class="k">do</span>
-</span><span class='line'><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f1 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">month</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f2 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">day</span><span class="o">=</span><span class="sb">`</span>exiftool <span class="s2">&quot;$FILENAME&quot;</span>  | awk <span class="s1">&#39;/Date\/Time Original/ {print $4}&#39;</span>|cut -f3 -d<span class="s1">&#39;:&#39;</span><span class="sb">`</span>
-</span><span class='line'><span class="nv">target</span><span class="o">=</span><span class="nv">$to</span>/<span class="nv">$year</span>/<span class="nv">$month</span>/<span class="nv">$day</span>
-</span><span class='line'>mkdir -p <span class="nv">$target</span>
-</span><span class='line'>cp <span class="s2">&quot;$FILENAME&quot;</span> <span class="nv">$target</span>
-</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;Moved $FILENAME to $target&quot;</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure>
-
-&nbsp;
-
-Veja que existe duas variáveis que terá que editar, uma, a primeira, e de onde ele buscará as fotos; a segunda qual será o caminho base para onde as fotos organizadas serão copiadas.
-
-Depois é executar o seu shell e ver a mágica acontecer. Pronto. Um script para organizar as sua fotos.
 ]]></content>
   </entry>
   

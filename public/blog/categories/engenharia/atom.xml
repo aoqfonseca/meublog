@@ -4,7 +4,7 @@
   <title><![CDATA[Category: engenharia | Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/blog/categories/engenharia/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2014-01-25T12:04:55-02:00</updated>
+  <updated>2014-03-18T15:34:07-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -24,7 +24,7 @@
 
 <h2>O problema do código <em>feio</em></h2>
 
-<p><em>"Escrever código para máquina é fácil."</em></p>
+<p><em>&ldquo;Escrever código para máquina é fácil.&rdquo;</em></p>
 
 <p>Nem sempre os problemas de um sistema estão em BUGs ou aderência aos requisitos. Muitas vezes, para não dizer a maioria, os maiores problema estão em códigos mal escritos, difícies de manter, duplicados, sem padrão, etc. Isso se agrava quando falamos em projetos onde temos mais  de uma pessoa envolvida e com  mudanças na equipes (entrada de pessoas novas por exemplo). Logo, é preciso buscar formas para que esse tipo de coisas não aconteça.</p>
 
@@ -36,11 +36,11 @@
 
 <h2>Estudos e estudiosos do assunto</h2>
 
-<p>Tendo como ponto de partida o fato de que código é uma forma de comunicação semelhante as demais e que é preciso buscar a excelência nisso, muitos estudiosos do assunto buscam formas, processos, ferramentas, para evitar que se produza código ruins (mal escritos). Linguagens como Python, Java, etc criam convensões de boas práticas, <em>code styles</em> (estilo de escrita de software). IDE's criam validadores de sintaxe. Estudiosos de processo, procuram por práticas para ajudar o desenvolver a não escrever ou achar os defeitos o mais breve possível.</p>
+<p>Tendo como ponto de partida o fato de que código é uma forma de comunicação semelhante as demais e que é preciso buscar a excelência nisso, muitos estudiosos do assunto buscam formas, processos, ferramentas, para evitar que se produza código ruins (mal escritos). Linguagens como Python, Java, etc criam convensões de boas práticas, <em>code styles</em> (estilo de escrita de software). IDE&rsquo;s criam validadores de sintaxe. Estudiosos de processo, procuram por práticas para ajudar o desenvolver a não escrever ou achar os defeitos o mais breve possível.</p>
 
 <p>Existe um artigo interessante no site de developer da IBM que lista as 11 praticas provadas que realmente ajudam na revisão de código <a href="http://www.ibm.com/developerworks/rational/library/11-proven-practices-for-peer-review/">Leia o artigo</a>.</p>
 
-<p>A revisão de código é uma das práticas, juntamente com o <em>Pair Programming</em> (programação em pares) que vêem de encontro a resolver o problema de código <em>ruim</em>. A programação em par é a prática onde duas pessoas trabalham juntas na concepção e escrita da funcionalidade. Ela resolve em parte o problema pois são dois pares de olhos vendo. Porém, ainda é possível escrever coisas que não sejam <em>"legíveis"</em> a futuros programadores daquele sistema.</p>
+<p>A revisão de código é uma das práticas, juntamente com o <em>Pair Programming</em> (programação em pares) que vêem de encontro a resolver o problema de código <em>ruim</em>. A programação em par é a prática onde duas pessoas trabalham juntas na concepção e escrita da funcionalidade. Ela resolve em parte o problema pois são dois pares de olhos vendo. Porém, ainda é possível escrever coisas que não sejam <em>&ldquo;legíveis&rdquo;</em> a futuros programadores daquele sistema.</p>
 
 <p>A revisão de código tem sido mais eficiente nesse sentido. Revisar um código não consiste apenas em outras pessoas lerem o código escrito antes de alguma determinada etapa. Consiste no uso de ferramentas e analisadores também. Inclusive uma boa prática é se algo pode ser analisado pelo computador é melhor que ele que faça e não outro, como por exemplo, complexidade ciclomática, code styles, duplicação, etc.</p>
 
@@ -48,17 +48,17 @@
 
 <p>Uma vez que se tenha optador pela revisão de código, o primeiro passo consiste em simplesmente fazer. Começar da forma que o time desejar. Os ajustes, como toda boa prática, vem com  tempo, e na medida da maturidade e domínio do processo, vai se mudando e adaptando.</p>
 
-<p>. Como já foi abordado acima, devem buscar ferramentas para analisar a base de código nos mais diversos aspectos. Linguagens como python tem analisadores de pep8(conjunto de boas práticas de escrita de código), analisadores estáticos (analisam variaveis, duplicidade, e outra coisas); já Java tem IDE's que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.</p>
+<p>. Como já foi abordado acima, devem buscar ferramentas para analisar a base de código nos mais diversos aspectos. Linguagens como python tem analisadores de pep8(conjunto de boas práticas de escrita de código), analisadores estáticos (analisam variaveis, duplicidade, e outra coisas); já Java tem IDE&rsquo;s que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.que vem com suite grande de ferramentas nesse mesmo sentido. Já em Ruby e Javascript tais coisas são trabalhos em andamento.</p>
 
 <p>. todos tem seu código revisto.  Não é só responsabilidade os engenheiros senior revisar. É de todos.</p>
 
 <p>. Uma boa forma é que o código só seja enviado para o repositório (git, svn, etc) se foi revisado. Por isso, o desenvolvedor antes de <em>comitar</em>  ou dar <em>push</em> chama outra pessoa e faz.</p>
 
-<p>. Projetos com times grandes podem trabalhar, caso seja usem coisas semelhantes a git, usar patches. Assim, cada um tem seu "repositorio" e na hora de integrar criam e enviam um patch. Esse patch irá ser revisto por algum outro membro.</p>
+<p>. Projetos com times grandes podem trabalhar, caso seja usem coisas semelhantes a git, usar patches. Assim, cada um tem seu &ldquo;repositorio&rdquo; e na hora de integrar criam e enviam um patch. Esse patch irá ser revisto por algum outro membro.</p>
 
 <p>. Evite fazer com muito código. O ideal, segundo o  artigo citado, é não passar de 200 a 400 linhas de código. Isso reforçar o conceito de fazer pequenos passos e ir enviando para o repositorio.</p>
 
-<p>. Evite o efeito Big Brother... Faça reviews abertos e de forma clara. Deixe tudo muito aberto e simples.</p>
+<p>. Evite o efeito Big Brother&hellip; Faça reviews abertos e de forma clara. Deixe tudo muito aberto e simples.</p>
 
 <p>. Torne a prática uma cultura do time e não mais um processo a seguir. A revisão de código deve ser desejada por todos e seguida. Pedida.</p>
 
@@ -70,11 +70,11 @@
 
 <h2>Leia mais</h2>
 
-<p><a href="http://alexgaynor.net/2013/sep/26/effective-code-review/">Effective Code Review - Alex  Gaynor</a></p>
+<p><a href="http://alexgaynor.net/2013/sep/26/effective-code-review/">Effective Code Review &ndash; Alex  Gaynor</a></p>
 
-<p><a href="http://agile.dzone.com/articles/what-makes-peer-code-review-agile">What Makes Peer Code Review an Agile Process? - Lyndsey Clevessy</a></p>
+<p><a href="http://agile.dzone.com/articles/what-makes-peer-code-review-agile">What Makes Peer Code Review an Agile Process? &ndash; Lyndsey Clevessy</a></p>
 
-<p><a href="http://www.cio.com/article/472372/Running_an_Effective_Code_Review">Running an Effective Code Review - Esther Schindler</a></p>
+<p><a href="http://www.cio.com/article/472372/Running_an_Effective_Code_Review">Running an Effective Code Review &ndash; Esther Schindler</a></p>
 ]]></content>
   </entry>
   
@@ -85,7 +85,7 @@
     <id>http://andrefonseca.net/blog/2013/09/22/criando-wdigets-javascript</id>
     <content type="html"><![CDATA[<p>TL;DR;</p>
 
-<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem "inseridos" e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
+<p>Nos projetos atuais  nos quais trabalho, muitas vezes acabamos fazendo o que chamados de Widget. Esses widget são feitos para serem &ldquo;inseridos&rdquo; e usados outros portais e produtos. Na maioria dos casos, esses widgets são como apps escritas em javascript para consumir uma api e montar um dado dentro da página onde ele foi inserido.</p>
 
 <p>O <a href="http://leobalter.net">Leonardo Balter</a> numa <a href="http://www.slideshare.net/leobalter/guia-de-sobrevivncia-js-no-mundo-open-source">palestra</a> que ele deu no Front in Rio 2012, abordou bem o assunto sobre como podemos escrever frontend apps sem inteferir no contexto da página onde está posta. Por isso pretendo apenas extender o conceito.</p>
 
@@ -93,25 +93,25 @@
 
 <p>Vamos lá, a grande maioria das pessoas, atualmente, que dizem conhecer e saber programar, apps front, faz uso de alguma biblioteca. Sem grandes pesquisas, creio que a maioria delas deva usar algo como JQuery, Mootools, BackBoneJs, AngularJS, ou similares.</p>
 
-<p>Tais libs são "uma mão na roda" e realmente facilitam a codificar, testar, etc.</p>
+<p>Tais libs são &ldquo;uma mão na roda&rdquo; e realmente facilitam a codificar, testar, etc.</p>
 
 <p>A pergunta que faço é:  Precisamos de todos os recursos disponíveis nesses frameworks/bibliotecas? Acredito que na maioria dos casos, se escrevessemos somente em Javascript puro, usando HTML e CSS, e não mais do que isso, conseguiríamos entregar o desejado.</p>
 
-<h2>Entendendo o "Problema"</h2>
+<h2>Entendendo o &ldquo;Problema&rdquo;</h2>
 
 <p>Ao analisar mais detalhadamente a situação, conversando com alguns colegas especialistas em front end e com outros nem tão especialista assim. Uma das coisas que notei é que muito deles não conhecia de fato Javascript: Sabiam detalhes de cada elemento HTML, funções e motivos de cada linha de CSS; entretando desconheciam recursos básicos da linguagem Javascript, como por exemplo, fazer um laço de <em>for</em> (muito usavam a, por exemplo, a função each do jquery).</p>
 
-<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb... Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
+<p>Com isso, é possível concluir uma exagerada dependência de bibliotecas, para fazer coisas que são perfeitamente possíveis de serem feitas sem elas, usando apenas JS puro. O resultado disso, são widgets com megas de tamanho, sendo que a lógica deles mesmo são meros  kilobytes, o restante são as bibliotecas que eles carregam junto (Jquery tem minificado 93kb, veja o site). Isso pode parecer um detalhe banal num mundo onde  casas tem links de Mb&hellip; Porém uma nova variável se apresentou no horizonte que é o mundo do mobile.</p>
 
 <p> Outro ponto interessante foi uma pesquisa recente (não consegui achar o link) onde afirma que, sites que são lentos para carregar tem menor taxa de conversão. Isso mesmo, tempo é dinheiro, literalmente. Se o seu site leva mais de  5 segundos  para mostrar algo, já se foram quase 50% das pessoas aí (CHUTE!!!!).</p>
 
-<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência - menos ainda no mobile, pode cre - para esperar seu site gigante carregar todas as libs e processá-las.</p>
+<p>Voltando para o mobile, ter sites grandes e pesados de carregar significa mais gasto de 3g e bateria. Maximiliano Firtman, fez numa edição do BrazilJS, uma ótima apresentação sobre o assunto, onde mostar números, dados mais concretos que meus chutes. E as pessoas tem pouca paciência &ndash; menos ainda no mobile, pode cre &ndash; para esperar seu site gigante carregar todas as libs e processá-las.</p>
 
 <p>Mais aí você pode dizer, que usa a técnica de deixar o  carregamento no final de página. Desculpa meu amigo, mas o seu site ainda é pesado de carregar, vai consumir bando e bateria no mobile e pode gerar alguma perda na entrega de conteúdo.</p>
 
 <p>Ok. Dito isso, voltemos paras os widgets.</p>
 
-<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código - as vezes sem saber da  âncora que você é no site deles.</p>
+<p>Se você está criando uma widget e esse tem dependências de centenas de kb de libs (template lib, dom lib, ajax lib, etc) você se encaixa na mesma análise. E pior. Você está fazendo isso com qualquer um que use seu  código &ndash; as vezes sem saber da  âncora que você é no site deles.</p>
 
 <p>Outro aspecto de widget gordos (vou chamá-los assim para facilitar), é que eles também podem gerar conflitos com outras coisa na páginas dos outros: imagine a questão das versões como podem gerar um verdadeiro inferno.</p>
 
@@ -125,11 +125,11 @@
 
 <p>O problema é que com isso, prendemos nossa solução a uma lib e sua versão. Obrigamos os produtos que queriam usar esse widget e ter essa versão, essa lib.</p>
 
-<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou... Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
+<p>Os mais experientes já devem estar imaginando o cenário que isso nos levou&hellip; Hoje temos diversos produtos usando a implementação e reclamando do tamanho, do fato de termos uma versão muito antiga, conflito com implementações.</p>
 
 <p>Nesse caso em específico, além do uso de libs, houve um sério problema de engenharia de software. Poderíamos ter componentizado melhor, separado melhor e essa mudança para versão mais nova seria mais simples.  Entretanto, nos amarramos demais a biblioteca e agora teremos que reescrever tudo.</p>
 
-<p>Para coroar nossa análise, se tivessemos usado simples JS puro - isso daria trabalho mais é totalmente possível - agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
+<p>Para coroar nossa análise, se tivessemos usado simples JS puro &ndash; isso daria trabalho mais é totalmente possível &ndash; agora teríamos um produto bem mais fácil de evoluir e não atrapalharíamos a vida de nossos clientes/usuários.</p>
 
 <p>No mesmo tempo que essa app foi feita, uma outra app foi feita por outro time. Também é usada por todos os portais. A diferença é que eles optaram por fazer com VanillaJS. Deu muito trabalho, problemas de cross-browser para resolver, ajax, etc. Mas no final eles conseguiram e tem sido um benchmark para nós todos. Eles provaram que a entrega foi bem melhor  e  com usuários felizes.</p>
 
@@ -147,7 +147,7 @@
 </ol>
 
 
-<p><em>"Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora"</em></p>
+<p><em>&ldquo;Escreva como se a pessoa que fosse usar  seja um psicopata e sabe onde mora&rdquo;</em></p>
 ]]></content>
   </entry>
   

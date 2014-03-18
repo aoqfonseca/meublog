@@ -1,646 +1,317 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta name="google-site-verification" content="f1OtvP7JCHm6M9Ca7vMcFg3q-1NEOvDMcSKfKlVW_pA" />
-	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
-	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<meta charset="utf-8">
-	<title>Blog Archives  | Andre Fonseca</title>
+  <meta charset="utf-8">
+  <title>Blog Archives - Andre Fonseca</title>
+  <meta name="author" content="Andre Fonseca">
 
-<meta name="author" content="Andre Fonseca"> 
+  
+  <meta name="description" content="Quando Fazer Refactoring
+Feb 04 2014 Reinstalando O Vim Na Sua Máquina Com Suporte a Python E Ruby
+Oct 14 2013 posted in python,, ruby, vim, Code &hellip;">
+  
 
-<meta name="description" content="2013 Reinstalando o vim na sua máquina com suporte a python e Ruby Oct 14 python,, ruby, vim, Comments Code Review Sep 28 boas, de, engenharia, &hellip;"> <meta name="keywords" content="">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="canonical" href="http://andrefonseca.net/archives">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34644487-1']);
+    _gaq.push(['_trackPageview']);
 
-	<link href="/atom.xml" rel="alternate" title="Andre Fonseca" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-<script language="Javascript" type="text/javascript">
-$(document).ready(
-  function() {
-    (function($) {
-      $(".fancybox[data-content-id]").each(function() {
-        this.href = $(this).data('content-id');
-      });
-      $(".fancybox").fancybox({
-        beforeLoad: function() {
-          var el, 
-              id = $(this.element).data('title-id');
 
-          if (id) {
-            el = $('#' + id);
-
-            if (el.length) {
-              this.title = el.html();
-            }
-          }
-          if ($(this).data('content')) {
-            this.content = $(this).data('content');
-          }
-        },
-        helpers: {
-          title: {
-            type: 'inside'
-          }
-        }
-      });
-    })(jQuery);
-  }
-);
-</script>
-	
 </head>
 
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">Andre Fonseca</a></h1>
-<h4>artigos, pensamentos e opiniões</h4>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:andrefonseca.net">
-			</form>
-		</div>
-	</div>
-</nav>
-
-
+<body   >
+  <header role="banner">
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:andrefonseca.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      
 	
+<h1><a href="/blog/2014/02/04/quando-fazer-refactoring/">Quando Fazer Refactoring</a></h1>
+<time datetime="2014-02-04T16:59:00-02:00" pubdate><span class='month'>Feb</span> <span class='day'>04</span> <span class='year'>2014</span></time>
 
-
-	
-	
-	<section class="archives"><h1 class="year">2013</h1>
-
-<article>
-	<h2 class="title"><a href="/blog/2013/10/14/reinstalando-vim-com-python/">Reinstalando o vim na sua máquina com suporte a python e Ruby</a></h2>
-	<div class="meta">
-		<span class="date">Oct 14</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/python-/'>python,</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/vim-/'>vim,</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2013/10/14/reinstalando-vim-com-python/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/09/28/code-review/">Code Review</a></h2>
-	<div class="meta">
-		<span class="date">Sep 28</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/boas/'>boas</a>, <a class='category' href='/blog/categories/de/'>de</a>, <a class='category' href='/blog/categories/engenharia/'>engenharia</a>, <a class='category' href='/blog/categories/práticas/'>práticas</a>, <a class='category' href='/blog/categories/software-/'>software,</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2013/09/28/code-review/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/09/22/criando-wdigets-javascript/">criando widgets javascript</a></h2>
-	<div class="meta">
-		<span class="date">Sep 22</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/app-/'>app,</a>, <a class='category' href='/blog/categories/engenharia/'>engenharia</a>, <a class='category' href='/blog/categories/javascript-/'>javascript,</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2013/09/22/criando-wdigets-javascript/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/04/06/voce-nao-e-o-twitter/">VOCÊ NÃO É O TWITTER</a></h2>
-	<div class="meta">
-		<span class="date">Apr  6</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/engenharia-/'>engenharia,</a>, <a class='category' href='/blog/categories/infra-/'>infra,</a>, <a class='category' href='/blog/categories/jvm/'>jvm</a>, <a class='category' href='/blog/categories/ruby-/'>ruby,</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2013/04/06/voce-nao-e-o-twitter/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/">Sistemas com responsabilidades únicas</a></h2>
-	<div class="meta">
-		<span class="date">Mar 21</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/engenharia-/'>engenharia.</a>, <a class='category' href='/blog/categories/software/'>software</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
 
 
 	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2012</h1>
+<h1><a href="/blog/2013/10/14/reinstalando-vim-com-python/">Reinstalando O Vim Na Sua Máquina Com Suporte a Python E Ruby</a></h1>
+<time datetime="2013-10-14T17:44:00-03:00" pubdate><span class='month'>Oct</span> <span class='day'>14</span> <span class='year'>2013</span></time>
 
-<article>
-	<h2 class="title"><a href="/blog/2012/09/08/design-pattern/">Design Pattern e Linguagens dinamicas</a></h2>
-	<div class="meta">
-		<span class="date">Sep  8</span>
-		<span class="tags">
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>python,</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/vim/'>vim,</a></span>
+</footer>
 
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/09/08/design-pattern/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/09/02/qualidade-de-codigo/">Escrevendo código limpo</a></h2>
-	<div class="meta">
-		<span class="date">Sep  2</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/clean-/'>clean,</a>, <a class='category' href='/blog/categories/code-/'>code,</a>, <a class='category' href='/blog/categories/metrica/'>metrica</a>, <a class='category' href='/blog/categories/qualidade-/'>qualidade,</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/09/02/qualidade-de-codigo/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/09/01/braziljs/">Braziljs</a></h2>
-	<div class="meta">
-		<span class="date">Sep  1</span>
-		<span class="tags">
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/09/01/braziljs/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/08/25/entregando-software-robusto/">Entregando sistemas robustos</a></h2>
-	<div class="meta">
-		<span class="date">Aug 25</span>
-		<span class="tags">
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/08/25/entregando-software-robusto/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas para Javascript</a></h2>
-	<div class="meta">
-		<span class="date">Apr 13</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript-/'>javascript,</a>, <a class='category' href='/blog/categories/teste/'>teste</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/04/13/bibliotecas-javascript/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/03/04/onde-buscar/">Não precisa saber tudo mas o onde buscar sim.</a></h2>
-	<div class="meta">
-		<span class="date">Mar  4</span>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/atualidade/'>atualidade</a>, <a class='category' href='/blog/categories/conhecimento/'>conhecimento</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2012/03/04/onde-buscar/#disqus_thread">Comments</a></span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como ver a última tag que foi criada no git</a></h2>
-	<div class="meta">
-		<span class="date">Feb 29</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada um tem que saber seu papel e sua responsabilidade.</a></h2>
-	<div class="meta">
-		<span class="date">Feb 22</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
 
 
 	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2011</h1>
+<h1><a href="/blog/2013/09/28/code-review/">Code Review</a></h1>
+<time datetime="2013-09-28T20:48:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>28</span> <span class='year'>2013</span></time>
 
-<article>
-	<h2 class="title"><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando A Renderizacao Do Template De Form Do Admin Do Django</a></h2>
-	<div class="meta">
-		<span class="date">Nov 25</span>
-		<span class="tags">
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/boas/'>boas</a>, <a class='category' href='/blog/categories/de/'>de</a>, <a class='category' href='/blog/categories/engenharia/'>engenharia</a>, <a class='category' href='/blog/categories/praticas/'>práticas</a>, <a class='category' href='/blog/categories/software/'>software,</a></span>
+</footer>
 
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h2>
-	<div class="meta">
-		<span class="date">Oct 25</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando growl com python e ferramenta de autotest</a></h2>
-	<div class="meta">
-		<span class="date">Oct 20</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine testes:  Usando o before e o after e testes assincronos.</a></h2>
-	<div class="meta">
-		<span class="date">Oct  6</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a versÃ£o firefox do selenium-server.jar</a></h2>
-	<div class="meta">
-		<span class="date">Jun 28</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - instalando homebrew e git</a></h2>
-	<div class="meta">
-		<span class="date">May 12</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/">Script para organizaÃ§Ã£o das minhas fotos</a></h2>
-	<div class="meta">
-		<span class="date">May  6</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/">Postando fotos no picasa pela linha de comando</a></h2>
-	<div class="meta">
-		<span class="date">May  6</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/">Mais uma do SOLR - Dynamic Fields</a></h2>
-	<div class="meta">
-		<span class="date">Apr  8</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/">Usando SOLR parte 2 - Testes e Cucumber</a></h2>
-	<div class="meta">
-		<span class="date">Mar 31</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando o SOLR na sua app Rails - parte  1</a></h2>
-	<div class="meta">
-		<span class="date">Mar 30</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
 
 
 	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2010</h1>
+<h1><a href="/blog/2013/09/22/criando-wdigets-javascript/">Criando Widgets Javascript</a></h1>
+<time datetime="2013-09-22T10:35:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>22</span> <span class='year'>2013</span></time>
 
-<article>
-	<h2 class="title"><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h2>
-	<div class="meta">
-		<span class="date">Dec 29</span>
-		<span class="tags">
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/app/'>app,</a>, <a class='category' href='/blog/categories/engenharia/'>engenharia</a>, <a class='category' href='/blog/categories/javascript/'>javascript,</a></span>
+</footer>
 
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2010/12/17/estudos-compartilhados-parte-iii/">Estudos Compartilhados - parte III</a></h2>
-	<div class="meta">
-		<span class="date">Dec 17</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/">Estudos Compartilhados - Part II - OrientaÃ§Ã£o a Objeto</a></h2>
-	<div class="meta">
-		<span class="date">Dec  9</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2010/12/03/estudos-compartilhados-introducao/">Estudos compartilhados - introduÃ§Ã£o</a></h2>
-	<div class="meta">
-		<span class="date">Dec  3</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/">Muita coisa acontecendo por aÃ­&#8230; Vamos tomar uma cerveja?</a></h2>
-	<div class="meta">
-		<span class="date">Sep  8</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/blog/2010/05/31/shu-ha-ri/">Shu Ha Ri</a></h2>
-	<div class="meta">
-		<span class="date">May 31</span>
-		<span class="tags">
-
-</span>
-	    
-	</div>
-</article>
-
-	
 
 
 	
-	
-		</section>
-	
-	<section class="archives"><h1 class="year">2009</h1>
+<h1><a href="/blog/2013/04/06/voce-nao-e-o-twitter/">VOCÊ NÃO É O TWITTER</a></h1>
+<time datetime="2013-04-06T13:27:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>06</span> <span class='year'>2013</span></time>
 
-<article>
-	<h2 class="title"><a href="/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/">Uso do modificador static dentro do Java</a></h2>
-	<div class="meta">
-		<span class="date">Apr 18</span>
-		<span class="tags">
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/engenharia/'>engenharia,</a>, <a class='category' href='/blog/categories/infra/'>infra,</a>, <a class='category' href='/blog/categories/jvm/'>jvm</a>, <a class='category' href='/blog/categories/ruby/'>ruby,</a></span>
+</footer>
 
-</span>
-	    
-	</div>
-</article>
+
 
 	
+<h1><a href="/blog/2013/03/21/sitemas-com-responsabilidade-unica/">Sistemas Com Responsabilidades únicas</a></h1>
+<time datetime="2013-03-21T21:09:00-03:00" pubdate><span class='month'>Mar</span> <span class='day'>21</span> <span class='year'>2013</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/engenharia/'>engenharia.</a>, <a class='category' href='/blog/categories/software/'>software</a></span>
+</footer>
 
 
-<article>
-	<h2 class="title"><a href="/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/">Lendo um arquivo permitindo que outro processo ou programa o altere</a></h2>
-	<div class="meta">
-		<span class="date">Apr 14</span>
-		<span class="tags">
 
-</span>
-	    
-	</div>
-</article>
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
+	
+<h1><a href="/blog/2012/09/08/design-pattern/">Design Pattern E Linguagens Dinamicas</a></h1>
+<time datetime="2012-09-08T21:16:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>08</span> <span class='year'>2012</span></time>
+
+
+
+	
+<h1><a href="/blog/2012/09/02/qualidade-de-codigo/">Escrevendo Código Limpo</a></h1>
+<time datetime="2012-09-02T16:00:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>02</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/clean/'>clean,</a>, <a class='category' href='/blog/categories/code/'>code,</a>, <a class='category' href='/blog/categories/metrica/'>metrica</a>, <a class='category' href='/blog/categories/qualidade/'>qualidade,</a></span>
+</footer>
+
+
+
+	
+<h1><a href="/blog/2012/09/01/braziljs/">Braziljs</a></h1>
+<time datetime="2012-09-01T11:43:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>01</span> <span class='year'>2012</span></time>
+
+
+
+	
+<h1><a href="/blog/2012/08/25/entregando-software-robusto/">Entregando Sistemas Robustos</a></h1>
+<time datetime="2012-08-25T19:11:00-03:00" pubdate><span class='month'>Aug</span> <span class='day'>25</span> <span class='year'>2012</span></time>
+
+
+
+	
+<h1><a href="/blog/2012/04/13/bibliotecas-javascript/">Bibliotecas Para Javascript</a></h1>
+<time datetime="2012-04-13T00:02:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>13</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript,</a>, <a class='category' href='/blog/categories/teste/'>teste</a></span>
+</footer>
+
+
+
+	
+<h1><a href="/blog/2012/03/04/onde-buscar/">Não Precisa Saber Tudo Mas O Onde Buscar Sim.</a></h1>
+<time datetime="2012-03-04T15:29:00-03:00" pubdate><span class='month'>Mar</span> <span class='day'>04</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/atualidade/'>atualidade</a>, <a class='category' href='/blog/categories/conhecimento/'>conhecimento</a></span>
+</footer>
+
+
+
+	
+<h1><a href="/blog/2012/02/29/como-ver-a-ultima-tag-que-foi-criada-no-git/">Como Ver a última Tag Que Foi Criada No Git</a></h1>
+<time datetime="2012-02-29T00:00:00-03:00" pubdate><span class='month'>Feb</span> <span class='day'>29</span> <span class='year'>2012</span></time>
+
+
+
+	
+<h1><a href="/blog/2012/02/22/cada-um-tem-que-saber-seu-papel-e-sua-responsabilidade/">Cada Um Tem Que Saber Seu Papel E Sua Responsabilidade.</a></h1>
+<time datetime="2012-02-22T00:00:00-02:00" pubdate><span class='month'>Feb</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/11/25/customizando-a-renderizacao-do-template-de-form-do-admin-do-django/">Customizando a Renderizacao Do Template De Form Do Admin Do Django</a></h1>
+<time datetime="2011-11-25T00:00:00-02:00" pubdate><span class='month'>Nov</span> <span class='day'>25</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/10/25/python-decorators/">Python Decorators</a></h1>
+<time datetime="2011-10-25T00:00:00-02:00" pubdate><span class='month'>Oct</span> <span class='day'>25</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/10/20/usando-growl-com-python-e-ferramenta-de-autotest/">Usando Growl Com Python E Ferramenta De Autotest</a></h1>
+<time datetime="2011-10-20T00:00:00-02:00" pubdate><span class='month'>Oct</span> <span class='day'>20</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/10/06/jasmine-testes-usando-o-before-e-o-after-e-testes-assincronos/">Jasmine Testes: Usando O Before E O After E Testes Assincronos.</a></h1>
+<time datetime="2011-10-06T00:00:00-03:00" pubdate><span class='month'>Oct</span> <span class='day'>06</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/06/28/alterando-a-versao-firefox-do-selenium-server-jar/">Alterando a VersÃ£o Firefox Do selenium-server.jar</a></h1>
+<time datetime="2011-06-28T00:00:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>28</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a></h1>
+<time datetime="2011-05-12T00:00:00-03:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/05/06/script-para-organizacao-das-minhas-fotos/">Script Para OrganizaÃ§Ã£o Das Minhas Fotos</a></h1>
+<time datetime="2011-05-06T00:00:00-03:00" pubdate><span class='month'>May</span> <span class='day'>06</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/05/06/postando-fotos-no-picasa-pela-linha-de-comando/">Postando Fotos No Picasa Pela Linha De Comando</a></h1>
+<time datetime="2011-05-06T00:00:00-03:00" pubdate><span class='month'>May</span> <span class='day'>06</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/04/08/mais-uma-do-solr-dynamic-fields/">Mais Uma Do SOLR - Dynamic Fields</a></h1>
+<time datetime="2011-04-08T00:00:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>08</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/03/31/usando-solr-parte-2-testes-e-cucumber/">Usando SOLR Parte 2 - Testes E Cucumber</a></h1>
+<time datetime="2011-03-31T00:00:00-03:00" pubdate><span class='month'>Mar</span> <span class='day'>31</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2011/03/30/usando-o-solr-na-sua-app-rails-parte-1/">Usando O SOLR Na Sua App Rails - Parte 1</a></h1>
+<time datetime="2011-03-30T00:00:00-03:00" pubdate><span class='month'>Mar</span> <span class='day'>30</span> <span class='year'>2011</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/12/29/estudos-compartilhados-iv-arquitetura-emergente/">Estudos Compartilhados IV - Arquitetura Emergente</a></h1>
+<time datetime="2010-12-29T00:00:00-02:00" pubdate><span class='month'>Dec</span> <span class='day'>29</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/12/17/estudos-compartilhados-parte-iii/">Estudos Compartilhados - Parte III</a></h1>
+<time datetime="2010-12-17T00:00:00-02:00" pubdate><span class='month'>Dec</span> <span class='day'>17</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/12/09/estudos-compartilhados-part-ii-orientacao-a-objeto/">Estudos Compartilhados - Part II - OrientaÃ§Ã£o a Objeto</a></h1>
+<time datetime="2010-12-09T00:00:00-02:00" pubdate><span class='month'>Dec</span> <span class='day'>09</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/12/03/estudos-compartilhados-introducao/">Estudos Compartilhados - IntroduÃ§Ã£o</a></h1>
+<time datetime="2010-12-03T00:00:00-02:00" pubdate><span class='month'>Dec</span> <span class='day'>03</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/09/08/muita-coisa-acontecendo-por-ai-vamos-tomar-uma-cerveja/">Muita Coisa Acontecendo Por aÃ­&#8230; Vamos Tomar Uma Cerveja?</a></h1>
+<time datetime="2010-09-08T00:00:00-03:00" pubdate><span class='month'>Sep</span> <span class='day'>08</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2010/05/31/shu-ha-ri/">Shu Ha Ri</a></h1>
+<time datetime="2010-05-31T00:00:00-03:00" pubdate><span class='month'>May</span> <span class='day'>31</span> <span class='year'>2010</span></time>
+
+
+
+	
+<h1><a href="/blog/2009/04/18/uso-do-modificador-static-dentro-do-java/">Uso Do Modificador Static Dentro Do Java</a></h1>
+<time datetime="2009-04-18T00:00:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>18</span> <span class='year'>2009</span></time>
+
+
+
+	
+<h1><a href="/blog/2009/04/14/lendo-um-arquivo-permitindo-que-outro-processo-ou-programa-o-altere/">Lendo Um Arquivo Permitindo Que Outro Processo Ou Programa O Altere</a></h1>
+<time datetime="2009-04-14T00:00:00-03:00" pubdate><span class='month'>Apr</span> <span class='day'>14</span> <span class='year'>2009</span></time>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo">Copyright &copy; 2014
 
     Andre Fonseca
 
 <br>
 Powered by Octopress.
-</footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
 
+</footer>
+  
 
 <script type="text/javascript">
       var disqus_shortname = 'blogandrefonseca';
@@ -650,24 +321,36 @@ Powered by Octopress.
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
 
 
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-34644487-1']);
-		_gaq.push(['_trackPageview']);
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
 
 
 
