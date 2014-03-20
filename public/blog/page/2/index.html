@@ -9,7 +9,7 @@
   <meta name="author" content="Andre Fonseca">
 
   
-  <meta name="description" content="Com interfaces webs cada vez mais ricas, o uso de javascript vem aumentando cada vez mais. A pouco tempo atrás ter um código javascript em nossas &hellip;">
+  <meta name="description" content="A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &ldquo;programador otimista&rdquo;. O & &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +70,83 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/25/entregando-software-robusto/">Entregando Sistemas Robustos</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-25T19:11:00-03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+        
+           | <a href="/blog/2012/08/25/entregando-software-robusto/#disqus_thread"
+             data-disqus-identifier="http://andrefonseca.net/blog/2012/08/25/entregando-software-robusto/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A muito tempo atrás trabalhei com uma pessoa, Jorge Baccar, que me ensinou que deveria evitar o perfil de &ldquo;programador otimista&rdquo;.  O &ldquo;programador otimista&rdquo; é o tipo de profissional que só se preocupava em implementar o &ldquo;caminho feliz do sistema&rdquo;: implementa o caso de sucesso ou exatamente pedido pelo cliente. Por exemplo: se o cliente quisesse uma funcionalidade para criar novo usuário (cadastro), nosso programador otimista, só implementaria o necessário para ter um novo usuário &ndash; nem pensaria em validações de nome correto, email correto, etc.</p>
+
+<p>Para um cliente desavisado, esse profissional cumpre com sucesso e, de certa forma, velocidade suas tarefas. Porém, no final das contas, ele não entrega uma solução completa pois caso algo saia um pouco do cenário de sucesso, o sistema irá congelar e se comportar de forma bizarra.</p>
+
+<h2>Todos nós somos programadores otimistas</h2>
+
+<p>Todos nós somos programadores otimistas. Quanto de nós já não enfrentou prazos curtos de entrega onde existia espaço para mais nada além de fazer o mínimo necessário para atender aos pedidos do cliente ?</p>
+
+<p>Entretanto mesmo com prazos curtos de entrega, conexões falham, bancos falham, servidores param/travam, filers corrompem, e por aí vaí. Assim, nesse contexto, maioria de nossas funcionalidades não estão preparadas para lidar com essas situações caóticas e mesmo assim continuar funcionando sem a necessidade de uma intervenção humana.</p>
+
+<p>Elas não são robustas.</p>
+
+<h2>Sistema não são ilhas</h2>
+
+<p>Nos sistema atuais é quase impossível que você não tenha que se conectar a um outro sistema. Isso mesmo sem considerar que um banco de dados é um sistema externo. Hoje, inclusive tem sido defendido, a maioria dos sistemas são grande mashups &ndash; mistura e conexão &ndash; de diversos sistemas.</p>
+
+<p>Se você fez um site de venda, terá que se conectar com uma api de cobrança. Outro, você terá que se conectar ao servidor de e-mail, ou então terá que avisar a um outro sistema sobre uma atividade sua. E por aí temos diversos exemplos.</p>
+
+<p>Se os nossos sistemas podem dar erros/defeitos, por que esses outros também não podem? Será que nunca ocorrerá de sua internet cair?</p>
+
+<p>Imaginando que só tenha pensando na funcionalidade pedida pelo seu cliente, enquanto tudo estiver funcionando, ele estará super feliz. Porém o que aconteceria com seu sistema sem uma dessa pontas falhasse? Você ficaria com uma transação incompleta ? O seu sistema iria parar de funcionar?</p>
+
+<h2>Não existe sistema que nunca falhou</h2>
+
+<p>Não existe um sistema que esteja rodando um minimo de tempo em produção que nunca tenha falhado. Imagine agora que esse sistema é um daqueles que você depende para completar uma operação, como por exemplo uma venda.
+Se a gente não pensar em criar algo mais tolerante a falha, provavelmente o seu sistema, no exemplo de vendas, iria parar totalmente gerando um prejuízo enorme. Imagine agora que esse seu sistema fosse o site de vendas da amazon (seriam milhões a cada hora que não conseguisse vender).</p>
+
+<h2>Um livro para ajudar</h2>
+
+<p>Recentemente li um livro que fala exatamente sobre esse assunto. O livro é o <a href="http://pragprog.com/book/mnee/release-it">Release It</a> do Michael T. Nygard. Nele o autor explica de forma detalhada como a gente pode se precaver de sermos um programador otimista e quais são as armadilhas que devemos evitar se quisermos produtos mais robustos.
+Recomendo muito essa leitura.</p>
+
+<h2>Mão na massa &ndash; O que fazer</h2>
+
+<p>Determine o domínio de seu problema. Em seguinda, monte um esquema com todos os possíveis pontos de falhas e procure soluções e formas de implementar para que seu sistema seja robusto.</p>
+
+<p>No caso de um sistema de venda, você pode, por exemplo optar por um processamento assíncrono do meio de pagamento usando uma fila para não limitar .</p>
+
+<p>Pense no seu sistema além da funcionalidade. Pense no seu sistema como um imenso ecossistema.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -827,107 +904,6 @@ mv selenium-server.zip selenium-server.jar
 jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
 [/cc]
 Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Setup Ambiente Ruby - Instalando Homebrew E Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-12T00:00:00-03:00" pubdate data-updated="true"></time>
-        
-           | <a href="/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/#disqus_thread"
-             data-disqus-identifier="http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
-Existem caminhos alternativos para instalá-lo. Mas não recomendo.
-Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
-</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
-</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
-</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>
-</span><span class='line'>Principal Commands:
-</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
-</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
-</span><span class='line'>uninstall formula ...
-</span><span class='line'>update
-</span><span class='line'>
-</span><span class='line'>Other Commands:
-</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
-</span><span class='line'>options formula
-</span><span class='line'>deps formula
-</span></code></pre></td></tr></table></div></figure>
-
-Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
-Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
-</span></code></pre></td></tr></table></div></figure>
-Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
-</span></code></pre></td></tr></table></div></figure>
-
-Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 </div>
   
   

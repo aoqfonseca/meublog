@@ -4,7 +4,7 @@
   <title><![CDATA[Andre Fonseca]]></title>
   <link href="http://andrefonseca.net/atom.xml" rel="self"/>
   <link href="http://andrefonseca.net/"/>
-  <updated>2014-03-18T15:34:07-03:00</updated>
+  <updated>2014-03-19T21:10:20-03:00</updated>
   <id>http://andrefonseca.net/</id>
   <author>
     <name><![CDATA[Andre Fonseca]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pesquisa Sobre Os Eventos De TI]]></title>
+    <link href="http://andrefonseca.net/blog/2014/03/19/pesquisa-sobre-eventos-de-ti/"/>
+    <updated>2014-03-19T09:48:32-03:00</updated>
+    <id>http://andrefonseca.net/blog/2014/03/19/pesquisa-sobre-eventos-de-ti</id>
+    <content type="html"><![CDATA[<p>Na empresa onde trabalho, Globo.com, todo início de ano temos que <em>&ldquo;escolher&rdquo;</em> para quais eventos gostaríamos de ir. Esses eventos podem ser no Brasil ou fora, sendo que devem falar sobre assuntos que tenham correlação com seu trabalho ou objetivo de seu time ou área. Diante disso, o que geralmente fazemos, é montar uma planilha com diversos eventos que vamos <em>encontrado</em>. Isso feito, escolhemos a partir dessa lista quais eventos desejamos ir seguindo algumas regras.</p>
+
+<p>Nesse ano, conforme fomos levantando os eventos, acabou surgindo uma discussão quanto a <em>qualidade</em> dos eventos. Ao analisarmos as grades(temas, palestrantes, etc), eu e um grupo ficamos com a sensação ruim de estar vendo mais do mesmo, conteúdos rasos, <em>repetição de tutoriais</em>, e outras coisas similares.  Cheguei, inclusive, a postar essa impressão no meu facebook, onde tive um retorno similar de amigos de fora da Globo.com.</p>
+
+<p>Diante disso, após mais um pouco de conversa, resolvi fazer uma pesquisa para ver o quanto essa percepção em relação a <em>qualidade</em> dos eventos era só minha, ou, de fato, há uma certo sentimento geral.</p>
+
+<h2>A Pesquisa</h2>
+
+<p>Para fazer a pesquisa, optei por um formulário simples no GoogleDocs, onde fiz algumas perguntas como: <em>Você se interessaria por eventos mais técnicos? Quais assuntos desejaria ver? Deixe seu comentário&hellip;</em></p>
+
+<p>A intenção clara era de captar o nível de insastifação com relação as temas, formas, organização e nível dos conteúdos abordados. Outro ponto, é que o direcionamento também foi para pessoas com mais experiência.
+Publicado o form, fiz um tweet e pedi ajuda a amigos para espalharem o formulário para alcançarmos o máximo de pessoas o possível.</p>
+
+<h2>O Resultado</h2>
+
+<p>Até o momento em que escrevo esse artigo, tinhamos por volta de 170 respostas. Embora não seja um número muito grande do ponto de vista estatistico &ndash; que nos permitiria ver alguma tendência, o grande ponto vou ver o quanto o sentimento de insastifação é compartilhado.</p>
+
+<p>Isso ficou bem claro, nos comentários deixados pelo pessoal no final do formulário: esse de fato foi o campo mais revelador de toda a pesquisa.</p>
+
+<p>Comentários como, <em>&ldquo;Muita panelinha &hellip;&rdquo;; &ldquo;Sempre os mesmos assuntos&hellip;&rdquo;; &ldquo;Coisas que poderia aprender com tutoriais&rdquo;</em>, surgiram em quantidade expressivas, revelando que precisamos repensar a forma que fazemos evento e montamos nossas grades.</p>
+
+<p>Para exemplificar, na montagem do evento do <strong>Front in Rio 2013</strong>, nós da organização discutimos muito para saber qual seria a melhor forma de escolher as palestras. Acabamos por fim abrindo um pouco a grade e escolhendo pessoas que trouxeram <strong>assuntos</strong> (e não currículos) interessantes para a comunidade.</p>
+
+<h2>Conclusão</h2>
+
+<p>Frente aos dados que levantei, as opiniões e as discussões em cima de todo esse material que tive, a conclusão que chego é que existe espaço e demanda para eventos mais técnicos e de conteúdo mais aprofundado, porém, esses não pode ser no mesmo formato dos atuais, nem invalidam a importância dos mesmos.</p>
+
+<p>Vamos por parte:</p>
+
+<ul>
+<li>Como disse um amigo, eventos grandes, ou para grande <em>massas</em>, eles tem que ser mais abrangentes, mais rasos e contar com pessoas conhecidas e <em>famosas</em> para atrair gente, pois esse é seu real objetivo: atrair pessoas para o meio. Famoso, chamar atenção.</li>
+<li>Eventos mais técnicos não podem ser grandes pois isso inviabilizaria a discussão e troca&hellip; Não existe como conversar com 500 pessoas. Limites de 100 a 150 pessoas(ou até menos) parece-me ser a melhor opção.</li>
+<li>As pessoas quando buscam por mais conteúdo querem que isso seja lhe entregue de uma forma bem mais flexível e <em>pessoal</em>.  Sendo assim, se quisermos eventos com mais qualidade técnica, esse modelo de palco, microfone, slide com monte de imagem e palestrante em sala separada, não funciona. Ainda dentro desse item, rápidas exposições, mais conversas, e ambiente bem descontraído parece ser a melhor escolha</li>
+</ul>
+
+
+<p> Por fim, é que existem pessoas que querem coisas do genero e arrisco dizer que pagariam por isso.  Logo, por que não fazer?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Quando Fazer Refactoring]]></title>
@@ -1084,77 +1129,6 @@ mv selenium-server.zip selenium-server.jar
 jar -cvfm selenium-server.jar META-INF/MANIFEST.MF *
 [/cc]
 Pronto agora você tem um jar do selenium server com suporte a versão que quer do firefox
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Ambiente Ruby - Instalando Homebrew E Git]]></title>
-    <link href="http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git/"/>
-    <updated>2011-05-12T00:00:00-03:00</updated>
-    <id>http://andrefonseca.net/blog/2011/05/12/setup-ambiente-ruby-instalando-homebrew-e-git</id>
-    <content type="html"><![CDATA[Uma das coisas que mais admiro no Ubuntu é o sistema de gerenciamento de pacotes. Instalar, atualizar, desinstalar, etc no Ubuntu é tão simples quando uma comanda no console: &#8220;sudo apt-get install&#8221;. O problema é que para outros sistemas operacionais, como o MacOs isso não é tão simples. Na Globo.com, fui apresentado ao <a href="https://github.com/mxcl/homebrew/wiki/installation">homebrew</a>. Ele é muito legal, tem muitas formúlas(receitas de instalação) e é fácil de gerenciar e manter. Para instalar:
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby -e <span class="s2">&quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-Para instalar algumas bibliotecas, o brew, por algumas vezes usa, no caso do MacOS, o pacote XCode para compilar. Assim, você terá que instalar o XCode no seu sistema. Se tem o cd original do seu mac, ele estará lá para instalar. Caso não tenha, você pode usar a AppStore do Mac para instalar.
-Existem caminhos alternativos para instalá-lo. Mas não recomendo.
-Uma vez que tenha instalado o homebrew na sua máquina com sucesso, para usá-lo basta usar o comando brew. Teste no seu console e ele deverá ter uma saída semelhante a:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>andre.fonseca@pimpao-computer ~/projects/participacoes/puppet/deploy <span class="nv">$ </span>brew
-</span><span class='line'>Usage: brew <span class="o">[</span>-v|--version<span class="o">]</span> <span class="o">[</span>--prefix <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--cache <span class="o">[</span>formula<span class="o">]]</span>
-</span><span class='line'><span class="o">[</span>--cellar <span class="o">[</span>formula<span class="o">]]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="o">[</span>--env<span class="o">]</span> <span class="o">[</span>--repository<span class="o">]</span>
-</span><span class='line'><span class="o">[</span>-h|--help<span class="o">]</span> COMMAND <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>
-</span><span class='line'>Principal Commands:
-</span><span class='line'>install formula ... <span class="o">[</span>--ignore-dependencies<span class="o">]</span> <span class="o">[</span>--HEAD<span class="o">]</span>
-</span><span class='line'>list <span class="o">[</span>--unbrewed|--versions<span class="o">]</span> <span class="o">[</span>formula<span class="o">]</span> ...
-</span><span class='line'>search <span class="o">[</span>/regex/<span class="o">]</span> <span class="o">[</span>substring<span class="o">]</span>
-</span><span class='line'>uninstall formula ...
-</span><span class='line'>update
-</span><span class='line'>
-</span><span class='line'>Other Commands:
-</span><span class='line'>info formula <span class="o">[</span>--github<span class="o">]</span>
-</span><span class='line'>options formula
-</span><span class='line'>deps formula
-</span></code></pre></td></tr></table></div></figure>
-
-Bom agora temos uma excelente ferramenta para instalarmos as coisas de forma simples, para montarmos nosso setup. A segunda coisa sem a qual eu não acho que tenhamos um ambiente completo é o Git. O git é um controle de versão descentralizado. Se você não está familiariado com ele, sugiro que estude, pois isso irá mudar completamente a sua forma de ver controles de versões. Acredito que já alguns post meus sobre o assunto, caso não aguarde e peçam ajuda ao google.
-Voltando, vamos instalar o git em nossa máquina e assim começar. Para isso use o comando:
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install git
-</span></code></pre></td></tr></table></div></figure>
-Isso é tudo. Agora você já tem todo o git funcionando na sua máquina. Eu também gostou muito de colocar alguns atalhos para o git, para isso, eu adiciona &#8220;alias&#8221; no meu arquivo de bash_profile, desse jeito:
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo alias </span><span class="nv">gpush</span><span class="o">=</span><span class="s2">&quot;git push origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gpull</span><span class="o">=</span><span class="s2">&quot;git pull origin master&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gst</span><span class="o">=</span><span class="s2">&quot;git status&quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcm</span><span class="o">=</span><span class="s2">&quot;git commit -am &quot;</span> &amp;gt; ~/.bash_profile
-</span><span class='line'><span class="nb">echo alias </span><span class="nv">gcko</span><span class="o">=</span><span class="s2">&quot;git checkout &quot;</span> &amp;gt; ~/.bash_profile
-</span></code></pre></td></tr></table></div></figure>
-
-Para o começo ficamos por aqui. No próximo post mostrarei como instalar o RVM e gems para o seu projeto. No github do projeto tem um bom tutorial indicando como fazer. Para facilitar faça o comando abaixo no seu terminal:
 ]]></content>
   </entry>
   
